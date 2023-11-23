@@ -1,0 +1,650 @@
+/* Custom scrollbar styles */
+/* For Webkit browsers like Chrome/Safari */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #131313; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(91,33,182,1); /* Handle color */
+    border-radius: 6px; /* Handle roundness */
+}
+
+/* For Hover state */
+::-webkit-scrollbar-thumb:hover {
+    background: #5a67d8; /* Handle color on hover */
+}
+
+/* For Firefox */
+/* Scrollbar styles */
+html {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: rgba(91,33,182,1) #131313; /* thumb and track color */
+}
+
+
+
+
+.text-xss {
+    font-size: 9px;
+}
+
+
+
+
+.emoji-picker {
+    display: none; /* Hidden by default */
+}
+
+.emoji-picker.active {
+    display: block; /* Show when active */
+}
+
+
+.emoji-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+#emoji-picker {
+    position: absolute;
+    bottom: 7%; /* Moves the emoji picker above the chat form */
+    right: 25%; /* Aligns the emoji picker to the right */
+    /* Additional styles here (e.g., z-index, if needed) */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chatbox */
+.chatbox-panel {
+    max-height: 200px; /* Adjust based on your layout */
+    overflow: hidden; /* Prevents the panel itself from scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Leaderboard Trophies */
+.fa-trophy {
+    margin-right: 8px;
+    font-size: 0.65em; 
+}
+
+
+
+
+
+
+
+
+
+.panel-heading {
+    background: linear-gradient(90deg, rgb(32, 32, 32) -100%, rgb(31, 31, 31) 100%);
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.panel {
+    border-radius: 10px;
+    overflow: hidden;
+    height: auto;
+}
+
+/* Additional Styles for the New Content */
+.content h3 {
+    margin-bottom: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    margin-bottom: 0.125rem;
+}
+
+/* Adjust the image style as necessary */
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 0.5rem; /* Adjust the gap between images */
+}
+
+.image-gallery img {
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    height: 10rem; /* Fixed height */
+    width: auto; /* Width adjusts to maintain aspect ratio */
+    object-fit: cover; /* Ensure images cover the area */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+    .image-gallery {
+        flex-direction: column;
+    }
+
+    .image-gallery img {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 0.5rem; /* Space between stacked images */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content .news-item {
+    width: 100%;
+}
+
+.news-item img {
+    width: 100%; /* Full width */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    height: 10rem; /* Fixed height */
+    object-fit: cover; /* Ensure images cover the area */
+}
+
+.news-item h3 {
+    color: white;
+    font-size: 1rem; /* Adjust as needed */
+    margin-bottom: 0.25rem; /* Space between title and description */
+}
+
+
+.news-item p {
+    color: rgba(255, 255, 255, 0.75); /* Lighter text color for description */
+    font-size: 0.875rem; /* Adjust as needed */
+}
+
+.read-more {
+    background-color: rgba(129, 52, 175, 0.85); /* Button background color */
+    color: white; /* Text color */
+    padding: 5px 10px; /* Padding */
+    border-radius: 15px; /* Rounded corners */
+    text-align: center; /* Center the text */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.read-more:hover {
+    background-color: rgba(129, 52, 175, 1); /* Slightly darker on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Existing Styles */
+
+/* Navigation Menu Styling */
+.nav-menu {
+    background-color: rgba(10, 10, 10, 0.85); /* Translucent background */
+    padding: 10px 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-top: 2px solid rgba(129, 52, 175, 0.6); /* Cool border at top */
+}
+
+.nav-item {
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-align: center;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background-color: rgba(129, 52, 175, 0.85);
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Player Stats Badges */
+.player-stats .badge {
+    display: flex;
+    align-items: center;
+    background-color: rgba(15, 15, 15, 0.85); /* Dark background */
+    padding: 5px 10px;
+    border-radius: 20px; /* Rounded badge shape */
+    gap: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.player-stats .badge:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    background-color: rgba(129, 52, 175, 0.85); /* Lighter background on hover */
+}
+
+/* Player Stat Styling */
+.player-stat .stat-value {
+    color: white;
+    font-size: 0.75rem; /* Adjusted font size */
+    font-weight: bold;
+}
+
+/* Icon Styling */
+.player-stat i {
+    transition: color 0.3s ease;
+}
+
+.player-stat:hover i {
+    color: #fff; /* White color on hover */
+}
+
+/* Blinking Animation */
+@keyframes blinking {
+    0% { color: rgba(129, 52, 175, 0.85); } /* Original color */
+    50% { color: limegreen; } /* Blinking color */
+    100% { color: rgba(129, 52, 175, 0.85); } /* Return to original color */
+}
+
+/* Apply Blinking Animation to Ping Icon */
+#playerPing .fa-signal {
+    animation: blinking 3s linear infinite;
+}
+
+
+/* Smaller screens (less than 768px width) */
+@media (max-width: 767px) {
+    .player-stats {
+        flex-direction: column; /* stack badges vertically */
+        align-items: center;
+    }
+
+    .player-stat.badge {
+        margin-bottom: 10px; /* add space between badges */
+        font-size: 0.9rem; /* adjust font size if needed */
+    }
+}
+
+/* Medium screens (between 768px and 1023px width) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .player-stat.badge {
+        padding: 3px 8px; /* adjust padding */
+        font-size: 0.95rem; /* adjust font size if needed */
+    }
+}
+
+/* Large screens (1024px and above) - your default styles probably fit here */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.online-players h3:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #9D50BB, #6E48AA);
+    animation: animateLine 1.5s linear infinite;
+}
+
+@keyframes animateLine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.player-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.player-item .badge {
+    width: 10px;
+    height: 10px;
+}
+
+@media (max-width: 768px) {
+    #playerList {
+        grid-template-columns: 1fr; /* Adjust for smaller screens */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.panel.custom:hover {
+    background: #141414;
+    transform: scale(1.05);
+    border-radius: 12px;
+}
+
+
+.panel.bg-zinc-900 .grid-cols-2 > div {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.panel.bg-zinc-900.compact {
+    padding: 10px;
+    margin: 5px;
+    color: #cbd5e0; /* Lighter text color for better readability */
+}
+
+.panel.bg-zinc-900.large-feature {
+    background: #2a4365;
+    font-size: 16px;
+    transition: transform 0.5s;
+}
+
+.panel.bg-zinc-900.large-feature:hover {
+    transform: translateY(-5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.leaderboard-panel {
+    border: 2px solid #292828; /* Subtle border for depth */
+    border-radius: 12px; /* Increased border-radius for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
+}
+
+
+/* GET SUPPORT */
+.get-support-panel {
+    background-color: #2d3748; /* A darker shade for distinction */
+    color: #e2e8f0; /* Lighter text for readability */
+    border: 2px solid #4a5568; /* Subtle border for depth */
+    border-radius: 12px; /* Increased border-radius for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
+}
+
+
+.support-button {
+    background-color: #3182ce; /* A bright blue for the button */
+    border: none;
+    cursor: pointer;
+}
+
+.support-button:hover {
+    background-color: #4299e1; /* Slightly lighter blue on hover */
+}
+
+
+
+/* General panel styling */
+.panel, .get-support-panel, .tebex-shop-panel, .leaderboard-panel {
+    display: block; /* or 'flex' depending on your layout */
+    background-color: #2d3748;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; /* Space between panels */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensuring each panel can grow or shrink based on its content */
+.panel.custom, .get-support-panel {
+    flex: 1 1 auto; /* Adjusts flex settings for flexible grow and shrink */
+}
+
+/* Hover effect to scale */
+.panel:hover, .get-support-panel:hover {
+    transform: scale(1.05);
+}
+
+
+.tebex-shop-panel h2, .tebex-shop-panel p, .tebex-button {
+    color: white; /* Or any color that contrasts well with your image */
+    z-index: 1; /* Make sure it's above the background image */
+}
+
+.tebex-button {
+    background-color: #48bb78;
+    /* Other button styles similar to support-button */
+}
+
+.tebex-button:hover {
+    background-color: #68d391;
+    transform: scale(1.15);
+}
+
+.tebex-shop-panel {
+    position: relative; /* Needed for absolute positioning of child elements */
+    overflow: hidden; /* Ensures the image does not spill outside the rounded corners */
+    border: 2px solid #4a6859; /* Subtle border for depth */
+    /* Other styles remain unchanged */
+}
+
+.tebex-shop-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure it covers the full width */
+    height: 100%; /* Ensure it covers the full height */
+    object-fit: cover; /* This ensures the image covers the area without distortion */
+    border-radius: 12px; /* To match the panel's border radius */
+    z-index: -1; /* Ensures the image stays in the background */
+    opacity: 0.15;
+}
+
+
+.tebex-custom-button {
+    background-image: url('https://i.ibb.co/HzTJSN7/casssh.png');
+    background-size: contain; /* Scales the image to fit inside the button */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image within the button */
+    border: none;
+    color: transparent;
+    width: 150px;
+    height: 75px;
+    cursor: pointer;
+}
+
+.donate-text {
+    font-size: 10px;
+    color: #cbd5e0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clock-container {
+    background-color: #1d1d1d; /* Dark background */
+    padding: 5px 10px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    color: #e2e8f0; /* Light text color */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.detailed-info-container {
+    position: absolute; /* Adjust as needed */
+    /* Additional styling */
+}
