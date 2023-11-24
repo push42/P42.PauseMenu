@@ -89,19 +89,15 @@ end)
 
 
 
-RegisterNetEvent('chatMessage')
-AddEventHandler('chatMessage', function(message)
+RegisterNetEvent('clientChatMessage')
+AddEventHandler('clientChatMessage', function(message)
     local username = GetPlayerName(source)
     local playerId = source
-
-    -- Format the current timestamp
-    local timestamp = os.date('%Y-%m-%d %H:%M:%S') -- Adjust the format as needed
+    local timestamp = os.date('%H:%M:%S')
 
     -- Broadcast the message with timestamp to all players
     TriggerClientEvent('receiveMessage', -1, username, playerId, timestamp, message)
 end)
-
-
 
 
 
@@ -143,7 +139,7 @@ end
 -- Increment playtime every minute
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(600) -- Wait for one minute
+        Citizen.Wait(6000) -- Wait for one minute
         for _, playerId in ipairs(GetPlayers()) do
             updatePlaytime(playerId, 1) -- Increment by 1 each minute
             fetchLeaderboardData()
@@ -164,7 +160,7 @@ end
 Citizen.CreateThread(function()
     while true do
         fetchLeaderboardData()
-        Citizen.Wait(600) -- Update every minute, adjust as needed
+        Citizen.Wait(6000) -- Update every minute, adjust as needed
     end
 end)
 

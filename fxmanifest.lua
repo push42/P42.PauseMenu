@@ -32,7 +32,8 @@ ui_page {
 files {
  'html/index.php',
  'html/app.js', 
- 'html/style.css'
+ 'html/style.css',
+ 'html/main.css'
 } 
 
 -- ESX Dependency

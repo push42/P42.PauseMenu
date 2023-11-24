@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <title>Pause-Menu by Push.42</title>
 </head>
 
@@ -14,12 +14,12 @@
 <body class="container mx-auto bg-zinc-950 bg-opacity-95 text-gray-200 font-sans m-0 relative">
     <!-- Avatar Update Panel -->
     <div id="avatarUpdatePanel" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
-        <div class="bg-white p-4 rounded-lg shadow-lg w-1/3">
-            <h3 class="text-lg font-semibold mb-3">Update Avatar</h3>
+        <div class="bg-zinc-900 p-4 rounded-lg shadow-lg w-1/3">
+            <h3 class="text-lg font-semibold mb-3"><i class="fa-regular fa-image mr-2 text-xl"></i>CHANGE AVATAR<span class="text-xs ml-8 text-gray-300 font-mono"><i class="fa-solid fa-info text-purple-300 text-sm mr-1"></i>(Will be used for the Leaderboard and your Profile)</span></h3>
             <input type="text" id="avatarUrlInput" class="border border-gray-300 p-2 w-full rounded-md" placeholder="Enter new avatar URL">
             <div class="flex justify-end space-x-2 mt-4">
-                <button id="cancelAvatarUpdate" class="bg-red-500 text-white px-4 py-2 rounded-md">Cancel</button>
-                <button id="confirmAvatarUpdate" class="bg-blue-500 text-white px-4 py-2 rounded-md">Update</button>
+                <button id="cancelAvatarUpdate" class="bg-zinc-700 text-white px-4 py-2 rounded-md">Cancel</button>
+                <button id="confirmAvatarUpdate" class="bg-purple-400 text-white px-4 py-2 rounded-md">Update</button>
             </div>
         </div>
     </div>
@@ -474,26 +474,68 @@
         <!-- Chat messages will be dynamically inserted here -->
     </div>
     <form id="chat-form" class="flex items-center">
-        <button type="button" id="emoji-button" class="emoji-btn">😀</button>
+        <button type="button" id="emoji-button" class="emoji2-btn">😀</button>
         <input type="text" id="chat-input" class="bg-zinc-800 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded-lg">Send</button>
+        <button type="submit" class="bg-purple-400 text-white p-2 rounded-lg">Send</button>
 
-        <div id="emoji-picker" class="emoji-picker hidden absolute bg-gray-300 p-2 border border-gray-300 rounded-lg">
-            <!-- Emojis -->
-            <button class="emoji-btn">😂</button>
-            <button class="emoji-btn">😁</button>
-            <button class="emoji-btn">😊</button>
-            <button class="emoji-btn">😉</button>
-            <button class="emoji-btn">😘</button>
-            <button class="emoji-btn">🤮</button>
-            <button class="emoji-btn">🤐</button>
-            <button class="emoji-btn">🫤</button>
-            <button class="emoji-btn">😴</button>
-            <button class="emoji-btn">🫡</button>
-            <button class="emoji-btn">🤡</button>
-            <button class="emoji-btn">💀</button>
-            <button class="emoji-btn">❤️</button>
-            <!-- Add more emojis as needed -->
+        <div id="emoji-picker" class="emoji-picker hidden absolute bg-zinc-900 bg-opacity-50 p-2 border border-gray-300 rounded-lg bottom-20 right-80">
+            <div class="emoji-grid">
+                <button class="emoji-btn">🤯</button>
+                <button class="emoji-btn">🥳</button>
+                <button class="emoji-btn">😎</button>
+                <button class="emoji-btn">🤓</button>
+                <button class="emoji-btn">🧐</button>
+                <button class="emoji-btn">😕</button>
+                <button class="emoji-btn">😟</button>
+                <button class="emoji-btn">🙁</button>
+                <button class="emoji-btn">☹️</button>
+                <button class="emoji-btn">😮</button>
+                <button class="emoji-btn">😯</button>
+                <button class="emoji-btn">😲</button>
+                <button class="emoji-btn">😳</button>
+                <button class="emoji-btn">🥺</button>
+                <button class="emoji-btn">😦</button>
+                <button class="emoji-btn">😧</button>
+                <button class="emoji-btn">😨</button>
+                <button class="emoji-btn">😰</button>
+                <button class="emoji-btn">😥</button>
+                <button class="emoji-btn">😢</button>
+                <button class="emoji-btn">😭</button>
+                <button class="emoji-btn">😱</button>
+                <button class="emoji-btn">😖</button>
+                <button class="emoji-btn">😣</button>
+                <button class="emoji-btn">😞</button>
+                <button class="emoji-btn">😓</button>
+                <button class="emoji-btn">😩</button>
+                <button class="emoji-btn">😫</button>
+                <button class="emoji-btn">🥱</button>
+                <button class="emoji-btn">😤</button>
+                <button class="emoji-btn">😡</button>
+                <button class="emoji-btn">😠</button>
+                <button class="emoji-btn">🤬</button>
+                <button class="emoji-btn">😈</button>
+                <button class="emoji-btn">👿</button>
+                <button class="emoji-btn">💀</button>
+                <button class="emoji-btn">☠️</button>
+                <button class="emoji-btn">💩</button>
+                <button class="emoji-btn">🤡</button>
+                <button class="emoji-btn">👹</button>
+                <button class="emoji-btn">👺</button>
+                <button class="emoji-btn">👻</button>
+                <button class="emoji-btn">👽</button>
+                <button class="emoji-btn">👾</button>
+                <button class="emoji-btn">🤖</button>
+                <button class="emoji-btn">😺</button>
+                <button class="emoji-btn">😸</button>
+                <button class="emoji-btn">😹</button>
+                <button class="emoji-btn">😻</button>
+                <button class="emoji-btn">😼</button>
+                <button class="emoji-btn">😽</button>
+                <button class="emoji-btn">🙀</button>
+                <button class="emoji-btn">😿</button>
+                <button class="emoji-btn">😾</button>
+                <button class="emoji-btn">🙈</button>
+            </div>
         </div>
     </form>
 </div>
@@ -524,7 +566,7 @@ window.addEventListener('message', function(event) {
         var chatBox = document.querySelector('.chat-messages');
         var newMessage = document.createElement('div');
 
-        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username} </strong> <span class="text-xs text-gray-600">${item.timestamp}</span>: ${item.message}`;
+        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span>`;
         chatBox.appendChild(newMessage);
 
         // Scroll to the bottom of the chat box when a new message is added
@@ -533,20 +575,23 @@ window.addEventListener('message', function(event) {
 });
 
 
-// Handle emoji button clicks
 document.getElementById('emoji-button').addEventListener('click', function() {
     var emojiPicker = document.getElementById('emoji-picker');
-    emojiPicker.classList.toggle('active'); // Toggle visibility of emoji picker
+    emojiPicker.classList.toggle('hidden');
 });
 
-document.querySelectorAll('.emoji-picker .emoji-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const chatInput = document.getElementById('chat-input');
-        chatInput.value += this.textContent; // Append emoji to chat input
-        chatInput.focus(); // Refocus on the input field
-        document.getElementById('emoji-picker').classList.remove('active'); // Close the picker
+document.querySelectorAll('.emoji-btn').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var emoji = this.textContent;
+        var chatInput = document.getElementById('chat-input');
+        chatInput.value += emoji; // Append emoji to input value
+
+        chatInput.focus(); // Optionally, focus back to the input field
     });
 });
+
 </script>
 
 

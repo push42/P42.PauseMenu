@@ -82,7 +82,7 @@ end)
 
 
 RegisterNUICallback('sendMessage', function(data, cb)
-    TriggerServerEvent('chatMessage', data.message)
+    TriggerServerEvent('clientChatMessage', data.message)
     cb('ok')
 end)
 
@@ -93,11 +93,9 @@ AddEventHandler('receiveMessage', function(username, id, timestamp, message)
         username = username,
         id = id,
         timestamp = timestamp,
-        message = message
-    })
+        message = message,
+    })    
 end)
-
-
 
 
 

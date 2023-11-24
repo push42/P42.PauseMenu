@@ -36,40 +36,23 @@ html {
 
 
 .emoji-picker {
-    display: none; /* Hidden by default */
+    width: auto; /* Adjust width as needed */
+    max-height: 75px; /* Adjust height for 2 rows, then scroll */
+    overflow-y: auto;
 }
 
-.emoji-picker.active {
-    display: block; /* Show when active */
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 emojis per row */
+    gap: 4px; /* Adjust gap between emojis */
 }
-
 
 .emoji-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Adjust emoji size */
 }
-
-#emoji-picker {
-    position: absolute;
-    bottom: 7%; /* Moves the emoji picker above the chat form */
-    right: 25%; /* Aligns the emoji picker to the right */
-    /* Additional styles here (e.g., z-index, if needed) */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Chatbox */
 .chatbox-panel {
@@ -78,6 +61,14 @@ html {
     display: flex;
     flex-direction: column;
 }
+
+
+
+
+
+
+
+
 
 
 /* Leaderboard Trophies */

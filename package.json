@@ -1,0 +1,31 @@
+{
+  "name": "pausemenu",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000P\u00004\u00002\u0000.\u0000P\u0000a\u0000u\u0000s\u0000e\u0000M\u0000e\u0000n\u0000u\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "tailwindcss -i ./html/input.css -o ./html/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/push42/P42.PauseMenu.git"
+  },
+  "keywords": [
+    "PauseMenu",
+    "FiveM",
+    "Script"
+  ],
+  "author": "Push.42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/push42/P42.PauseMenu/issues"
+  },
+  "homepage": "https://github.com/push42/P42.PauseMenu#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
