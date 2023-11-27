@@ -106,6 +106,28 @@ ESX.RegisterServerCallback('getServerData', function(source, cb)
 end)
 
 
+ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
+    local players = GetPlayers()
+    local allPlayersData = {}
+
+    for i=1, #players, 1 do
+        local xPlayer = ESX.GetPlayerFromId(players[i])
+        if xPlayer then
+            table.insert(allPlayersData, {
+                playerId = players[i],
+                playerName = xPlayer.getName(),
+                playerWCName = xPlayer.getName(),
+                playerPing = GetPlayerPing(players[i]),
+                jobName = xPlayer.getJob().name
+                -- Add more data as needed
+            })
+        end
+    end
+
+    cb(allPlayersData)
+end)
+
+
 
 
 
@@ -159,7 +181,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(Config.TimerSettings.PlayTime.TimeToAddPoints) -- Wait for one minute
         for _, playerId in ipairs(GetPlayers()) do
-            updatePlaytime(playerId, Config.TimerSettings.PlayTime.AddPointsToScore) -- Increment by 1 each minute
+            updatePlaytime(playerId, Config.TimerSettings.PlayTime.AddPointsToScore); -- Increment by 1 each minute
             fetchLeaderboardData()
         end
     end
@@ -181,8 +203,8 @@ end
 -- You can call this function at regular intervals or trigger it with specific events
 Citizen.CreateThread(function()
     while true do
-        fetchLeaderboardData()
-        Citizen.Wait(Config.TimerSettings.PlayTime.FetchLeaderboard) -- Update every minute, adjust as needed
+        fetchLeaderboardData();
+        Citizen.Wait(Config.TimerSettings.PlayTime.FetchLeaderboard)
     end
 end)
 
@@ -296,3 +318,37 @@ function ExtractIdentifiers(id)
     end
     return identifiers
 end
+
+
+
+
+
+
+function broadcastOnlinePlayers()
+    local players = GetPlayers()
+    local allPlayersData = {}
+
+    for _, playerId in ipairs(players) do
+        local xPlayer = ESX.GetPlayerFromId(playerId)
+        if xPlayer then
+            table.insert(allPlayersData, {
+                playerId = playerId,
+                playerName = xPlayer.getName(),
+                playerPing = GetPlayerPing(playerId),
+                jobName = xPlayer.getJob().name
+                -- Add more data as needed
+            })
+        end
+    end
+
+    -- Trigger a client event to update the player list for all clients
+    TriggerClientEvent('updateOnlinePlayers', -1, allPlayersData)
+end
+
+
+Citizen.CreateThread(function()
+    while true do
+        broadcastOnlinePlayers() -- Call your new function
+        Citizen.Wait(Config.TimerSettings.PlayTime.FetchOnlinePlayers) -- Adjust timing as needed
+    end
+end)

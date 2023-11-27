@@ -200,118 +200,44 @@
                                 Police: <span class="relative font-medium">Officer</span>
                             </div>
                         </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">2</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                Police: <span class="relative font-medium">Commander</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">3</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                Police: <span class="relative font-medium">Recruit</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">4</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                EMS: <span class="relative font-medium">Medic</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">5</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                UBER: <span class="relative font-medium">Driver</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">6</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                FBI: <span class="relative font-medium">Officer</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">7</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                LS Motors: <span class="relative font-medium">Mechanic</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">8</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                East Customs: <span class="relative font-medium">Owner</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">9</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                DoJ: <span class="relative font-medium">Judge</span>
-                            </div>
-                        </li>
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="flex items-center text-white">
-                                    Username
-                                </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">9</span>
-                            </div>
-                            <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                Police: <span class="relative font-medium">Officer</span>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <script>
+        $(document).ready(function() {
+            window.addEventListener('message', function(event) {
+                if (event.data.action === 'updateOnlinePlayers') {
+                    updatePlayerList(event.data.players);
+                }
+            });
+
+            function updatePlayerList(players) {
+                $('#playerList').empty();
+                players.forEach(player => {
+                    $('#playerList').append(createPlayerListItem(player));
+                });
+            }
+
+            function createPlayerListItem(player) {
+                return `
+                    <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
+                        <div class="flex items-center justify-between ...">
+                            <span class="flex items-center text-white">${player.playerName}</span>
+                            <span class="text-xs font-mono ml-1 text-purple-400">${player.playerId}</span>
+                        </div>
+                        <div class="text-xss text-gray-400 text-center uppercase font-bold">
+                            ${player.jobName}
+                            <span class="text-xs font-mono ml-1 text-green-400">${player.playerPing}</span>
+                        </div>
+                    </li>
+                `;
+            }
+        });
+        </script>
+
+
+
 
 
         <!-- Panel 1 - Tebex Shop Section -->
@@ -354,7 +280,7 @@
             <img src="https://i.ibb.co/7R3bQ57/support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <h2 class="font-semibold text-lg text-blue-400">
-                    <i class="fa-solid fa-headset text-xs mr-2"></i>Need <span class="text-white">Assistance?</span>
+                    <i class="fa-solid fa-headset text-sm mr-2 text-white"></i>Need <span class="text-white">Assistance?</span>
                 </h2>
                 <img src="https://static.vecteezy.com/system/resources/previews/018/930/718/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
@@ -444,12 +370,12 @@
         </script>
 
 
-<!-- Modal Container (Hidden initially) -->
-<div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<!-- Modal Container for Player Reports (Hidden initially) -->
+<div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-30 overflow-y-auto h-full w-full flex justify-center items-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!-- Modal Content -->
-    <div class="relative top-0 mx-auto p-5 border w-full md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-zinc-900 space-y-4">
+    <div class="relative top-0 mx-auto p-7 border-2 w-full md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-zinc-900 space-y-4">
         <!-- Form Title -->
-        <h2 class="text-xl font-semibold text-white">Submit a Report</h2>
+        <h2 class="text-2xl font-semibold text-white uppercase"><i class="fa-solid fa-user-large-slash text-purple-300 mr-2"></i>Report a Player</h2>
 
         <!-- Form Container -->
         <div class="form-container space-y-3">
@@ -457,9 +383,7 @@
             <input type="text" id="fname" placeholder="First Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
             <input type="text" id="lname" placeholder="Last Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
             <select id="reporttype" class="text-gray-600 w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
-                <option value="">Select Report Type</option>
-                <option value="type1">Type 1</option>
-                <option value="type2">Type 2</option>
+                <option value="PlayerReport">Player Report</option>
                 <!-- Add more options as needed -->
             </select>
             <input type="text" id="subject" placeholder="Subject" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
@@ -476,6 +400,8 @@
         </button>
     </div>
 </div>
+
+
 
 
 
@@ -530,7 +456,23 @@
         </div>
 
 
+                <!-- Panel 4 - Detailed Info Panel -->
+                <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
+            <!-- Advent Calendar Panel -->
+            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-6 rounded-lg shadow-lg">
+                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-regular fa-circle-play mr-2 text-purple-400"></i>Report<span class="text-purple-400"> Panel</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
+                <div class="calendar-row flex overflow-x-auto pb-2">
+                    <!-- Calendar Days -->
+
+
+                </div>
+            </div>
+        </div>
+
+
 <script>
+
+    
 function openModal() {
     document.getElementById('modal-container').classList.remove('hidden');
     document.querySelector('body').classList.add('modal-open');
@@ -543,7 +485,6 @@ function closeModal() {
 
 // Event listener for the close button
 document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-
 </script>
 
 
@@ -554,9 +495,9 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
         <!-- Chat messages will be dynamically inserted here -->
     </div>
     <form id="chat-form" class="flex items-center">
-        <button type="button" id="emoji-button" class="emoji2-btn">😀</button>
+        <button type="button" id="emoji-button" class="emoji2-btn badge">😀</button>
         <input type="text" id="chat-input" class="bg-zinc-800 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
-        <button type="submit" class="bg-purple-400 text-white p-2 rounded-lg">Send</button>
+        <button type="submit" class="bg-purple-400 text-white p-1.5 rounded-lg font-bold">Send</button>
 
         <div id="emoji-picker" class="emoji-picker hidden absolute bg-zinc-900 bg-opacity-90 p-2 border border-gray-300 rounded-lg bottom-36 right-80">
             <div class="p-2">

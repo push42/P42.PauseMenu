@@ -142,3 +142,21 @@ RegisterNUICallback('NewReport', function(data)
     local NewReport = {fname = data.fname, lname = data.lname, reporttype = data.reporttype, subject = data.subject, description = data.description}
     TriggerServerEvent('SendReport', NewReport)
 end)
+
+
+
+
+-- Update the User List
+RegisterNUICallback('requestAllPlayersData', function(data, cb)
+    ESX.TriggerServerCallback('getAllPlayersData', function(playersData)
+        cb(playersData)
+    end)
+end)
+
+RegisterNetEvent('updateOnlinePlayers')
+AddEventHandler('updateOnlinePlayers', function(allPlayersData)
+    SendNUIMessage({
+        action = 'updateOnlinePlayers',
+        players = allPlayersData
+    })
+end)

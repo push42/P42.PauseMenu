@@ -6,7 +6,8 @@ Config.TimerSettings = {
     PlayTime = {
         TimeToAddPoints = 6000, -- how often the player should get points added // in ms means == (60000 = 1 minute)
         AddPointsToScore = 1, -- how many points the player should get
-        FetchLeaderboard = 6000 -- how often the Leaderboard should get refreshed // in ms means == (60000 = 1 minute)
+        FetchLeaderboard = 6000, -- how often the Leaderboard should get refreshed // in ms means == (60000 = 1 minute)
+        FetchOnlinePlayers = 6000
     }
     
 }
@@ -17,7 +18,7 @@ Config.Discord = {
     -- Discord webhooks refer to; https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
     Webhook = 'https://discord.com/api/webhooks/1136788634520006686/tOvaDLuAHK0LGCOzQxYoD3AFrScrjTXTnhlrlZot0_hT4pS8bAAsWu4j8-yO4-cuJqcD',
     -- Webhook colour can find more here; -- https://www.spycolor.com/
-    Colour = 5098434, -- boii development brand blue 
+    Colour = 10309819, -- purple
     
     
     -- Discord bot username;

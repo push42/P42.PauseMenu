@@ -403,10 +403,6 @@ html {
 
 
 
-/* Apply blur to everything except the modal when the modal is open */
-.modal-open .report-cards {
-    filter: blur(5px);
-}
 
 
 
@@ -620,23 +616,10 @@ html {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-.detailed-info-container {
-    position: absolute; /* Adjust as needed */
-    /* Additional styling */
+/* Apply blur to everything except the modal when the modal is open */
+.modal-open .report-cards {
+    filter: blur(150px);
 }
-
 
 
 
@@ -645,12 +628,12 @@ html {
     width: 90px;
 }
 
-
-
 .reports:hover {
     width: 90px;
     transform: scale(1.05); /* Slight zoom on hover */
+    background: #111111;
 }
+
 
 
 
