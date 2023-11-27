@@ -1,4 +1,17 @@
 Config = {}
+
+
+Config.TimerSettings = {
+
+    PlayTime = {
+        TimeToAddPoints = 6000, -- how often the player should get points added // in ms means == (60000 = 1 minute)
+        AddPointsToScore = 1, -- how many points the player should get
+        FetchLeaderboard = 6000 -- how often the Leaderboard should get refreshed // in ms means == (60000 = 1 minute)
+    }
+    
+}
+
+
 -- Discord settings
 Config.Discord = {
     -- Discord webhooks refer to; https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
@@ -39,3 +52,4 @@ Config.Discord = {
         }
     }
 }
+

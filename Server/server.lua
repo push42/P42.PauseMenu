@@ -157,9 +157,9 @@ end
 -- Increment playtime every minute
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(6000) -- Wait for one minute
+        Citizen.Wait(Config.TimerSettings.PlayTime.TimeToAddPoints) -- Wait for one minute
         for _, playerId in ipairs(GetPlayers()) do
-            updatePlaytime(playerId, 1) -- Increment by 1 each minute
+            updatePlaytime(playerId, Config.TimerSettings.PlayTime.AddPointsToScore) -- Increment by 1 each minute
             fetchLeaderboardData()
         end
     end
@@ -182,7 +182,7 @@ end
 Citizen.CreateThread(function()
     while true do
         fetchLeaderboardData()
-        Citizen.Wait(6000) -- Update every minute, adjust as needed
+        Citizen.Wait(Config.TimerSettings.PlayTime.FetchLeaderboard) -- Update every minute, adjust as needed
     end
 end)
 
