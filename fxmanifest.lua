@@ -33,7 +33,11 @@ files {
  'html/index.php',
  'html/app.js', 
  'html/style.css',
- 'html/main.css'
+ 'html/main.css',
+ 'html/assets/*.png',
+ 'html/assets/*.jpeg',
+ 'html/assets/*.webp',
+ 'html/assets/*.jpg'
 } 
 
 -- ESX Dependency

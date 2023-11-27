@@ -147,11 +147,17 @@ end)
 
 
 -- Update the User List
-RegisterNUICallback('requestAllPlayersData', function(data, cb)
+-- Function to request all players' data
+function requestAllPlayersData()
     ESX.TriggerServerCallback('getAllPlayersData', function(playersData)
-        cb(playersData)
+        if playersData then
+            SendNUIMessage({
+                action = 'displayPlayers',
+                playersData = playersData
+            })
+        end
     end)
-end)
+end
 
 RegisterNetEvent('updateOnlinePlayers')
 AddEventHandler('updateOnlinePlayers', function(allPlayersData)
@@ -159,4 +165,11 @@ AddEventHandler('updateOnlinePlayers', function(allPlayersData)
         action = 'updateOnlinePlayers',
         players = allPlayersData
     })
+end)
+
+
+-- Handling the NUI message in the HTML/JS
+RegisterNUICallback('requestAllPlayersData', function(data, cb)
+    requestAllPlayersData()
+    cb('ok')
 end)

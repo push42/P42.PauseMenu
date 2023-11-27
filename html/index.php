@@ -17,14 +17,14 @@
         <div class="bg-zinc-900 p-4 rounded-lg shadow-lg w-1/3">
             <h3 class="text-lg font-semibold mb-3"><i class="fa-regular fa-image mr-2 text-xl"></i>CHANGE AVATAR<span class="text-xs ml-8 text-gray-300 font-mono"><i class="fa-solid fa-info text-purple-300 text-sm mr-1"></i>(Will be used for the Leaderboard and your Profile)</span></h3>
             <input type="text" id="avatarUrlInput" class="border border-gray-300 p-2 w-full rounded-md" placeholder="Enter new avatar URL">
-            <div class="flex justify-end space-x-2 mt-4">
+            <div class="flex justify-end space-x-2 mt-2">
                 <button id="cancelAvatarUpdate" class="bg-zinc-700 text-white px-4 py-2 rounded-md">Cancel</button>
                 <button id="confirmAvatarUpdate" class="bg-purple-400 text-white px-4 py-2 rounded-md">Update</button>
             </div>
         </div>
     </div>
     <!-- Player Username -->
-    <div id="welcomeUsername" class="player-stat badge ml-10 mt-6 mb-6 text-sm">
+    <div id="welcomeUsername" class="player-stat badge ml-10 mt-4 mb-2 text-sm">
         <i class="fa-solid fa-minus mr-2 text-sm"></i>Welcome back, 
         <span class="stat-value text-sm ml-1"> No User found</span>.
     </div>
@@ -90,7 +90,7 @@
                     <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
                 </h2>
                 <div class="content">
-                    <!-- News Item 1 -->
+                    <!-- News Item -->
                     <div class="news-item mb-4">
                         <img src="https://i.ibb.co/yXrtCWf/neues-1.webp" alt="News 1" id="newsImage1" class="newsImage1 rounded-lg shadow-lg h-40 object-cover mb-2">
                         <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
@@ -102,7 +102,6 @@
                         </div>
                         <a href="#" class="read-more absolute bottom-4 right-2 text-xs bg-zinc-800 text-white rounded-full px-2 py-1"><i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i>Read more..</a>
                     </div>
-                    <!-- Repeat for other news items -->
                 </div>
             </div>
         </div>
@@ -112,7 +111,7 @@
         <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg drop-shadow-lg">
         <div>
             <h2 class="panel-heading uppercase font-black font-mono">
-                <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel<span class="text-sm absolute right-14 text-gray-300"><i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/SERVER</span>
+                <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel<span class="text-sm absolute right-14 text-gray-300"><i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER</span>
             </h2>
             <div class="player-stats flex gap-2 justify-center mt-4">
                 <!-- User ID Badge -->
@@ -135,11 +134,6 @@
                     <i class="fa-solid fa-users text-purple-400"></i>
                     <span class="stat-value text-xs">--/--</span>
                 </div>
-
-                <!-- <div id="jobName" class="player-stat badge text-xs">
-                    <i class="fa-solid fa-building text-purple-400"></i>
-                    <span class="stat-value text-xs">--/--</span>
-                </div> -->
             </div>
 
 
@@ -222,13 +216,13 @@
             function createPlayerListItem(player) {
                 return `
                     <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                        <div class="flex items-center justify-between ...">
-                            <span class="flex items-center text-white">${player.playerName}</span>
-                            <span class="text-xs font-mono ml-1 text-purple-400">${player.playerId}</span>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-mono text-purple-400">${player.playerId}</span>
+                            <span class="flex items-center ml-1 text-white">${player.playerName}</span>
+                            <span class="text-xss font-mono text-green-400 ml-1 mt-2">${player.playerPing}ms</span>
                         </div>
                         <div class="text-xss text-gray-400 text-center uppercase font-bold">
                             ${player.jobName}
-                            <span class="text-xs font-mono ml-1 text-green-400">${player.playerPing}</span>
                         </div>
                     </li>
                 `;
@@ -242,7 +236,7 @@
 
         <!-- Panel 1 - Tebex Shop Section -->
         <div class="tebex-shop-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
-            <img src="https://i.ibb.co/Jq1Jyv9/tebex-bg.png" alt="Tebex Shop Background" class="tebex-shop-bg">
+            <img src="./assets/tebex-bg.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="font-semibold text-lg text-green-400">
@@ -252,7 +246,7 @@
                         <span class="donate-text font-sans font-medium">Looking for a way to support the Project?</span>
                     </h2>
                 </div>
-                <img src="https://pbs.twimg.com/profile_images/1687115424750817280/cqI9n9ih_400x400.jpg" alt="Tebex Shop" class="rounded-full w-16 h-16">
+                <img src="./assets/tebex_shop.jpg" alt="Tebex Shop" class="rounded-full w-10 h-10">
             </div>            
             <p class="text-sm text-gray-300 mt-4">
                 Check out exclusive items and special offers available in our Tebex Shop. Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -262,7 +256,7 @@
                     <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required="">
                     <label for="hosting-small" class="scur inline-flex items-center justify-between w-full p-2 text-gray-500 bg-white rounded-lg cursor-pointer dark:hover:text-gray-300 dark:peer-checked:text-green-400 peer-checked:text-green-400 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-zinc-900 dark:hover:bg-gray-700">                           
                         <div class="block">
-                            <img class="w-10 h-10 rounded-full mx-auto absolute" src="https://i.ibb.co/r4KmhTG/animated-lp.webp">
+                            <img class="w-10 h-10 rounded-full mx-auto absolute" src="./assets/animated-lp.webp">
                             <div class="w-full text-sm font-semibold ml-12">Lorazepam</div>
                             <div class="w-full text-xs ml-12"><i class="fa-solid fa-tags mr-1"></i>Your Product<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2 py-0 rounded-full dark:bg-green-900 dark:text-green-300 ml-2">$24.99</span></div>
                         </div>
@@ -275,14 +269,18 @@
         </div>
 
 
+
+
+
+
         <!-- Panel 2 - Get Support Section -->
         <div class="get-support-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
-            <img src="https://i.ibb.co/7R3bQ57/support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
+            <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <h2 class="font-semibold text-lg text-blue-400">
                     <i class="fa-solid fa-headset text-sm mr-2 text-white"></i>Need <span class="text-white">Assistance?</span>
                 </h2>
-                <img src="https://static.vecteezy.com/system/resources/previews/018/930/718/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="rounded-full w-16 h-16">
+                <img src="./assets/discord_logo.webp" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
             <p class="text-sm text-gray-100 mt-4">
                 Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
@@ -290,10 +288,45 @@
             <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <i class="fa-solid fa-ticket mr-2 text-blue-400"></i>Live Support
             </button>    
-            <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-7">
+            <button id="discord-btn" type="button" onclick="copyDiscordLink()" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-7">
                 <i class="fa-brands fa-discord mr-2 text-blue-400"></i>Discord
-            </button>   
+            </button>
         </div>
+
+        <script>
+            function showNotificationModal(title, message) {
+                document.getElementById('notification-title').innerText = title;
+                document.getElementById('notification-message').innerText = message;
+                document.getElementById('notification-modal').classList.remove('hidden');
+            }
+
+            function closeNotificationModal() {
+                document.getElementById('notification-modal').classList.add('hidden');
+            }
+
+            function copyDiscordLink() {
+                const discordInvite = "https://discord.com/invite/yourserver"; // Replace with your Discord invite link
+                showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
+            }
+        </script>
+
+
+        <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+            <div class="bg-zinc-900 rounded-lg shadow-xl p-6 w-full max-w-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="notification-title" class="text-xl font-semibold text-white">Notification Title</h2>
+                    <button onclick="closeNotificationModal()" class="text-gray-300 hover:text-gray-800">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <p id="notification-message" class="text-gray-300 mb-6">Your notification message goes here.</p>
+                <button onclick="closeNotificationModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    OK
+                </button>
+            </div>
+        </div>
+
+
 
 
         <!-- Panel 3 - Global Leaderboard -->
@@ -308,7 +341,7 @@
                 <!-- Leaderboard Item -->
                 <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
                     <div class="flex items-center">
-                        <img src="https://i.ibb.co/BKSN4Lv/pxrp-less-then-10mb-1.gif" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
+                        <img src="./assets/pxrp.gif" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
                         <span class="text-white text-sm">Player 1</span><i class="fa-solid fa-trophy fa-beat fa-xs ml-4" style="color: #ffff80;"></i>
                     </div>
                     <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 1500</span>
@@ -373,30 +406,30 @@
 <!-- Modal Container for Player Reports (Hidden initially) -->
 <div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-30 overflow-y-auto h-full w-full flex justify-center items-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!-- Modal Content -->
-    <div class="relative top-0 mx-auto p-7 border-2 w-full md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-zinc-900 space-y-4">
+    <div class="relative top-0 mx-auto p-7 border-2 w-full md:w-1/2 lg:w-1/3 shadow-xl rounded-lg bg-zinc-900 space-y-4">
         <!-- Form Title -->
         <h2 class="text-2xl font-semibold text-white uppercase"><i class="fa-solid fa-user-large-slash text-purple-300 mr-2"></i>Report a Player</h2>
 
         <!-- Form Container -->
         <div class="form-container space-y-3">
             <!-- Form Fields -->
-            <input type="text" id="fname" placeholder="First Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
-            <input type="text" id="lname" placeholder="Last Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
-            <select id="reporttype" class="text-gray-600 w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
+            <input type="text" id="fname" placeholder="First Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
+            <input type="text" id="lname" placeholder="Last Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
+            <select id="reporttype" class="text-gray-300 w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800">
                 <option value="PlayerReport">Player Report</option>
                 <!-- Add more options as needed -->
             </select>
-            <input type="text" id="subject" placeholder="Subject" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
-            <textarea id="description" placeholder="Description" class="w-full h-32 px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900"></textarea>
+            <input type="text" id="subject" placeholder="Subject" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
+            <textarea id="description" placeholder="Description" class="w-full h-32 px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white"></textarea>
 
             <!-- Submit Button -->
-            <button id="form-submit-btn" class="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+            <button id="form-submit-btn" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-200">
                 Submit Report
             </button>
         </div>
         <!-- Close Button -->
-        <button id="close-modal-btn" class="mt-3 bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded">
-            Close
+        <button id="close-modal-btn" class="bg-zinc-800 hover:bg-zinc-700 text-red-500 font-bold py-2 px-4 rounded absolute top-1 right-6 transition duration-200">
+            Close<i class="fa-solid fa-xmark ml-2"></i>
         </button>
     </div>
 </div>
@@ -408,63 +441,139 @@
 
 
 
-        <!-- Panel 3 - Detailed Info Panel -->
-        <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
-            <!-- Advent Calendar Panel -->
-            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-6 rounded-lg shadow-lg">
-                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-regular fa-circle-play mr-2 text-purple-400"></i>Report<span class="text-purple-400"> Panel</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
-                <div class="calendar-row flex overflow-x-auto pb-2">
-                    <!-- Calendar Days -->
-                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none ml-0.5" onclick="openModal()">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                            Report Player
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Opened gift" class="h-8">
-                        </div>
-                    </div>
-
-                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                            Bugs & Glitches
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
-                        </div>
-                    </div>
-
-                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                            Staff
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
-                        </div>
-                    </div>
-
-                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                            Lost Items
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
-                        </div>
-                    </div>
-
+<!-- Panel 3 - Detailed Info Panel -->
+<div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
+    <!-- Advent Calendar Panel -->
+    <div class="bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
+        <h2 class="font-semibold text-lg text-white mb-4 panel-heading">
+            <i class="fa-solid fa-bug mr-1 text-purple-400"></i>
+            Report<span class="text-purple-400"> Panel</span>
+            <span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span>
+        </h2>
+        <div class="calendar-row flex overflow-x-auto pb-2">
+            <!-- Report Cards -->
+            <!-- Adding hover effect and gradient background to each report card -->
+            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform" onclick="openModal()">
+                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                    Report Player
+                </div>
+                <div class="day-content flex items-center justify-center p-4 h-14">
+                    <img src="./assets/player_report.png" alt="Player Report" class="h-42">
+                </div>
+            </div>
+            <!-- Repeat for other report cards with respective content -->
+            <!-- ... other report cards ... -->
+            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
+                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                    Report Bugs
+                </div>
+                <div class="day-content flex items-center justify-center p-4 h-14">
+                    <img src="./assets/bug_report.png" alt="Bug Report" class="h-42">
+                </div>
+            </div>
+            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
+                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                    Report Staff
+                </div>
+                <div class="day-content flex items-center justify-center p-4 h-14">
+                    <img src="./assets/staff_report.png" alt="Player Staff" class="h-42">
+                </div>
+            </div>
+            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
+                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                    Report Lost Items
+                </div>
+                <div class="day-content flex items-center justify-center p-4 h-14">
+                    <img src="./assets/lost_items.png" alt="Player Staff" class="h-42">
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-                <!-- Panel 4 - Detailed Info Panel -->
-                <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
+
+        <!-- Panel 4 - Detailed Info Panel -->
+        <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
             <!-- Advent Calendar Panel -->
-            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-6 rounded-lg shadow-lg">
-                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-regular fa-circle-play mr-2 text-purple-400"></i>Report<span class="text-purple-400"> Panel</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
+            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>Daily<span class="text-purple-400"> Rewards</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
                 <div class="calendar-row flex overflow-x-auto pb-2">
                     <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform opened">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 1
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                            <!-- Opened Icon -->
+                            <div class="open-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
+                                <i class="fa-solid fa-box-open text-white text-xs"></i> <!-- Replace with your lock icon -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform obtainable">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 2
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                        </div>
+                    </div>
+                    <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 3
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                            <!-- Lock Icon -->
+                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
+                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
+                            </div>
+                        </div>
+                    </div>
 
-
+                    <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 4
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                            <!-- Lock Icon -->
+                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
+                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 5
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                            <!-- Lock Icon -->
+                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
+                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calendar Days -->
+                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
+                            DAY 6
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
+                            <!-- Lock Icon -->
+                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
+                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -489,13 +598,13 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
 
 
 <!-- Chatbox Panel -->
-<div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-4 rounded-xl shadow-xl">
+<div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl">
     <h2 class="text-lg font-semibold text-white mb-4"><i class="fa-regular fa-comments mr-2"></i>Community Chat</h2>
-    <div class="chat-messages overflow-y-auto max-h-150 pt-10 pb-5">
+    <div class="chat-messages overflow-y-auto max-h-150 pt-10 pb-6">
         <!-- Chat messages will be dynamically inserted here -->
     </div>
     <form id="chat-form" class="flex items-center">
-        <button type="button" id="emoji-button" class="emoji2-btn badge">😀</button>
+        <button type="button" id="emoji-button" class="emoji2-btn badge mr-2">😀</button>
         <input type="text" id="chat-input" class="bg-zinc-800 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
         <button type="submit" class="bg-purple-400 text-white p-1.5 rounded-lg font-bold">Send</button>
 

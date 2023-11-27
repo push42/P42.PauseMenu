@@ -113,13 +113,21 @@ ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
     for i=1, #players, 1 do
         local xPlayer = ESX.GetPlayerFromId(players[i])
         if xPlayer then
+            local job = xPlayer.getJob() -- Fetch job details
+            local jobGrade = job.grade or 'N/A'
+            local jobGradeLabel = job.grade_label or 'N/A'
+            console.log('Job Object for Player ' .. xPlayer.getName() .. ': ' .. json.encode(job)) -- Debugging line
+
+           
+
             table.insert(allPlayersData, {
                 playerId = players[i],
                 playerName = xPlayer.getName(),
                 playerWCName = xPlayer.getName(),
                 playerPing = GetPlayerPing(players[i]),
-                jobName = xPlayer.getJob().name
-                -- Add more data as needed
+                jobName = job.name,
+                jobGrade = job.grade, -- Fetch job grade from the job object
+                jobGradeLabel = job.grade_label -- Fetch job grade label from the job object
             })
         end
     end

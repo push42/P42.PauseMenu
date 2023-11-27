@@ -1,7 +1,7 @@
 /* Custom scrollbar styles */
 /* For Webkit browsers like Chrome/Safari */
 ::-webkit-scrollbar {
-    width: 3px; /* Width of the scrollbar */
+    width: 2px; /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -91,6 +91,7 @@ html {
     border-radius: 5px;
     color: white;
     margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .panel {
@@ -518,7 +519,7 @@ html {
     background-color: #2d3748;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px; /* Space between panels */
+    margin-bottom: 15px; /* Space between panels */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -616,10 +617,23 @@ html {
 
 
 
-/* Apply blur to everything except the modal when the modal is open */
-.modal-open .report-cards {
-    filter: blur(150px);
+#modal-container {
+    animation: fadeIn 0.3s;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#close-modal-btn:hover, #form-submit-btn:hover {
+    transform: scale(1.05);
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 2px rgba(128, 90, 213, 0.5); /* Purple glow */
+}
+
 
 
 
@@ -631,7 +645,8 @@ html {
 .reports:hover {
     width: 90px;
     transform: scale(1.05); /* Slight zoom on hover */
-    background: #111111;
+    background: rgb(17, 17, 17);
+    cursor: pointer;
 }
 
 
@@ -649,3 +664,61 @@ html {
 
 
 
+
+
+.calendar-row {
+    overflow-x: auto;
+    overflow-y: hidden; /* Change to hidden if vertical scrolling is not needed */
+}
+
+.calendar-row::-webkit-scrollbar {
+    width: 3px; /* Adjust the width of the scrollbar specifically for .calendar-row */
+    height: 3px;
+}
+
+.calendar-row::-webkit-scrollbar-track {
+    background: #131313; /* Custom track color for .calendar-row */
+}
+
+.calendar-row::-webkit-scrollbar-thumb {
+    background-color: rgba(91,33,182,1); /* Custom handle color for .calendar-row */
+    border-radius: 6px;
+}
+
+.calendar-row::-webkit-scrollbar-thumb:hover {
+    background: #5a67d8; /* Custom handle color on hover for .calendar-row */
+}
+
+
+.calender-door {
+    /* Base styles for all calendar doors */
+    transition: transform 0.3s ease;
+}
+
+.calender-door.opened {
+    /* Style for opened doors */
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.calender-door.obtainable {
+    /* Style for the obtainable door */
+    box-shadow: 0 0 15px rgba(91,33,182,0.7); /* Adjust color and glow as needed */
+}
+
+.calender-door.locked {
+    /* Style for locked doors */
+    background-color: #020202;
+    box-shadow: 0 0 15px rgba(22, 22, 22, 0.7);
+    opacity: 0.5;
+}
+
+.lock-icon {
+    /* Custom styles for lock icon */
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.open-icon {
+    /* Custom styles for lock icon */
+    z-index: 10; /* Ensure it's above other elements */
+}
