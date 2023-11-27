@@ -37,6 +37,7 @@ files {
  'html/assets/*.png',
  'html/assets/*.jpeg',
  'html/assets/*.webp',
+ 'html/assets/*.gif',
  'html/assets/*.jpg'
 } 
 

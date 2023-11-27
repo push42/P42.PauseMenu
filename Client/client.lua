@@ -1,6 +1,7 @@
 local open = false
 RegisterCommand('openSettinggmenu', function()
     OpenPauseMenu()
+    TriggerServerEvent('get:playerInfo')
 end)
 
 RegisterKeyMapping('openSettinggmenu', 'Opens the Pause Menu', 'keyboard', 'ESCAPE')
@@ -76,16 +77,13 @@ RegisterNUICallback('getServerData', function(data, cb)
     end)
 end)
 
-
-
-
-
-
+-- Send a Message to all Clients
 RegisterNUICallback('sendMessage', function(data, cb)
     TriggerServerEvent('clientChatMessage', data.message)
     cb('ok')
 end)
 
+-- Recieve a Message (Chat)
 RegisterNetEvent('receiveMessage')
 AddEventHandler('receiveMessage', function(username, id, timestamp, message)
     SendNUIMessage({
@@ -97,8 +95,6 @@ AddEventHandler('receiveMessage', function(username, id, timestamp, message)
     })    
 end)
 
-
-
 -- Update Leaderboard
 RegisterNetEvent('updateLeaderboard')
 AddEventHandler('updateLeaderboard', function(leaderboardData)
@@ -108,10 +104,6 @@ AddEventHandler('updateLeaderboard', function(leaderboardData)
         players = leaderboardData
     })
 end)
-
-
-
-
 
 -- Function to trigger the server event to update the avatar
 function UpdatePlayerAvatar(url)
@@ -128,23 +120,17 @@ RegisterCommand('setavatar', function(source, args, rawCommand)
     end
 end, false)
 
-
+-- Update the Avatar (Callback)
 RegisterNUICallback('updateAvatar', function(data, cb)
     TriggerServerEvent('updateAvatar', data.url)
     cb('ok')
 end)
-
-
-
 
 -- Submit button; submits a report as a discord webhook
 RegisterNUICallback('NewReport', function(data)
     local NewReport = {fname = data.fname, lname = data.lname, reporttype = data.reporttype, subject = data.subject, description = data.description}
     TriggerServerEvent('SendReport', NewReport)
 end)
-
-
-
 
 -- Update the User List
 -- Function to request all players' data
@@ -159,6 +145,7 @@ function requestAllPlayersData()
     end)
 end
 
+-- Update the Online Players
 RegisterNetEvent('updateOnlinePlayers')
 AddEventHandler('updateOnlinePlayers', function(allPlayersData)
     SendNUIMessage({
@@ -167,9 +154,23 @@ AddEventHandler('updateOnlinePlayers', function(allPlayersData)
     })
 end)
 
-
 -- Handling the NUI message in the HTML/JS
 RegisterNUICallback('requestAllPlayersData', function(data, cb)
     requestAllPlayersData()
     cb('ok')
+end)
+
+
+
+
+
+
+
+-- Client-side Lua
+RegisterNetEvent('set:playerInfo')
+AddEventHandler('set:playerInfo', function(data)
+    SendNUIMessage({
+        action = 'setPlayerInfo',
+        playerInfo = data
+    })
 end)

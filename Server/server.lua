@@ -1,8 +1,4 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 ESX = exports["es_extended"]:getSharedObject()
 
 -- Event to update the avatar URL
@@ -26,6 +22,17 @@ AddEventHandler('updateAvatar', function(url)
         }, function(affectedRows)
             if affectedRows > 0 then
                 print("Avatar updated for player: " .. identifier)
+
+                -- Fetch the updated avatar and send it to the client
+                MySQL.Async.fetchScalar('SELECT avatar FROM users WHERE identifier = @identifier', {
+                    ['@identifier'] = identifier
+                }, function(avatar)
+                    if avatar then
+                        print("Sending updated avatar to client for " .. identifier .. ": " .. avatar) -- Additional debug print
+                        TriggerClientEvent('updateUserAvatar', xPlayer.source, avatar)
+                    end
+                end)
+
             else
                 print("Failed to update avatar for player: " .. identifier)
             end
@@ -34,37 +41,12 @@ AddEventHandler('updateAvatar', function(url)
         print("Invalid URL provided.")
     end
 end)
-
-
-
-
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 RegisterServerEvent('pausemenu:quit')
 AddEventHandler('pausemenu:quit', function()
     DropPlayer(source,"You have left the Server! We hope to see you back soon <3")
 end)
-
-
-
-
-
-
-
-
-
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 -- Server callback implementation
 ESX.RegisterServerCallback('getServerData', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -104,8 +86,7 @@ ESX.RegisterServerCallback('getServerData', function(source, cb)
 
     cb(data)
 end)
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
     local players = GetPlayers()
     local allPlayersData = {}
@@ -134,14 +115,7 @@ ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
 
     cb(allPlayersData)
 end)
-
-
-
-
-
-
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('clientChatMessage')
 AddEventHandler('clientChatMessage', function(message)
     local username = GetPlayerName(source)
@@ -151,13 +125,7 @@ AddEventHandler('clientChatMessage', function(message)
     -- Broadcast the message with timestamp to all players
     TriggerClientEvent('receiveMessage', -1, username, playerId, timestamp, message)
 end)
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 local oxmysql = exports.oxmysql
 
 -- Function to update playtime
@@ -194,13 +162,7 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 -- Fetch leaderboard data
 function fetchLeaderboardData()
     oxmysql:execute('SELECT firstname, lastname, avatar, playtime FROM users ORDER BY playtime DESC LIMIT 10', {}, function(result)
@@ -215,25 +177,6 @@ Citizen.CreateThread(function()
         Citizen.Wait(Config.TimerSettings.PlayTime.FetchLeaderboard)
     end
 end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Event to collect (data) from nui callback
 RegisterNetEvent('SendReport')
 AddEventHandler('SendReport', function(data)
@@ -358,5 +301,73 @@ Citizen.CreateThread(function()
     while true do
         broadcastOnlinePlayers() -- Call your new function
         Citizen.Wait(Config.TimerSettings.PlayTime.FetchOnlinePlayers) -- Adjust timing as needed
+    end
+end)
+
+
+
+
+RegisterServerEvent('get:playerInfo')
+AddEventHandler('get:playerInfo', function()
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+
+    if xPlayer then
+        local job = xPlayer.getJob()
+        local firstname, lastname, height, sex
+
+        -- Fetching data from the user's identity (assuming you have 'esx_identity' or similar module)
+        MySQL.Async.fetchScalar('SELECT firstname FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbFirstname)
+            firstname = dbFirstname
+        end)
+
+        MySQL.Async.fetchScalar('SELECT lastname FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbLastname)
+            lastname = dbLastname
+        end)
+
+        MySQL.Async.fetchScalar('SELECT height FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbHeight)
+            height = dbHeight
+        end)
+
+        MySQL.Async.fetchScalar('SELECT sex FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbSex)
+            sex = dbSex
+        end)
+
+        MySQL.Async.fetchScalar('SELECT dateofbirth FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbDateofbirth)
+            dateofbirth = dbDateofbirth
+        end)
+
+        MySQL.Async.fetchScalar('SELECT avatar FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbAvatar)
+            avatar = dbAvatar
+        end)
+
+        -- Wait for all data to be fetched
+        while firstname == nil or lastname == nil or height == nil or sex == nil or dateofbirth == nil or avatar == nil do
+            Wait(100)
+        end
+
+        -- Send data to client
+        TriggerClientEvent('set:playerInfo', _source, {
+            job = job.name,
+            grade = job.grade_label,
+            firstname = firstname,
+            lastname = lastname,
+            height = height,
+            sex = sex,
+            dateofbirth = dateofbirth,
+            avatar = avatar
+        })
     end
 end)
