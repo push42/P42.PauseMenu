@@ -66,6 +66,38 @@ $(function(){
     $('#ig').click(function(){
       window.invokeNative('openUrl', 'https://www.instagram.com/inferno__roleplay/')
     })
+    $('#form-submit-btn').click(function(){
+      if ($('#fname').val() === '' || $('#fname').val() === '' || $('#lname').val() === '' || $('#reporttype').val() === '' || $('#subject').val() === '' || $('#description').val() === '') {
+          $('.form-container').fadeOut(250); 
+          $('#form-alert-container').fadeIn(250); 
+      } else {
+      var fname = $('#fname').val()
+      var lname = $('#lname').val()
+      var reporttype = $('#reporttype').val()
+      var subject = $('#subject').val()
+      var description = $('#description').val()
+      $.post('https://PauseMenu/NewReport', JSON.stringify({
+          fname: fname,
+          lname: lname,
+          reporttype: reporttype,
+          subject: subject,
+          description: description,
+      }));
+      ClearForm();
+      $('#reports-container').fadeOut();
+      }   
+  });
+  $('.form-failed-btn').click(function(){
+      $('#form-alert-container').fadeOut(250); 
+      $('.form-container').fadeIn(250);   
+  });
+  function ClearForm() {
+    $('#fname').val('');
+    $('#lname').val('');
+      $('#reporttype').val('');
+      $('#subject').val('');
+      $('#description').val('');
+  }
 })
 
 function CloseAll(){
@@ -93,7 +125,7 @@ function updateServerStats() {
           document.getElementById('playerPing').getElementsByClassName('stat-value')[0].textContent = `${data.playerPing} ms`;
           document.getElementById('playerUsername').getElementsByClassName('stat-value')[0].textContent = `${data.playerName}`;
           document.getElementById('welcomeUsername').getElementsByClassName('stat-value')[0].textContent = `${data.playerWCName}`;
-          document.getElementById('jobName').textContent = data.jobName;
+          // document.getElementById('jobName').textContent = data.jobName;
       } else {
           // Handle error case
       }
@@ -162,3 +194,22 @@ function manualCopyToClipboard(text) {
 
   document.body.removeChild(textArea);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

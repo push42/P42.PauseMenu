@@ -1,3 +1,8 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ESX = exports["es_extended"]:getSharedObject()
 
 -- Event to update the avatar URL
@@ -35,9 +40,9 @@ end)
 
 
 
-
-
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 RegisterServerEvent('pausemenu:quit')
@@ -47,9 +52,27 @@ end)
 
 
 
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 -- Server callback implementation
 ESX.RegisterServerCallback('getServerData', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
+
+    if xPlayer == nil then
+        cb({ error = "Player not yet connected" })
+        return
+    end
 
     -- Fetch player's money details
     local bankMoney = xPlayer.getAccount('bank').money
@@ -100,17 +123,12 @@ AddEventHandler('clientChatMessage', function(message)
 end)
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-local oxmysql = exports.oxmysql -- Make sure oxmysql is started before your script
+local oxmysql = exports.oxmysql
 
 -- Function to update playtime
 function updatePlaytime(playerId, amount)
@@ -123,7 +141,7 @@ function updatePlaytime(playerId, amount)
             local query = 'UPDATE users SET playtime = playtime + ? WHERE identifier = ?'
             oxmysql:execute(query, { amount, identifier }, function(affectedRows)
                 if affectedRows then
-                    print("\x1b[37m[\x1b[0mPush42\x1b[35m@\x1b[0m\x1b[33mPlaytime\x1b[0m] \x1b[37mPlaytime updated for player:\x1b[0m \x1b[35m" .. identifier .. "\x1b[0m  \x1b[37m+(" .. "\x1b[31m1 Credit\x1b[37m)\x1b[0m")
+                    print("\x1b[37m[\x1b[0mPush42\x1b[35m@\x1b[0m\x1bPlaytime\x1b[0m] \x1b[37mPlaytime updated for player:\x1b[0m \x1b[35m" .. identifier .. "\x1b[0m  \x1b[37m+(" .. "\x1b[31m1 Credit\x1b[37m)\x1b[0m")
                 else
                     print("[Push42@Playtime] Playtime update failed for player: " .. identifier)
                 end
@@ -148,6 +166,10 @@ Citizen.CreateThread(function()
 end)
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 -- Fetch leaderboard data
 function fetchLeaderboardData()
@@ -170,3 +192,107 @@ end)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+-- Event to collect (data) from nui callback
+RegisterNetEvent('SendReport')
+AddEventHandler('SendReport', function(data)
+	local ids = ExtractIdentifiers(source)
+	local NewReport = {
+		playerid = source,
+		fname = data.fname,
+        lname = data.lname,
+        reporttype = data.reporttype,
+		subject = data.subject,
+		description = data.description,
+		discord = '<@'..ids.discord:gsub('discord:', '')..'>',
+        license = ids.license:gsub('license2:', '')
+	}
+	SendWebhook(NewReport)
+end)
+-- Function to send (data) through webhook
+function SendWebhook(data)
+    local footertext = Config.Discord.BotData.Footer.Text
+    local icon = Config.Discord.BotData.Footer.Icon
+    local botname = Config.Discord.BotData.Name
+    local botlogo = Config.Discord.BotData.Logo
+    local report = {
+        {
+            ['title'] = Config.Discord.EmbedData.TitlePrefix .. data.reporttype,
+            ['color'] = Config.Discord.Colour,
+            ['footer'] = {
+                ['text'] = Config.Discord.BotData.Footer.Text .. ' - Reported at: ' .. os.date('%Y-%m-%d %H:%M:%S'),
+                ['icon_url'] = Config.Discord.BotData.Footer.Icon,
+            },
+            ['fields'] = {
+                {
+                    ['name'] = Config.Discord.EmbedData.Translation.ReportContent,
+                    ['value'] = Config.Discord.EmbedData.Translation.Subject .. data.subject ..
+                                Config.Discord.EmbedData.Translation.Description .. data.description,
+                    ['inline'] = false
+                },
+                {
+                    ['name'] = Config.Discord.EmbedData.Translation.ReporterDetails,
+                    ['value'] = Config.Discord.EmbedData.Translation.FirstName .. data.fname ..
+                                Config.Discord.EmbedData.Translation.LastName .. data.lname ..
+                                Config.Discord.EmbedData.Translation.DiscordADD .. data.discord,
+                    ['inline'] = true
+                },
+                {
+                    ['name'] = Config.Discord.EmbedData.Translation.AdditionalInformation,
+                    ['value'] = Config.Discord.EmbedData.Translation.IngameID .. data.playerid ..
+                                Config.Discord.EmbedData.Translation.FiveMLicense .. data.license .. '||',
+                    ['inline'] = true,
+                }
+                
+            },
+            ['thumbnail'] = {
+                ['url'] = Config.Discord.EmbedData.ThumbnailURL
+            },
+            ['author'] = {
+                ['name'] = Config.Discord.EmbedData.Author.Name,
+                ['icon_url'] = Config.Discord.EmbedData.Author.IconURL
+            }
+        }
+    }
+
+    PerformHttpRequest(Config.Discord.Webhook, function(err, text, headers) end, 'POST', json.encode({username = Config.Discord.BotData.Name, embeds = report, avatar_url = Config.Discord.BotData.Logo}), {['Content-Type'] = 'application/json'})
+end
+-- Function to grab indentifiers
+function ExtractIdentifiers(id)
+    local identifiers = {
+        steam = '',
+        ip = '',
+        discord = '',
+        license = '',
+        xbl = '',
+        live = ''
+    }
+    for i = 0, GetNumPlayerIdentifiers(id) - 1 do
+        local playerID = GetPlayerIdentifier(id, i)
+        if string.find(playerID, 'steam') then
+            identifiers.steam = playerID
+        elseif string.find(playerID, 'ip') then
+            identifiers.ip = playerID
+        elseif string.find(playerID, 'discord') then
+            identifiers.discord = playerID
+        elseif string.find(playerID, 'license') then
+            identifiers.license = playerID
+        elseif string.find(playerID, 'xbl') then
+            identifiers.xbl = playerID
+        elseif string.find(playerID, 'live') then
+            identifiers.live = playerID
+        end
+    end
+    return identifiers
+end

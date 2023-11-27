@@ -113,20 +113,6 @@ end)
 
 
 
-
-
-
-
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-	PlayerData.job = job
-	TriggerServerEvent('PauseMenu:setjob',PlayerData.job.name)
-end)
-
-
-
-
-
 -- Function to trigger the server event to update the avatar
 function UpdatePlayerAvatar(url)
     TriggerServerEvent('updateAvatar', url)
@@ -146,4 +132,13 @@ end, false)
 RegisterNUICallback('updateAvatar', function(data, cb)
     TriggerServerEvent('updateAvatar', data.url)
     cb('ok')
+end)
+
+
+
+
+-- Submit button; submits a report as a discord webhook
+RegisterNUICallback('NewReport', function(data)
+    local NewReport = {fname = data.fname, lname = data.lname, reporttype = data.reporttype, subject = data.subject, description = data.description}
+    TriggerServerEvent('SendReport', NewReport)
 end)

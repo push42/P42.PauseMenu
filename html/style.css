@@ -1,7 +1,7 @@
 /* Custom scrollbar styles */
 /* For Webkit browsers like Chrome/Safari */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 3px; /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -403,13 +403,10 @@ html {
 
 
 
-
-
-
-
-
-
-
+/* Apply blur to everything except the modal when the modal is open */
+.modal-open .report-cards {
+    filter: blur(5px);
+}
 
 
 
@@ -639,3 +636,33 @@ html {
     position: absolute; /* Adjust as needed */
     /* Additional styling */
 }
+
+
+
+
+
+.reports {
+    width: 90px;
+}
+
+
+
+.reports:hover {
+    width: 90px;
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

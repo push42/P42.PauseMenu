@@ -183,7 +183,7 @@
                 });
             </script>
 
-                <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden text-white uppercase"><i class="fa-solid fa-users mr-2 text-white text-sm"></i>Users <span class="text-purple-400">Online</span>
+                <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden uppercase"><i class="fa-solid fa-users mr-2 text-white text-sm"></i>Users <span class="text-purple-400">Online</span>
                     <!-- Animated Line -->
                     <span class="block h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 absolute bottom-0 left-0 right-0 animate-pulse"></span>
                 </h3>
@@ -356,19 +356,13 @@
                 <h2 class="font-semibold text-lg text-blue-400">
                     <i class="fa-solid fa-headset text-xs mr-2"></i>Need <span class="text-white">Assistance?</span>
                 </h2>
-                <img src="https://static.vecteezy.com/system/resources/previews/018/930/718/original/discord-logo-discord-icon-transparent-free-png.png" alt="Tebex Store" class="rounded-full w-16 h-16">
+                <img src="https://static.vecteezy.com/system/resources/previews/018/930/718/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
             <p class="text-sm text-gray-100 mt-4">
                 Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
             </p>
-            <!-- <button class="support-button mt-4 px-4 py-2 rounded-md bg-blue-500 text-white font-semibold hover:bg-blue-600 transition duration-200">
-                Contact Support
-            </button> -->
             <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <i class="fa-solid fa-ticket mr-2 text-blue-400"></i>Live Support
-                <!-- <span class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                2
-                </span> -->
             </button>    
             <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-7">
                 <i class="fa-brands fa-discord mr-2 text-blue-400"></i>Discord
@@ -394,7 +388,6 @@
                     <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 1500</span>
                 </li>
                 <!-- Repeat for other players -->
-                <!-- ... -->
                 <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
                     <div class="flex items-center">
                         <img src="https://i.ibb.co/CwByvYM/empress-purple.webp" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
@@ -451,20 +444,107 @@
         </script>
 
 
+<!-- Modal Container (Hidden initially) -->
+<div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!-- Modal Content -->
+    <div class="relative top-0 mx-auto p-5 border w-full md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-zinc-900 space-y-4">
+        <!-- Form Title -->
+        <h2 class="text-xl font-semibold text-white">Submit a Report</h2>
+
+        <!-- Form Container -->
+        <div class="form-container space-y-3">
+            <!-- Form Fields -->
+            <input type="text" id="fname" placeholder="First Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
+            <input type="text" id="lname" placeholder="Last Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
+            <select id="reporttype" class="text-gray-600 w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
+                <option value="">Select Report Type</option>
+                <option value="type1">Type 1</option>
+                <option value="type2">Type 2</option>
+                <!-- Add more options as needed -->
+            </select>
+            <input type="text" id="subject" placeholder="Subject" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900">
+            <textarea id="description" placeholder="Description" class="w-full h-32 px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-900"></textarea>
+
+            <!-- Submit Button -->
+            <button id="form-submit-btn" class="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                Submit Report
+            </button>
+        </div>
+        <!-- Close Button -->
+        <button id="close-modal-btn" class="mt-3 bg-zinc-900 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded">
+            Close
+        </button>
+    </div>
+</div>
+
+
+
 
 
 
         <!-- Panel 3 - Detailed Info Panel -->
-        <div class="panel bg-zinc-900 bg-opacity-90 p-5 rounded-lg shadow-lg col-span-2">
-            <h2 class="panel-heading font-semibold text-lg"><i class="fa-regular fa-circle text-xs mr-2"></i>Ignore this part, still in work</h2>
-            <div class="grid grid-cols-2 gap-2 mt-2">
-                <div class="text-sm">Ignore this part, still in work</div>
-                <div class="text-sm">Ignore this part, still in work</div>
-                <!-- Add more details as needed -->
+        <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
+            <!-- Advent Calendar Panel -->
+            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-6 rounded-lg shadow-lg">
+                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-regular fa-circle-play mr-2 text-purple-400"></i>Report<span class="text-purple-400"> Panel</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
+                <div class="calendar-row flex overflow-x-auto pb-2">
+                    <!-- Calendar Days -->
+                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none ml-0.5" onclick="openModal()">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                            Report Player
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Opened gift" class="h-8">
+                        </div>
+                    </div>
+
+                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                            Bugs & Glitches
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
+                        </div>
+                    </div>
+
+                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                            Staff
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
+                        </div>
+                    </div>
+
+                    <div class="reports bg-zinc-950 rounded-lg shadow-md mr-4 flex-none">
+                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
+                            Lost Items
+                        </div>
+                        <div class="day-content flex items-center justify-center p-4 h-14">
+                            <img src="https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F804771189125283850.png%3Fv%3D1&w=64&q=75" alt="Unopened gift" class="h-8">
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
 
+<script>
+function openModal() {
+    document.getElementById('modal-container').classList.remove('hidden');
+    document.querySelector('body').classList.add('modal-open');
+}
+
+function closeModal() {
+    document.getElementById('modal-container').classList.add('hidden');
+    document.querySelector('body').classList.remove('modal-open');
+}
+
+// Event listener for the close button
+document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+
+</script>
 
 
 <!-- Chatbox Panel -->
@@ -478,8 +558,10 @@
         <input type="text" id="chat-input" class="bg-zinc-800 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
         <button type="submit" class="bg-purple-400 text-white p-2 rounded-lg">Send</button>
 
-        <div id="emoji-picker" class="emoji-picker hidden absolute bg-zinc-900 bg-opacity-50 p-2 border border-gray-300 rounded-lg bottom-20 right-80">
-            <div class="emoji-grid">
+        <div id="emoji-picker" class="emoji-picker hidden absolute bg-zinc-900 bg-opacity-90 p-2 border border-gray-300 rounded-lg bottom-36 right-80">
+            <div class="p-2">
+                <h3 class="text-white text-lg font-semibold mb-2">Choose an Emoji</h3>
+                <div class="emoji-grid">
                 <button class="emoji-btn">🤯</button>
                 <button class="emoji-btn">🥳</button>
                 <button class="emoji-btn">😎</button>
@@ -580,6 +662,7 @@ document.getElementById('emoji-button').addEventListener('click', function() {
     emojiPicker.classList.toggle('hidden');
 });
 
+
 document.querySelectorAll('.emoji-btn').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent form submission
@@ -591,7 +674,6 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
         chatInput.focus(); // Optionally, focus back to the input field
     });
 });
-
 </script>
 
 

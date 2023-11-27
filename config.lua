@@ -1,24 +1,41 @@
--- config.lua for Pause-Menu by Push.42
--- Replace values as needed
+Config = {}
+-- Discord settings
+Config.Discord = {
+    -- Discord webhooks refer to; https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
+    Webhook = 'https://discord.com/api/webhooks/1136788634520006686/tOvaDLuAHK0LGCOzQxYoD3AFrScrjTXTnhlrlZot0_hT4pS8bAAsWu4j8-yO4-cuJqcD',
+    -- Webhook colour can find more here; -- https://www.spycolor.com/
+    Colour = 5098434, -- boii development brand blue 
+    
+    
+    -- Discord bot username;
+    BotData = {
+        Name = 'Server Bot2',
+        Logo = 'https://i.ibb.co/2F11vDn/push422.png', -- Avatar of Bot
+        Footer = {
+            Text = 'Your Server Name',
+            Icon = 'https://i.ibb.co/sRRJ882/ezgif-com-video-to-apng-1.png' -- bottom left / footer
+        },
+    },
 
-local config = {}
-
--- Server Information
-config.serverName = "Your Server Name"
-config.serverDiscordLink = "DSC.GG/SERVER"
-
--- Image Links
-config.images = {
-    newsImage1 = "https://i.ibb.co/GMQmQ2m/thread1.gif",
-    -- Add more image links as needed
+    -- Customizable Embed Data
+    EmbedData = {
+        TitlePrefix = '🔔 New Report - ',
+        ThumbnailURL = 'https://i.ibb.co/yXrtCWf/neues-1.webp', -- top right
+        Author = {
+            Name = 'Report System',
+            IconURL = 'https://i.ibb.co/3YjBHp7/drug-meth.png' -- top left
+        },
+        Translation = {
+            ReportContent = '📄 Report Content',
+            Subject = '**Subject:**',
+            Description = '\n**Description:**',
+            ReporterDetails = '👤 Reporter Details',
+            FirstName = '**First Name:**',
+            LastName = '\n**Last Name:**',
+            DiscordADD = '\n**Discord:**',
+            AdditionalInformation = '🔍 Additional Information',
+            IngameID = '**ID:**',
+            FiveMLicense = '\n**License:** ||'
+        }
+    }
 }
-
--- UI Settings
-config.ui = {
-    -- Add UI related settings here
-}
-
--- Other Customizable Settings
--- Add other settings that users might want to customize
-
-return config
