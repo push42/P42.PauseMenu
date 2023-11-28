@@ -359,6 +359,12 @@ AddEventHandler('get:playerInfo', function()
             accounts = dbAccounts
         end)
 
+        MySQL.Async.fetchScalar('SELECT group FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbGroup)
+            group = dbGroup
+        end)
+
         -- Wait for all data to be fetched
         while firstname == nil or lastname == nil or height == nil or sex == nil or dateofbirth == nil or avatar == nil or accounts == nil do
             Wait(100)

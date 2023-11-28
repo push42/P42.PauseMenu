@@ -40,7 +40,7 @@
     <!-- Player Username -->
     <div id="welcomeUsername" class="player-stat badge ml-10 mt-4 mb-2 text-sm">
         <i class="fa-solid fa-minus mr-2 text-sm"></i>Welcome back, 
-        <span class="stat-value text-sm ml-1"> No User found</span>.
+        <span class="stat-value text-sm ml-1"> No User found</span>
     </div>
     <!-- Clock Container -->
     <div class="clock-container absolute top-0 right-6 flex items-center mb-2">
@@ -116,6 +116,18 @@
 
 
 
+    <style>
+    /* Custom CSS for adjusting image background position */
+    .newsImage1 {
+        background-image: url('./assets/santeria2.png');
+        background-size: cover;
+        background-position: center; /* You can adjust this to change the visible part of the image */
+        width: 100%;
+        height: 200px; /* Keep the height fixed */
+        background-position-y: 40%;
+    }
+</style>
+
 <!-- Content Panels -->
 <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <!-- Main Panel -->
@@ -127,7 +139,7 @@
             <div class="content">
                 <!-- News Item -->
                 <div class="news-item mb-4">
-                    <img src="./assets/santeria2.png" alt="News 1" id="newsImage1" class="newsImage1 rounded-lg shadow-lg h-100 object-cover mb-2">
+                    <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
                     <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
                     <p class="text-sm text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
                     <div class="tags flex space-x-2">
@@ -139,6 +151,7 @@
             </div>
         </div>
     </div>
+
 
         
         
@@ -410,6 +423,61 @@
 
 
 
+<!-- Overlay for Live Support Panel -->
+<div id="supportOverlay" class="support-overlay hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-40"></div>
+
+<!-- Live Support Modal Window -->
+<div id="supportModal" class="support-modal hidden fixed inset-0 z-50 flex justify-center items-center p-4 bg-zinc-950 bg-opacity-90">
+    <!-- Modal Content -->
+    <div class="support-content bg-zinc-950 shadow-2xl rounded-lg overflow-hidden flex flex-col lg:flex-row border-2 border-zinc-700">
+        <!-- Button to close the Support Panel -->
+        <button id="closeSupportPanel" class="support-close-btn absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <!-- Ticket Sidebar -->
+        <aside class="support-sidebar bg-zinc-900 p-6 w-full lg:w-1/3">
+            <h2 class="support-title text-3xl font-bold text-white mb-6"><i class="fa-solid fa-ticket text-purple-400 mr-2"></i>Ticket Panel</h2>
+            <!-- Create a Ticket - button -->
+            <button id="" class="create-support-ticket absolute text-gray-300 hover:text-white focus:outline-none font-bold text-lm">
+                <i class="fa-solid fa-plus text-purple-400 mr-2"></i>Create a Ticket
+            </button>
+            <ul class="support-ticket-list space-y-2">
+                <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 1 </li>
+                <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 2 </li>
+                <!-- More tickets -->
+            </ul>
+        </aside>
+
+        <!-- Chat Section -->
+        <section class="support-chat flex-grow bg-zinc-850 p-6 w-full lg:w-2/3">
+            <!-- Chat Area -->
+            <div class="support-chat-area flex flex-col h-full">
+                <!-- Chat Messages -->
+                <div class="support-messages flex-grow overflow-y-auto mb-4">
+                    <!-- Sample Messages -->
+                    <div class="support-message mb-3">
+                        <span class="message-author font-bold text-gray-200">User:</span>
+                        <span class="message-text text-gray-300">Hi, I need help with an issue.</span>
+                    </div>
+                    <div class="support-message mb-3">
+                        <span class="message-staff font-bold text-purple-500">Support:</span>
+                        <span class="message-text text-gray-300">Sure, what can I assist you with?</span>
+                    </div>
+                    <!-- More messages -->
+                </div>
+
+                <!-- Chat Input -->
+                <div class="support-input mt-4 flex">
+                    <input type="text" class="support-input-field bg-zinc-900 text-white w-full p-3 rounded focus:outline-none" placeholder="Type your message...">
+                    <button class="support-send-btn font-semibold bg-purple-600 text-white ml-3 px-4 py-2 rounded hover:bg-purple-700 transition-colors">Send</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
 
 
 
@@ -424,7 +492,7 @@
             <p class="text-sm text-gray-100 mt-4">
                 Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
             </p>
-            <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
+            <button type="button" id="openLiveSupport" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
                 <i class="fa-solid fa-ticket mr-2 text-blue-400"></i>Live Support
             </button>    
             <button id="discord-btn" type="button" onclick="copyDiscordLink()" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-4">
@@ -448,6 +516,22 @@
                 const discordInvite = "https://discord.com/invite/yourserver"; // Replace with your Discord invite link
                 showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
             }
+
+            // Function to open the Live Support modal and hide the overlay
+            function openLiveSupportModal() {
+                document.getElementById('supportModal').classList.remove('hidden');
+                document.getElementById('supportOverlay').classList.add('hidden');
+            }
+
+            // Function to close the Live Support modal and show the overlay
+            function closeLiveSupportModal() {
+                document.getElementById('supportModal').classList.add('hidden');
+                document.getElementById('supportOverlay').classList.add('hidden');
+            }
+
+            // Event listener for the "Live Support" button
+            document.getElementById('openLiveSupport').addEventListener('click', openLiveSupportModal);
+            document.getElementById('closeSupportPanel').addEventListener('click', closeLiveSupportModal);
         </script>
 
 
@@ -500,17 +584,23 @@ window.addEventListener('message', function (event) {
                 trophyIcon = '<i class="fa-solid fa-trophy text-bronze ml-2"></i>';
             }
 
+            // Convert playtime from minutes to hours and minutes
+            var totalMinutes = player.playtime;
+            var hours = Math.floor(totalMinutes / 60);
+            var minutes = totalMinutes % 60;
+
             playerElement.innerHTML = `
                 <div class="flex items-center">
                     <img src="${player.avatar}" alt="${player.firstname}" class="w-8 h-8 rounded-full mr-2">
                     <span class="text-white text-sm">${player.firstname} ${player.lastname}</span>
                     ${trophyIcon}
                 </div>
-                <span class="text-gray-400 text-xs px-2 py-1 rounded-full font-semibold">Playtime: ${player.playtime} hrs</span>`;
+                <span class="text-gray-400 text-xs px-2 py-1 rounded-full font-semibold">Playtime: ${totalMinutes} min / ${hours} hrs</span>`;
             leaderboardList.appendChild(playerElement);
         });
     }
 });
+
 </script>
 
 

@@ -848,5 +848,85 @@ textarea:focus {
 
 
 
+/* Overlay Styles */
+.support-overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+}
+
+/* Modal Styles */
+.support-modal {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for modal */
+}
+
+/* Modal Content Styles */
+.support-content {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Deeper shadow for more depth */
+    max-width: 1265px;
+    height: 5000%;
+    width: 100%;
+    max-height: 440px;
+}
+
+/* Close Button Styles */
+.support-close-btn {
+    font-size: 1.5rem; /* Larger close icon */
+}
+
+/* Sidebar Styles */
+.support-sidebar {
+    border-right: 1px solid #444; /* Darker separator for better visibility */
+}
+
+.support-title {
+    color: #E0E0E0; /* Lighter color for better readability */
+}
+
+.support-ticket-list {
+    max-height: 500px; /* Increased height */
+}
+
+.support-ticket {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.support-ticket:hover {
+    background-color: #333; /* Darker hover effect */
+    border-radius: 50px;
+}
 
 
+/* Chat Section Styles */
+.support-chat {
+    padding: 20px;
+}
+
+.support-messages {
+    padding: 15px;
+    border: 1px solid #555; /* Dark border for definition */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.create-support-ticket{
+    top: 32%;
+    left: 33%;
+
+}
+/* Input Area Styles */
+.support-input-field {
+    border: 1px solid #666; /* Dark border */
+}
+
+.support-send-btn {
+    background-color: #2563eb; /* Brighter blue for visibility */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .support-content {
+        flex-direction: column;
+    }
+
+    .support-sidebar, .support-chat {
+        width: 100%;
+    }
+}
