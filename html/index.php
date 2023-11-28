@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <title>Pause-Menu by Push.42</title>
@@ -13,10 +14,13 @@
 
 <div class="fixed left-12 top-4">
     <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
-    <div class="text-center text-sm font-sans font-bold text-purple-300 mb-10">Welcome on PXRP</div>
-    <div class="text-center text-sm font-sans text-purple-300 mb-2">Usersettings</div>
+    <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
+    <div class="text-center text-sm font-sans text-purple-300 mt-20 mb-2">Usersettings</div>
     <button id="updateAvatar" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1">
         <i class="fa-regular fa-image text-purple-400 mr-2 text-xs"></i>Choose Avatar
+    </button>
+    <button id="reportPanel" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1 mt-8" onclick="openModal()">
+        <i class="fa-solid fa-ban text-purple-400 mr-2 text-xs"></i>Report Panel
     </button>
 </div>
 
@@ -80,100 +84,190 @@
         });
     </script>    
     <!-- Navigation Menu at Bottom -->
-    <div class="nav-menu fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg">
-        <div id="resume" class="nav-item"><i class="fa-solid fa-play mr-2"></i>Resume</div>
-        <div id="settings" class="nav-item"><i class="fa-solid fa-gear mr-2"></i>Settings</div>
-        <div id="map" class="nav-item"><i class="fa-solid fa-map-location-dot mr-2"></i>Map</div>
+    <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg">
+        <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-solid fa-play text-xl"></i>
+            <span class="font-semibold">Resume</span>
+        </div>
+        <div id="settings" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-solid fa-gear text-xl"></i>
+            <span class="font-semibold">Settings</span>
+        </div>
+        <div id="map" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-solid fa-map-location-dot text-xl"></i>
+            <span class="font-semibold">Map</span>
+        </div>
         <!-- <div id="info" class="nav-item">Info</div> -->
-        <div id="keyboard" class="nav-item"><i class="fa-regular fa-keyboard mr-2"></i>Keyboard</div>
-        <div id="help" class="nav-item"><i class="fa-regular fa-circle-question mr-2"></i>Help</div>
-        <div id="exit" class="nav-item"><i class="fa-solid fa-door-open mr-2"></i>Exit</div>
+        <div id="keyboard" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-regular fa-keyboard text-xl"></i>
+            <span class="font-semibold">Keyboard</span>
+        </div>
+        <div id="help" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-regular fa-circle-question text-xl"></i>
+            <span class="font-semibold">Help</span>
+        </div>
+        <div id="exit" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+            <i class="fa-solid fa-door-open text-xl"></i>
+            <span class="font-semibold">Exit</span>
+        </div>
     </div>
 
 
 
 
 
-    <!-- Content Panels -->
-    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Main Panel -->
-        <div class="md:col-span-2">
-            <div class="panel bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg drop-shadow-lg">
-                <h2 class="panel-heading uppercase font-black font-mono">
-                    <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
-                </h2>
-                <div class="content">
-                    <!-- News Item -->
-                    <div class="news-item mb-4">
-                        <img src="./assets/santeria2.png" alt="News 1" id="newsImage1" class="newsImage1 rounded-lg shadow-lg h-100 object-cover mb-2">
-                        <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
-                        <p class="text-xs text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
-                        <div class="tags">
-                            <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 mr-1 font-bold"><i class="fa-solid fa-bullhorn mr-2"></i>Announcement</span>
-                            <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 mr-1 font-bold"><i class="fa-solid fa-wrench mr-2"></i>Update</span>
-                            <span class="tag text-xs bg-purple-800 text-white rounded-full px-2 py-1 mr-1 font-bold"><i class="fa-solid fa-calendar-check mr-2"></i>Event</span>
-                        </div>
-                        <a href="#" class="read-more absolute bottom-4 right-2 text-xs bg-zinc-800 text-white rounded-full px-2 py-1"><i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i>Read more..</a>
+<!-- Content Panels -->
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Main Panel -->
+    <div class="md:col-span-2">
+        <div class="panel bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105">
+            <h2 class="panel-heading uppercase font-black font-mono text-xl">
+                <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
+            </h2>
+            <div class="content">
+                <!-- News Item -->
+                <div class="news-item mb-4">
+                    <img src="./assets/santeria2.png" alt="News 1" id="newsImage1" class="newsImage1 rounded-lg shadow-lg h-100 object-cover mb-2">
+                    <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
+                    <p class="text-sm text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
+                    <div class="tags flex space-x-2">
+                        <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-bullhorn mr-1 text-xs"></i>Announcement</span>
+                        <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-wrench mr-1 text-xs"></i>Update</span>
+                        <span class="tag text-xs bg-purple-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-calendar-check mr-1 text-xs"></i>Event</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
         
         
 
-        <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg drop-shadow-lg">
-        <div>
-            <h2 class="panel-heading uppercase font-black font-mono">
-                <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel<span class="text-sm absolute right-14 text-gray-300"><i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER</span>
-            </h2>
-            <div class="player-stats flex gap-2 justify-center mt-4">
-                <!-- User ID Badge -->
-                <div id="userId" class="player-stat badge" onclick="copyUserIdToClipboard()">
-                    <i class="fa-solid fa-id-card text-purple-400"></i>
-                    <span class="stat-value text-xs">ID: --</span>
-                </div>                
-                <!-- Player Username -->
-                <div id="playerUsername" class="player-stat badge">
-                    <i class="fa-regular fa-user text-purple-400"></i>
-                    <span class="stat-value text-xs">No User found</span>
-                </div>
-                <!-- Player Ping -->
-                <div id="playerPing" class="player-stat badge">
-                    <i class="fa-solid fa-signal text-purple-400"></i>
-                    <span class="stat-value text-xs">-- ms</span>
-                </div>
-                <!-- Player Count -->
-                <div id="playerCount" class="player-stat badge">
-                    <i class="fa-solid fa-users text-purple-400"></i>
-                    <span class="stat-value text-xs">--/--</span>
+    <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105 transition-transform">
+    <div>
+        <h2 class="panel-heading uppercase font-black font-mono text-xl relative">
+            <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel
+            <span class="text-sm absolute right-14 top-2 text-gray-300">
+                <i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER
+            </span>
+        </h2>
+        <div class="player-stats flex gap-2 justify-center mt-4">
+            <!-- User ID Badge -->
+            <div id="userId" class="player-stat badge" onclick="copyUserIdToClipboard()">
+                <i class="fa-solid fa-id-card text-purple-400"></i>
+                <span class="stat-value text-xs">ID: --</span>
+            </div>
+            <!-- Player Username -->
+            <div id="playerUsername" class="player-stat badge">
+                <i class="fa-regular fa-user text-purple-400"></i>
+                <span class="stat-value text-xs">No User found</span>
+            </div>
+            <!-- Player Ping -->
+            <div id="playerPing" class="player-stat badge">
+                <i class="fa-solid fa-signal text-purple-400"></i>
+                <span class="stat-value text-xs">-- ms</span>
+            </div>
+            <!-- Player Count -->
+            <div id="playerCount" class="player-stat badge">
+                <i class="fa-solid fa-users text-purple-400"></i>
+                <span class="stat-value text-xs">--/--</span>
+            </div>
+        </div>
+
+
+
+<!-- Online Players List -->
+<div class="online-players mt-4 bg-zinc-900 bg-opacity-90 p-5 rounded-lg shadow-inner max-h-60 overflow-y-auto">
+    <!-- Detailed User Info Container -->
+    <div id="detailedUserInfo" class="absolute top-0 left-0 w-full h-full bg-zinc-900 text-white p-6 rounded-lg opacity-0 transition-opacity duration-500 z-10 hidden">
+        <button id="closeUserInfo" class="absolute top-9 right-9 text-gray-300 hover:text-gray-100">
+            <i class="fa fa-times text-2xl"></i>
+        </button>
+
+        <!-- Player Image -->
+        <div class="flex items-center mb-6">
+            <img id="up-avatar" src="player-avatar.jpg" alt="Player Image" class="w-20 h-20 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
+            <h2 id="playerName" class="text-2xl font-bold">John Doe</h2> <!-- Dynamic player name -->
+        </div>
+
+        <!-- Info Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm p-2">
+            <!-- Job Info -->
+            <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
+                <i class="fa-solid fa-briefcase"></i> <!-- Job Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Job:</p>
+                    <p id="jobNameDetail" class="info-value">Not available</p>
                 </div>
             </div>
 
-
-
-        <!-- Online Players List -->
-        <div class="online-players mt-4 bg-zinc-900 bg-opacity-90 p-5 rounded-lg shadow-inner max-h-60 overflow-y-auto">
-            <!-- Detailed User Info Container -->
-            <div id="detailedUserInfo" class="absolute top-0 left-0 w-full h-full bg-gray-800 text-white p-6 rounded-lg shadow-2xl opacity-0 transition-opacity duration-500 z-10 hidden">
-                <button id="closeUserInfo" class="absolute top-2 right-2 text-gray-300 hover:text-gray-100">
-                    <i class="fa fa-times"></i>
-                </button>
-
-                <!-- Player Image -->
-                <div class="flex items-center mb-6">
-                    <img id="up-avatar" src="player-avatar.jpg" alt="Player Image" class="w-20 h-20 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
-                    <h2 id="playerName" class="text-2xl font-bold">John Doe</h2> <!-- Dynamic player name -->
+            <!-- Grade Info -->
+            <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
+                <i class="fa-solid fa-medal"></i> <!-- Grade Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Grade:</p>
+                    <p id="jobGradeDetail" class="info-value">Not available</p>
                 </div>
+            </div>
 
-                <!-- Info Details -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-                    <p id="jobNameDetail" class="info-item">Job: <span class="text-blue-500">Not available</span></p>
-                    <p id="jobGradeDetail" class="info-item">Grade: <span class="text-blue-500">Not available</span></p>
-                    <p id="heightDetail" class="info-item">Height: <span class="text-blue-500">Not available</span></p>
-                    <p id="sexDetail" class="info-item">Sex: <span class="text-blue-500">Not available</span></p>
-                    <p id="dobDetail" class="info-item">DOB: <span class="text-blue-500">Not available</span></p>
-                    <!-- Add more fields as needed -->
+            <!-- Height Info -->
+            <div class="info-card flex items-center space-x-2 bg-purple-900 text-white rounded p-2">
+                <i class="fa-solid fa-ruler-vertical"></i> <!-- Height Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Height:</p>
+                    <p id="heightDetail" class="info-value">Not available</p>
                 </div>
+            </div>
+
+            <!-- Sex Info -->
+            <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
+                <i class="fa-solid fa-venus-mars"></i> <!-- Sex Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Sex:</p>
+                    <p id="sexDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+
+            <!-- DOB Info -->
+            <div class="info-card flex items-center space-x-2 bg-yellow-900 text-white rounded p-2">
+                <i class="fa-solid fa-cake-candles"></i> <!-- DOB Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">DOB:</p>
+                    <p id="dobDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+            <!-- Add more fields as needed -->
+
+            <!-- Bank Info -->
+            <div class="info-card flex items-center space-x-2 bg-indigo-900 text-white rounded p-2">
+                <i class="fa-solid fa-wallet"></i> <!-- Bank Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Bank:</p>
+                    <p id="bankDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+
+            <!-- Money Info -->
+            <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
+                <i class="fa-solid fa-money-bill"></i> <!-- Money Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Money:</p>
+                    <p id="moneyDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+
+            <!-- Black Money Info -->
+            <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
+                <i class="fa-solid fa-money-bill"></i> <!-- Black Money Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Black Money:</p>
+                    <p id="blackMoneyDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+
+        </div>
+
+
             </div>
 
 
@@ -185,15 +279,28 @@
 
                         // Update HTML elements with the player's data
                         document.getElementById('playerName').textContent = data.firstname + ' ' + data.lastname;
-                        document.getElementById('jobNameDetail').querySelector('span').textContent = data.job;
-                        document.getElementById('jobGradeDetail').querySelector('span').textContent = data.grade;
-                        document.getElementById('heightDetail').querySelector('span').textContent = data.height;
-                        document.getElementById('sexDetail').querySelector('span').textContent = data.sex;
-                        document.getElementById('dobDetail').querySelector('span').textContent = data.dateofbirth;
+                        document.getElementById('jobNameDetail').textContent = data.job ? data.job : 'Not available';
+                        document.getElementById('jobGradeDetail').textContent = data.grade ? data.grade : 'Not available';
+                        document.getElementById('heightDetail').textContent = data.height ? data.height : 'Not available';
+
+                        // Convert 'm' or 'f' to 'Male' or 'Female'
+                        var sexText = data.sex === 'm' ? 'Male' : (data.sex === 'f' ? 'Female' : 'Not available');
+                        document.getElementById('sexDetail').textContent = sexText;
+
+                        document.getElementById('dobDetail').textContent = data.dateofbirth ? data.dateofbirth : 'Not available';
                         document.getElementById('up-avatar').src = data.avatar;
+                        document.getElementById('avatarButton').src = data.avatar;
+                                // Parse the accounts data as JSON
+                        var accountsData = JSON.parse(data.accounts);
+
+                        // Update HTML elements with the player's data
+                        document.getElementById('bankDetail').textContent = accountsData.bank ? '$' + accountsData.bank.toLocaleString() : 'Not available';
+                        document.getElementById('moneyDetail').textContent = accountsData.money ? '$' + accountsData.money.toLocaleString() : 'Not available';
+                        document.getElementById('blackMoneyDetail').textContent = accountsData.black_money ? '$' + accountsData.black_money.toLocaleString() : 'Not available';
 
                     }
                 });
+                
 
                 document.getElementById('playerUsername').addEventListener('click', function() {
                     var detailedInfo = document.getElementById('detailedUserInfo');
@@ -208,13 +315,15 @@
                 });
             </script>
 
-                <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden uppercase"><i class="fa-solid fa-users mr-2 text-white text-sm"></i>Users <span class="text-purple-400">Online</span>
-                    <!-- Animated Line -->
-                    <span class="block h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 absolute bottom-0 left-0 right-0 animate-pulse"></span>
-                </h3>
+                <!-- Improved User List Panel -->
+                    <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden uppercase">
+                        <i class="fa-solid fa-users mr-2 text-white text-sm"></i>Users <span class="text-purple-400">Online</span>
+                        <!-- Animated Line -->
+                        <span class="block h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 absolute bottom-0 left-0 right-0 animate-pulse"></span>
+                    </h3>
                     <ul id="playerList" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <!-- Filler Players -->
-                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
+                        <!-- User Item -->
+                        <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10 transform transition-transform hover:scale-105">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="flex items-center text-white">
                                     Username
@@ -222,7 +331,7 @@
                                 <span class="text-xs font-mono ml-2 text-purple-400">1</span>
                             </div>
                             <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                Police: <span class="relative font-medium">Officer</span>
+                                Police: <span class="relative font-medium text-purple-400">Officer</span>
                             </div>
                         </li>
                     </ul>
@@ -270,7 +379,7 @@
             <img src="./assets/tebex-bg.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="font-semibold text-lg text-green-400">
+                    <h2 class="font-semibold text-lg text-green-400 mt-4">
                         <i class="fa-solid fa-shopping-cart text-sm mr-2"></i>Visit <span class="text-green-400">our</span> Store.
                     </h2>
                     <h2>
@@ -304,7 +413,6 @@
 
 
 
-        <!-- Panel 2 - Get Support Section -->
         <div class="get-support-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
             <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
@@ -316,14 +424,15 @@
             <p class="text-sm text-gray-100 mt-4">
                 Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
             </p>
-            <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button type="button" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
                 <i class="fa-solid fa-ticket mr-2 text-blue-400"></i>Live Support
             </button>    
-            <button id="discord-btn" type="button" onclick="copyDiscordLink()" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-7">
+            <button id="discord-btn" type="button" onclick="copyDiscordLink()" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-2 mt-4">
                 <i class="fa-brands fa-discord mr-2 text-blue-400"></i>Discord
             </button>
         </div>
 
+        <!-- JavaScript Code -->
         <script>
             function showNotificationModal(title, message) {
                 document.getElementById('notification-title').innerText = title;
@@ -340,6 +449,7 @@
                 showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
             }
         </script>
+
 
 
         <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
@@ -361,81 +471,51 @@
 
 
         <!-- Panel 3 - Global Leaderboard -->
-        <!-- Leaderboard Panel -->
-        <div class="leaderboard-panel bg-zinc-950 bg-opacity-50 p-4 rounded-xl shadow-xl overflow-y-auto max-h-64">
-        <!-- Avatar Update Button -->
-            <h2 class="text-lg font-semibold text-white mb-4 flex items-center">
-                <i class="fa-solid fa-trophy mr-2"></i>
-                Leaderboard<span class="text-xs font-thin ml-4">Only the first 10 with the most Playtime are displayed.</span>
+        <div class="leaderboard-panel bg-zinc-900 bg-opacity-90 p-4 rounded-xl shadow-xl overflow-y-auto max-h-64">
+            <h2 class="text-lg font-semibold text-white mb-4">
+                <i class="fa-solid fa-trophy mr-2 text-yellow-400"></i>
+                Leaderboard<span class="text-xs font-thin ml-4 text-gray-400">Top 10 players by playtime</span>
             </h2>
             <ul class="space-y-2">
                 <!-- Leaderboard Item -->
-                <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
-                    <div class="flex items-center">
-                        <img src="./assets/pxrp.gif" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-white text-sm">Player 1</span><i class="fa-solid fa-trophy fa-beat fa-xs ml-4" style="color: #ffff80;"></i>
-                    </div>
-                    <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 1500</span>
-                </li>
-                <!-- Repeat for other players -->
-                <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
-                    <div class="flex items-center">
-                        <img src="https://i.ibb.co/CwByvYM/empress-purple.webp" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-white text-sm">Player 2</span><i class="fa-solid fa-trophy fa-beat fa-xs ml-4" style="color: #c9c9c9;"></i>
-                    </div>
-                    <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 1330</span>
-                </li>
-                <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
-                    <div class="flex items-center">
-                        <img src="https://i.ibb.co/r4KmhTG/animated-lp.webp" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-white text-sm">Player 3</span><i class="fa-solid fa-trophy fa-beat fa-xs ml-4" style="color: #b87536;"></i>
-                    </div>
-                    <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 755</span>
-                </li>
-                <li class="flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg">
-                    <div class="flex items-center">
-                        <img src="https://i.ibb.co/r4KmhTG/animated-lp.webp" alt="Player 1" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-white text-sm">Player 3</span><i class="fa-solid fa-trophy fa-beat fa-xs ml-4" style="color: #b87536;"></i>
-                    </div>
-                    <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: 755</span>
-                </li>
+                <!-- JavaScript will populate this list -->
             </ul>
         </div>
-        <script>
-        window.addEventListener('message', function(event) {
-            var item = event.data;
-            if (item.type === "updateLeaderboard") {
-                var leaderboardList = document.querySelector('.leaderboard-panel ul');
-                leaderboardList.innerHTML = ''; // Clear existing list
-                item.players.forEach(function(player, index) {
-                    var playerElement = document.createElement('li');
-                    playerElement.className = 'flex items-center justify-between bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-2 rounded-lg';
+<script>
+window.addEventListener('message', function (event) {
+    var item = event.data;
+    if (item.type === "updateLeaderboard") {
+        var leaderboardList = document.querySelector('.leaderboard-panel ul');
+        leaderboardList.innerHTML = ''; // Clear existing list
+        item.players.slice(0, 10).forEach(function (player, index) {
+            var playerElement = document.createElement('li');
+            playerElement.className = 'flex items-center justify-between bg-zinc-900 bg-opacity-90 p-2 rounded-lg';
 
-                    var trophyIcon = '';
-                    if (index === 0) { // First place
-                        trophyIcon = '<i class="fa-solid fa-trophy" style="color: gold;"></i>';
-                    } else if (index === 1) { // Second place
-                        trophyIcon = '<i class="fa-solid fa-trophy" style="color: silver;"></i>';
-                    } else if (index === 2) { // Third place
-                        trophyIcon = '<i class="fa-solid fa-trophy" style="color: #cd7f32;"></i>'; // Bronze color
-                    }
-
-                    playerElement.innerHTML = `
-                        <div class="flex items-center">
-                            <img src="${player.avatar}" alt="${player.firstname}" class="w-8 h-8 rounded-full mr-2">
-                            ${trophyIcon}
-                            <span class="text-white text-sm">${player.firstname} ${player.lastname}</span>
-                        </div>
-                        <span class="badge bg-gray-800 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg">Score: ${player.playtime}</span>`;
-                    leaderboardList.appendChild(playerElement);
-                });
+            var trophyIcon = '';
+            if (index === 0) { // First place
+                trophyIcon = '<i class="fa-solid fa-trophy text-gold ml-2"></i>';
+            } else if (index === 1) { // Second place
+                trophyIcon = '<i class="fa-solid fa-trophy text-silver ml-2"></i>';
+            } else if (index === 2) { // Third place
+                trophyIcon = '<i class="fa-solid fa-trophy text-bronze ml-2"></i>';
             }
+
+            playerElement.innerHTML = `
+                <div class="flex items-center">
+                    <img src="${player.avatar}" alt="${player.firstname}" class="w-8 h-8 rounded-full mr-2">
+                    <span class="text-white text-sm">${player.firstname} ${player.lastname}</span>
+                    ${trophyIcon}
+                </div>
+                <span class="text-gray-400 text-xs px-2 py-1 rounded-full font-semibold">Playtime: ${player.playtime} hrs</span>`;
+            leaderboardList.appendChild(playerElement);
         });
-        </script>
+    }
+});
+</script>
 
 
 <!-- Modal Container for Player Reports (Hidden initially) -->
-<div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-30 overflow-y-auto h-full w-full flex justify-center items-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div id="modal-container" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-30 overflow-y-auto h-full w-full flex justify-center items-center backdrop-blur-sm " aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <!-- Modal Content -->
     <div class="relative top-0 mx-auto p-7 border-2 w-full md:w-1/2 lg:w-1/3 shadow-xl rounded-lg bg-zinc-900 space-y-4">
         <!-- Form Title -->
@@ -447,7 +527,11 @@
             <input type="text" id="fname" placeholder="First Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
             <input type="text" id="lname" placeholder="Last Name" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
             <select id="reporttype" class="text-gray-300 w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800">
-                <option value="PlayerReport">Player Report</option>
+                <option value="">Choose a Report-Type</option>
+                <option value="Player">Report Player</option>
+                <option value="Bugs">Report Bugs & Glitches</option>
+                <option value="Staff">Report Staff-Members</option>
+                <option value="LostItems">Report Lost Items</option>
                 <!-- Add more options as needed -->
             </select>
             <input type="text" id="subject" placeholder="Subject" class="w-full px-4 py-2 border rounded-md focus:border-purple-500 focus:outline-none bg-zinc-800 text-white">
@@ -472,147 +556,69 @@
 
 
 
-<!-- Panel 3 - Detailed Info Panel -->
-<div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
+
+
+
+
+<!-- Panel 4 - Detailed Info Panel -->
+<div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-2">
     <!-- Advent Calendar Panel -->
-    <div class="bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
-        <h2 class="font-semibold text-lg text-white mb-4 panel-heading">
-            <i class="fa-solid fa-bug mr-1 text-purple-400"></i>
-            Report<span class="text-purple-400"> Panel</span>
-            <span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span>
-        </h2>
-        <div class="calendar-row flex overflow-x-auto pb-2">
-            <!-- Report Cards -->
-            <!-- Adding hover effect and gradient background to each report card -->
-            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform" onclick="openModal()">
-                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                    Report Player
-                </div>
-                <div class="day-content flex items-center justify-center p-4 h-14">
-                    <img src="./assets/player_report.png" alt="Player Report" class="h-42">
-                </div>
-            </div>
-            <!-- Repeat for other report cards with respective content -->
-            <!-- ... other report cards ... -->
-            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
-                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                    Report Bugs
-                </div>
-                <div class="day-content flex items-center justify-center p-4 h-14">
-                    <img src="./assets/bug_report.png" alt="Bug Report" class="h-42">
-                </div>
-            </div>
-            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
-                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                    Report Staff
-                </div>
-                <div class="day-content flex items-center justify-center p-4 h-14">
-                    <img src="./assets/staff_report.png" alt="Player Staff" class="h-42">
-                </div>
-            </div>
-            <div class="reports bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform">
-                <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xss">
-                    Report Lost Items
-                </div>
-                <div class="day-content flex items-center justify-center p-4 h-14">
-                    <img src="./assets/lost_items.png" alt="Player Staff" class="h-42">
-                </div>
-            </div>
+    <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
+        <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>Daily<span class="text-purple-400"> Rewards</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
+        <div class="calendar-row flex overflow-x-auto pb-2" id="calendar-row">
+            <!-- JavaScript will populate the calendar here -->
         </div>
     </div>
 </div>
 
+<script>
+  // Get the current date
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate(); // Get the day of the month (1-31)
+  const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); // Get the total number of days in the current month
+
+  // Create the calendar row
+  const calendarRow = document.getElementById('calendar-row');
+  for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+    const dayPanel = document.createElement('div');
+    dayPanel.className = 'calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105';
+    const dayHeader = document.createElement('div');
+    dayHeader.className = 'day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs';
+    dayHeader.textContent = `DAY ${dayNumber}`;
+    const dayContent = document.createElement('div');
+    dayContent.className = 'day-content flex items-center justify-center p-4 h-14';
+    const dayImage = document.createElement('img');
+    dayImage.src = './assets/door_badge.webp';
+    dayImage.alt = 'Player Report';
+    
+    // Add a click event to open the panel if it's obtainable
+    if (dayNumber === currentDay) {
+      dayPanel.classList.add('obtainable');
+      dayPanel.addEventListener('click', () => {
+        console.log('Clicked on the current day.'); // Add this line
+        // Code to open the panel and give rewards
+
+        dayPanel.classList.remove('obtainable');
+        dayPanel.classList.add('opened');
+      });
+    } else if (dayNumber < currentDay) {
+      dayPanel.classList.add('locked');
+    }
+    
+    dayContent.appendChild(dayImage);
+    dayPanel.appendChild(dayHeader);
+    dayPanel.appendChild(dayContent);
+    calendarRow.appendChild(dayPanel);
+  }
+</script>
 
 
-        <!-- Panel 4 - Detailed Info Panel -->
-        <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-1">
-            <!-- Advent Calendar Panel -->
-            <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
-                <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>Daily<span class="text-purple-400"> Rewards</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
-                <div class="calendar-row flex overflow-x-auto pb-2">
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105 transition-transform opened">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 1
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                            <!-- Opened Icon -->
-                            <div class="open-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
-                                <i class="fa-solid fa-box-open text-white text-xs"></i> <!-- Replace with your lock icon -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform obtainable">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 2
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                        </div>
-                    </div>
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 3
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                            <!-- Lock Icon -->
-                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
-                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 4
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                            <!-- Lock Icon -->
-                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
-                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 5
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                            <!-- Lock Icon -->
-                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
-                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Calendar Days -->
-                    <div class="calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 flex-none hover:scale-105 transition-transform locked relative">
-                        <div class="day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs">
-                            DAY 6
-                        </div>
-                        <div class="day-content flex items-center justify-center p-4 h-14">
-                            <img src="./assets/door_badge.webp" alt="Player Report" class="h-42">
-                            <!-- Lock Icon -->
-                            <div class="lock-icon absolute top-3 right-0 transform -translate-x-1/2 -translate-y-1/2">
-                                <i class="fa-solid fa-lock text-white text-lm"></i> <!-- Replace with your lock icon -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
 
 <script>
-
-    
 function openModal() {
     document.getElementById('modal-container').classList.remove('hidden');
     document.querySelector('body').classList.add('modal-open');
@@ -727,7 +733,7 @@ window.addEventListener('message', function(event) {
         var chatBox = document.querySelector('.chat-messages');
         var newMessage = document.createElement('div');
 
-        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span>`;
+        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span> <button class="report-btn text-red-500 text-xs" data-message-id="${item.id}"><i class="fa-solid fa-ban"></i></button>`;
         chatBox.appendChild(newMessage);
 
         // Scroll to the bottom of the chat box when a new message is added
@@ -753,6 +759,28 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
         chatInput.focus(); // Optionally, focus back to the input field
     });
 });
+
+
+// Event listener for report button
+document.querySelector('.chat-messages').addEventListener('click', function(event) {
+    if (event.target && event.target.matches('.report-btn')) {
+        var messageId = event.target.getAttribute('data-message-id');
+        // Trigger the report functionality here
+        sendReportToServer(messageId);
+    }
+});
+
+function sendReportToServer(messageId) {
+    // Example: Sending a report to the server-side
+    fetch(`https://${GetParentResourceName()}/reportMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify({ messageId: messageId })
+    });
+}
+
 </script>
 
 
@@ -761,6 +789,9 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
 
         </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
+    <script src="app.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 </html>

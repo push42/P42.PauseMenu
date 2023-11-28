@@ -299,7 +299,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        broadcastOnlinePlayers() -- Call your new function
+        broadcastOnlinePlayers(); -- Call your new function
         Citizen.Wait(Config.TimerSettings.PlayTime.FetchOnlinePlayers) -- Adjust timing as needed
     end
 end)
@@ -353,8 +353,14 @@ AddEventHandler('get:playerInfo', function()
             avatar = dbAvatar
         end)
 
+        MySQL.Async.fetchScalar('SELECT accounts FROM users WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(dbAccounts)
+            accounts = dbAccounts
+        end)
+
         -- Wait for all data to be fetched
-        while firstname == nil or lastname == nil or height == nil or sex == nil or dateofbirth == nil or avatar == nil do
+        while firstname == nil or lastname == nil or height == nil or sex == nil or dateofbirth == nil or avatar == nil or accounts == nil do
             Wait(100)
         end
 
@@ -367,7 +373,90 @@ AddEventHandler('get:playerInfo', function()
             height = height,
             sex = sex,
             dateofbirth = dateofbirth,
-            avatar = avatar
+            avatar = avatar,
+            accounts = accounts
         })
     end
 end)
+
+
+
+
+
+-- Assuming you have a resource for handling reports
+-- You need to add this event in your server-side script
+
+RegisterNetEvent('reportMessage')
+AddEventHandler('reportMessage', function(data)
+    local playerId = source
+    local reportedMessageId = data.messageId
+    -- Fetch additional details if needed
+    -- Send the report to Discord
+    local reportData = {
+        playerId = playerId,
+        messageId = reportedMessageId,
+        -- Add additional details as needed
+    }
+    SendReportToDiscord(reportData)
+end)
+
+function SendReportToDiscord(data)
+
+end
+
+
+
+
+
+
+
+local MySQL = exports.oxmysql
+
+MySQL:execute('CREATE TABLE IF NOT EXISTS rewards (player_id INT, obtained_date DATE)', {}, function()
+    print('Table rewards created or exists!')
+end)
+
+-- Function to check if a player has already obtained rewards for today
+function hasPlayerObtainedRewards(playerId, callback)
+    local today = os.date('%Y-%m-%d')
+    MySQL:execute('SELECT * FROM rewards WHERE player_id = ? AND obtained_date = ?', { playerId, today }, function(results)
+        local hasObtained = #results > 0
+        callback(hasObtained)
+    end)
+end
+
+-- Function to give rewards to a player and record it in the database
+function giveRewardsToPlayer(playerId, callback)
+    local today = os.date('%Y-%m-%d')
+    MySQL:execute('INSERT INTO rewards (player_id, obtained_date) VALUES (?, ?)', { playerId, today }, function()
+        print('successfully obtained your Daily-Reward')
+        -- Handle your reward logic here
+        callback(true) -- Indicate success
+    end, function(errorMsg)
+        print('Failed to execute database query:', errorMsg)
+        callback(false) -- Indicate failure
+    end)
+end
+
+
+
+-- Example server-side script
+RegisterServerEvent('claimReward')
+AddEventHandler('claimReward', function(playerId)
+    print('Received claimReward event for player ID:', playerId)
+    
+    hasPlayerObtainedRewards(playerId, function(hasObtained)
+        if not hasObtained then
+            giveRewardsToPlayer(playerId, function(success)
+                if success then
+                    print('Rewards given successfully for player ID:', playerId)
+                else
+                    print('Failed to give rewards for player ID:', playerId)
+                end
+            end)
+        else
+            print('Player has already obtained rewards today for player ID:', playerId)
+        end
+    end)
+end)
+

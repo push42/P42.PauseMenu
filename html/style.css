@@ -1,66 +1,67 @@
 /* Custom scrollbar styles */
-/* For Webkit browsers like Chrome/Safari */
+/* Webkit browsers like Chrome/Safari */
 ::-webkit-scrollbar {
-    width: 2px; /* Width of the scrollbar */
-}
-
-::-webkit-scrollbar-track {
-    background: #131313; /* Track color */
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(91,33,182,1); /* Handle color */
-    border-radius: 6px; /* Handle roundness */
-}
-
-/* For Hover state */
-::-webkit-scrollbar-thumb:hover {
-    background: #5a67d8; /* Handle color on hover */
-}
-
-/* For Firefox */
-/* Scrollbar styles */
-html {
-  scrollbar-width: thin; /* "auto" or "thin" */
-  scrollbar-color: rgba(91,33,182,1) #131313; /* thumb and track color */
-}
-
-
+    width: 2px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #131313;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(91, 33, 182, 1);
+    border-radius: 6px;
+  }
+  
+  /* Hover state */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5a67d8;
+  }
+  
+  /* Firefox */
+  /* Scrollbar styles */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(91, 33, 182, 1) #131313;
+  }
 
 
+
+
+/* Typography */
 .text-xss {
     font-size: 9px;
-}
+  }
 
 
 
-
+/* Emoji Picker */
 .emoji-picker {
-    width: auto; /* Adjust width as needed */
-    max-height: 75px; /* Adjust height for 2 rows, then scroll */
+    width: auto;
+    max-height: 75px;
     overflow-y: auto;
-}
-
-.emoji-grid {
+  }
+  
+  .emoji-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 emojis per row */
-    gap: 4px; /* Adjust gap between emojis */
-}
-
-.emoji-btn {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+  }
+  
+  .emoji-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem; /* Adjust emoji size */
-}
+    font-size: 1.5rem;
+  }
 
 /* Chatbox */
 .chatbox-panel {
-    max-height: 200px; /* Adjust based on your layout */
-    overflow: hidden; /* Prevents the panel itself from scrolling */
+    max-height: 200px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-}
+  }
 
 
 
@@ -74,8 +75,8 @@ html {
 /* Leaderboard Trophies */
 .fa-trophy {
     margin-right: 8px;
-    font-size: 0.65em; 
-}
+    font-size: 0.65em;
+  }
 
 
 
@@ -83,8 +84,7 @@ html {
 
 
 
-
-
+/* Panel Styles */
 .panel-heading {
     background: linear-gradient(90deg, rgb(32, 32, 32) -100%, rgb(31, 31, 31) 100%);
     padding: 2px 5px;
@@ -92,31 +92,34 @@ html {
     color: white;
     margin-bottom: 10px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.panel {
+  }
+  
+  .panel {
     border-radius: 10px;
     overflow: hidden;
     height: auto;
-}
+  }
 
 /* Additional Styles for the New Content */
+/* Headings */
 .content h3 {
     margin-bottom: 0.5rem;
 }
 
+/* Tags */
 .tag {
     display: inline-block;
     margin-bottom: 0.125rem;
 }
 
-/* Adjust the image style as necessary */
+/* Images */
 .content img {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
+/* Image Gallery */
 .image-gallery {
     display: flex;
     gap: 0.5rem; /* Adjust the gap between images */
@@ -163,10 +166,13 @@ html {
 
 
 
+
+/* News Item Styles */
 .content .news-item {
     width: 100%;
 }
 
+/* News Item Image */
 .news-item img {
     width: 100%; /* Full width */
     border-radius: 0.5rem; /* Rounded corners */
@@ -175,18 +181,20 @@ html {
     object-fit: cover; /* Ensure images cover the area */
 }
 
+/* News Item Title */
 .news-item h3 {
     color: white;
     font-size: 1rem; /* Adjust as needed */
     margin-bottom: 0.25rem; /* Space between title and description */
 }
 
-
+/* News Item Description */
 .news-item p {
     color: rgba(255, 255, 255, 0.75); /* Lighter text color for description */
     font-size: 0.875rem; /* Adjust as needed */
 }
 
+/* Read More Button */
 .read-more {
     background-color: rgba(129, 52, 175, 0.85); /* Button background color */
     color: white; /* Text color */
@@ -198,6 +206,7 @@ html {
     transition: background-color 0.3s ease; /* Transition for hover effect */
 }
 
+/* Hover effect for Read More Button */
 .read-more:hover {
     background-color: rgba(129, 52, 175, 1); /* Slightly darker on hover */
 }
@@ -220,35 +229,51 @@ html {
 
 
 
-/* Existing Styles */
 
 /* Navigation Menu Styling */
 .nav-menu {
-    background-color: rgba(10, 10, 10, 0.85); /* Translucent background */
+    background-color: #2f2f2f; /* Dark background */
     padding: 10px 0;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    border-top: 2px solid rgba(129, 52, 175, 0.6); /* Cool border at top */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    border-top: 2px solid #8127af; /* Purple border at the top */
+    display: flex;
+    justify-content: center; /* Center align items horizontally */
+    position: fixed; /* Fixed position for the menu */
+    bottom: 0; /* Stick it to the bottom */
+    width: 100%; /* Full width */
 }
 
+/* Navigation Menu Items */
 .nav-item {
-    padding: 10px 15px;
-    margin: 0 5px;
+    padding: 10px 20px; /* Increased padding for better spacing */
+    margin: 0 10px; /* Increased margin for better spacing */
     text-align: center;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 600; /* Bolder text */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Slightly increased letter spacing */
+    font-size: 14px; /* Slightly larger font size */
+    text-decoration: none; /* Remove underlines from links */
+    display: inline-block; /* Display as inline block */
+    line-height: 1.5; /* Improved line height */
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
+/* Default State for Navigation Menu Items */
+.nav-item {
+    background-color: transparent; /* Transparent background by default */
+    transform: translateY(0); /* No initial transform */
+}
+
+/* Hover Effect for Navigation Menu Items */
 .nav-item:hover {
-    background-color: rgba(129, 52, 175, 0.85);
-    color: white;
-    transform: translateY(-2px);
+    background-color: #8127af; /* Purple background on hover */
+    transform: translateY(-5px); /* Lift up on hover */
+    color: #ffffff; /* White text color on hover */
 }
-
-
-
 
 
 
@@ -272,6 +297,7 @@ html {
     cursor: pointer;
 }
 
+/* Hover Effect for Player Stats Badges */
 .player-stats .badge:hover {
     transform: scale(1.05); /* Slight zoom on hover */
     background-color: rgba(129, 52, 175, 0.85); /* Lighter background on hover */
@@ -289,6 +315,7 @@ html {
     transition: color 0.3s ease;
 }
 
+/* Hover Effect for Icons */
 .player-stat:hover i {
     color: #fff; /* White color on hover */
 }
@@ -305,25 +332,24 @@ html {
     animation: blinking 3s linear infinite;
 }
 
-
 /* Smaller screens (less than 768px width) */
 @media (max-width: 767px) {
     .player-stats {
-        flex-direction: column; /* stack badges vertically */
+        flex-direction: column; /* Stack badges vertically */
         align-items: center;
     }
 
     .player-stat.badge {
-        margin-bottom: 10px; /* add space between badges */
-        font-size: 0.9rem; /* adjust font size if needed */
+        margin-bottom: 10px; /* Add space between badges */
+        font-size: 0.9rem; /* Adjust font size if needed */
     }
 }
 
 /* Medium screens (between 768px and 1023px width) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .player-stat.badge {
-        padding: 3px 8px; /* adjust padding */
-        font-size: 0.95rem; /* adjust font size if needed */
+        padding: 3px 8px; /* Adjust padding */
+        font-size: 0.95rem; /* Adjust font size if needed */
     }
 }
 
@@ -355,8 +381,7 @@ html {
 
 
 
-
-
+/* Animated Line Under Online Players Heading */
 .online-players h3:after {
     content: '';
     display: block;
@@ -366,25 +391,30 @@ html {
     animation: animateLine 1.5s linear infinite;
 }
 
+/* Keyframes Animation for Line */
 @keyframes animateLine {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
 }
 
+/* Player Item Container */
 .player-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+/* Badge within Player Item */
 .player-item .badge {
     width: 10px;
     height: 10px;
 }
 
+/* Media Query for Smaller Screens (max-width: 768px) */
 @media (max-width: 768px) {
+    /* Adjust Grid Layout for Player List */
     #playerList {
-        grid-template-columns: 1fr; /* Adjust for smaller screens */
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
     }
 }
 
@@ -416,35 +446,39 @@ html {
 
 
 
-
+/* Panel Hover Effect for Custom Panels */
 .panel.custom:hover {
     background: #141414;
     transform: scale(1.05);
     border-radius: 12px;
 }
 
-
+/* Panel Content within .bg-zinc-900 with 2 Columns */
 .panel.bg-zinc-900 .grid-cols-2 > div {
-    font-family: 'Arial', sans-serif;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #cbd5e0; /* Lighter text color for better readability */
 }
 
+/* Compact Style for .bg-zinc-900 Panels */
 .panel.bg-zinc-900.compact {
     padding: 10px;
     margin: 5px;
     color: #cbd5e0; /* Lighter text color for better readability */
 }
 
+/* Large Feature Style for .bg-zinc-900 Panels */
 .panel.bg-zinc-900.large-feature {
     background: #2a4365;
     font-size: 16px;
     transition: transform 0.5s;
 }
 
+/* Hover Effect for Large Feature Panels */
 .panel.bg-zinc-900.large-feature:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Added box-shadow on hover */
 }
 
 
@@ -484,14 +518,37 @@ html {
 
 
 
+/* Leaderboard Panel */
 .leaderboard-panel {
     border: 2px solid #292828; /* Subtle border for depth */
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
 
+/* Common styles for leaderboard items */
+.leaderboard-panel ul li {
+    background: linear-gradient(to right, #222, #111);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    align-items: center;
+}
 
-/* GET SUPPORT */
+.leaderboard-panel ul li img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+/* Add any additional styles as needed */
+
+
+/* Get Support Panel */
 .get-support-panel {
     background-color: #2d3748; /* A darker shade for distinction */
     color: #e2e8f0; /* Lighter text for readability */
@@ -500,48 +557,68 @@ html {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
 
-
+/* Support Button */
 .support-button {
     background-color: #3182ce; /* A bright blue for the button */
     border: none;
     cursor: pointer;
+    padding: 10px 20px; /* Add padding for better button size */
+    border-radius: 8px; /* Slightly rounded button corners */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
 }
 
 .support-button:hover {
     background-color: #4299e1; /* Slightly lighter blue on hover */
+    transform: scale(1.05);
 }
 
-
-
-/* General panel styling */
-.panel, .get-support-panel, .tebex-shop-panel, .leaderboard-panel {
+/* General Panel Styling */
+.panel,
+.get-support-panel,
+.tebex-shop-panel,
+.leaderboard-panel {
     display: block; /* or 'flex' depending on your layout */
     background-color: #2d3748;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px; /* Space between panels */
     transition: transform 0.3s ease-in-out;
+    padding: 20px; /* Add padding for better content spacing */
 }
 
-/* Ensuring each panel can grow or shrink based on its content */
-.panel.custom, .get-support-panel {
+/* Ensure Each Panel Can Grow or Shrink Based on Its Content */
+.panel.custom,
+.get-support-panel {
     flex: 1 1 auto; /* Adjusts flex settings for flexible grow and shrink */
 }
 
-/* Hover effect to scale */
-.panel:hover, .get-support-panel:hover {
+/* Hover Effect to Scale Panels */
+.panel:hover,
+.get-support-panel:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
 }
 
-
-.tebex-shop-panel h2, .tebex-shop-panel p, .tebex-button {
+/* Tebex Shop Panel Styling */
+.tebex-shop-panel h2,
+.tebex-shop-panel p,
+.tebex-button {
     color: white; /* Or any color that contrasts well with your image */
     z-index: 1; /* Make sure it's above the background image */
+    font-weight: bold; /* Bold text */
 }
 
+/* Tebex Button Styling */
 .tebex-button {
     background-color: #48bb78;
-    /* Other button styles similar to support-button */
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .tebex-button:hover {
@@ -549,40 +626,52 @@ html {
     transform: scale(1.15);
 }
 
+/* Tebex Shop Panel Styling */
 .tebex-shop-panel {
-    position: relative; /* Needed for absolute positioning of child elements */
-    overflow: hidden; /* Ensures the image does not spill outside the rounded corners */
-    border: 2px solid #4a6859; /* Subtle border for depth */
-    /* Other styles remain unchanged */
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #4a6859;
+    background-color: #2d3748;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 15px;
 }
 
+/* Tebex Shop Background Image */
 .tebex-shop-bg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Ensure it covers the full width */
-    height: 100%; /* Ensure it covers the full height */
-    object-fit: cover; /* This ensures the image covers the area without distortion */
-    border-radius: 12px; /* To match the panel's border radius */
-    z-index: -1; /* Ensures the image stays in the background */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    z-index: -1;
     opacity: 0.15;
 }
 
-
+/* Tebex Custom Button */
 .tebex-custom-button {
     background-image: url('https://i.ibb.co/HzTJSN7/casssh.png');
-    background-size: contain; /* Scales the image to fit inside the button */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image within the button */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border: none;
     color: transparent;
     width: 150px;
     height: 75px;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
+.tebex-custom-button:hover {
+    transform: scale(1.05);
+}
+
+/* Donate Text Styling */
 .donate-text {
-    font-size: 10px;
+    font-size: 12px; /* Adjusted font size for better readability */
     color: #cbd5e0;
 }
 
@@ -598,55 +687,64 @@ html {
 
 
 
-
-
+/* Clock Container Styling */
 .clock-container {
-    background-color: #1d1d1d; /* Dark background */
-    padding: 5px 10px;
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    color: #e2e8f0; /* Light text color */
+    background-color: #1d1d1d;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #e2e8f0;
+    font-size: 16px;
 }
 
-
-
-
-
-
-
-
-
-
+/* Modal Container Animation */
 #modal-container {
     animation: fadeIn 0.3s;
 }
 
+/* Keyframes Animation for Modal Fade In */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-#close-modal-btn:hover, #form-submit-btn:hover {
+/* Hover Effect for Close Modal Button and Form Submit Button */
+#close-modal-btn:hover,
+#form-submit-btn:hover {
     transform: scale(1.05);
 }
 
-input:focus, select:focus, textarea:focus {
-    box-shadow: 0 0 0 2px rgba(128, 90, 213, 0.5); /* Purple glow */
+/* Focus Styles for Input, Select, and Textarea */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #805AD5; /* Purple border */
+    transition: border-color 0.3s ease;
 }
 
-
-
-
-
+/* Reports Element Styling */
 .reports {
-    width: 90px;
+    width: 80px;
+    height: 30px;
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 14px;
 }
 
+/* Hover Effect for Reports Element */
 .reports:hover {
     width: 90px;
-    transform: scale(1.05); /* Slight zoom on hover */
-    background: rgb(17, 17, 17);
-    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #111;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -665,65 +763,79 @@ input:focus, select:focus, textarea:focus {
 
 
 
-
+/* Calendar Row Styling */
 .calendar-row {
     overflow-x: auto;
-    overflow-y: hidden; /* Change to hidden if vertical scrolling is not needed */
+    overflow-y: hidden;
 }
 
+/* Custom Scrollbar Styles for Calendar Row */
 .calendar-row::-webkit-scrollbar {
-    width: 3px; /* Adjust the width of the scrollbar specifically for .calendar-row */
-    height: 3px;
+    width: 5px;
+    height: 5px;
 }
 
 .calendar-row::-webkit-scrollbar-track {
-    background: #131313; /* Custom track color for .calendar-row */
+    background: #131313;
 }
 
 .calendar-row::-webkit-scrollbar-thumb {
-    background-color: rgba(91,33,182,1); /* Custom handle color for .calendar-row */
+    background-color: rgba(91, 33, 182, 1);
     border-radius: 6px;
 }
 
 .calendar-row::-webkit-scrollbar-thumb:hover {
-    background: #5a67d8; /* Custom handle color on hover for .calendar-row */
+    background: #5a67d8;
 }
 
-
+/* Calendar Door Base Styles */
 .calender-door {
-    /* Base styles for all calendar doors */
     transition: transform 0.3s ease;
 }
 
+/* Style for Opened Doors */
 .calender-door.opened {
-    /* Style for opened doors */
     filter: grayscale(100%);
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
+/* Style for Obtainable Doors */
 .calender-door.obtainable {
-    /* Style for the obtainable door */
-    box-shadow: 0 0 15px rgba(91,33,182,0.7); /* Adjust color and glow as needed */
+    box-shadow: 0 0 10px rgba(91, 33, 182, 0.7);
 }
 
+/* Style for Locked Doors */
 .calender-door.locked {
-    /* Style for locked doors */
     background-color: #020202;
-    box-shadow: 0 0 15px rgba(22, 22, 22, 0.7);
-    opacity: 0.5;
+    box-shadow: 0 0 10px rgba(22, 22, 22, 0.7);
+    opacity: 0.4;
 }
 
+/* Lock Icon Styling */
 .lock-icon {
-    /* Custom styles for lock icon */
-    z-index: 10; /* Ensure it's above other elements */
+    z-index: 1;
 }
 
+/* Open Icon Styling */
 .open-icon {
-    /* Custom styles for lock icon */
-    z-index: 10; /* Ensure it's above other elements */
+    z-index: 1;
 }
 
 
+
+.text-gold {
+    color: gold;
+}
+
+.text-silver {
+    color: silver;
+}
+
+.text-bronze {
+    color: #cd7f32;
+}
+
+/* Add any additional styles as needed */
 
 
 
