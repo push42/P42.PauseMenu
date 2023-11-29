@@ -1,3 +1,50 @@
+
+@font-face {
+    font-family: 'gg sans Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('gg sans Bold'), url('./fonts/gg\ sans\ Bold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'gg sans Normal Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('gg sans Normal Regular'), url('./fonts/gg\ sans\ Regular.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'gg sans Medium Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('gg sans Medium Regular'), url('./fonts/gg\ sans\ Medium.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'gg sans SemiBold Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('gg sans SemiBold Regular'), url('./fonts/gg\ sans\ Semibold.woff') format('woff');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Custom scrollbar styles */
 /* Webkit browsers like Chrome/Safari */
 ::-webkit-scrollbar {
@@ -58,7 +105,7 @@
 
 /* Chatbox */
 .chatbox-panel {
-    max-height: 200px;
+    max-height: 190px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -87,7 +134,7 @@
 
 /* Panel Styles */
 .panel-heading {
-    background: linear-gradient(90deg, rgb(32, 32, 32) -100%, rgb(31, 31, 31) 100%);
+    background: linear-gradient(90deg, #242424 -49%, #1a1a1a 99.9%);
     padding: 2px 5px;
     border-radius: 5px;
     color: white;
@@ -507,21 +554,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* Leaderboard Panel */
 .leaderboard-panel {
-    border: 2px solid #292828; /* Subtle border for depth */
+    border: 2px solid #776b49;
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -580,7 +615,7 @@
 .tebex-shop-panel,
 .leaderboard-panel {
     display: block; /* or 'flex' depending on your layout */
-    background-color: #2d3748;
+    background-color: #1b1b1b;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px; /* Space between panels */
@@ -1029,3 +1064,5 @@ textarea:focus {
 #slide-notification-reward-locked.hide {
     transform: translateX(100%); /* Hides the notification off the screen */
 }
+
+

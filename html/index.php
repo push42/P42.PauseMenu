@@ -8,24 +8,24 @@
     <script src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
     <title>Pause-Menu by Push.42</title>
 </head>
 
 
-<div class="fixed left-12 top-4">
-    <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
-    <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
-    <div class="text-center text-sm font-sans text-purple-300 mt-20 mb-2">Usersettings</div>
-    <button id="updateAvatar" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1">
-        <i class="fa-regular fa-image text-purple-400 mr-2 text-xs"></i>Choose Avatar
-    </button>
-    <button id="reportPanel" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1 mt-8" onclick="openModal()">
-        <i class="fa-solid fa-ban text-purple-400 mr-2 text-xs"></i>Report Panel
-    </button>
-</div>
-
 
 <body class="container mx-auto bg-zinc-950 bg-opacity-95 text-gray-200 font-sans m-0 relative">
+    <div class="fixed left-12 top-4">
+        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
+        <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
+        <div class="text-center text-sm font-sans text-purple-300 mb-2">Usersettings</div>
+        <button id="updateAvatar" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1">
+            <i class="fa-regular fa-image text-purple-400 mr-2 text-xs"></i>Choose Avatar
+        </button>
+        <button id="reportPanel" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1 mt-8" onclick="openModal()">
+            <i class="fa-solid fa-ban text-purple-400 mr-2 text-xs"></i>Report Panel
+        </button>
+    </div>
     <!-- Avatar Update Panel -->
     <div id="avatarUpdatePanel" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
         <div class="bg-zinc-900 p-4 rounded-lg shadow-lg w-1/3">
@@ -317,9 +317,9 @@
                         var accountsData = JSON.parse(data.accounts);
 
                         // Update HTML elements with the player's data
-                        document.getElementById('bankDetail').textContent = accountsData.bank ? '$' + accountsData.bank.toLocaleString() : 'Not available';
-                        document.getElementById('moneyDetail').textContent = accountsData.money ? '$' + accountsData.money.toLocaleString() : 'Not available';
-                        document.getElementById('blackMoneyDetail').textContent = accountsData.black_money ? '$' + accountsData.black_money.toLocaleString() : 'Not available';
+                        document.getElementById('bankDetail').textContent = accountsData.bank ? '$' + accountsData.bank.toLocaleString() : 'N/A';
+                        document.getElementById('moneyDetail').textContent = accountsData.money ? '$' + accountsData.money.toLocaleString() : 'N/A';
+                        document.getElementById('blackMoneyDetail').textContent = accountsData.black_money ? '$' + accountsData.black_money.toLocaleString() : 'N/A';
 
                     }
                 });
@@ -566,6 +566,12 @@
             document.getElementById('closeSupportPanel').addEventListener('click', closeLiveSupportModal);
         </script>
 
+        <!-- Discord Server Widget -->
+        <div id="discord-widget" class="discord-widget">
+            <div id="server-name" class="server-name"></div>
+            <div id="members" class="members"></div>
+        </div>
+            
 
         <!-- Notify Modals -->
         <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center">
@@ -582,7 +588,7 @@
 
 
         <div id="slide-notification-reward-locked" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
-            <audio class="hidden" id="notification-sound-reward-locked" src="./assets/error.wav" controls></audio>
+            <audio class="hidden" id="notification-sound-reward-locked" src="./assets/locked.wav" controls></audio>
             <div class="flex">
                 <div class="mr-2">
                     <img src="./assets/a_lock.gif" alt="Image Alt Text" width="40" height="40">
@@ -596,6 +602,7 @@
         </div>
 
         <div id="slide-notification-reward" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
+        <audio id="notification-sound" src="./assets/reward.mp3" preload="auto"></audio>
             <audio class="hidden" id="notification-sound-reward" src="./assets/reward.mp3" controls></audio>
             <div class="flex">
                 <div class="mr-2">
@@ -643,13 +650,13 @@
             document.getElementById('slide-notification-message-reward').innerText = message;
             document.getElementById('slide-notification-message-two-reward').innerText = messagetwo;
 
-            // Play the notification sound
-            var audio = document.getElementById('notification-sound-reward');
-            audio.play();
 
             var slideNotificationReward = document.getElementById('slide-notification-reward');
             slideNotificationReward.classList.remove('hidden', 'hide');
             slideNotificationReward.classList.add('show');
+
+            var NotificationRewardSound = document.getElementById('notification-sound-reward');
+            NotificationRewardSound.play();
 
             setTimeout(() => {
                 slideNotificationReward.classList.remove('show');
@@ -663,9 +670,9 @@
             document.getElementById('slide-notification-message-reward-locked').innerText = message;
             document.getElementById('slide-notification-message-two-reward-locked').innerText = messagetwo;
 
-            // Play the notification sound
-            var audio = document.getElementById('notification-sound-reward-locked');
-            audio.play();
+
+            var NotificationRewardSoundLocked = document.getElementById('notification-sound-reward-locked');
+            NotificationRewardSoundLocked.play();
 
             var slideNotificationRewardLocked = document.getElementById('slide-notification-reward-locked');
             slideNotificationRewardLocked.classList.remove('hidden', 'hide');
@@ -685,7 +692,7 @@
         <div class="leaderboard-panel bg-zinc-900 bg-opacity-90 p-4 rounded-xl shadow-xl overflow-y-auto max-h-64">
             <h2 class="text-lg font-semibold text-white mb-4">
                 <i class="fa-solid fa-trophy mr-2 text-yellow-400"></i>
-                Leaderboard<span class="text-xs font-thin ml-4 text-gray-400">Top 10 players by playtime</span>
+                Leaderboard<span class="text-xs font-medium ml-4 text-gray-400">Top 10 players by playtime</span>
             </h2>
             <ul class="space-y-2">
                 <!-- Leaderboard Item -->
@@ -764,7 +771,20 @@ window.addEventListener('message', function (event) {
         </button>
     </div>
 </div>
+<script>
+function openModal() {
+    document.getElementById('modal-container').classList.remove('hidden');
+    document.querySelector('body').classList.add('modal-open');
+}
 
+function closeModal() {
+    document.getElementById('modal-container').classList.add('hidden');
+    document.querySelector('body').classList.remove('modal-open');
+}
+
+// Event listener for the close button
+document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+</script>
 
 
 
@@ -839,23 +859,6 @@ window.addEventListener('message', function (event) {
 
 
 
-
-
-
-<script>
-function openModal() {
-    document.getElementById('modal-container').classList.remove('hidden');
-    document.querySelector('body').classList.add('modal-open');
-}
-
-function closeModal() {
-    document.getElementById('modal-container').classList.add('hidden');
-    document.querySelector('body').classList.remove('modal-open');
-}
-
-// Event listener for the close button
-document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-</script>
 
 
 <!-- Chatbox Panel -->
@@ -957,7 +960,7 @@ window.addEventListener('message', function(event) {
         var chatBox = document.querySelector('.chat-messages');
         var newMessage = document.createElement('div');
 
-        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span> <button class="report-btn text-red-500 text-xs" data-message-id="${item.id}"><i class="fa-solid fa-ban"></i></button>`;
+        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span>`;
         chatBox.appendChild(newMessage);
 
         // Scroll to the bottom of the chat box when a new message is added
@@ -1013,6 +1016,8 @@ function sendReportToServer(messageId) {
 
         </div>
     </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>

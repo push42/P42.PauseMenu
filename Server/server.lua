@@ -17,23 +17,12 @@ AddEventHandler('updateAvatar', function(url)
     -- Validate URL (basic check)
     if string.match(url, "^(https?://[%w-_%.%?%.:/%+=&]+)$") then
         -- Update avatar in database
-        MySQL.Async.execute('UPDATE users SET avatar = @avatar WHERE identifier = @identifier', {
-            ['@avatar'] = url,
-            ['@identifier'] = identifier
-        }, function(affectedRows)
-            if affectedRows > 0 then
-                print("Avatar updated for player: " .. identifier)
-
-                -- Fetch the updated avatar and send it to the client
-                MySQL.Async.fetchScalar('SELECT avatar FROM users WHERE identifier = @identifier', {
-                    ['@identifier'] = identifier
-                }, function(avatar)
-                    if avatar then
-                        print("Sending updated avatar to client for " .. identifier .. ": " .. avatar) -- Additional debug print
-                        TriggerClientEvent('updateUserAvatar', xPlayer.source, avatar)
-                    end
-                end)
-
+        oxmysql:execute('UPDATE users SET avatar = ? WHERE identifier = ?; SELECT avatar FROM users WHERE identifier = ?', 
+                        {url, identifier, identifier}, 
+                        function(result)
+            if result and #result > 0 then
+                local updatedAvatar = result[1].avatar
+                TriggerClientEvent('updateUserAvatar', xPlayer.source, updatedAvatar)  -- Ensure to use 'updatedAvatar' here
             else
                 print("Failed to update avatar for player: " .. identifier)
             end
@@ -316,77 +305,33 @@ AddEventHandler('get:playerInfo', function()
 
     if xPlayer then
         local job = xPlayer.getJob()
-        local firstname, lastname, height, sex
 
-        -- Fetching data from the user's identity (assuming you have 'esx_identity' or similar module)
-        MySQL.Async.fetchScalar('SELECT firstname FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbFirstname)
-            firstname = dbFirstname
+        -- Fetch all user data in one query
+        MySQL.Async.fetchAll('SELECT firstname, lastname, height, sex, dateofbirth, avatar, accounts, `group` FROM users WHERE identifier = @identifier', 
+            {['@identifier'] = xPlayer.identifier}, 
+            function(result)
+                if result[1] then
+                    local playerData = result[1]
+                    -- Send data to client
+                    TriggerClientEvent('set:playerInfo', _source, {
+                        job = job.name,
+                        grade = job.grade_label,
+                        firstname = playerData.firstname,
+                        lastname = playerData.lastname,
+                        height = playerData.height,
+                        sex = playerData.sex,
+                        dateofbirth = playerData.dateofbirth,
+                        avatar = playerData.avatar,
+                        accounts = playerData.accounts,
+                        group = playerData.group
+                    })
+                end
         end)
-
-        MySQL.Async.fetchScalar('SELECT lastname FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbLastname)
-            lastname = dbLastname
-        end)
-
-        MySQL.Async.fetchScalar('SELECT height FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbHeight)
-            height = dbHeight
-        end)
-
-        MySQL.Async.fetchScalar('SELECT sex FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbSex)
-            sex = dbSex
-        end)
-
-        MySQL.Async.fetchScalar('SELECT dateofbirth FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbDateofbirth)
-            dateofbirth = dbDateofbirth
-        end)
-
-        MySQL.Async.fetchScalar('SELECT avatar FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbAvatar)
-            avatar = dbAvatar
-        end)
-
-        MySQL.Async.fetchScalar('SELECT accounts FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbAccounts)
-            accounts = dbAccounts
-        end)
-
-        MySQL.Async.fetchScalar('SELECT `group` FROM users WHERE identifier = @identifier', {
-            ['@identifier'] = xPlayer.identifier
-        }, function(dbGroups)
-            group = dbGroups
-        end)
-
-
-        -- Wait for all data to be fetched
-        while firstname == nil or lastname == nil or height == nil or sex == nil or dateofbirth == nil or avatar == nil or accounts == nil or group == nil do
-            Wait(100)
-        end
-
-        -- Send data to client
-        TriggerClientEvent('set:playerInfo', _source, {
-            job = job.name,
-            grade = job.grade_label,
-            firstname = firstname,
-            lastname = lastname,
-            height = height,
-            sex = sex,
-            dateofbirth = dateofbirth,
-            avatar = avatar,
-            accounts = accounts,
-            group = group
-        })
     end
 end)
+
+
+
+
 
 

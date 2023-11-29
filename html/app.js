@@ -66,38 +66,42 @@ $(function(){
     $('#ig').click(function(){
       window.invokeNative('openUrl', 'https://www.instagram.com/inferno__roleplay/')
     })
-    $('#form-submit-btn').click(function(){
-      if ($('#fname').val() === '' || $('#fname').val() === '' || $('#lname').val() === '' || $('#reporttype').val() === '' || $('#subject').val() === '' || $('#description').val() === '') {
-          $('.form-container').fadeOut(250); 
-          $('#form-alert-container').fadeIn(250); 
-      } else {
-      var fname = $('#fname').val()
-      var lname = $('#lname').val()
-      var reporttype = $('#reporttype').val()
-      var subject = $('#subject').val()
-      var description = $('#description').val()
-      $.post('https://PauseMenu/NewReport', JSON.stringify({
-          fname: fname,
-          lname: lname,
-          reporttype: reporttype,
-          subject: subject,
-          description: description,
-      }));
-      ClearForm();
-      $('#reports-container').fadeOut();
-      }   
-  });
-  $('.form-failed-btn').click(function(){
-      $('#form-alert-container').fadeOut(250); 
-      $('.form-container').fadeIn(250);   
-  });
-  function ClearForm() {
-    $('#fname').val('');
-    $('#lname').val('');
-      $('#reporttype').val('');
-      $('#subject').val('');
-      $('#description').val('');
-  }
+    $(document).ready(function() {
+      $('#form-submit-btn').click(function(event){
+          event.preventDefault();
+          if ($('#fname').val() === '' || $('#lname').val() === '' || $('#reporttype').val() === '' || $('#subject').val() === '' || $('#description').val() === '') {
+              $('#form-alert-container').fadeIn(250); 
+          } else {
+              var fname = $('#fname').val();
+              var lname = $('#lname').val();
+              var reporttype = $('#reporttype').val();
+              var subject = $('#subject').val();
+              var description = $('#description').val();
+              $.post('https://PauseMenu/NewReport', JSON.stringify({
+                  fname: fname,
+                  lname: lname,
+                  reporttype: reporttype,
+                  subject: subject,
+                  description: description,
+              }));
+              ClearForm();
+              // Consider if you really want to fade out '#reports-container'
+          }   
+      });
+  
+      $('.form-failed-btn').click(function(){
+          $('#form-alert-container').fadeOut(250); 
+          $('.form-container').fadeIn(250);   
+      });
+  
+      function ClearForm() {
+          $('#fname').val('');
+          $('#lname').val('');
+          $('#reporttype').val('');
+          $('#subject').val('');
+          $('#description').val('');
+      }
+  })
 })
 
 function CloseAll(){

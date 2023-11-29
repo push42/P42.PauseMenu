@@ -4,10 +4,10 @@ Config = {}
 Config.TimerSettings = {
 
     PlayTime = {
-        TimeToAddPoints = 6000, -- how often the player should get points added // in ms means == (60000 = 1 minute)
+        TimeToAddPoints = 60000, -- how often the player should get points added // in ms means == (60000 = 1 minute)
         AddPointsToScore = 1, -- how many points the player should get
-        FetchLeaderboard = 6000, -- how often the Leaderboard should get refreshed // in ms means == (60000 = 1 minute)
-        FetchOnlinePlayers = 6000
+        FetchLeaderboard = 60000, -- how often the Leaderboard should get refreshed // in ms means == (60000 = 1 minute)
+        FetchOnlinePlayers = 60000
     }
     
 }

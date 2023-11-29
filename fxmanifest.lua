@@ -38,7 +38,10 @@ files {
  'html/assets/*.jpeg',
  'html/assets/*.webp',
  'html/assets/*.gif',
- 'html/assets/*.jpg'
+ 'html/assets/*.jpg',
+ 'html/assets/*.wav',
+ 'html/assets/*.mp3',
+ 'html/assets/*.mp4'
 } 
 
 -- ESX Dependency
