@@ -84,7 +84,7 @@
         });
     </script>    
     <!-- Navigation Menu at Bottom -->
-    <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg">
+    <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg z-40">
         <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
             <i class="fa-solid fa-play text-xl"></i>
             <span class="font-semibold">Resume</span>
@@ -176,7 +176,7 @@
                 <span class="stat-value text-xs">No User found</span>
             </div>
             <!-- Player Ping -->
-            <div id="playerPing" class="player-stat badge">
+            <div id="playerPing" class="player-stat badge" onclick="clickOnPing()">
                 <i class="fa-solid fa-signal text-purple-400"></i>
                 <span class="stat-value text-xs">-- ms</span>
             </div>
@@ -211,6 +211,15 @@
                 <div class="info">
                     <p class="info-title font-semibold">Job:</p>
                     <p id="jobNameDetail" class="info-value">Not available</p>
+                </div>
+            </div>
+
+            <!-- Rank Info -->
+            <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
+                <i class="fa-solid fa-briefcase"></i> <!-- Rank Icon -->
+                <div class="info">
+                    <p class="info-title font-semibold">Rank:</p>
+                    <p id="groupDetail" class="info-value">Not available</p>
                 </div>
             </div>
 
@@ -295,6 +304,7 @@
                         document.getElementById('jobNameDetail').textContent = data.job ? data.job : 'Not available';
                         document.getElementById('jobGradeDetail').textContent = data.grade ? data.grade : 'Not available';
                         document.getElementById('heightDetail').textContent = data.height ? data.height : 'Not available';
+                        document.getElementById('groupDetail').textContent = data.group ? data.group : 'Not available';
 
                         // Convert 'm' or 'f' to 'Male' or 'Female'
                         var sexText = data.sex === 'm' ? 'Male' : (data.sex === 'f' ? 'Female' : 'Not available');
@@ -401,7 +411,7 @@
                 </div>
                 <img src="./assets/tebex_shop.jpg" alt="Tebex Shop" class="rounded-full w-10 h-10">
             </div>            
-            <p class="text-sm text-gray-300 mt-4">
+            <p class="text-sm text-white mt-4">
                 Check out exclusive items and special offers available in our Tebex Shop. Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
             <ul class="grid w-full gap-2 md:grid-cols-1 absolute bottom-0 right-0">
@@ -436,9 +446,9 @@
         </button>
         <!-- Ticket Sidebar -->
         <aside class="support-sidebar bg-zinc-900 p-6 w-full lg:w-1/3">
-            <h2 class="support-title text-3xl font-bold text-white mb-6"><i class="fa-solid fa-ticket text-purple-400 mr-2"></i>Ticket Panel</h2>
+            <h2 class="support-title text-3xl font-bold text-white mb-6"><i class="fa-solid fa-ticket text-purple-400 mr-4"></i>Ticket Panel</h2>
             <!-- Create a Ticket - button -->
-            <button id="" class="create-support-ticket absolute text-gray-300 hover:text-white focus:outline-none font-bold text-lm">
+            <button id="createTicketBtn" class="create-support-ticket mb-4 text-gray-300 hover:text-white focus:outline-none font-bold text-lm">
                 <i class="fa-solid fa-plus text-purple-400 mr-2"></i>Create a Ticket
             </button>
             <ul class="support-ticket-list space-y-2">
@@ -481,6 +491,7 @@
 
 
 
+
         <div class="get-support-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
             <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
@@ -489,7 +500,7 @@
                 </h2>
                 <img src="./assets/discord_logo.webp" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
-            <p class="text-sm text-gray-100 mt-4">
+            <p class="text-sm text-white mt-4">
                 Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
             </p>
             <button type="button" id="openLiveSupport" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
@@ -517,11 +528,32 @@
                 showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
             }
 
+            function clickOnPing() {
+                showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
+            }
+
+            function obtainedDailyReward() {
+                showSlideNotificationReward("Daily Reward", `You successfully received your daily reward!`, `REWARD OBTAINED`);
+            }
+
+            function lockedDailyReward() {
+                showSlideNotificationRewardLocked("Daily Reward", `Sorry! You did not login at this day!`, `REWARD LOCKED`);
+            }
+
+            function unlockDailyReward() {
+                showSlideNotificationRewardLocked("Daily Reward", `Reward not ready yet, come back tomorrow!`, `REWARD LOCKED`);
+            }
+
             // Function to open the Live Support modal and hide the overlay
             function openLiveSupportModal() {
                 document.getElementById('supportModal').classList.remove('hidden');
                 document.getElementById('supportOverlay').classList.add('hidden');
             }
+
+            document.querySelector('.support-send-btn').addEventListener('click', function() {
+                var message = document.querySelector('.support-input-field').value;
+                // Send this message to the server for the currently selected ticket
+            });
 
             // Function to close the Live Support modal and show the overlay
             function closeLiveSupportModal() {
@@ -535,21 +567,116 @@
         </script>
 
 
-
-        <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
-            <div class="bg-zinc-900 rounded-lg shadow-xl p-6 w-full max-w-md">
+        <!-- Notify Modals -->
+        <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 id="notification-title" class="text-xl font-semibold text-white">Notification Title</h2>
-                    <button onclick="closeNotificationModal()" class="text-gray-300 hover:text-gray-800">
+                    <h2 id="notification-title" class="text-xl font-semibold text-gray-800">Notification Title</h2>
+                    <button onclick="closeNotificationModal()" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <p id="notification-message" class="text-gray-300 mb-6">Your notification message goes here.</p>
-                <button onclick="closeNotificationModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    OK
-                </button>
+                <p id="notification-message" class="text-gray-700 mb-6">Your notification message goes here.</p>
             </div>
         </div>
+
+
+        <div id="slide-notification-reward-locked" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
+            <audio class="hidden" id="notification-sound-reward-locked" src="./assets/error.wav" controls></audio>
+            <div class="flex">
+                <div class="mr-2">
+                    <img src="./assets/a_lock.gif" alt="Image Alt Text" width="40" height="40">
+                </div>
+                <div>
+                    <h2 id="slide-notification-title-reward-locked" class="text-lg font-bold text-gray-200 uppercase">Notification Title</h2>
+                    <p id="slide-notification-message-reward-locked" class="text-gray-300 font-medium mt-2">Your notification message goes here.</p>
+                    <p id="slide-notification-message-two-reward-locked" class="text-xs font-sans font-bold text-purple-300 absolute right-2 top-2">DSC.GG/YOURSERVER</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide-notification-reward" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
+            <audio class="hidden" id="notification-sound-reward" src="./assets/reward.mp3" controls></audio>
+            <div class="flex">
+                <div class="mr-2">
+                    <img src="./assets/door_badge.webp" alt="Image Alt Text" width="40" height="40">
+                </div>
+                <div>
+                    <h2 id="slide-notification-title-reward" class="text-lg font-bold text-gray-200 uppercase">Notification Title</h2>
+                    <p id="slide-notification-message-reward" class="text-gray-300 font-medium mt-2">Your notification message goes here.</p>
+                    <p id="slide-notification-message-two-reward" class="text-xs font-sans font-bold text-purple-300 absolute right-2 top-2">DSC.GG/YOURSERVER</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide-notification" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
+            <div class="flex">
+                <div class="mr-2">
+                    <img src="./assets/lag.gif" alt="Image Alt Text" width="40" height="40">
+                </div>
+                <div>
+                    <h2 id="slide-notification-title" class="text-lg font-bold text-gray-200 uppercase">Notification Title</h2>
+                    <p id="slide-notification-message" class="text-gray-300 font-medium mt-2">Your notification message goes here.</p>
+                    <p id="slide-notification-message-two" class="text-xs font-sans font-bold text-purple-300 absolute right-2 top-2">DSC.GG/YOURSERVER</p>
+                </div>
+            </div>
+        </div>
+        <script>
+        function showSlideNotification(title, message, messagetwo) {
+            document.getElementById('slide-notification-title').innerText = title;
+            document.getElementById('slide-notification-message').innerText = message;
+            document.getElementById('slide-notification-message-two').innerText = messagetwo;
+
+            var slideNotification = document.getElementById('slide-notification');
+            slideNotification.classList.remove('hidden', 'hide');
+            slideNotification.classList.add('show');
+
+            setTimeout(() => {
+                slideNotification.classList.remove('show');
+                slideNotification.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // Notify for Reward obtained
+        function showSlideNotificationReward(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-reward').innerText = title;
+            document.getElementById('slide-notification-message-reward').innerText = message;
+            document.getElementById('slide-notification-message-two-reward').innerText = messagetwo;
+
+            // Play the notification sound
+            var audio = document.getElementById('notification-sound-reward');
+            audio.play();
+
+            var slideNotificationReward = document.getElementById('slide-notification-reward');
+            slideNotificationReward.classList.remove('hidden', 'hide');
+            slideNotificationReward.classList.add('show');
+
+            setTimeout(() => {
+                slideNotificationReward.classList.remove('show');
+                slideNotificationReward.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // Notify for Reward locked
+        function showSlideNotificationRewardLocked(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-reward-locked').innerText = title;
+            document.getElementById('slide-notification-message-reward-locked').innerText = message;
+            document.getElementById('slide-notification-message-two-reward-locked').innerText = messagetwo;
+
+            // Play the notification sound
+            var audio = document.getElementById('notification-sound-reward-locked');
+            audio.play();
+
+            var slideNotificationRewardLocked = document.getElementById('slide-notification-reward-locked');
+            slideNotificationRewardLocked.classList.remove('hidden', 'hide');
+            slideNotificationRewardLocked.classList.add('show');
+
+            setTimeout(() => {
+                slideNotificationRewardLocked.classList.remove('show');
+                slideNotificationRewardLocked.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+        </script>
 
 
 
@@ -600,7 +727,6 @@ window.addEventListener('message', function (event) {
         });
     }
 });
-
 </script>
 
 
@@ -609,7 +735,7 @@ window.addEventListener('message', function (event) {
     <!-- Modal Content -->
     <div class="relative top-0 mx-auto p-7 border-2 w-full md:w-1/2 lg:w-1/3 shadow-xl rounded-lg bg-zinc-900 space-y-4">
         <!-- Form Title -->
-        <h2 class="text-2xl font-semibold text-white uppercase"><i class="fa-solid fa-user-large-slash text-purple-300 mr-2"></i>Report a Player</h2>
+        <h2 class="text-2xl font-semibold text-white uppercase"><i class="fa-solid fa-user-large-slash text-purple-300 mr-2"></i>Send a Report</h2>
 
         <!-- Form Container -->
         <div class="form-container space-y-3">
@@ -687,12 +813,20 @@ window.addEventListener('message', function (event) {
       dayPanel.addEventListener('click', () => {
         console.log('Clicked on the current day.'); // Add this line
         // Code to open the panel and give rewards
-
+        obtainedDailyReward();
         dayPanel.classList.remove('obtainable');
         dayPanel.classList.add('opened');
       });
     } else if (dayNumber < currentDay) {
       dayPanel.classList.add('locked');
+      dayPanel.addEventListener('click', () => {
+        lockedDailyReward();
+      });
+    } else {
+        dayPanel.classList.add('opened');
+        dayPanel.addEventListener('click', () => {
+            lockedDailyReward();
+      });
     }
     
     dayContent.appendChild(dayImage);

@@ -4,6 +4,9 @@ module.exports = {
   content: [
   "./html/*.{html,js,php}",
   "./html/**/*.{html,js,php}",
+  "./html/components/*.{html,js,php}",
+  "./html/components/**.{html,js,php}",
+  "./html/components/**/*.{html,js,php}",
 ],
   theme: {
     extend: {},

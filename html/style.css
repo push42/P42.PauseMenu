@@ -31,6 +31,7 @@
 /* Typography */
 .text-xss {
     font-size: 9px;
+    font-family: sans-serif;
   }
 
 
@@ -606,7 +607,6 @@
 .tebex-button {
     color: white; /* Or any color that contrasts well with your image */
     z-index: 1; /* Make sure it's above the background image */
-    font-weight: bold; /* Bold text */
 }
 
 /* Tebex Button Styling */
@@ -795,8 +795,9 @@ textarea:focus {
 
 /* Style for Opened Doors */
 .calender-door.opened {
-    filter: grayscale(100%);
-    opacity: 0.7;
+    background-color: #020202;
+    box-shadow: 0 0 10px rgba(22, 22, 22, 0.7);
+    opacity: 0.4;
 }
 
 /* Style for Obtainable Doors */
@@ -806,9 +807,8 @@ textarea:focus {
 
 /* Style for Locked Doors */
 .calender-door.locked {
-    background-color: #020202;
-    box-shadow: 0 0 10px rgba(22, 22, 22, 0.7);
-    opacity: 0.4;
+    filter: grayscale(100%);
+    opacity: 0.7;
 }
 
 /* Lock Icon Styling */
@@ -890,8 +890,10 @@ textarea:focus {
 }
 
 .support-ticket:hover {
-    background-color: #333; /* Darker hover effect */
+    background-color: #b9b9b9; /* Darker hover effect */
     border-radius: 50px;
+    margin-left: 5px;
+    color: #020202;
 }
 
 
@@ -906,11 +908,12 @@ textarea:focus {
     border-radius: 8px; /* Rounded corners */
 }
 
-.create-support-ticket{
-    top: 32%;
-    left: 33%;
-
+.create-support-ticket {
+    border: #5a67d8;
+    border-radius: 55%;
+    border-width: 2px;
 }
+
 /* Input Area Styles */
 .support-input-field {
     border: 1px solid #666; /* Dark border */
@@ -929,4 +932,100 @@ textarea:focus {
     .support-sidebar, .support-chat {
         width: 100%;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#notification {
+    display: none; /* Hidden by default */
+    position: fixed; /* Positioned relative to the viewport */
+    bottom: 20px; /* Place it at the bottom of the screen */
+    left: 20px; /* Place it from the left side */
+    background-color: #444; /* Dark background */
+    color: white; /* Light text */
+    padding: 10px; /* Some padding */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+#notification.fadeOut {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+
+#notification-modal {
+    /* Existing styles for the modal */
+    transition: opacity 1s ease-out; /* Smooth transition for the fade-out */
+}
+
+#notification-modal.hidden {
+    display: none; /* Hide when it has 'hidden' class */
+}
+
+#notification-modal .fa-times {
+    font-size: 1.25rem; /* Larger close icon */
+}
+
+/* Smooth transition for the modal appearance */
+#notification-modal.fadeOut {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+
+/* Custom CSS for slide-in and slide-out animations */
+#slide-notification.show {
+    transform: translateX(0); /* Brings the notification into view */
+}
+
+#slide-notification.hide {
+    transform: translateX(100%); /* Hides the notification off the screen */
+}
+
+/* Custom CSS for slide-in and slide-out animations */
+#slide-notification-reward.show {
+    transform: translateX(0); /* Brings the notification into view */
+}
+
+#slide-notification-reward.hide {
+    transform: translateX(100%); /* Hides the notification off the screen */
+}
+/* Custom CSS for slide-in and slide-out animations */
+#slide-notification-reward-locked.show {
+    transform: translateX(0); /* Brings the notification into view */
+}
+
+#slide-notification-reward-locked.hide {
+    transform: translateX(100%); /* Hides the notification off the screen */
 }

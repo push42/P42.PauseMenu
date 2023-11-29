@@ -178,13 +178,3 @@ end)
 
 
 
-
-
-
-
--- Example client-side script
-RegisterNetEvent('claimReward')
-AddEventHandler('claimReward', function(playerId)
-    print('Claim reward event triggered for player ID:', playerId)
-    TriggerServerEvent('claimReward', playerId)
-end)
