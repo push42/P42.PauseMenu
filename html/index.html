@@ -15,7 +15,7 @@
 
 
 <body class="container mx-auto bg-zinc-950 bg-opacity-95 text-gray-200 font-sans m-0 relative">
-    <div class="fixed left-12 top-4">
+    <div class="fixed top-4 left-0.5">
         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
         <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
         <div class="text-center text-sm font-sans text-purple-300 mb-2">Usersettings</div>
@@ -113,58 +113,43 @@
     </div>
 
 
-
-
-
-    <style>
-    /* Custom CSS for adjusting image background position */
-    .newsImage1 {
-        background-image: url('./assets/santeria2.png');
-        background-size: cover;
-        background-position: center; /* You can adjust this to change the visible part of the image */
-        width: 100%;
-        height: 200px; /* Keep the height fixed */
-        background-position-y: 40%;
-    }
-</style>
-
-<!-- Content Panels -->
-<div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <!-- Main Panel -->
-    <div class="md:col-span-2">
-        <div class="panel bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105">
-            <h2 class="panel-heading uppercase font-black font-mono text-xl">
-                <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
-            </h2>
-            <div class="content">
-                <!-- News Item -->
-                <div class="news-item mb-4">
-                    <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
-                    <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
-                    <p class="text-sm text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
-                    <div class="tags flex space-x-2">
-                        <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-bullhorn mr-1 text-xs"></i>Announcement</span>
-                        <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-wrench mr-1 text-xs"></i>Update</span>
-                        <span class="tag text-xs bg-purple-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-calendar-check mr-1 text-xs"></i>Event</span>
+    <!-- Start of Content Panels -->
+    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Main Panel -->
+        <div class="md:col-span-2">
+            <div class="panel bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105">
+                <h2 class="panel-heading uppercase font-black font-mono text-xl">
+                    <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
+                </h2>
+                <div class="content">
+                    <!-- News Item -->
+                    <div class="news-item mb-4">
+                        <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
+                        <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
+                        <p class="text-sm text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
+                        <div class="tags flex space-x-2">
+                            <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-bullhorn mr-1 text-xs"></i>Announcement</span>
+                            <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-wrench mr-1 text-xs"></i>Update</span>
+                            <span class="tag text-xs bg-purple-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-calendar-check mr-1 text-xs"></i>Event</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
         
         
 
-    <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105 transition-transform">
-    <div>
-        <h2 class="panel-heading uppercase font-black font-mono text-xl relative">
-            <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel
-            <span class="text-sm absolute right-14 top-2 text-gray-300">
-                <i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER
-            </span>
-        </h2>
-        <div class="player-stats flex gap-2 justify-center mt-4">
+        <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105 transition-transform">
+            <div>
+                <h2 class="panel-heading uppercase font-black font-mono text-xl relative">
+                    <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel
+                    <span class="text-sm absolute right-14 top-2 text-gray-300">
+                        <i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER
+                    </span>
+                </h2>
+            <div class="player-stats flex gap-2 justify-center mt-4">
             <!-- User ID Badge -->
             <div id="userId" class="player-stat badge" onclick="copyUserIdToClipboard()">
                 <i class="fa-solid fa-id-card text-purple-400"></i>
@@ -189,112 +174,109 @@
 
 
 
-<!-- Online Players List -->
-<div class="online-players mt-4 bg-zinc-900 bg-opacity-90 p-5 rounded-lg shadow-inner max-h-60 overflow-y-auto">
-    <!-- Detailed User Info Container -->
-    <div id="detailedUserInfo" class="absolute top-0 left-0 w-full h-full bg-zinc-900 text-white p-6 rounded-lg opacity-0 transition-opacity duration-500 z-10 hidden">
-        <button id="closeUserInfo" class="absolute top-9 right-9 text-gray-300 hover:text-gray-100">
-            <i class="fa fa-times text-2xl"></i>
-        </button>
+        <!-- Online Players List -->
+        <div class="online-players mt-4 bg-zinc-900 bg-opacity-90 p-5 rounded-lg shadow-inner max-h-60 overflow-y-auto">
+            <!-- Detailed User Info Container -->
+            <div id="detailedUserInfo" class="absolute top-0 left-0 w-full h-full bg-zinc-900 text-white p-6 rounded-lg opacity-0 transition-opacity duration-500 z-10 hidden">
+                <button id="closeUserInfo" class="absolute top-9 right-9 text-gray-300 hover:text-gray-100">
+                    <i class="fa fa-times text-2xl"></i>
+                </button>
 
-        <!-- Player Image -->
-        <div class="flex items-center mb-6">
-            <img id="up-avatar" src="player-avatar.jpg" alt="Player Image" class="w-20 h-20 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
-            <h2 id="playerName" class="text-2xl font-bold">John Doe</h2> <!-- Dynamic player name -->
+                <!-- Player Image -->
+                <div class="flex items-center mb-6">
+                    <img id="up-avatar" src="./assets/pxrp.gif" alt="Player Image" class="w-20 h-20 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
+                    <h2 id="playerName" class="text-2xl font-bold">John Doe</h2> <!-- Dynamic player name -->
+                </div>
+
+                <!-- Info Details -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm p-2">
+                    <!-- Job Info -->
+                    <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
+                        <i class="fa-solid fa-briefcase"></i> <!-- Job Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Job:</p>
+                            <p id="jobNameDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Rank Info -->
+                    <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
+                        <i class="fa-solid fa-briefcase"></i> <!-- Rank Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Rank:</p>
+                            <p id="groupDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Grade Info -->
+                    <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
+                        <i class="fa-solid fa-medal"></i> <!-- Grade Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Grade:</p>
+                            <p id="jobGradeDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Height Info -->
+                    <div class="info-card flex items-center space-x-2 bg-purple-900 text-white rounded p-2">
+                        <i class="fa-solid fa-ruler-vertical"></i> <!-- Height Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Height:</p>
+                            <p id="heightDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Sex Info -->
+                    <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
+                        <i class="fa-solid fa-venus-mars"></i> <!-- Sex Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Sex:</p>
+                            <p id="sexDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- DOB Info -->
+                    <div class="info-card flex items-center space-x-2 bg-yellow-900 text-white rounded p-2">
+                        <i class="fa-solid fa-cake-candles"></i> <!-- DOB Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">DOB:</p>
+                            <p id="dobDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+                    <!-- Add more fields as needed -->
+
+                    <!-- Bank Info -->
+                    <div class="info-card flex items-center space-x-2 bg-indigo-900 text-white rounded p-2">
+                        <i class="fa-solid fa-wallet"></i> <!-- Bank Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Bank:</p>
+                            <p id="bankDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Money Info -->
+                    <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
+                        <i class="fa-solid fa-money-bill"></i> <!-- Money Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Money:</p>
+                            <p id="moneyDetail" class="info-value">Not available</p>
+                        </div>
+                    </div>
+
+                    <!-- Black Money Info -->
+                    <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
+                        <i class="fa-solid fa-money-bill"></i> <!-- Black Money Icon -->
+                        <div class="info">
+                            <p class="info-title font-semibold">Black Money:</p>
+                            <p id="blackMoneyDetail" class="info-value">Not available</p>
+                        </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Info Details -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm p-2">
-            <!-- Job Info -->
-            <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
-                <i class="fa-solid fa-briefcase"></i> <!-- Job Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Job:</p>
-                    <p id="jobNameDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Rank Info -->
-            <div class="info-card flex items-center space-x-2 bg-blue-900 text-white rounded p-2">
-                <i class="fa-solid fa-briefcase"></i> <!-- Rank Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Rank:</p>
-                    <p id="groupDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Grade Info -->
-            <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
-                <i class="fa-solid fa-medal"></i> <!-- Grade Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Grade:</p>
-                    <p id="jobGradeDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Height Info -->
-            <div class="info-card flex items-center space-x-2 bg-purple-900 text-white rounded p-2">
-                <i class="fa-solid fa-ruler-vertical"></i> <!-- Height Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Height:</p>
-                    <p id="heightDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Sex Info -->
-            <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
-                <i class="fa-solid fa-venus-mars"></i> <!-- Sex Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Sex:</p>
-                    <p id="sexDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- DOB Info -->
-            <div class="info-card flex items-center space-x-2 bg-yellow-900 text-white rounded p-2">
-                <i class="fa-solid fa-cake-candles"></i> <!-- DOB Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">DOB:</p>
-                    <p id="dobDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-            <!-- Add more fields as needed -->
-
-            <!-- Bank Info -->
-            <div class="info-card flex items-center space-x-2 bg-indigo-900 text-white rounded p-2">
-                <i class="fa-solid fa-wallet"></i> <!-- Bank Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Bank:</p>
-                    <p id="bankDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Money Info -->
-            <div class="info-card flex items-center space-x-2 bg-green-900 text-white rounded p-2">
-                <i class="fa-solid fa-money-bill"></i> <!-- Money Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Money:</p>
-                    <p id="moneyDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-            <!-- Black Money Info -->
-            <div class="info-card flex items-center space-x-2 bg-red-900 text-white rounded p-2">
-                <i class="fa-solid fa-money-bill"></i> <!-- Black Money Icon -->
-                <div class="info">
-                    <p class="info-title font-semibold">Black Money:</p>
-                    <p id="blackMoneyDetail" class="info-value">Not available</p>
-                </div>
-            </div>
-
-        </div>
-
-
-            </div>
 
 
             <script>
-                    // Assuming NUI is set up and this script can communicate with your FiveM resource's client script
+                // Assuming NUI is set up and this script can communicate with your FiveM resource's client script
                 window.addEventListener('message', function(event) {
                     if (event.data.action === 'setPlayerInfo') {
                         var data = event.data.playerInfo;
@@ -385,16 +367,26 @@
                             <span class="text-xss font-mono text-green-400 ml-1 mt-2">${player.playerPing}ms</span>
                         </div>
                         <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                            ${player.jobName}
+                            ${player.jobName}: <span class="player-job-grade relative font-medium text-purple-400">${player.jobGrade}</span>
                         </div>
                     </li>
                 `;
             }
         });
+        $(document).ready(function() {
+            window.addEventListener('message', function(event) {
+                if (event.data.action === 'set:playerInfo') {
+                    updatePlayerInfo(event.data.playerInfo);
+                }
+            });
+
+            function updatePlayerInfo(playerInfo) {
+                // Assuming you have HTML elements to display this info
+                $('#player-job-grade').text(playerInfo.grade);
+                // Update other player info elements as needed
+            }
+        });
         </script>
-
-
-
 
 
         <!-- Panel 1 - Tebex Shop Section -->
@@ -431,62 +423,58 @@
             </ul>
         </div>
 
+        <!-- Overlay for Live Support Panel -->
+        <div id="supportOverlay" class="support-overlay hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-40"></div>
 
+        <!-- Live Support Modal Window -->
+        <div id="supportModal" class="support-modal hidden fixed inset-0 z-50 flex justify-center items-center p-4 bg-zinc-950 bg-opacity-90">
+            <!-- Modal Content -->
+            <div class="support-content bg-zinc-950 shadow-2xl rounded-lg overflow-hidden flex flex-col lg:flex-row border-2 border-zinc-700">
+                <!-- Button to close the Support Panel -->
+                <button id="closeSupportPanel" class="support-close-btn absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+                <!-- Ticket Sidebar -->
+                <aside class="support-sidebar bg-zinc-900 p-6 w-full lg:w-1/3">
+                    <h2 class="support-title text-3xl font-bold text-white mb-6"><i class="fa-solid fa-ticket text-purple-400 mr-4"></i>Ticket Panel</h2>
+                    <!-- Create a Ticket - button -->
+                    <button id="createTicketBtn" class="create-support-ticket mb-4 text-gray-300 hover:text-white focus:outline-none font-bold text-lm">
+                        <i class="fa-solid fa-plus text-purple-400 mr-2"></i>Create a Ticket
+                    </button>
+                    <ul class="support-ticket-list space-y-2">
+                        <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 1 </li>
+                        <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 2 </li>
+                        <!-- More tickets -->
+                    </ul>
+                </aside>
 
-<!-- Overlay for Live Support Panel -->
-<div id="supportOverlay" class="support-overlay hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-40"></div>
+                <!-- Chat Section -->
+                <section class="support-chat flex-grow bg-zinc-850 p-6 w-full lg:w-2/3">
+                    <!-- Chat Area -->
+                    <div class="support-chat-area flex flex-col h-full">
+                        <!-- Chat Messages -->
+                        <div class="support-messages flex-grow overflow-y-auto mb-4">
+                            <!-- Sample Messages -->
+                            <div class="support-message mb-3">
+                                <span class="message-author font-bold text-gray-200">User:</span>
+                                <span class="message-text text-gray-300">Hi, I need help with an issue.</span>
+                            </div>
+                            <div class="support-message mb-3">
+                                <span class="message-staff font-bold text-purple-500">Support:</span>
+                                <span class="message-text text-gray-300">Sure, what can I assist you with?</span>
+                            </div>
+                            <!-- More messages -->
+                        </div>
 
-<!-- Live Support Modal Window -->
-<div id="supportModal" class="support-modal hidden fixed inset-0 z-50 flex justify-center items-center p-4 bg-zinc-950 bg-opacity-90">
-    <!-- Modal Content -->
-    <div class="support-content bg-zinc-950 shadow-2xl rounded-lg overflow-hidden flex flex-col lg:flex-row border-2 border-zinc-700">
-        <!-- Button to close the Support Panel -->
-        <button id="closeSupportPanel" class="support-close-btn absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none">
-            <i class="fas fa-times"></i>
-        </button>
-        <!-- Ticket Sidebar -->
-        <aside class="support-sidebar bg-zinc-900 p-6 w-full lg:w-1/3">
-            <h2 class="support-title text-3xl font-bold text-white mb-6"><i class="fa-solid fa-ticket text-purple-400 mr-4"></i>Ticket Panel</h2>
-            <!-- Create a Ticket - button -->
-            <button id="createTicketBtn" class="create-support-ticket mb-4 text-gray-300 hover:text-white focus:outline-none font-bold text-lm">
-                <i class="fa-solid fa-plus text-purple-400 mr-2"></i>Create a Ticket
-            </button>
-            <ul class="support-ticket-list space-y-2">
-                <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 1 </li>
-                <li class="support-ticket text-gray-100 p-2 rounded-full font-semibold"><i class="fa-solid fa-bars mr-2"></i>Ticket 2 </li>
-                <!-- More tickets -->
-            </ul>
-        </aside>
-
-        <!-- Chat Section -->
-        <section class="support-chat flex-grow bg-zinc-850 p-6 w-full lg:w-2/3">
-            <!-- Chat Area -->
-            <div class="support-chat-area flex flex-col h-full">
-                <!-- Chat Messages -->
-                <div class="support-messages flex-grow overflow-y-auto mb-4">
-                    <!-- Sample Messages -->
-                    <div class="support-message mb-3">
-                        <span class="message-author font-bold text-gray-200">User:</span>
-                        <span class="message-text text-gray-300">Hi, I need help with an issue.</span>
+                        <!-- Chat Input -->
+                        <div class="support-input mt-4 flex">
+                            <input type="text" class="support-input-field bg-zinc-900 text-white w-full p-3 rounded focus:outline-none" placeholder="Type your message...">
+                            <button class="support-send-btn font-semibold bg-purple-600 text-white ml-3 px-4 py-2 rounded hover:bg-purple-700 transition-colors">Send</button>
+                        </div>
                     </div>
-                    <div class="support-message mb-3">
-                        <span class="message-staff font-bold text-purple-500">Support:</span>
-                        <span class="message-text text-gray-300">Sure, what can I assist you with?</span>
-                    </div>
-                    <!-- More messages -->
-                </div>
-
-                <!-- Chat Input -->
-                <div class="support-input mt-4 flex">
-                    <input type="text" class="support-input-field bg-zinc-900 text-white w-full p-3 rounded focus:outline-none" placeholder="Type your message...">
-                    <button class="support-send-btn font-semibold bg-purple-600 text-white ml-3 px-4 py-2 rounded hover:bg-purple-700 transition-colors">Send</button>
-                </div>
+                </section>
             </div>
-        </section>
-    </div>
-</div>
-
-
+        </div>
 
 
 
@@ -498,6 +486,7 @@
                 <h2 class="font-semibold text-lg text-blue-400">
                     <i class="fa-solid fa-headset text-sm mr-2 text-white"></i>Need <span class="text-white">Assistance?</span>
                 </h2>
+                
                 <img src="./assets/discord_logo.webp" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
             <p class="text-sm text-white mt-4">
@@ -567,10 +556,10 @@
         </script>
 
         <!-- Discord Server Widget -->
-        <div id="discord-widget" class="discord-widget">
+        <!-- <div id="discord-widget" class="discord-widget">
             <div id="server-name" class="server-name"></div>
             <div id="members" class="members"></div>
-        </div>
+        </div> -->
             
 
         <!-- Notify Modals -->

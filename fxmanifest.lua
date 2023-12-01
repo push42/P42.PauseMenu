@@ -25,12 +25,12 @@ server_scripts {
 
 --UI Part-- 
 ui_page {
- 'html/index.php', 
+ 'html/index.html', 
 }
 
 --File Part-- 
 files {
- 'html/index.php',
+ 'html/index.html',
  'html/app.js', 
  'html/style.css',
  'html/main.css',

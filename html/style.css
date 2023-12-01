@@ -1,48 +1,30 @@
-
 @font-face {
     font-family: 'gg sans Bold';
     font-style: normal;
     font-weight: normal;
     src: local('gg sans Bold'), url('./fonts/gg\ sans\ Bold.woff') format('woff');
-    }
+}
     
-
-    @font-face {
+@font-face {
     font-family: 'gg sans Normal Regular';
     font-style: normal;
     font-weight: normal;
     src: local('gg sans Normal Regular'), url('./fonts/gg\ sans\ Regular.woff') format('woff');
-    }
+}
     
-
-    @font-face {
+@font-face {
     font-family: 'gg sans Medium Regular';
     font-style: normal;
     font-weight: normal;
     src: local('gg sans Medium Regular'), url('./fonts/gg\ sans\ Medium.woff') format('woff');
-    }
+}
     
-
-    @font-face {
+@font-face {
     font-family: 'gg sans SemiBold Regular';
     font-style: normal;
     font-weight: normal;
     src: local('gg sans SemiBold Regular'), url('./fonts/gg\ sans\ Semibold.woff') format('woff');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 /* Custom scrollbar styles */
@@ -72,15 +54,11 @@
     scrollbar-color: rgba(91, 33, 182, 1) #131313;
   }
 
-
-
-
 /* Typography */
 .text-xss {
     font-size: 9px;
     font-family: sans-serif;
   }
-
 
 
 /* Emoji Picker */
@@ -112,22 +90,11 @@
   }
 
 
-
-
-
-
-
-
-
-
 /* Leaderboard Trophies */
 .fa-trophy {
     margin-right: 8px;
     font-size: 0.65em;
   }
-
-
-
 
 
 
@@ -556,7 +523,7 @@
 
 /* Leaderboard Panel */
 .leaderboard-panel {
-    border: 2px solid #776b49;
+    border: 2px solid #727272;
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -588,7 +555,7 @@
 .get-support-panel {
     background-color: #2d3748; /* A darker shade for distinction */
     color: #e2e8f0; /* Lighter text for readability */
-    border: 2px solid #4a5568; /* Subtle border for depth */
+    border: 2px solid #727272; /* Subtle border for depth */
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -665,8 +632,8 @@
 .tebex-shop-panel {
     position: relative;
     overflow: hidden;
-    border: 2px solid #4a6859;
-    background-color: #2d3748;
+    border: 2px solid #727272;
+    background-color: #1b1b1b;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -1066,3 +1033,62 @@ textarea:focus {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+.discord-widget {
+    width: 350px;
+    height: 500px;
+    background-color: #2C2F33;
+    border: 2px solid #23272A;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.server-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.member {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Custom CSS for adjusting image background position */
+    .newsImage1 {
+        background-image: url('./assets/santeria2.png');
+        background-size: cover;
+        background-position: center; /* You can adjust this to change the visible part of the image */
+        width: 100%;
+        height: 200px; /* Keep the height fixed */
+        background-position-y: 40%;
+    }

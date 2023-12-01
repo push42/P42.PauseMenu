@@ -1,7 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ESX = exports["es_extended"]:getSharedObject()
+local oxmysql = exports.oxmysql
 
-
+-- Update the User Avatar & fetch it
 -- Event to update the avatar URL
 RegisterNetEvent('updateAvatar')
 AddEventHandler('updateAvatar', function(url)
@@ -17,12 +18,23 @@ AddEventHandler('updateAvatar', function(url)
     -- Validate URL (basic check)
     if string.match(url, "^(https?://[%w-_%.%?%.:/%+=&]+)$") then
         -- Update avatar in database
-        oxmysql:execute('UPDATE users SET avatar = ? WHERE identifier = ?; SELECT avatar FROM users WHERE identifier = ?', 
-                        {url, identifier, identifier}, 
-                        function(result)
-            if result and #result > 0 then
-                local updatedAvatar = result[1].avatar
-                TriggerClientEvent('updateUserAvatar', xPlayer.source, updatedAvatar)  -- Ensure to use 'updatedAvatar' here
+        MySQL.Async.execute('UPDATE users SET avatar = @avatar WHERE identifier = @identifier', {
+            ['@avatar'] = url,
+            ['@identifier'] = identifier
+        }, function(affectedRows)
+            if affectedRows > 0 then
+                print("Avatar updated for player: " .. identifier)
+
+                -- Fetch the updated avatar and send it to the client
+                MySQL.Async.fetchScalar('SELECT avatar FROM users WHERE identifier = @identifier', {
+                    ['@identifier'] = identifier
+                }, function(avatar)
+                    if avatar then
+                        print("Sending updated avatar to client for " .. identifier .. ": " .. avatar) -- Additional debug print
+                        TriggerClientEvent('updateUserAvatar', xPlayer.source, avatar)
+                    end
+                end)
+
             else
                 print("Failed to update avatar for player: " .. identifier)
             end
@@ -31,7 +43,9 @@ AddEventHandler('updateAvatar', function(url)
         print("Invalid URL provided.")
     end
 end)
+-- End of User Avatar
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Exit the Game / Drop Player
 RegisterServerEvent('pausemenu:quit')
 AddEventHandler('pausemenu:quit', function()
     DropPlayer(source,"You have left the Server! We hope to see you back soon <3")
@@ -116,7 +130,6 @@ AddEventHandler('clientChatMessage', function(message)
     TriggerClientEvent('receiveMessage', -1, username, playerId, timestamp, message)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-local oxmysql = exports.oxmysql
 
 -- Function to update playtime
 function updatePlaytime(playerId, amount)

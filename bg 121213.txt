@@ -1,0 +1,10 @@
+bg              121213
+
+ui bg           1b1b1b
+ui              222222
+
+white accents   727272
+
+
+grey color font 868686
+white color font    f1f1f1
