@@ -1,29 +1,42 @@
+/* 
+:root {
+    --color-bg-default: #09090b;
+    --color-text-default: #fff;
+}
+
+[data-theme="blue"] {
+    --color-bg-default: #030712;
+    --color-text-default: #fff;
+} */
+
+
+
 @font-face {
     font-family: 'gg sans Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Bold'), url('./fonts/gg\ sans\ Bold.woff') format('woff');
+    src: local('gg sans Bold'), url('./fonts/ggsansBold.woff') format('woff');
 }
     
 @font-face {
     font-family: 'gg sans Normal Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Normal Regular'), url('./fonts/gg\ sans\ Regular.woff') format('woff');
+    src: local('gg sans Normal Regular'), url('./fonts/ggsansRegular.woff') format('woff');
 }
     
 @font-face {
     font-family: 'gg sans Medium Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Medium Regular'), url('./fonts/gg\ sans\ Medium.woff') format('woff');
+    src: local('gg sans Medium Regular'), url('./fonts/ggsansMedium.woff') format('woff');
 }
     
 @font-face {
     font-family: 'gg sans SemiBold Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans SemiBold Regular'), url('./fonts/gg\ sans\ Semibold.woff') format('woff');
+    src: local('gg sans SemiBold Regular'), url('./fonts/ggsansSemibold.woff') format('woff');
 }
 
 
@@ -31,28 +44,34 @@
 /* Webkit browsers like Chrome/Safari */
 ::-webkit-scrollbar {
     width: 2px;
-  }
-  
-  ::-webkit-scrollbar-track {
+    border: 2px solid #1a1a1a; /* Add border */
+}
+
+::-webkit-scrollbar-track {
     background: #131313;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background-color: rgba(91, 33, 182, 1);
     border-radius: 6px;
-  }
-  
-  /* Hover state */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Hover state */
+::-webkit-scrollbar-thumb:hover {
     background: #5a67d8;
-  }
-  
-  /* Firefox */
-  /* Scrollbar styles */
-  html {
+}
+
+
+/* Firefox */
+/* Scrollbar styles */
+html {
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 33, 182, 1) #131313;
-  }
+}
+.bg-custom-container {
+    backdrop-filter: blur(10px);
+    background-color: #121213dc;
+}
 
 /* Typography */
 .text-xss {
@@ -87,6 +106,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border: 2px solid #555554;
   }
 
 
@@ -96,12 +116,16 @@
     font-size: 0.65em;
   }
 
+.daily-rewardpanel, .news-panel, .server-panel {
+    border: 2px solid #555554;
+}
+
 
 
 
 /* Panel Styles */
 .panel-heading {
-    background: linear-gradient(90deg, #242424 -49%, #1a1a1a 99.9%);
+    background: linear-gradient(90deg, #1b1b1b -49%, #222222 99.9%);
     padding: 2px 5px;
     border-radius: 5px;
     color: white;
@@ -110,7 +134,7 @@
   }
   
   .panel {
-    border-radius: 10px;
+    border-radius: 25px;
     overflow: hidden;
     height: auto;
   }
@@ -134,31 +158,6 @@
     border-radius: 5px;
 }
 
-/* Image Gallery */
-.image-gallery {
-    display: flex;
-    gap: 0.5rem; /* Adjust the gap between images */
-}
-
-.image-gallery img {
-    border-radius: 0.5rem; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
-    height: 10rem; /* Fixed height */
-    width: auto; /* Width adjusts to maintain aspect ratio */
-    object-fit: cover; /* Ensure images cover the area */
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 767px) {
-    .image-gallery {
-        flex-direction: column;
-    }
-
-    .image-gallery img {
-        width: 100%; /* Full width on small screens */
-        margin-bottom: 0.5rem; /* Space between stacked images */
-    }
-}
 
 
 
@@ -402,7 +401,7 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, #9D50BB, #6E48AA);
+    background: linear-gradient(to right, hsl(278, 88%, 19%), #8127af);
     animation: animateLine 1.5s linear infinite;
 }
 
@@ -523,7 +522,7 @@
 
 /* Leaderboard Panel */
 .leaderboard-panel {
-    border: 2px solid #727272;
+    border: 2px solid #555554;
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -555,7 +554,7 @@
 .get-support-panel {
     background-color: #2d3748; /* A darker shade for distinction */
     color: #e2e8f0; /* Lighter text for readability */
-    border: 2px solid #727272; /* Subtle border for depth */
+    border: 2px solid #555554; /* Subtle border for depth */
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -632,9 +631,9 @@
 .tebex-shop-panel {
     position: relative;
     overflow: hidden;
-    border: 2px solid #727272;
+    border: 2px solid #555554;
     background-color: #1b1b1b;
-    border-radius: 12px;
+    border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-bottom: 15px;
@@ -813,6 +812,13 @@ textarea:focus {
     opacity: 0.7;
 }
 
+/* Style for Locked Doors */
+.calender-door.today {
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+
 /* Lock Icon Styling */
 .lock-icon {
     z-index: 1;
@@ -823,7 +829,9 @@ textarea:focus {
     z-index: 1;
 }
 
-
+.locked {
+    filter: grayscale(100%);
+}
 
 .text-gold {
     color: gold;
@@ -1043,8 +1051,6 @@ textarea:focus {
 
 
 
-
-
 .discord-widget {
     width: 350px;
     height: 500px;
@@ -1091,4 +1097,15 @@ textarea:focus {
         width: 100%;
         height: 200px; /* Keep the height fixed */
         background-position-y: 40%;
+        filter: saturate(1.5);
     }
+
+
+
+
+
+.panel, .leaderboard-panel, .tebex-shop-panel, .get-support-panel:before {
+    content: '';
+    background: inherit;
+    -filter: blur(20px);
+}

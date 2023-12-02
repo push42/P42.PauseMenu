@@ -54,3 +54,4 @@ Config.Discord = {
     }
 }
 
+return Config

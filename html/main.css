@@ -596,8 +596,8 @@ video {
   left: 0px;
 }
 
-.left-0\.5 {
-  left: 0.125rem;
+.left-6 {
+  left: 1.5rem;
 }
 
 .right-0 {
@@ -1104,7 +1104,7 @@ video {
 
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
-  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+  background-color: rgb(21 21 26 / var(--tw-bg-opacity));
 }
 
 .bg-zinc-950 {

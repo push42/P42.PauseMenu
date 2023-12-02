@@ -41,7 +41,8 @@ files {
  'html/assets/*.jpg',
  'html/assets/*.wav',
  'html/assets/*.mp3',
- 'html/assets/*.mp4'
+ 'html/assets/*.mp4',
+ 'config.json'
 } 
 
 -- ESX Dependency

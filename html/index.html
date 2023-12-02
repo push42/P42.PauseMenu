@@ -14,8 +14,8 @@
 
 
 
-<body class="container mx-auto bg-zinc-950 bg-opacity-95 text-gray-200 font-sans m-0 relative">
-    <div class="fixed top-4 left-0.5">
+<body class="container mx-auto bg-black bg-opacity-90 text-gray-200 font-sans m-0 relative">
+    <div class="fixed top-4 left-6">
         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
         <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
         <div class="text-center text-sm font-sans text-purple-300 mb-2">Usersettings</div>
@@ -32,13 +32,13 @@
             <h3 class="text-lg font-semibold mb-3"><i class="fa-regular fa-image mr-2 text-xl"></i>CHANGE AVATAR<span class="text-xs ml-8 text-gray-300 font-mono"><i class="fa-solid fa-info text-purple-300 text-sm mr-1"></i>Changing the avatar takes about 5 seconds to refresh</span></h3>
             <input type="text" id="avatarUrlInput" class="border border-gray-300 p-2 w-full rounded-md" placeholder="Enter new avatar URL">
             <div class="flex justify-end space-x-2 mt-2">
-                <button id="cancelAvatarUpdate" class="bg-zinc-700 text-white px-4 py-2 rounded-md">Cancel</button>
+                <button id="cancelAvatarUpdate" class="bg-zinc-700 text-white px-4 py-2 rounded-md">Close</button>
                 <button id="confirmAvatarUpdate" class="bg-purple-400 text-white px-4 py-2 rounded-md">Update</button>
             </div>
         </div>
     </div>
     <!-- Player Username -->
-    <div id="welcomeUsername" class="player-stat badge ml-10 mt-4 mb-2 text-sm">
+    <div id="welcomeUsername" class="player-stat badge ml-10 mt-4 mb-6 text-sm">
         <i class="fa-solid fa-minus mr-2 text-sm"></i>Welcome back, 
         <span class="stat-value text-sm ml-1"> No User found</span>
     </div>
@@ -117,7 +117,7 @@
     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Main Panel -->
         <div class="md:col-span-2">
-            <div class="panel bg-gradient-to-r from-zinc-950 to-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105">
+            <div class="panel news-panel bg-gradient-to-r bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105">
                 <h2 class="panel-heading uppercase font-black font-mono text-xl">
                     <i class="fa-solid fa-thumbtack text-xs mr-2"></i>News / Announcements
                 </h2>
@@ -125,8 +125,8 @@
                     <!-- News Item -->
                     <div class="news-item mb-4">
                         <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
-                        <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-thumbtack mr-2"></i>YOUR NEWS GO HERE</h3>
-                        <p class="text-sm text-gray-300 mb-8 font-thin">Short description for news 1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus voluptatem odit vero dicta. Id voluptatem, aspernatur totam numquam voluptate fuga obcaecati. Sed ut perspiciatis minima. Amet quidem aut quis debitis.</p>
+                        <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-square-plus mr-2"></i>NEWS HEADER</h3>
+                        <p class="text-sm text-gray-300 mb-8 font-thin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</p>
                         <div class="tags flex space-x-2">
                             <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-bullhorn mr-1 text-xs"></i>Announcement</span>
                             <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-wrench mr-1 text-xs"></i>Update</span>
@@ -141,12 +141,12 @@
         
         
 
-        <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105 transition-transform">
+        <div class="panel bg-zinc-900 bg-opacity-95 p-5 rounded-lg shadow-lg hover:scale-105 transition-transform server-panel">
             <div>
                 <h2 class="panel-heading uppercase font-black font-mono text-xl relative">
-                    <i class="fa-regular fa-circle text-xs mr-2"></i>Server Panel
+                    <i class="fa-solid fa-server text-sm text-purple-400 mr-2"></i>Server Panel
                     <span class="text-sm absolute right-14 top-2 text-gray-300">
-                        <i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/YOURSERVER
+                        <i class="fa-brands fa-discord mr-2 mt-1"></i>DSC.GG/PUSH42.DEV
                     </span>
                 </h2>
             <div class="player-stats flex gap-2 justify-center mt-4">
@@ -158,7 +158,7 @@
             <!-- Player Username -->
             <div id="playerUsername" class="player-stat badge">
                 <i class="fa-regular fa-user text-purple-400"></i>
-                <span class="stat-value text-xs">No User found</span>
+                <span class="stat-value text-xs">User not loaded</span>
             </div>
             <!-- Player Ping -->
             <div id="playerPing" class="player-stat badge" onclick="clickOnPing()">
@@ -394,7 +394,7 @@
             <img src="./assets/tebex-bg.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="font-semibold text-lg text-green-400 mt-4">
+                    <h2 class="font-semibold text-lg text-green-400 mt-2">
                         <i class="fa-solid fa-shopping-cart text-sm mr-2"></i>Visit <span class="text-green-400">our</span> Store.
                     </h2>
                     <h2>
@@ -480,7 +480,7 @@
 
 
 
-        <div class="get-support-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
+        <div class="get-support-panel bg-zinc-900 bg-opacity-95 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
             <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
                 <h2 class="font-semibold text-lg text-blue-400">
@@ -489,9 +489,8 @@
                 
                 <img src="./assets/discord_logo.webp" alt="Discord Logo" class="rounded-full w-16 h-16">
             </div>
-            <p class="text-sm text-white mt-4">
-                Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sapiente.
-            </p>
+            <p class="text-sm text-white mt-2 mb-2">
+                Our dedicated support team is here to assist you. Feel free to reach out with any queries or concerns.</p>
             <button type="button" id="openLiveSupport" class="inline-flex items-center px-3 py-1.5 text-sm font-bold text-center text-white bg-zinc-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-zinc-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4">
                 <i class="fa-solid fa-ticket mr-2 text-blue-400"></i>Live Support
             </button>    
@@ -679,7 +678,7 @@
 
         <!-- Panel 3 - Global Leaderboard -->
         <div class="leaderboard-panel bg-zinc-900 bg-opacity-90 p-4 rounded-xl shadow-xl overflow-y-auto max-h-64">
-            <h2 class="text-lg font-semibold text-white mb-4">
+            <h2 class="text-lg font-semibold text-white mb-4 panel-heading">
                 <i class="fa-solid fa-trophy mr-2 text-yellow-400"></i>
                 Leaderboard<span class="text-xs font-medium ml-4 text-gray-400">Top 10 players by playtime</span>
             </h2>
@@ -786,10 +785,14 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
 
 
 <!-- Panel 4 - Detailed Info Panel -->
-<div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-2">
+<div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-2 daily-rewardpanel">
     <!-- Advent Calendar Panel -->
-    <div class="advent-calendar-panel bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
-        <h2 class="font-semibold text-lg text-white mb-4 panel-heading"><i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>Daily<span class="text-purple-400"> Rewards</span><span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span></h2>
+    <div class="bg-zinc-900 bg-opacity-90 p-4 rounded-lg">
+        <h2 class="font-semibold text-lg text-white mb-4 panel-heading">
+            <i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>
+            Daily<span class="text-purple-400"> Rewards</span>
+            <span class="text-xs font-medium ml-4 font-sans">This is a sample text and will soon be replaced.</span>
+        </h2>
         <div class="calendar-row flex overflow-x-auto pb-2" id="calendar-row">
             <!-- JavaScript will populate the calendar here -->
         </div>
@@ -797,52 +800,94 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
 </div>
 
 <script>
-  // Get the current date
-  const currentDate = new Date();
-  const currentDay = currentDate.getDate(); // Get the day of the month (1-31)
-  const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate(); // Get the total number of days in the current month
+document.addEventListener('DOMContentLoaded', function() {
+    generateCalendar();
+    checkDailyRewardStatus(); // Check the reward status when the page loads
+});
 
-  // Create the calendar row
-  const calendarRow = document.getElementById('calendar-row');
-  for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
-    const dayPanel = document.createElement('div');
-    dayPanel.className = 'calender-door bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105';
-    const dayHeader = document.createElement('div');
-    dayHeader.className = 'day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs';
-    dayHeader.textContent = `DAY ${dayNumber}`;
-    const dayContent = document.createElement('div');
-    dayContent.className = 'day-content flex items-center justify-center p-4 h-14';
-    const dayImage = document.createElement('img');
-    dayImage.src = './assets/door_badge.webp';
-    dayImage.alt = 'Player Report';
-    
-    // Add a click event to open the panel if it's obtainable
-    if (dayNumber === currentDay) {
-      dayPanel.classList.add('obtainable');
-      dayPanel.addEventListener('click', () => {
-        console.log('Clicked on the current day.'); // Add this line
-        // Code to open the panel and give rewards
-        obtainedDailyReward();
+function checkDailyRewardStatus() {
+    // Send a request to the server to check reward status
+    // Replace 'YOUR_SERVER_ENDPOINT' with your server's endpoint
+    fetch('https://${GetParentResourceName()}/checkRewardStatus')
+    .then(response => response.json())
+    .then(data => {
+        if (data.canClaimToday) {
+            unlockTodayReward();
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function unlockTodayReward() {
+    const todayPanel = document.querySelector('.day-panel.today');
+    if (todayPanel) {
+        todayPanel.classList.add('obtainable');
+    }
+}
+
+function obtainedDailyRewardI(dayPanel) {
+    // Send a request to the server to claim the daily reward
+    fetch('https://${GetParentResourceName()}/claimReward', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.rewardClaimed) {
+            markRewardAsClaimed(dayPanel);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function markRewardAsClaimed(dayPanel) {
+    if (dayPanel) {
         dayPanel.classList.remove('obtainable');
         dayPanel.classList.add('opened');
-      });
-    } else if (dayNumber < currentDay) {
-      dayPanel.classList.add('locked');
-      dayPanel.addEventListener('click', () => {
-        lockedDailyReward();
-      });
-    } else {
-        dayPanel.classList.add('opened');
-        dayPanel.addEventListener('click', () => {
-            lockedDailyReward();
-      });
     }
-    
-    dayContent.appendChild(dayImage);
-    dayPanel.appendChild(dayHeader);
-    dayPanel.appendChild(dayContent);
-    calendarRow.appendChild(dayPanel);
-  }
+}
+
+function generateCalendar() {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+    const calendarRow = document.getElementById('calendar-row');
+
+    for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+        const dayPanel = document.createElement('div');
+        dayPanel.className = 'day-panel bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105';
+        if (dayNumber === currentDay) {
+            dayPanel.classList.add('today');
+            dayPanel.addEventListener('click', () => {
+                obtainedDailyRewardI(dayPanel);
+                obtainedDailyReward();
+            }, { once: true });
+        } else if (dayNumber < currentDay) {
+            dayPanel.classList.add('locked');
+        } else {
+            dayPanel.classList.add('locked');
+        }
+
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs';
+        dayHeader.textContent = `DAY ${dayNumber}`;
+
+        const dayContent = document.createElement('div');
+        dayContent.className = 'day-content flex items-center justify-center p-4 h-14';
+
+        const dayImage = document.createElement('img');
+        dayImage.src = './assets/door_badge.webp';
+        dayImage.alt = 'Daily Reward';
+
+        dayContent.appendChild(dayImage);
+        dayPanel.appendChild(dayHeader);
+        dayPanel.appendChild(dayContent);
+        calendarRow.appendChild(dayPanel);
+
+    }
+}
 </script>
 
 
@@ -852,7 +897,7 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
 
 <!-- Chatbox Panel -->
 <div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl">
-    <h2 class="text-lg font-semibold text-white mb-4"><i class="fa-regular fa-comments mr-2"></i>Community Chat</h2>
+    <h2 class="text-lg font-semibold text-white mb-4 panel-heading"><i class="fa-regular fa-comments mr-2"></i>Community Chat</h2>
     <div class="chat-messages overflow-y-auto max-h-150 pt-10 pb-6">
         <!-- Chat messages will be dynamically inserted here -->
     </div>
@@ -998,6 +1043,27 @@ function sendReportToServer(messageId) {
 }
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
