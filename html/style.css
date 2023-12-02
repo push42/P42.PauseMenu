@@ -83,7 +83,7 @@ html {
 /* Emoji Picker */
 .emoji-picker {
     width: auto;
-    max-height: 75px;
+    max-height: 105px;
     overflow-y: auto;
   }
   
@@ -102,7 +102,8 @@ html {
 
 /* Chatbox */
 .chatbox-panel {
-    max-height: 190px;
+    max-height: 197px;
+    max-width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1040,6 +1041,14 @@ textarea:focus {
     transform: translateX(100%); /* Hides the notification off the screen */
 }
 
+/* Custom CSS for slide-in and slide-out animations */
+#slide-notification-bw.show {
+    transform: translateX(0); /* Brings the notification into view */
+}
+
+#slide-notification-bw.hide {
+    transform: translateX(100%); /* Hides the notification off the screen */
+}
 
 
 
@@ -1108,4 +1117,69 @@ textarea:focus {
     content: '';
     background: inherit;
     -filter: blur(20px);
+}
+
+
+
+
+
+
+
+
+.chat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.chat-modal-content {
+    background-color: #121213; /* Adjust color as needed */
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%; /* Adjust width as needed */
+    height: 500px;
+    max-height: 80%; /* Adjust height as needed */
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.close-chat-modal-btn {
+    background: #4B5563;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 30%;
+    left: 75%;
+}
+
+
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .nav-item span {
+        display: none; /* Hide text labels on smaller screens */
+    }
+    .nav-item {
+        padding: 0.5rem; /* Adjust padding for icon-only view */
+    }
+}
+
+/* Hover and active state styling */
+.nav-item:hover, .nav-item.bg-zinc-700 {
+    background-color: rgba(130, 77, 160, 0.95); /* Slightly highlight on hover and active */
+    border-radius: 8px; /* Rounded corners */
 }

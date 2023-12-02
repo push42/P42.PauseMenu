@@ -14,7 +14,11 @@
 
 
 
-<body class="container mx-auto bg-black bg-opacity-90 text-gray-200 font-sans m-0 relative">
+<!-- Your existing bottom navigation menu -->
+<!-- ... -->
+
+
+<body class="container mx-auto bg-black bg-opacity-95 text-gray-200 font-sans m-0 relative">
     <div class="fixed top-4 left-6">
         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
         <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
@@ -41,6 +45,7 @@
     <div id="welcomeUsername" class="player-stat badge ml-10 mt-4 mb-6 text-sm">
         <i class="fa-solid fa-minus mr-2 text-sm"></i>Welcome back, 
         <span class="stat-value text-sm ml-1"> No User found</span>
+        <p class="text-xs"><i class="fa-regular fa-message mr-2 text-purple-400"></i>You have <span class="message-counter text-xs ml-1 text-purple-400 font-semibold">13</span> new Messages inside one of your Tickets.</p>
     </div>
     <!-- Clock Container -->
     <div class="clock-container absolute top-0 right-6 flex items-center mb-2">
@@ -85,32 +90,42 @@
     </script>    
     <!-- Navigation Menu at Bottom -->
     <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg z-40">
-        <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Resume">
             <i class="fa-solid fa-play text-xl"></i>
             <span class="font-semibold">Resume</span>
         </div>
-        <div id="settings" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="settings" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Settings">
             <i class="fa-solid fa-gear text-xl"></i>
             <span class="font-semibold">Settings</span>
         </div>
-        <div id="map" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="map" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Map">
             <i class="fa-solid fa-map-location-dot text-xl"></i>
             <span class="font-semibold">Map</span>
         </div>
-        <!-- <div id="info" class="nav-item">Info</div> -->
-        <div id="keyboard" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="keyboard" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Keyboard">
             <i class="fa-regular fa-keyboard text-xl"></i>
             <span class="font-semibold">Keyboard</span>
         </div>
-        <div id="help" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="help" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Help">
             <i class="fa-regular fa-circle-question text-xl"></i>
             <span class="font-semibold">Help</span>
         </div>
-        <div id="exit" class="nav-item flex items-center space-x-2 cursor-pointer transition-transform transform hover:scale-105">
+        <div id="exit" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Exit">
             <i class="fa-solid fa-door-open text-xl"></i>
             <span class="font-semibold">Exit</span>
         </div>
     </div>
+    <script>
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('bg-zinc-700'); // Remove active state from all items
+            });
+            this.classList.add('bg-zinc-700'); // Add active state to clicked item
+        });
+    });
+    </script>
+
 
 
     <!-- Start of Content Panels -->
@@ -331,12 +346,12 @@
                         <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10 transform transition-transform hover:scale-105">
                             <div class="flex items-center justify-between mb-1">
                                 <span class="flex items-center text-white">
-                                    Username
+                                    FETCHING DATA..
                                 </span>
-                                <span class="text-xs font-mono ml-2 text-purple-400">1</span>
+                                <span class="text-xs font-mono ml-2 text-purple-400"></span>
                             </div>
                             <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                                Police: <span class="relative font-medium text-purple-400">Officer</span>
+                                Time: <span class="relative font-medium text-purple-400">1 min.</span>
                             </div>
                         </li>
                     </ul>
@@ -362,9 +377,10 @@
                 return `
                     <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-xs font-mono text-purple-400">${player.playerId}</span>
+                            
                             <span class="flex items-center ml-1 text-white">${player.playerName}</span>
-                            <span class="text-xss font-mono text-green-400 ml-1 mt-2">${player.playerPing}ms</span>
+                            <span class="flex-box text-xs font-mono text-purple-400 ml-2">${player.playerId}</span>
+                            <span class="flex-box text-xss font-mono text-green-400 ml-1">${player.playerPing}ms</span>
                         </div>
                         <div class="text-xss text-gray-400 text-center uppercase font-bold">
                             ${player.jobName}: <span class="player-job-grade relative font-medium text-purple-400">${player.jobGrade}</span>
@@ -520,6 +536,11 @@
                 showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
             }
 
+            function containsBadWord() {
+                showSlideNotificationBadWord("Why so Naughty?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
+            }
+
+
             function obtainedDailyReward() {
                 showSlideNotificationReward("Daily Reward", `You successfully received your daily reward!`, `REWARD OBTAINED`);
             }
@@ -616,7 +637,21 @@
                 </div>
             </div>
         </div>
+
+        <div id="slide-notification-bw" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
+            <div class="flex">
+                <div class="mr-2">
+                    <img src="./assets/block.gif" alt="Image Alt Text" width="40" height="40">
+                </div>
+                <div>
+                    <h2 id="slide-notification-title-bw" class="text-lg font-bold text-gray-200 uppercase">tete</h2>
+                    <p id="slide-notification-message-bw" class="text-gray-300 font-medium mt-2">tete</p>
+                    <p id="slide-notification-message-two-bw" class="text-xs font-sans font-bold text-purple-300 absolute right-2 top-2">tete</p>
+                </div>
+            </div>
+        </div>
         <script>
+        
         function showSlideNotification(title, message, messagetwo) {
             document.getElementById('slide-notification-title').innerText = title;
             document.getElementById('slide-notification-message').innerText = message;
@@ -629,6 +664,21 @@
             setTimeout(() => {
                 slideNotification.classList.remove('show');
                 slideNotification.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        function showSlideNotificationBadWord(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-bw').innerText = title;
+            document.getElementById('slide-notification-message-bw').innerText = message;
+            document.getElementById('slide-notification-message-two-bw').innerText = messagetwo;
+
+            var slideNotificationBadWord = document.getElementById('slide-notification-bw');
+            slideNotificationBadWord.classList.remove('hidden', 'hide');
+            slideNotificationBadWord.classList.add('show');
+
+            setTimeout(() => {
+                slideNotificationBadWord.classList.remove('show');
+                slideNotificationBadWord.classList.add('hide');
             }, 5000); // Hide after 5 seconds
         }
 
@@ -802,53 +852,9 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     generateCalendar();
-    checkDailyRewardStatus(); // Check the reward status when the page loads
 });
 
-function checkDailyRewardStatus() {
-    // Send a request to the server to check reward status
-    // Replace 'YOUR_SERVER_ENDPOINT' with your server's endpoint
-    fetch('https://${GetParentResourceName()}/checkRewardStatus')
-    .then(response => response.json())
-    .then(data => {
-        if (data.canClaimToday) {
-            unlockTodayReward();
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function unlockTodayReward() {
-    const todayPanel = document.querySelector('.day-panel.today');
-    if (todayPanel) {
-        todayPanel.classList.add('obtainable');
-    }
-}
-
-function obtainedDailyRewardI(dayPanel) {
-    // Send a request to the server to claim the daily reward
-    fetch('https://${GetParentResourceName()}/claimReward', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.rewardClaimed) {
-            markRewardAsClaimed(dayPanel);
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function markRewardAsClaimed(dayPanel) {
-    if (dayPanel) {
-        dayPanel.classList.remove('obtainable');
-        dayPanel.classList.add('opened');
-    }
-}
-
+// Generate the Calander with fitting days
 function generateCalendar() {
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
@@ -896,9 +902,10 @@ function generateCalendar() {
 
 
 <!-- Chatbox Panel -->
-<div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl">
+<div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl" id="chatbox-panel">
+    <button id="expand-chat" class="expand-chat-btn right-14 absolute font-medium text-gray-200 mt-1">Expand</button>
     <h2 class="text-lg font-semibold text-white mb-4 panel-heading"><i class="fa-regular fa-comments mr-2"></i>Community Chat</h2>
-    <div class="chat-messages overflow-y-auto max-h-150 pt-10 pb-6">
+    <div class="chat-messages overflow-y-auto max-h-150 pt-10 pb-6 text-gray-300">
         <!-- Chat messages will be dynamically inserted here -->
     </div>
     <form id="chat-form" class="flex items-center">
@@ -971,36 +978,119 @@ function generateCalendar() {
 </div>
 
 
+<!-- Expanded Chat Modal -->
+<div class="chat-modal hidden" id="chat-modal">
+    <div class="chat-modal-content">
+        <button id="close-chat-modal" class="close-chat-modal-btn">Close</button>
+        <div class="chat-messages-modal overflow-y-auto max-h-150 pt-10 pb-6">
+            <!-- Chat messages will be dynamically inserted here -->
+        </div>
+            <!-- Chat messages will be dynamically inserted here -->
+        </div>
+        <!-- Form -->
+    </div>
+</div>
+
 <script>
+const blacklist = [
+    'bitch', 'faggot', 'nigger', 'cunt', 'fuck', 'shit', 'dick', 'asshole',
+    'bastard', 'slut', 'whore', 'pussy', 'cock', 'motherfucker', 'damn', 'hell',
+    'idiot', 'moron', 'dumbass', 'retard', 'ass', 'bitchass', 'douche', 'dyke',
+    'fag', 'hoe', 'jerk', 'jizz', 'kike', 'twat', 'wank', 'prick', 'piss', 'slag',
+    'spastic', 'spaz', 'tits', 'tosser', 'tranny', 'wanker', 'arsehole', 'bullshit',
+    'crap', 'cuntbag', 'fuckboy', 'fuckgirl', 'goddamn', 'goddammit', 'nigga', 'nazi',
+    'queer', 'skank', 'slutbag', 'sonofabitch', 'suck', 'vagina', 'whorebag',
+    'arse', 'bellend', 'blowjob', 'bollocks', 'bollox', 'boner', 'boob', 'bugger',
+    'chink', 'clit', 'coon', 'cum', 'cumbubble', 'cumslut', 'dildo', 'fanny',
+    'felching', 'flange', 'gash', 'goatse', 'gypo', 'homo', 'jap', 'minge',
+    'muff', 'negro', 'paedo', 'pecker', 'pedo', 'penis', 'paki', 'poon', 'poonani',
+    'poonany', 'porchmonkey', 'porchmonkey', 'punani', 'punta', 'pussies', 'rimjob',
+    'scrote', 'shag', 'shemale', 'skank', 'smegma', 'spic', 'spunk', 'teabagging',
+    'thundercunt', 'tit', 'titfuck', 'vulva', 'wetback', 'whore', 'wog'
+];
+
+
 // Sending a message to the Lua script
 document.getElementById('chat-form').addEventListener('submit', function(event) {
     event.preventDefault();
     var message = this.querySelector('input[type="text"]').value;
     if (message) {
-        // Send the message to the Lua client script
-        fetch(`https://${GetParentResourceName()}/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify({ message: message })
-        }).then(() => this.reset());
+        // Check if the message contains blacklisted words
+        if (containsBlacklistedWords(message)) {
+            // Display a notification or alert
+            containsBadWord();
+        } else {
+            // Send the message to the Lua client script
+            fetch(`https://${GetParentResourceName()}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({ message: message })
+            }).then(() => this.reset());
+        }
     }
 });
+
+// Function to check if the message contains blacklisted words
+function containsBlacklistedWords(message) {
+    for (let i = 0; i < blacklist.length; i++) {
+        if (message.includes(blacklist[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+// Function to append a message to both chat containers
+function appendMessageToChats(username, id, timestamp, message) {
+    // Check if the message contains a URL and format accordingly
+    const formattedMessage = formatMessageContent(message);
+
+    // Define the message format
+    const newMessageHTML = `[<span class="text-purple-400">${id}</span>] <strong>${username}</strong>: ${formattedMessage} <span class="text-xss text-gray-500 relative">${timestamp}</span>`;
+
+    // Append to both the main chatbox and the expanded modal chatbox
+    appendMessage('.chat-messages', newMessageHTML);
+    appendMessage('.chat-messages-modal', newMessageHTML);
+}
+
+
+
+// Helper function to format message content
+function formatMessageContent(message) {
+    if (isValidHttpUrl(message)) {
+        // Display as image if it's an image URL
+        return `<img src="${message}" alt="Embedded Image" style="max-width: 200px; max-height: 200px;">`;
+    }
+    return message;
+}
+
+
 // Receiving messages from the Lua script
 window.addEventListener('message', function(event) {
     var item = event.data;
     if (item.type === "chatMessage") {
-        var chatBox = document.querySelector('.chat-messages');
-        var newMessage = document.createElement('div');
-
-        newMessage.innerHTML = `[<span class="text-purple-400">${item.id}</span>] <strong>${item.username}</strong>: ${item.message} <span class="text-xss text-gray-500 relative">${item.timestamp}</span>`;
-        chatBox.appendChild(newMessage);
-
-        // Scroll to the bottom of the chat box when a new message is added
-        chatBox.scrollTop = chatBox.scrollHeight;
+        appendMessageToChats(item.username, item.id, item.timestamp, item.message);
     }
 });
+
+
+
+function isValidHttpUrl(string) {
+    let url;
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;  
+    }
+    // Additional check for image URLs (e.g., ends with .jpg, .png)
+    return url.protocol === "http:" || url.protocol === "https:" &&
+           /\.(jpeg|jpg|gif|webp|png)$/.test(url.pathname);
+}
+
 
 
 document.getElementById('emoji-button').addEventListener('click', function() {
@@ -1022,25 +1112,29 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
 });
 
 
-// Event listener for report button
-document.querySelector('.chat-messages').addEventListener('click', function(event) {
-    if (event.target && event.target.matches('.report-btn')) {
-        var messageId = event.target.getAttribute('data-message-id');
-        // Trigger the report functionality here
-        sendReportToServer(messageId);
-    }
+
+
+// Helper function to append messages to a specific container
+function appendMessage(containerSelector, messageHTML) {
+    const container = document.querySelector(containerSelector);
+    const newMessage = document.createElement('div');
+    newMessage.innerHTML = messageHTML;
+    container.appendChild(newMessage);
+    container.scrollTop = container.scrollHeight; // Scroll to bottom
+}
+
+
+
+// Event listeners for expand and close chat modal buttons
+document.getElementById('expand-chat').addEventListener('click', function() {
+    document.getElementById('chat-modal').classList.remove('hidden');
 });
 
-function sendReportToServer(messageId) {
-    // Example: Sending a report to the server-side
-    fetch(`https://${GetParentResourceName()}/reportMessage`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify({ messageId: messageId })
-    });
-}
+document.getElementById('close-chat-modal').addEventListener('click', function() {
+    document.getElementById('chat-modal').classList.add('hidden');
+});
+
+
 
 </script>
 
@@ -1057,7 +1151,25 @@ function sendReportToServer(messageId) {
 
 
 
+<!-- Help Documentation Container -->
+<div id="help-container" class="hidden">
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <div class="w-64 bg-zinc-800 p-4">
+            <input class="w-full mb-4 p-2 rounded" placeholder="Search...">
+            <!-- Navigation Links -->
+            <nav>
+                <!-- Dynamically generate navigation links here -->
+            </nav>
+        </div>
 
+        <!-- Main Content Area -->
+        <div class="flex-1 p-4">
+            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
+            <!-- Documentation content goes here -->
+        </div>
+    </div>
+</div>
 
 
 

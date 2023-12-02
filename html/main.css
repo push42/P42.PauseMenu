@@ -1104,7 +1104,7 @@ video {
 
 .bg-zinc-900 {
   --tw-bg-opacity: 1;
-  background-color: rgb(21 21 26 / var(--tw-bg-opacity));
+  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
 .bg-zinc-950 {
@@ -1133,7 +1133,7 @@ video {
 }
 
 .bg-opacity-95 {
-  --tw-bg-opacity: 0.95;
+  --tw-bg-opacity: 0.98;
 }
 
 .bg-gradient-to-r {
@@ -1453,6 +1453,11 @@ video {
 
 .ring-gray-600\/10 {
   --tw-ring-color: rgb(75 85 99 / 0.1);
+}
+
+.blur-2xl {
+  --tw-blur: blur(40px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .backdrop-blur-sm {

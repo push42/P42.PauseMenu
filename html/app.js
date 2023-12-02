@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-  console.log('Push42@PauseMenu loaded successfully')
+  console.log('Push42@P42_PauseMenu loaded successfully')
 })
 
 window.addEventListener('message', function(event) {
@@ -35,27 +35,27 @@ function ShowSettings() {
 
 $(function(){
     $('#settings').click(function(){
-      $.post('https://PauseMenu/SendAction', JSON.stringify({action: 'settings'}));
+      $.post('https://P42_PauseMenu/SendAction', JSON.stringify({action: 'settings'}));
       CloseAll()
     })
 
     $('#map').click(function(){
-      $.post('https://PauseMenu/SendAction', JSON.stringify({action: 'map'}));
+      $.post('https://P42_PauseMenu/SendAction', JSON.stringify({action: 'map'}));
       CloseAll()
     })
 
     $('#keyboard').click(function(){
-      $.post('https://PauseMenu/SendAction', JSON.stringify({action: 'keyboard'}));
+      $.post('https://P42_PauseMenu/SendAction', JSON.stringify({action: 'keyboard'}));
       CloseAll()
     })
 
     $('#resume').click(function(){
         CloseAll()
       })
-	
+
 
     $('#exit').click(function(){
-      $.post('https://PauseMenu/SendAction', JSON.stringify({action: 'exit'}));
+      $.post('https://P42_PauseMenu/SendAction', JSON.stringify({action: 'exit'}));
         CloseAll()
     })
 
@@ -77,7 +77,7 @@ $(function(){
               var reporttype = $('#reporttype').val();
               var subject = $('#subject').val();
               var description = $('#description').val();
-              $.post('https://PauseMenu/NewReport', JSON.stringify({
+              $.post('https://P42_PauseMenu/NewReport', JSON.stringify({
                   fname: fname,
                   lname: lname,
                   reporttype: reporttype,
@@ -106,7 +106,7 @@ $(function(){
 
 function CloseAll(){
   $('.container').fadeOut()
-  $.post('https://PauseMenu/exit', JSON.stringify({}));
+  $.post('https://P42_PauseMenu/exit', JSON.stringify({}));
   openUi = false
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +120,7 @@ function CloseAll(){
 // \______/ \________|\__|  \__|    \_/    \________|\__|  \__|\__|      \__|  \__|\__|  \__|\________|\________|
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function updateServerStats() {
-  $.post('https://PauseMenu/getServerData', {}, function(data) {
+  $.post('https://P42_PauseMenu/getServerData', {}, function(data) {
       if (data) {
           document.getElementById('userId').getElementsByClassName('stat-value')[0].textContent = `ID: ${data.userId}`;
           document.getElementById('playerCount').getElementsByClassName('stat-value')[0].textContent = `${data.playerCount}/${data.maxPlayers}`;
@@ -179,17 +179,6 @@ function manualCopyToClipboard(text) {
 
   document.body.removeChild(textArea);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

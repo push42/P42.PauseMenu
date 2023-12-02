@@ -41,10 +41,10 @@ files {
  'html/assets/*.jpg',
  'html/assets/*.wav',
  'html/assets/*.mp3',
- 'html/assets/*.mp4',
- 'config.json'
+ 'html/assets/*.mp4'
 } 
 
 -- ESX Dependency
 dependency 'es_extended' -- Make sure ESX is started before your script
 dependency 'oxmysql' -- Add oxmysql as a dependency
+dependency 'mysql-async'
