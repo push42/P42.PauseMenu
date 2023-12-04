@@ -289,3 +289,12 @@ AddEventHandler("refreshData", function()
 		action = 'refreshData',
 	})	
 end)
+
+
+RegisterNUICallback('openURL', function(data)
+    local url = data.url
+    SendNUIMessage({
+        action = 'openURL',
+        url = url
+    })
+end)

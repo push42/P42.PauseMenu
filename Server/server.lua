@@ -109,6 +109,8 @@ ESX.RegisterServerCallback('getServerData', function(source, cb)
 
     -- Fetch job details
     local job = xPlayer.getJob()
+    local jobGrade = job.grade or 'N/A'
+    local jobGradeLabel = job.grade_label or 'N/A'
 
     -- Prepare the data
     local data = {
@@ -122,7 +124,7 @@ ESX.RegisterServerCallback('getServerData', function(source, cb)
         cashMoney = cashMoney,
         blackMoney = blackMoney,
         health = playerHealth,
-        jobName = job.name,
+        jobName = jobGradeLabel,
         userId = source,
         -- Add more data as needed
     }
@@ -372,15 +374,18 @@ function broadcastOnlinePlayers()
     for _, playerId in ipairs(players) do
         local xPlayer = ESX.GetPlayerFromId(playerId)
         if xPlayer then
+            local job = xPlayer.getJob()
             table.insert(allPlayersData, {
                 playerId = playerId,
                 playerName = xPlayer.getName(),
                 playerPing = GetPlayerPing(playerId),
-                jobName = xPlayer.getJob().name
+                jobName = job.name,
+                jobGrade = job.grade_label -- Add job grade label
                 -- Add more data as needed
             })
         end
     end
+
 
     -- Trigger a client event to update the player list for all clients
     TriggerClientEvent('updateOnlinePlayers', -1, allPlayersData)

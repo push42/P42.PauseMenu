@@ -157,7 +157,7 @@ function copyUserIdToClipboard() {
   navigator.clipboard.writeText(actualId).then(function() {
       console.log('User ID copied to clipboard:', actualId);
   }).catch(function(err) {
-      console.error('Could not copy text:', err);
+      // console.error('Could not copy text:', err);
       // Fallback to manual copy
       manualCopyToClipboard(actualId);
   });
@@ -180,9 +180,6 @@ function manualCopyToClipboard(text) {
 
   document.body.removeChild(textArea);
 }
-
-
-
 
 
 

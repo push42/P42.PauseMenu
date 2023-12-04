@@ -1046,12 +1046,32 @@ textarea:focus {
     transform: translateX(100%); /* Hides the notification off the screen */
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-scaleUp {
+    animation: scaleUp 0.3s ease-out;
+}
 
 
 
-
-
-
+.discordserverlogo {
+    display: relative;
+    right: 42%;
+    top: 10%;
+    margin: 0%;
+}
 
 
 
@@ -1150,18 +1170,24 @@ textarea:focus {
 }
 
 .close-chat-modal-btn {
-    background: #4B5563;
+    background: #626364;
     color: white;
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
     cursor: pointer;
-    position: fixed;
-    top: 30%;
+    position: absolute;
+    top: 29%;
     left: 75%;
 }
 
-
+#bigchat-form {
+    position: fixed;
+    height: 42px;
+    width: auto;
+    bottom: 5%;
+    right: 43.5%;
+}
 
 
 /* Responsive adjustments for smaller screens */

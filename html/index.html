@@ -376,9 +376,6 @@
         </div>
 
 
-
-
-
         <div class="get-support-panel bg-zinc-900 bg-opacity-95 p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
             <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
@@ -397,25 +394,21 @@
                 <i class="fa-brands fa-discord mr-2 text-blue-400"></i>Discord
             </button>
         </div>
-    <!-- Discord Server Widget -->
-    <!-- <div id="discord-widget" class="discord-widget">
-            <div id="server-name" class="server-name"></div>
-            <div id="members" class="members"></div>
-        </div> -->
             
-
         <!-- Notify Modals -->
-        <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-900 bg-opacity-75 overflow-y-auto h-full w-full flex items-center justify-center">
-            <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 id="notification-title" class="text-xl font-semibold text-gray-800">Notification Title</h2>
-                    <button onclick="closeNotificationModal()" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">
-                        <i class="fas fa-times"></i>
+        <div id="notification-modal" class="hidden fixed inset-0 bg-zinc-950 bg-opacity-80 overflow-y-auto h-full w-full flex items-center justify-center animate-fadeIn z-40">
+            <div class="bg-zinc-900 to-zinc-950 bg-opacity-75 rounded-lg shadow-xl p-6 w-full max-w-md mx-4 md:mx-0 animate-scaleUp border-2 border-zinc-950">
+                <div class="flex items-center mb-4">
+                    <img class="w-16 h-16 flex discordserverlogo" src="./assets/discord_logo.webp"> 
+                    <h2 id="notification-title" class="text-xl font-semibold text-white uppercase">Notification Title</h2>
+                    <button onclick="closeNotificationModal()" class="text-gray-500 hover:text-gray-200 transition duration-150 ease-in-out ml-56 mb-10">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
-                <p id="notification-message" class="text-gray-700 mb-6">Your notification message goes here.</p>
+                <p id="notification-message" class="text-gray-400 mb-6 text-sm font-sans font-semibold">Your notification message goes here.</p>
             </div>
         </div>
+
 
 
         <div id="slide-notification-reward-locked" class="hidden fixed top-1/4 right-0 transform translate-x-full transition duration-500 ease-in-out bg-gradient-to-r from-zinc-900 to-zinc-950 shadow-lg rounded-l-xl p-4 w-84">
@@ -858,7 +851,7 @@ $(document).ready(function() {
 //   \/      \/              \/                              \/     \/                    \/    
 function showNotificationModal(title, message) {
     document.getElementById('notification-title').innerText = title;
-    document.getElementById('notification-message').innerText = message;
+    document.getElementById('notification-message').innerHTML = message; // Render as HTML
     document.getElementById('notification-modal').classList.remove('hidden');
 }
 
@@ -867,16 +860,19 @@ function closeNotificationModal() {
 }
 
 function copyDiscordLink() {
-    const discordInvite = "https://discord.com/invite/yourserver"; // Replace with your Discord invite link
-    showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
+    const discordInvite = "https://discord.gg/u2w6JwHd"; // Replace with your Discord invite link
+    const discordLinkHtml = `<a href="#" class="text-blue-500 hover:text-blue-300">Join our Discord Server</a>`;
+    showNotificationModal("Discord", `Be a part of our growing Community: ${discordLinkHtml}`);
 }
+
+
 
 function clickOnPing() {
     showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
 }
 // Inside your HTML/JavaScript
 function containsBadWord() {
-    showSlideNotificationBadWord("Why so Naughty? ", `Please behave inside the Chat and watch your language!`, `CHAT MESSAGE LOGGED`);
+    showSlideNotificationBadWord("Message blocked", `Please behave inside the Chat and watch your language!`, `CHAT MESSAGE LOGGED`);
     var chatEntry = document.getElementById('chat-input').value;
 
     // Send data to the Lua script on the client side
@@ -1120,19 +1116,39 @@ function generateCalendar() {
 const blacklist = [
     'bitch', 'faggot', 'nigger', 'cunt', 'fuck', 'shit', 'dick', 'asshole', 'bastard', 'slut', 'whore', 'pussy', 'cock', 
     'motherfucker', 'damn', 'moron', 'dumbass', 'retard', 'ass', 'bitchass', 'douche', 'dyke', 'fag', 'hoe', 'jerk', 'jizz',
-    'twat', 'wank', 'prick', 'slag', 'spastic', 'tits', 'tosser', 'tranny', 'wanker', 'crap', 'cuntbag', 'fuckboy', 'fuckgirl', 'nigga',
-    'nigger', 'nazi', 'queer', 'skank', 'slutbag', 'sonofabitch',
-    'suck', 'vagina', 'whorebag', 'arse', 'bellend', 'blowjob', 'bollocks', 'bollox', 'boner', 'boob', 'bugger', 'chink', 'clit',
-    'coon', 'cum', 'cumbubble', 'cumslut', 'dildo', 'homo', 'negro', 'paedo', 'pedo', 'penis', 'pussies', 'rimjob', 'scrote',
-    'shag', 'shemale', 'skank', 'smegma', 'spic', 'spunk', 'teabagging', 'thundercunt', 'tit',
-    'titfuck', 'vulva', 'wetback', 'whore', 'wog', 'niger', 'n1ger', 'n1gger', 'n1gga',
+    'twat', 'wank', 'prick', 'slag', 'spastic', 'tits', 'tosser', 'tranny', 'wanker', 'crap', 'cuntbag', 'fuckboy', 'fuckgirl', 
+    'nigga', 'nigger', 'nazi', 'queer', 'skank', 'slutbag', 'sonofabitch',    'suck', 'vagina', 'whorebag', 'arse', 'bellend',
+    'blowjob', 'bollocks', 'bollox', 'boner', 'boob', 'bugger', 'chink', 'clit', 'coon', 'cum', 'cumbubble', 'cumslut', 'dildo',
+    'homo', 'negro', 'paedo', 'pedo', 'penis', 'pussies', 'rimjob', 'scrote', 'shag', 'shemale', 'skank', 'smegma', 'spic',
+    'spunk', 'teabagging', 'thundercunt', 'tit', 'titfuck', 'vulva', 'wetback', 'whore', 'wog', 'niger', 'n1ger', 'n1gger',
+    'n1gga', 'niggs', 'anal', 'moron', 'jerk', 'dumbass', 'loser', 'cretin', 'imbecile', 'nitwit', 'fool', 'buffoon', 'bonehead',
+    'airhead', 'coward', 'numbskull', 'blockhead', 'donkey', 'clown', 'chump', 'dunce', 'dimwit', 'dope', 'goon', 'ignoramus',
+    'incompetent', 'klutz', 'lunatic', 'nit', 'nincompoop', 'oaf', 'scatterbrain', 'screwup', 'simpleton', 'slob', 'sloth', 'snob',
+    'so-and-so', 'stooge', 'thug', 'toad', 'weasel', 'wimp', 'yahoo', 'yokel', 'zealot', 'bimbo', 'charlatan',
 ];
 
 // Blacklisted Wordpatterns for that you wanna check
 const blacklistPatterns = [
-    /n[i1][gq]{2}[ae@34]/i,  // Pattern for 'nigga' with common substitutions and case insensitive
+    /n[i1!][gq]{2}[ae@34]/i,  // Pattern for 'nigga' with common substitutions and case insensitive
     // ... add more patterns for other words
 ];
+
+// Blacklisted Website (like Discord invite links, YouTube links and so on)
+const blacklistWebsites = [
+    /https:\/\/discord\.gg\//i,
+    /discord\.gg\//i,
+    /www\.discord\.gg\//i,
+    /dsc\.gg\//i,
+    /youtube\.com\//i,
+    /facebook\.com\//i,
+    /instagram\.com\//i,
+    /twitter\.com\//i,
+    /x\.com\//i,
+    /pornhub\.com\//i,
+    /onlyfans\.com\//i
+    // ... add more websites or remove existing ones
+];
+
 
 // Sending a chat entry to the Lua script inside the normal Chat inside the PauseMenu
 document.getElementById('chat-form').addEventListener('submit', function(event) {
@@ -1196,6 +1212,13 @@ function containsBlacklistedWords(chatEntry) {
     // Check against the regex patterns
     for (let i = 0; i < blacklistPatterns.length; i++) {
         if (blacklistPatterns[i].test(chatEntry)) {
+            return true;
+        }
+    }
+
+    // Check against the regex patterns for websites
+    for (let i = 0; i < blacklistWebsites.length; i++) {
+        if (blacklistWebsites[i].test(chatEntry)) {
             return true;
         }
     }
