@@ -153,7 +153,9 @@ end)
 
 -- Send a Message to all Clients
 RegisterNUICallback('sendMessage', function(data, cb)
-    print("Sending message to server: " .. data.chatEntry)  -- Debug print
+    if Config.Development.Debugging then
+        print("Sending message to server: " .. data.chatEntry)  -- Debug print
+    end
     TriggerServerEvent('clientChatMessage', data.chatEntry)
     cb('ok')
 end)
@@ -162,7 +164,9 @@ end)
 -- Now register the event
 RegisterNetEvent('receiveMessage')
 AddEventHandler('receiveMessage', function(username, id, timestamp, chatEntry)
-    print("Received message from server: ", username, id, timestamp, chatEntry)  -- Debug print
+    if Config.Development.Debugging then
+        print("Received message from server: ", username, id, timestamp, chatEntry)  -- Debug print
+    end
     SendNUIMessage({
         type = "chatMessage",
         username = username,
@@ -181,7 +185,9 @@ RegisterNUICallback('logBadChatMessage', function(data, cb)
         -- Trigger the server event with all necessary data
         TriggerServerEvent('logBadChatMessage', { username = username, chatEntry = chatEntry })
     else
-        print("No data received in logBadChatMessage callback")
+        if Config.Development.Debugging then
+            print("No data received in logBadChatMessage callback")
+        end
     end
 
     if cb then cb('ok') end

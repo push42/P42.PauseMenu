@@ -1,9 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ESX = exports["es_extended"]:getSharedObject()
 local oxmysql = exports.oxmysql
-
-
-
 
 
 
@@ -142,10 +140,11 @@ ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
             local job = xPlayer.getJob() -- Fetch job details
             local jobGrade = job.grade or 'N/A'
             local jobGradeLabel = job.grade_label or 'N/A'
-            console.log('Job Object for Player ' .. xPlayer.getName() .. ': ' .. json.encode(job)) -- Debugging line
 
+            if Config.Development.Debugging then
+                console.log('Job Object for Player ' .. xPlayer.getName() .. ': ' .. json.encode(job)) -- Debugging line
+            end
            
-
             table.insert(allPlayersData, {
                 playerId = players[i],
                 playerName = xPlayer.getName(),
@@ -167,8 +166,9 @@ AddEventHandler('clientChatMessage', function(chatEntry)
     local playerId = source
     local timestamp = os.date('%H:%M:%S')
 
-    print("clientChatMessage event triggered by " .. username .. " (ID: " .. playerId .. ") with message: " .. chatEntry)
-
+    if Config.Development.Debugging then
+        print("clientChatMessage event triggered by " .. username .. " (ID: " .. playerId .. ") with message: " .. chatEntry)
+    end
     -- Get all players
     local players = GetPlayers()
 
@@ -186,7 +186,9 @@ function logBadChatMessages(playerId, username, chatEntry, timestamp)
     if Config.Database.OxMysql then
         local query = 'INSERT INTO p42_chatlog (playerId, username, message, timestamp) VALUES (?, ?, ?, ?)'
         oxmysql.execute(query, {playerId, username, chatEntry, timestamp}, function(result)
-            print("Chat message logged for player: " .. username)
+            if Config.Development.Debugging then
+                print("Chat message logged for player: " .. username)
+            end
         end)
 
     elseif Config.Database.MySQLAsync then

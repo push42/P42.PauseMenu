@@ -6,6 +6,11 @@ Config.Database = {
     MySQLAsync = true, -- if you use mysql-async set to true / if not false
 }
 
+Config.Development = {
+    Debugging = true,
+    Debugging2 = false,
+}
+
 Config.TimerSettings = {
 
     PlayTime = {

@@ -1144,7 +1144,7 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
             // Display a notification or alert
             containsBadWord();
         } else {
-            console.log("Sending chat entry to Lua script:", chatEntry);  // Debug log
+            // console.log("Sending chat entry to Lua script:", chatEntry);  // Debug log
             // Send the chat entry to the Lua client script
             fetch(`https://${GetParentResourceName()}/sendMessage`, {
                 method: 'POST',
