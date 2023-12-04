@@ -2,47 +2,6 @@
 ESX = exports["es_extended"]:getSharedObject()
 local oxmysql = exports.oxmysql
 
-
-
-
-
-
-playerData = {}
-
-
--- Function to get the last day of the current month
-local function getLastDayOfMonth()
-    local date = os.date("*t")
-    -- Set day to zero to roll back to the last day of the previous month
-    local lastDayTime = os.time({year=date.year, month=date.month + 1, day=0})
-    local lastDay = os.date("*t", lastDayTime).day
-    return lastDay
-end
-
--- If a new month is reached, it gets reset, reset all dailyrewards table data.
-AddEventHandler('onResourceStart', function(resourceName)
-    if (GetCurrentResourceName() ~= resourceName) then
-      return
-    end
-
-    local date = os.date("*t")
-    local currentDay = tonumber(date.day)
-    local lastDayOfMonth = getLastDayOfMonth()
-
-    MySQL.Sync.execute('DELETE FROM p42_dailyrewards WHERE day > ' .. lastDayOfMonth)
-
-    if currentDay > lastDayOfMonth then
-        return
-    end
-
-    MySQL.Sync.execute('DELETE FROM p42_dailyrewards WHERE day = ' .. lastDayOfMonth)
-
-end)
-
-
-
-
-
 -- Update the User Avatar & fetch it
 -- Event to update the avatar URL
 RegisterNetEvent('updateAvatar')
@@ -162,25 +121,14 @@ ESX.RegisterServerCallback('getAllPlayersData', function(source, cb)
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('clientChatMessage')
-AddEventHandler('clientChatMessage', function(chatEntry)
+AddEventHandler('clientChatMessage', function(message)
     local username = GetPlayerName(source)
     local playerId = source
     local timestamp = os.date('%H:%M:%S')
 
-    print("clientChatMessage event triggered by " .. username .. " (ID: " .. playerId .. ") with message: " .. chatEntry)
-
-    -- Get all players
-    local players = GetPlayers()
-
-    -- Send the message to all players except the one who sent it
-    for _, player in ipairs(players) do
-        if tonumber(player) ~= playerId then
-            TriggerClientEvent('receiveMessage', player, username, playerId, timestamp, chatEntry)
-        end
-    end
+    -- Broadcast the message with timestamp to all players
+    TriggerClientEvent('receiveMessage', -1, username, playerId, timestamp, message)
 end)
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Function to update playtime
@@ -374,44 +322,22 @@ AddEventHandler('get:playerInfo', function()
         -- Fetch all user data in one query
         MySQL.Async.fetchAll('SELECT firstname, lastname, height, sex, dateofbirth, avatar, accounts, `group` FROM users WHERE identifier = @identifier', 
             {['@identifier'] = xPlayer.identifier}, 
-            function(userInfoResult)
-                if userInfoResult[1] then
-                    local playerData = userInfoResult[1]
-
-                    -- Fetch daily rewards data
-                    MySQL.Async.fetchAll('SELECT * FROM p42_dailyrewards WHERE identifier = @identifier', 
-                        {['@identifier'] = xPlayer.identifier},
-                        function(dailyRewardsResult)
-                            -- Check if daily rewards data exists
-                            if dailyRewardsResult[1] == nil then
-                                local date = os.date("*t")
-                                MySQL.Async.execute('INSERT INTO p42_dailyrewards (identifier, name, current_day) VALUES (@identifier, @name, @current_day)',
-                                    {
-                                        ['@identifier'] = xPlayer.identifier,
-                                        ['@name'] = GetPlayerName(_source),
-                                        ['@current_day'] = tonumber(date.day)
-                                    })
-                                
-                                playerData['dailyRewards'] = {current_day = tonumber(date.day), day = 1, received = 0, received_hour = nil}
-                            else
-                                playerData['dailyRewards'] = {current_day = dailyRewardsResult[1].current_day, day = dailyRewardsResult[1].day, received = dailyRewardsResult[1].received, received_hour = dailyRewardsResult[1].received_hour}
-                            end
-
-                            -- Send combined data to client
-                            TriggerClientEvent('set:playerInfo', _source, {
-                                job = job.name,
-                                grade = job.grade_label,
-                                firstname = playerData.firstname,
-                                lastname = playerData.lastname,
-                                height = playerData.height,
-                                sex = playerData.sex,
-                                dateofbirth = playerData.dateofbirth,
-                                avatar = playerData.avatar,
-                                accounts = playerData.accounts,
-                                group = playerData.group,
-                                dailyRewards = playerData['dailyRewards']
-                            })
-                        end)
+            function(result)
+                if result[1] then
+                    local playerData = result[1]
+                    -- Send data to client
+                    TriggerClientEvent('set:playerInfo', _source, {
+                        job = job.name,
+                        grade = job.grade_label,
+                        firstname = playerData.firstname,
+                        lastname = playerData.lastname,
+                        height = playerData.height,
+                        sex = playerData.sex,
+                        dateofbirth = playerData.dateofbirth,
+                        avatar = playerData.avatar,
+                        accounts = playerData.accounts,
+                        group = playerData.group
+                    })
                 end
         end)
     end
@@ -420,158 +346,8 @@ end)
 
 
 
-Citizen.CreateThread(function()
-    while true do
-
-        Citizen.Wait(60000 * Config.ThreadRepeat)
-  
-        local date = os.date("*t")
-        local lastDayOfMonth = getLastDayOfMonth()
-        local currentHour, currentDay = tonumber(date.hour), tonumber(date.day)
-
-        for k,v in pairs(ESX.GetPlayers()) do
-
-            if v and playerData[v] then
-
-                local xPlayer = ESX.GetPlayerFromId(v)
-                local data = playerData[xPlayer.source]
-
-                if data.received == 1 and data.current_day ~= currentDay then
-
-                    if currentDay < 28 and playerData[xPlayer.source].day + 1 <= lastDayOfMonth then
-
-                        MySQL.Sync.execute('UPDATE p42_dailyrewards SET current_day = @current_day, day = day + 1, received = @received, received_hour = @received_hour WHERE identifier = @identifier', {
-                            ["identifier"] = xPlayer.identifier,
-                            ["current_day"] = currentDay,
-                            ["received"] = 0,
-                            ["received_hour"] = nil,
-                        }) 
-    
-                        playerData[xPlayer.source] = {current_day = currentDay, day = playerData[xPlayer.source].day + 1, received = 0, received_hour = nil}
-    
-                        TriggerClientEvent("refreshData", xPlayer.source)
-                    end 
-                end
-                
-                if data.received == 0 and data.current_day ~= currentDay then
-
-                    MySQL.Sync.execute('UPDATE p42_dailyrewards SET current_day = @current_day WHERE identifier = @identifier', {
-                        ["identifier"] = xPlayer.identifier,
-                        ["current_day"] = currentDay,
-                    }) 
-
-                    playerData[xPlayer.source].current_day = currentDay
-                end
-
-            end
-
-        end
-
-    end
-end)
 
 
 
-
-
-RegisterServerEvent("claimReward")
-AddEventHandler("claimReward", function (week, day)
-
-    local xPlayer = ESX.GetPlayerFromId(source)
-
-    if xPlayer then
-
-        for k,v in pairs(Config.DailyRewards[week]) do
-
-            if v.day == tonumber(day) then
-
-                local type, givenReward, givenAmount = v.dayReward.type, v.dayReward.reward, v.dayReward.amount
-            
-                time = os.date("*t") 
-        
-                MySQL.Sync.execute('UPDATE p42_dailyrewards SET received = @received, received_hour = @received_hour WHERE identifier = @identifier', {
-                    ["identifier"] = xPlayer.identifier,
-                    ["received"] = 1,
-                    ["received_hour"] = tonumber(time.hour),
-                }) 
-        
-                playerData[xPlayer.source].received = 1
-                playerData[xPlayer.source].received_hour = tonumber(time.hour)
-            
-                if type  == 'item' then
-                    xPlayer.addInventoryItem(givenReward, givenAmount)
-            
-                elseif type  == 'weapon' then
-                    xPlayer.addWeapon(givenReward, givenAmount)
-            
-                elseif type == 'money' then
-                    xPlayer.addMoney(givenAmount)
-            
-                elseif type == 'black_money' then
-                    xPlayer.addAccountMoney('black_money', givenAmount)
-            
-                elseif type == 'bank' then
-                    xPlayer.addAccountMoney('bank', givenAmount)
-        
-                else
-        
-                    if Config.RewardPacks[type] then
-                        local rewards = Config.RewardPacks[type].rewards
-        
-                        for k, v in pairs(rewards) do
-        
-                            if v.type  == 'item' then
-                                xPlayer.addInventoryItem(v.name, v.amount)
-                        
-                            elseif v.type  == 'weapon' then
-                                xPlayer.addWeapon(v.name, 0)
-                        
-                            elseif v.type == 'money' then
-                                xPlayer.addMoney(v.amount)
-                        
-                            elseif v.type == 'black_money' then
-                                xPlayer.addAccountMoney('black_money', v.amount)
-                        
-                            elseif v.type == 'bank' then
-                                xPlayer.addAccountMoney('bank', v.amount)
-                            end
-                        end
-                    else
-                        print("Tried to buy a non existing reward Type. Make sure {"..type.."} exists in Config.RewardPacks.")
-                    end
-                end
-        
-                TriggerClientEvent('openDailyRewards', xPlayer.source)
-            
-                if Config.MythicNotifyMessage then
-                    TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = _U("rewards_claimed_for_day") .. day})
-                else
-                    TriggerClientEvent('esx:showNotification', xPlayer.source, _U("rewards_claimed_for_day") .. day)
-                end
-            end    
-        end
-        
-    end
-
-end)
-
-
-
-
-
-
-
-ESX.RegisterServerCallback("fetchUserInformation", function(source, cb)
-    local _source = source
-
-   local xPlayer = ESX.GetPlayerFromId(source)
-	 
-    if playerData[xPlayer.source] then
-        cb(playerData[xPlayer.source])
-    else
-        cb(nil)
-    end
-
-end)
 
 

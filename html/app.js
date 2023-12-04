@@ -93,6 +93,7 @@ $(function(){
           $('#form-alert-container').fadeOut(250); 
           $('.form-container').fadeIn(250);   
       });
+
   
       function ClearForm() {
           $('#fname').val('');

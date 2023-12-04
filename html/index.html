@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
-    <script src="app.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
@@ -18,7 +17,7 @@
 <!-- ... -->
 
 
-<body class="container mx-auto bg-black bg-opacity-95 text-gray-200 font-sans m-0 relative">
+<body class="container mx-auto bg-black bg-opacity-90 text-gray-200 font-sans m-0 relative">
     <div class="fixed top-4 left-6">
         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
         <div class="text-center text-sm font-sans font-bold text-purple-300 mt-1">EXAMPLEV</div>
@@ -867,7 +866,6 @@ function generateCalendar() {
         if (dayNumber === currentDay) {
             dayPanel.classList.add('today');
             dayPanel.addEventListener('click', () => {
-                obtainedDailyRewardI(dayPanel);
                 obtainedDailyReward();
             }, { once: true });
         } else if (dayNumber < currentDay) {
@@ -894,6 +892,7 @@ function generateCalendar() {
 
     }
 }
+
 </script>
 
 
@@ -992,6 +991,8 @@ function generateCalendar() {
 </div>
 
 <script>
+
+
 const blacklist = [
     'bitch', 'faggot', 'nigger', 'cunt', 'fuck', 'shit', 'dick', 'asshole',
     'bastard', 'slut', 'whore', 'pussy', 'cock', 'motherfucker', 'damn', 'hell',
@@ -1011,31 +1012,34 @@ const blacklist = [
 
 
 // Sending a message to the Lua script
+// Sending a chat entry to the Lua script
 document.getElementById('chat-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    var message = this.querySelector('input[type="text"]').value;
-    if (message) {
-        // Check if the message contains blacklisted words
-        if (containsBlacklistedWords(message)) {
+    var chatEntry = this.querySelector('input[type="text"]').value; // Changed 'message' to 'chatEntry'
+    if (chatEntry) {
+        // Check if the chat entry contains blacklisted words
+        if (containsBlacklistedWords(chatEntry)) {
             // Display a notification or alert
             containsBadWord();
         } else {
-            // Send the message to the Lua client script
+            console.log("Sending chat entry to Lua script:", chatEntry);  // Debug log
+            // Send the chat entry to the Lua client script
             fetch(`https://${GetParentResourceName()}/sendMessage`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8',
                 },
-                body: JSON.stringify({ message: message })
+                body: JSON.stringify({ chatEntry: chatEntry }) // Changed 'message' to 'chatEntry'
             }).then(() => this.reset());
         }
     }
 });
 
+
 // Function to check if the message contains blacklisted words
-function containsBlacklistedWords(message) {
+function containsBlacklistedWords(chatEntry) {
     for (let i = 0; i < blacklist.length; i++) {
-        if (message.includes(blacklist[i])) {
+        if (chatEntry.includes(blacklist[i])) {
             return true;
         }
     }
@@ -1057,23 +1061,28 @@ function appendMessageToChats(username, id, timestamp, message) {
     appendMessage('.chat-messages-modal', newMessageHTML);
 }
 
+// Example usage
+appendMessageToChats("User", "123", "10:30", "Hello world!");
+
 
 
 // Helper function to format message content
-function formatMessageContent(message) {
-    if (isValidHttpUrl(message)) {
+function formatMessageContent(chatEntry) {
+    if (isValidHttpUrl(chatEntry)) {
         // Display as image if it's an image URL
-        return `<img src="${message}" alt="Embedded Image" style="max-width: 200px; max-height: 200px;">`;
+        return `<img src="${chatEntry}" alt="Embedded Image" style="max-width: 200px; max-height: 200px;">`;
     }
-    return message;
+    return chatEntry;
 }
+
+
 
 
 // Receiving messages from the Lua script
 window.addEventListener('message', function(event) {
     var item = event.data;
     if (item.type === "chatMessage") {
-        appendMessageToChats(item.username, item.id, item.timestamp, item.message);
+        appendMessageToChats(item.username, item.id, item.timestamp, item.chatEntry);
     }
 });
 
@@ -1125,6 +1134,7 @@ function appendMessage(containerSelector, messageHTML) {
 
 
 
+
 // Event listeners for expand and close chat modal buttons
 document.getElementById('expand-chat').addEventListener('click', function() {
     document.getElementById('chat-modal').classList.remove('hidden');
@@ -1137,9 +1147,6 @@ document.getElementById('close-chat-modal').addEventListener('click', function()
 
 
 </script>
-
-
-
 
 
 
@@ -1188,6 +1195,5 @@ document.getElementById('close-chat-modal').addEventListener('click', function()
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9d1f4cdd15.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
-    <script src="main.js" defer></script>
 </body>
 </html>

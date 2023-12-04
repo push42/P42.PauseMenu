@@ -107,7 +107,6 @@ html {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 2px solid #555554;
   }
 
 
@@ -117,8 +116,8 @@ html {
     font-size: 0.65em;
   }
 
-.daily-rewardpanel, .news-panel, .server-panel {
-    border: 2px solid #555554;
+.daily-rewardpanel, .news-panel, .server-panel, .chatbox-panel, .leaderboard-panel, .get-support-panel, .tebex-shop-panel {
+    border: 2px solid rgb(49, 49, 49);
 }
 
 
@@ -523,7 +522,6 @@ html {
 
 /* Leaderboard Panel */
 .leaderboard-panel {
-    border: 2px solid #555554;
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -555,7 +553,6 @@ html {
 .get-support-panel {
     background-color: #2d3748; /* A darker shade for distinction */
     color: #e2e8f0; /* Lighter text for readability */
-    border: 2px solid #555554; /* Subtle border for depth */
     border-radius: 12px; /* Increased border-radius for a softer look */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
 }
@@ -632,7 +629,6 @@ html {
 .tebex-shop-panel {
     position: relative;
     overflow: hidden;
-    border: 2px solid #555554;
     background-color: #1b1b1b;
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -1113,7 +1109,7 @@ textarea:focus {
 
 
 
-.panel, .leaderboard-panel, .tebex-shop-panel, .get-support-panel:before {
+.panel, .leaderboard-panel, .tebex-shop-panel, .get-support-panel {
     content: '';
     background: inherit;
     -filter: blur(20px);

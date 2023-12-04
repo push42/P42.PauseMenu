@@ -19,7 +19,8 @@ server_scripts {
  'Server/**.lua',
  'config.lua',
  '@oxmysql/lib/MySQL.lua', -- oxmysql library
- '@es_extended/locale.lua'
+ '@es_extended/locale.lua',
+ "@mysql-async/lib/MySQL.lua"
 }
 
 

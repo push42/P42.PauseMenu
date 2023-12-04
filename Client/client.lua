@@ -1,4 +1,59 @@
+
 local open = false
+
+local PauseMenuOpened = false
+
+cachedData = {}
+
+
+if ESX.IsPlayerLoaded() then
+    Citizen.SetTimeout(100, function ()
+        ESX.PlayerLoaded = true
+        ESX.PlayerData = ESX.GetPlayerData()
+
+        Wait(1000)
+
+        TriggerServerEvent('get:playerInfo')
+    end) 
+end
+
+
+
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(playerData, isNew)
+	ESX.PlayerLoaded = true
+	ESX.PlayerData = playerData
+
+	Wait(1000)
+
+	TriggerServerEvent('loadPlayerInformation')
+end)
+
+
+AddEventHandler('onResourceStart', function(resource)
+	if resource == GetCurrentResourceName() then
+		SetNuiFocus(false,false)
+    end
+end)
+
+
+
+
+
+
+RegisterNUICallback('claimRewards', function (data)
+	TriggerServerEvent('claimReward', Weeks[ tostring(data.day) ], data.day)
+end)
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
 RegisterCommand('openSettinggmenu', function()
     OpenPauseMenu()
     TriggerServerEvent('get:playerInfo')
@@ -16,6 +71,25 @@ function OpenPauseMenu()
         SendNUIMessage({
             action = 'show',
         })
+        DisableControlAction(0, 1,   true) -- LookLeftRight
+        DisableControlAction(0, 2,   true) -- LookUpDown
+        DisableControlAction(0, 106, true) -- VehicleMouseControlOverride
+        DisableControlAction(0, 142, true) -- MeleeAttackAlternate
+        DisableControlAction(0, 30,  true) -- MoveLeftRight
+        DisableControlAction(0, 31,  true) -- MoveUpDown
+        DisableControlAction(0, 21,  true) -- disable sprint
+        DisableControlAction(0, 24,  true) -- disable attack
+        DisableControlAction(0, 25,  true) -- disable aim
+        DisableControlAction(0, 47,  true) -- disable weapon
+        DisableControlAction(0, 58,  true) -- disable weapon
+        DisableControlAction(0, 263, true) -- disable melee
+        DisableControlAction(0, 264, true) -- disable melee
+        DisableControlAction(0, 257, true) -- disable melee
+        DisableControlAction(0, 140, true) -- disable melee
+        DisableControlAction(0, 141, true) -- disable melee
+        DisableControlAction(0, 143, true) -- disable melee
+        DisableControlAction(0, 75,  true) -- disable exit vehicle
+        DisableControlAction(27, 75, true) -- disable exit vehicle
         open = true
     end
 end
@@ -79,21 +153,26 @@ end)
 
 -- Send a Message to all Clients
 RegisterNUICallback('sendMessage', function(data, cb)
-    TriggerServerEvent('clientChatMessage', data.message)
+    print("Sending message to server: " .. data.chatEntry)  -- Debug print
+    TriggerServerEvent('clientChatMessage', data.chatEntry)
     cb('ok')
 end)
 
--- Recieve a Message (Chat)
+
+-- Now register the event
 RegisterNetEvent('receiveMessage')
-AddEventHandler('receiveMessage', function(username, id, timestamp, message)
+AddEventHandler('receiveMessage', function(username, id, timestamp, chatEntry)
+    print("Received message from server: ", username, id, timestamp, chatEntry)  -- Debug print
     SendNUIMessage({
         type = "chatMessage",
         username = username,
         id = id,
         timestamp = timestamp,
-        message = message,
+        chatEntry = chatEntry,
     })    
 end)
+
+
 
 -- Update Leaderboard
 RegisterNetEvent('updateLeaderboard')
@@ -178,3 +257,13 @@ end)
 
 
 
+
+
+
+-- Refresh the DailyRewards Data
+RegisterNetEvent("refreshData")
+AddEventHandler("refreshData", function()
+	SendNUIMessage({
+		action = 'refreshData',
+	})	
+end)
