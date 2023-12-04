@@ -12,11 +12,6 @@
 </head>
 
 
-
-<!-- Your existing bottom navigation menu -->
-<!-- ... -->
-
-
 <body class="container mx-auto bg-black bg-opacity-90 text-gray-200 font-sans m-0 relative">
     <div class="fixed top-4 left-6">
         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
@@ -51,42 +46,8 @@
         <i class="fa-solid fa-clock mr-2 text-lg"></i>
         <span id="current-time" class="text-sm font-semibold"></span>
     </div>
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const currentTime = now.toLocaleTimeString();
-            document.getElementById('current-time').textContent = currentTime;
-        }
-    
-        setInterval(updateTime, 1000);
-        updateTime(); // Initialize clock immediately
 
 
-        // Javascript for updating the Avatar
-        document.getElementById('updateAvatar').addEventListener('click', function() {
-        document.getElementById('avatarUpdatePanel').classList.remove('hidden');
-        });
-
-        document.getElementById('cancelAvatarUpdate').addEventListener('click', function() {
-        document.getElementById('avatarUpdatePanel').classList.add('hidden');
-        });
-
-        document.getElementById('confirmAvatarUpdate').addEventListener('click', function() {
-            var newAvatarUrl = document.getElementById('avatarUrlInput').value;
-            if (newAvatarUrl && /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif))$/i.test(newAvatarUrl)) {
-                fetch(`https://${GetParentResourceName()}/updateAvatar`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json; charset=UTF-8',
-                    },
-                    body: JSON.stringify({ url: newAvatarUrl })
-                });
-                document.getElementById('avatarUpdatePanel').classList.add('hidden');
-            } else {
-                alert('Please enter a valid image URL.');
-            }
-        });
-    </script>    
     <!-- Navigation Menu at Bottom -->
     <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg z-40">
         <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Resume">
@@ -115,6 +76,7 @@
         </div>
     </div>
     <script>
+    // Script for the bottom navigation menu
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', function() {
             document.querySelectorAll('.nav-item').forEach(nav => {
@@ -124,6 +86,27 @@
         });
     });
     </script>
+
+
+    <!-- Help Documentation Container -->
+    <div id="help-container" class="hidden">
+        <div class="flex">
+            <!-- Sidebar Navigation -->
+            <div class="w-64 bg-zinc-800 p-4">
+                <input class="w-full mb-4 p-2 rounded" placeholder="Search...">
+                <!-- Navigation Links -->
+                <nav>
+                    <!-- Dynamically generate navigation links here -->
+                </nav>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="flex-1 p-4">
+                <h1 class="text-2xl font-bold mb-4">Documentation</h1>
+                <!-- Documentation content goes here -->
+            </div>
+        </div>
+    </div>
 
 
 
@@ -289,50 +272,6 @@
         </div>
 
 
-            <script>
-                // Assuming NUI is set up and this script can communicate with your FiveM resource's client script
-                window.addEventListener('message', function(event) {
-                    if (event.data.action === 'setPlayerInfo') {
-                        var data = event.data.playerInfo;
-
-                        // Update HTML elements with the player's data
-                        document.getElementById('playerName').textContent = data.firstname + ' ' + data.lastname;
-                        document.getElementById('jobNameDetail').textContent = data.job ? data.job : 'Not available';
-                        document.getElementById('jobGradeDetail').textContent = data.grade ? data.grade : 'Not available';
-                        document.getElementById('heightDetail').textContent = data.height ? data.height : 'Not available';
-                        document.getElementById('groupDetail').textContent = data.group ? data.group : 'Not available';
-
-                        // Convert 'm' or 'f' to 'Male' or 'Female'
-                        var sexText = data.sex === 'm' ? 'Male' : (data.sex === 'f' ? 'Female' : 'Not available');
-                        document.getElementById('sexDetail').textContent = sexText;
-
-                        document.getElementById('dobDetail').textContent = data.dateofbirth ? data.dateofbirth : 'Not available';
-                        document.getElementById('up-avatar').src = data.avatar;
-                        document.getElementById('avatarButton').src = data.avatar;
-                                // Parse the accounts data as JSON
-                        var accountsData = JSON.parse(data.accounts);
-
-                        // Update HTML elements with the player's data
-                        document.getElementById('bankDetail').textContent = accountsData.bank ? '$' + accountsData.bank.toLocaleString() : 'N/A';
-                        document.getElementById('moneyDetail').textContent = accountsData.money ? '$' + accountsData.money.toLocaleString() : 'N/A';
-                        document.getElementById('blackMoneyDetail').textContent = accountsData.black_money ? '$' + accountsData.black_money.toLocaleString() : 'N/A';
-
-                    }
-                });
-                
-
-                document.getElementById('playerUsername').addEventListener('click', function() {
-                    var detailedInfo = document.getElementById('detailedUserInfo');
-                    detailedInfo.classList.toggle('hidden'); // Toggle visibility
-                    detailedInfo.style.opacity = detailedInfo.style.opacity == 0 ? 1 : 0; // Toggle opacity
-                });
-
-                document.getElementById('closeUserInfo').addEventListener('click', function() {
-                    var detailedInfo = document.getElementById('detailedUserInfo');
-                    detailedInfo.classList.add('hidden');
-                    detailedInfo.style.opacity = 0;
-                });
-            </script>
 
                 <!-- Improved User List Panel -->
                     <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden uppercase">
@@ -357,51 +296,6 @@
                 </div>
             </div>
         </div>
-        <script>
-        $(document).ready(function() {
-            window.addEventListener('message', function(event) {
-                if (event.data.action === 'updateOnlinePlayers') {
-                    updatePlayerList(event.data.players);
-                }
-            });
-
-            function updatePlayerList(players) {
-                $('#playerList').empty();
-                players.forEach(player => {
-                    $('#playerList').append(createPlayerListItem(player));
-                });
-            }
-
-            function createPlayerListItem(player) {
-                return `
-                    <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
-                        <div class="flex items-center justify-between mb-1">
-                            
-                            <span class="flex items-center ml-1 text-white">${player.playerName}</span>
-                            <span class="flex-box text-xs font-mono text-purple-400 ml-2">${player.playerId}</span>
-                            <span class="flex-box text-xss font-mono text-green-400 ml-1">${player.playerPing}ms</span>
-                        </div>
-                        <div class="text-xss text-gray-400 text-center uppercase font-bold">
-                            ${player.jobName}: <span class="player-job-grade relative font-medium text-purple-400">${player.jobGrade}</span>
-                        </div>
-                    </li>
-                `;
-            }
-        });
-        $(document).ready(function() {
-            window.addEventListener('message', function(event) {
-                if (event.data.action === 'set:playerInfo') {
-                    updatePlayerInfo(event.data.playerInfo);
-                }
-            });
-
-            function updatePlayerInfo(playerInfo) {
-                // Assuming you have HTML elements to display this info
-                $('#player-job-grade').text(playerInfo.grade);
-                // Update other player info elements as needed
-            }
-        });
-        </script>
 
 
         <!-- Panel 1 - Tebex Shop Section -->
@@ -513,69 +407,8 @@
                 <i class="fa-brands fa-discord mr-2 text-blue-400"></i>Discord
             </button>
         </div>
-
-        <!-- JavaScript Code -->
-        <script>
-            function showNotificationModal(title, message) {
-                document.getElementById('notification-title').innerText = title;
-                document.getElementById('notification-message').innerText = message;
-                document.getElementById('notification-modal').classList.remove('hidden');
-            }
-
-            function closeNotificationModal() {
-                document.getElementById('notification-modal').classList.add('hidden');
-            }
-
-            function copyDiscordLink() {
-                const discordInvite = "https://discord.com/invite/yourserver"; // Replace with your Discord invite link
-                showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
-            }
-
-            function clickOnPing() {
-                showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
-            }
-
-            function containsBadWord() {
-                showSlideNotificationBadWord("Why so Naughty?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
-            }
-
-
-            function obtainedDailyReward() {
-                showSlideNotificationReward("Daily Reward", `You successfully received your daily reward!`, `REWARD OBTAINED`);
-            }
-
-            function lockedDailyReward() {
-                showSlideNotificationRewardLocked("Daily Reward", `Sorry! You did not login at this day!`, `REWARD LOCKED`);
-            }
-
-            function unlockDailyReward() {
-                showSlideNotificationRewardLocked("Daily Reward", `Reward not ready yet, come back tomorrow!`, `REWARD LOCKED`);
-            }
-
-            // Function to open the Live Support modal and hide the overlay
-            function openLiveSupportModal() {
-                document.getElementById('supportModal').classList.remove('hidden');
-                document.getElementById('supportOverlay').classList.add('hidden');
-            }
-
-            document.querySelector('.support-send-btn').addEventListener('click', function() {
-                var message = document.querySelector('.support-input-field').value;
-                // Send this message to the server for the currently selected ticket
-            });
-
-            // Function to close the Live Support modal and show the overlay
-            function closeLiveSupportModal() {
-                document.getElementById('supportModal').classList.add('hidden');
-                document.getElementById('supportOverlay').classList.add('hidden');
-            }
-
-            // Event listener for the "Live Support" button
-            document.getElementById('openLiveSupport').addEventListener('click', openLiveSupportModal);
-            document.getElementById('closeSupportPanel').addEventListener('click', closeLiveSupportModal);
-        </script>
-
-        <!-- Discord Server Widget -->
-        <!-- <div id="discord-widget" class="discord-widget">
+    <!-- Discord Server Widget -->
+    <!-- <div id="discord-widget" class="discord-widget">
             <div id="server-name" class="server-name"></div>
             <div id="members" class="members"></div>
         </div> -->
@@ -649,79 +482,6 @@
                 </div>
             </div>
         </div>
-        <script>
-        
-        function showSlideNotification(title, message, messagetwo) {
-            document.getElementById('slide-notification-title').innerText = title;
-            document.getElementById('slide-notification-message').innerText = message;
-            document.getElementById('slide-notification-message-two').innerText = messagetwo;
-
-            var slideNotification = document.getElementById('slide-notification');
-            slideNotification.classList.remove('hidden', 'hide');
-            slideNotification.classList.add('show');
-
-            setTimeout(() => {
-                slideNotification.classList.remove('show');
-                slideNotification.classList.add('hide');
-            }, 5000); // Hide after 5 seconds
-        }
-
-        function showSlideNotificationBadWord(title, message, messagetwo) {
-            document.getElementById('slide-notification-title-bw').innerText = title;
-            document.getElementById('slide-notification-message-bw').innerText = message;
-            document.getElementById('slide-notification-message-two-bw').innerText = messagetwo;
-
-            var slideNotificationBadWord = document.getElementById('slide-notification-bw');
-            slideNotificationBadWord.classList.remove('hidden', 'hide');
-            slideNotificationBadWord.classList.add('show');
-
-            setTimeout(() => {
-                slideNotificationBadWord.classList.remove('show');
-                slideNotificationBadWord.classList.add('hide');
-            }, 5000); // Hide after 5 seconds
-        }
-
-        // Notify for Reward obtained
-        function showSlideNotificationReward(title, message, messagetwo) {
-            document.getElementById('slide-notification-title-reward').innerText = title;
-            document.getElementById('slide-notification-message-reward').innerText = message;
-            document.getElementById('slide-notification-message-two-reward').innerText = messagetwo;
-
-
-            var slideNotificationReward = document.getElementById('slide-notification-reward');
-            slideNotificationReward.classList.remove('hidden', 'hide');
-            slideNotificationReward.classList.add('show');
-
-            var NotificationRewardSound = document.getElementById('notification-sound-reward');
-            NotificationRewardSound.play();
-
-            setTimeout(() => {
-                slideNotificationReward.classList.remove('show');
-                slideNotificationReward.classList.add('hide');
-            }, 5000); // Hide after 5 seconds
-        }
-
-        // Notify for Reward locked
-        function showSlideNotificationRewardLocked(title, message, messagetwo) {
-            document.getElementById('slide-notification-title-reward-locked').innerText = title;
-            document.getElementById('slide-notification-message-reward-locked').innerText = message;
-            document.getElementById('slide-notification-message-two-reward-locked').innerText = messagetwo;
-
-
-            var NotificationRewardSoundLocked = document.getElementById('notification-sound-reward-locked');
-            NotificationRewardSoundLocked.play();
-
-            var slideNotificationRewardLocked = document.getElementById('slide-notification-reward-locked');
-            slideNotificationRewardLocked.classList.remove('hidden', 'hide');
-            slideNotificationRewardLocked.classList.add('show');
-
-            setTimeout(() => {
-                slideNotificationRewardLocked.classList.remove('show');
-                slideNotificationRewardLocked.classList.add('hide');
-            }, 5000); // Hide after 5 seconds
-        }
-        </script>
-
 
 
 
@@ -736,42 +496,6 @@
                 <!-- JavaScript will populate this list -->
             </ul>
         </div>
-<script>
-window.addEventListener('message', function (event) {
-    var item = event.data;
-    if (item.type === "updateLeaderboard") {
-        var leaderboardList = document.querySelector('.leaderboard-panel ul');
-        leaderboardList.innerHTML = ''; // Clear existing list
-        item.players.slice(0, 10).forEach(function (player, index) {
-            var playerElement = document.createElement('li');
-            playerElement.className = 'flex items-center justify-between bg-zinc-900 bg-opacity-90 p-2 rounded-lg';
-
-            var trophyIcon = '';
-            if (index === 0) { // First place
-                trophyIcon = '<i class="fa-solid fa-trophy text-gold ml-2"></i>';
-            } else if (index === 1) { // Second place
-                trophyIcon = '<i class="fa-solid fa-trophy text-silver ml-2"></i>';
-            } else if (index === 2) { // Third place
-                trophyIcon = '<i class="fa-solid fa-trophy text-bronze ml-2"></i>';
-            }
-
-            // Convert playtime from minutes to hours and minutes
-            var totalMinutes = player.playtime;
-            var hours = Math.floor(totalMinutes / 60);
-            var minutes = totalMinutes % 60;
-
-            playerElement.innerHTML = `
-                <div class="flex items-center">
-                    <img src="${player.avatar}" alt="${player.firstname}" class="w-8 h-8 rounded-full mr-2">
-                    <span class="text-white text-sm">${player.firstname} ${player.lastname}</span>
-                    ${trophyIcon}
-                </div>
-                <span class="text-gray-400 text-xs px-2 py-1 rounded-full font-semibold">Playtime: ${totalMinutes} min / ${hours} hrs</span>`;
-            leaderboardList.appendChild(playerElement);
-        });
-    }
-});
-</script>
 
 
 <!-- Modal Container for Player Reports (Hidden initially) -->
@@ -808,30 +532,6 @@ window.addEventListener('message', function (event) {
         </button>
     </div>
 </div>
-<script>
-function openModal() {
-    document.getElementById('modal-container').classList.remove('hidden');
-    document.querySelector('body').classList.add('modal-open');
-}
-
-function closeModal() {
-    document.getElementById('modal-container').classList.add('hidden');
-    document.querySelector('body').classList.remove('modal-open');
-}
-
-// Event listener for the close button
-document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-</script>
-
-
-
-
-
-
-
-
-
-
 
 <!-- Panel 4 - Detailed Info Panel -->
 <div class="panel bg-zinc-900 bg-opacity-90 p-2 rounded-lg shadow-lg col-span-2 daily-rewardpanel">
@@ -847,58 +547,6 @@ document.getElementById('close-modal-btn').addEventListener('click', closeModal)
         </div>
     </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    generateCalendar();
-});
-
-// Generate the Calander with fitting days
-function generateCalendar() {
-    const currentDate = new Date();
-    const currentDay = currentDate.getDate();
-    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-    const calendarRow = document.getElementById('calendar-row');
-
-    for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
-        const dayPanel = document.createElement('div');
-        dayPanel.className = 'day-panel bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105';
-        if (dayNumber === currentDay) {
-            dayPanel.classList.add('today');
-            dayPanel.addEventListener('click', () => {
-                obtainedDailyReward();
-            }, { once: true });
-        } else if (dayNumber < currentDay) {
-            dayPanel.classList.add('locked');
-        } else {
-            dayPanel.classList.add('locked');
-        }
-
-        const dayHeader = document.createElement('div');
-        dayHeader.className = 'day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs';
-        dayHeader.textContent = `DAY ${dayNumber}`;
-
-        const dayContent = document.createElement('div');
-        dayContent.className = 'day-content flex items-center justify-center p-4 h-14';
-
-        const dayImage = document.createElement('img');
-        dayImage.src = './assets/door_badge.webp';
-        dayImage.alt = 'Daily Reward';
-
-        dayContent.appendChild(dayImage);
-        dayPanel.appendChild(dayHeader);
-        dayPanel.appendChild(dayContent);
-        calendarRow.appendChild(dayPanel);
-
-    }
-}
-
-</script>
-
-
-
-
-
 
 <!-- Chatbox Panel -->
 <div class="chatbox-panel bg-zinc-900 bg-opacity-90 p-5 rounded-xl shadow-xl" id="chatbox-panel">
@@ -987,32 +635,511 @@ function generateCalendar() {
             <!-- Chat messages will be dynamically inserted here -->
         </div>
         <!-- Form -->
+        <form id="bigchat-form" class="flex absolute justify-between item-center right-1/2 top-3/4">
+            <input type="text" id="bigchat-input" class="bg-zinc-800 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
+            <button type="submit" class="bg-purple-400 text-white p-1.5 rounded-lg font-bold">Send</button>
+        </form>
     </div>
 </div>
 
 <script>
+//       /\      /\  _________ .__                 __    
+//      / /     / /  \_   ___ \|  |   ____   ____ |  | __
+//     / /     / /   /    \  \/|  |  /  _ \_/ ___\|  |/ /
+//    / /     / /    \     \___|  |_(  <_> )  \___|    < 
+//   / /     / /      \______  /____/\____/ \___  >__|_ \
+//   \/      \/              \/                 \/     \/
+        // Function for the clock
+        function updateTime() {
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString();
+            document.getElementById('current-time').textContent = currentTime;
+        }
+    
+        setInterval(updateTime, 1000);
+        updateTime(); // Initialize clock immediately
+//       /\      /\     _  _  _________ .__                 __    
+//      / /     / /  __| || |_\_   ___ \|  |   ____   ____ |  | __
+//     / /     / /   \   __   /    \  \/|  |  /  _ \_/ ___\|  |/ /
+//    / /     / /     |  ||  |\     \___|  |_(  <_> )  \___|    < 
+//   / /     / /     /_  ~~  _\\______  /____/\____/ \___  >__|_ \
+//   \/      \/        |_||_|         \/                 \/     \/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\   ____ ___            .___       __            _____                __                
+//      / /     / /  |    |   \______   __| _/____ _/  |_  ____   /  _  \___  _______ _/  |______ _______ 
+//     / /     / /   |    |   /\____ \ / __ |\__  \\   __\/ __ \ /  /_\  \  \/ /\__  \\   __\__  \\_  __ \
+//    / /     / /    |    |  / |  |_> > /_/ | / __ \|  | \  ___//    |    \   /  / __ \|  |  / __ \|  | \/
+//   / /     / /     |______/  |   __/\____ |(____  /__|  \___  >____|__  /\_/  (____  /__| (____  /__|   
+//   \/      \/                |__|        \/     \/          \/        \/           \/          \/      
+        // Javascript for updating the Avatar
+        document.getElementById('updateAvatar').addEventListener('click', function() {
+        document.getElementById('avatarUpdatePanel').classList.remove('hidden');
+        });
+
+        document.getElementById('cancelAvatarUpdate').addEventListener('click', function() {
+        document.getElementById('avatarUpdatePanel').classList.add('hidden');
+        });
+
+        document.getElementById('confirmAvatarUpdate').addEventListener('click', function() {
+            var newAvatarUrl = document.getElementById('avatarUrlInput').value;
+            if (newAvatarUrl && /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif))$/i.test(newAvatarUrl)) {
+                fetch(`https://${GetParentResourceName()}/updateAvatar`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                    },
+                    body: JSON.stringify({ url: newAvatarUrl })
+                });
+                document.getElementById('avatarUpdatePanel').classList.add('hidden');
+            } else {
+                alert('Please enter a valid image URL.');
+            }
+        });
+//       /\      /\     _  _   ____ ___            .___       __            _____                __                
+//      / /     / /  __| || |_|    |   \______   __| _/____ _/  |_  ____   /  _  \___  _______ _/  |______ _______ 
+//     / /     / /   \   __   /    |   /\____ \ / __ |\__  \\   __\/ __ \ /  /_\  \  \/ /\__  \\   __\__  \\_  __ \
+//    / /     / /     |  ||  ||    |  / |  |_> > /_/ | / __ \|  | \  ___//    |    \   /  / __ \|  |  / __ \|  | \/
+//   / /     / /     /_  ~~  _\______/  |   __/\____ |(____  /__|  \___  >____|__  /\_/  (____  /__| (____  /__|   
+//   \/      \/        |_||_|           |__|        \/     \/          \/        \/           \/          \/       
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  __________.__                            .___        _____       
+//      / /     / /  \______   \  | _____  ___.__. ___________|   | _____/ ____\____  
+//     / /     / /    |     ___/  | \__  \<   |  |/ __ \_  __ \   |/    \   __\/  _ \ 
+//    / /     / /     |    |   |  |__/ __ \\___  \  ___/|  | \/   |   |  \  | (  <_> )
+//   / /     / /      |____|   |____(____  / ____|\___  >__|  |___|___|  /__|  \____/ 
+//   \/      \/                          \/\/         \/               \/            
+                // Assuming NUI is set up and this script can communicate with your FiveM resource's client script
+                window.addEventListener('message', function(event) {
+                    if (event.data.action === 'setPlayerInfo') {
+                        var data = event.data.playerInfo;
+
+                        // Update HTML elements with the player's data
+                        document.getElementById('playerName').textContent = data.firstname + ' ' + data.lastname;
+                        document.getElementById('jobNameDetail').textContent = data.job ? data.job : 'Not available';
+                        document.getElementById('jobGradeDetail').textContent = data.grade ? data.grade : 'Not available';
+                        document.getElementById('heightDetail').textContent = data.height ? data.height : 'Not available';
+                        document.getElementById('groupDetail').textContent = data.group ? data.group : 'Not available';
+
+                        // Convert 'm' or 'f' to 'Male' or 'Female'
+                        var sexText = data.sex === 'm' ? 'Male' : (data.sex === 'f' ? 'Female' : 'Not available');
+                        document.getElementById('sexDetail').textContent = sexText;
+
+                        document.getElementById('dobDetail').textContent = data.dateofbirth ? data.dateofbirth : 'Not available';
+                        document.getElementById('up-avatar').src = data.avatar;
+                        document.getElementById('avatarButton').src = data.avatar;
+                                // Parse the accounts data as JSON
+                        var accountsData = JSON.parse(data.accounts);
+
+                        // Update HTML elements with the player's data
+                        document.getElementById('bankDetail').textContent = accountsData.bank ? '$' + accountsData.bank.toLocaleString() : 'N/A';
+                        document.getElementById('moneyDetail').textContent = accountsData.money ? '$' + accountsData.money.toLocaleString() : 'N/A';
+                        document.getElementById('blackMoneyDetail').textContent = accountsData.black_money ? '$' + accountsData.black_money.toLocaleString() : 'N/A';
+
+                    }
+                });
+                
+
+                document.getElementById('playerUsername').addEventListener('click', function() {
+                    var detailedInfo = document.getElementById('detailedUserInfo');
+                    detailedInfo.classList.toggle('hidden'); // Toggle visibility
+                    detailedInfo.style.opacity = detailedInfo.style.opacity == 0 ? 1 : 0; // Toggle opacity
+                });
+
+                document.getElementById('closeUserInfo').addEventListener('click', function() {
+                    var detailedInfo = document.getElementById('detailedUserInfo');
+                    detailedInfo.classList.add('hidden');
+                    detailedInfo.style.opacity = 0;
+                });
+//       /\      /\     _  _  __________.__                            .___        _____       
+//      / /     / /  __| || |_\______   \  | _____  ___.__. ___________|   | _____/ ____\____  
+//     / /     / /   \   __   /|     ___/  | \__  \<   |  |/ __ \_  __ \   |/    \   __\/  _ \ 
+//    / /     / /     |  ||  | |    |   |  |__/ __ \\___  \  ___/|  | \/   |   |  \  | (  <_> )
+//   / /     / /     /_  ~~  _\|____|   |____(____  / ____|\___  >__|  |___|___|  /__|  \____/ 
+//   \/      \/        |_||_|                     \/\/         \/               \/            
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  ________         .__  .__              .____    .__          __   
+//      / /     / /  \_____  \   ____ |  | |__| ____   ____ |    |   |__| _______/  |_ 
+//     / /     / /    /   |   \ /    \|  | |  |/    \_/ __ \|    |   |  |/  ___/\   __\
+//    / /     / /    /    |    \   |  \  |_|  |   |  \  ___/|    |___|  |\___ \  |  |  
+//   / /     / /     \_______  /___|  /____/__|___|  /\___  >_______ \__/____  > |__|  
+//   \/      \/              \/     \/             \/     \/        \/       \/       
+$(document).ready(function() {
+            window.addEventListener('message', function(event) {
+                if (event.data.action === 'updateOnlinePlayers') {
+                    updatePlayerList(event.data.players);
+                }
+            });
+
+            function updatePlayerList(players) {
+                $('#playerList').empty();
+                players.forEach(player => {
+                    $('#playerList').append(createPlayerListItem(player));
+                });
+            }
+
+            function createPlayerListItem(player) {
+                return `
+                    <li class="player-item inline-flex items-center rounded-md bg-zinc-900 px-2 py-1 text-xs font-medium text-purple-700 ring-2 ring-inset ring-gray-600/10">
+                        <div class="flex items-center justify-between mb-1">
+                            
+                            <span class="flex items-center ml-1 text-white">${player.playerName}</span>
+                            <span class="flex-box text-xs font-mono text-purple-400 ml-2">${player.playerId}</span>
+                            <span class="flex-box text-xss font-mono text-green-400 ml-1">${player.playerPing}ms</span>
+                        </div>
+                        <div class="text-xss text-gray-400 text-center uppercase font-bold">
+                            ${player.jobName}: <span class="player-job-grade relative font-medium text-purple-400">${player.jobGrade}</span>
+                        </div>
+                    </li>
+                `;
+            }
+        });
+        $(document).ready(function() {
+            window.addEventListener('message', function(event) {
+                if (event.data.action === 'set:playerInfo') {
+                    updatePlayerInfo(event.data.playerInfo);
+                }
+            });
+
+            function updatePlayerInfo(playerInfo) {
+                // Assuming you have HTML elements to display this info
+                $('#player-job-grade').text(playerInfo.grade);
+                // Update other player info elements as needed
+            }
+        });
+//       /\      /\     _  _  ________         .__  .__              .____    .__          __   
+//      / /     / /  __| || |_\_____  \   ____ |  | |__| ____   ____ |    |   |__| _______/  |_ 
+//     / /     / /   \   __   //   |   \ /    \|  | |  |/    \_/ __ \|    |   |  |/  ___/\   __\
+//    / /     / /     |  ||  |/    |    \   |  \  |_|  |   |  \  ___/|    |___|  |\___ \  |  |  
+//   / /     / /     /_  ~~  _\_______  /___|  /____/__|___|  /\___  >_______ \__/____  > |__|  
+//   \/      \/        |_||_|         \/     \/             \/     \/        \/       \/      
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  .____    .__               _________                                  __   
+//      / /     / /  |    |   |__|__  __ ____  /   _____/__ ________ ______   ____________/  |_ 
+//     / /     / /   |    |   |  \  \/ // __ \ \_____  \|  |  \____ \\____ \ /  _ \_  __ \   __\
+//    / /     / /    |    |___|  |\   /\  ___/ /        \  |  /  |_> >  |_> >  <_> )  | \/|  |  
+//   / /     / /     |_______ \__| \_/  \___  >_______  /____/|   __/|   __/ \____/|__|   |__|  
+//   \/      \/              \/             \/        \/      |__|   |__|                      
+            // Function to open the Live Support modal and hide the overlay
+            function openLiveSupportModal() {
+                document.getElementById('supportModal').classList.remove('hidden');
+                document.getElementById('supportOverlay').classList.add('hidden');
+            }
+
+            document.querySelector('.support-send-btn').addEventListener('click', function() {
+                var message = document.querySelector('.support-input-field').value;
+                // Send this message to the server for the currently selected ticket
+            });
+
+            // Function to close the Live Support modal and show the overlay
+            function closeLiveSupportModal() {
+                document.getElementById('supportModal').classList.add('hidden');
+                document.getElementById('supportOverlay').classList.add('hidden');
+            }
+
+            // Event listener for the "Live Support" button
+            document.getElementById('openLiveSupport').addEventListener('click', openLiveSupportModal);
+            document.getElementById('closeSupportPanel').addEventListener('click', closeLiveSupportModal);
+//       /\      /\     _  _  .____    .__               _________                                  __   
+//      / /     / /  __| || |_|    |   |__|__  __ ____  /   _____/__ ________ ______   ____________/  |_ 
+//     / /     / /   \   __   /    |   |  \  \/ // __ \ \_____  \|  |  \____ \\____ \ /  _ \_  __ \   __\
+//    / /     / /     |  ||  ||    |___|  |\   /\  ___/ /        \  |  /  |_> >  |_> >  <_> )  | \/|  |  
+//   / /     / /     /_  ~~  _\_______ \__| \_/  \___  >_______  /____/|   __/|   __/ \____/|__|   |__|  
+//   \/      \/        |_||_|         \/             \/        \/      |__|   |__|                      
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\   _______          __  .__  _____.__               __  .__               
+//      / /     / /   \      \   _____/  |_|__|/ ____\__| ____ _____ _/  |_|__| ____   ____  
+//     / /     / /    /   |   \ /  _ \   __\  \   __\|  |/ ___\\__  \\   __\  |/  _ \ /    \ 
+//    / /     / /    /    |    (  <_> )  | |  ||  |  |  \  \___ / __ \|  | |  (  <_> )   |  \
+//   / /     / /     \____|__  /\____/|__| |__||__|  |__|\___  >____  /__| |__|\____/|___|  /
+//   \/      \/              \/                              \/     \/                    \/    
+function showNotificationModal(title, message) {
+    document.getElementById('notification-title').innerText = title;
+    document.getElementById('notification-message').innerText = message;
+    document.getElementById('notification-modal').classList.remove('hidden');
+}
+
+function closeNotificationModal() {
+    document.getElementById('notification-modal').classList.add('hidden');
+}
+
+function copyDiscordLink() {
+    const discordInvite = "https://discord.com/invite/yourserver"; // Replace with your Discord invite link
+    showNotificationModal("Discord Invite", `Copy the Discord invite link: ${discordInvite}`);
+}
+
+function clickOnPing() {
+    showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
+}
+
+function containsBadWord() {
+    showSlideNotificationBadWord("Why so Naughty?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
+}
+
+
+function obtainedDailyReward() {
+    showSlideNotificationReward("Daily Reward", `You successfully received your daily reward!`, `REWARD OBTAINED`);
+}
+
+function lockedDailyReward() {
+    showSlideNotificationRewardLocked("Daily Reward", `Sorry! You did not login at this day!`, `REWARD LOCKED`);
+}
+
+function unlockDailyReward() {
+    showSlideNotificationRewardLocked("Daily Reward", `Reward not ready yet, come back tomorrow!`, `REWARD LOCKED`);
+}
+
+function showSlideNotification(title, message, messagetwo) {
+            document.getElementById('slide-notification-title').innerText = title;
+            document.getElementById('slide-notification-message').innerText = message;
+            document.getElementById('slide-notification-message-two').innerText = messagetwo;
+
+            var slideNotification = document.getElementById('slide-notification');
+            slideNotification.classList.remove('hidden', 'hide');
+            slideNotification.classList.add('show');
+
+            setTimeout(() => {
+                slideNotification.classList.remove('show');
+                slideNotification.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        function showSlideNotificationBadWord(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-bw').innerText = title;
+            document.getElementById('slide-notification-message-bw').innerText = message;
+            document.getElementById('slide-notification-message-two-bw').innerText = messagetwo;
+
+            var slideNotificationBadWord = document.getElementById('slide-notification-bw');
+            slideNotificationBadWord.classList.remove('hidden', 'hide');
+            slideNotificationBadWord.classList.add('show');
+
+            setTimeout(() => {
+                slideNotificationBadWord.classList.remove('show');
+                slideNotificationBadWord.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // Notify for Reward obtained
+        function showSlideNotificationReward(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-reward').innerText = title;
+            document.getElementById('slide-notification-message-reward').innerText = message;
+            document.getElementById('slide-notification-message-two-reward').innerText = messagetwo;
+
+
+            var slideNotificationReward = document.getElementById('slide-notification-reward');
+            slideNotificationReward.classList.remove('hidden', 'hide');
+            slideNotificationReward.classList.add('show');
+
+            var NotificationRewardSound = document.getElementById('notification-sound-reward');
+            NotificationRewardSound.play();
+
+            setTimeout(() => {
+                slideNotificationReward.classList.remove('show');
+                slideNotificationReward.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // Notify for Reward locked
+        function showSlideNotificationRewardLocked(title, message, messagetwo) {
+            document.getElementById('slide-notification-title-reward-locked').innerText = title;
+            document.getElementById('slide-notification-message-reward-locked').innerText = message;
+            document.getElementById('slide-notification-message-two-reward-locked').innerText = messagetwo;
+
+
+            var NotificationRewardSoundLocked = document.getElementById('notification-sound-reward-locked');
+            NotificationRewardSoundLocked.play();
+
+            var slideNotificationRewardLocked = document.getElementById('slide-notification-reward-locked');
+            slideNotificationRewardLocked.classList.remove('hidden', 'hide');
+            slideNotificationRewardLocked.classList.add('show');
+
+            setTimeout(() => {
+                slideNotificationRewardLocked.classList.remove('show');
+                slideNotificationRewardLocked.classList.add('hide');
+            }, 5000); // Hide after 5 seconds
+        }
+//       /\      /\     _  _   _______          __  .__  _____.__               __  .__               
+//      / /     / /  __| || |__\      \   _____/  |_|__|/ ____\__| ____ _____ _/  |_|__| ____   ____  
+//     / /     / /   \   __   //   |   \ /  _ \   __\  \   __\|  |/ ___\\__  \\   __\  |/  _ \ /    \ 
+//    / /     / /     |  ||  |/    |    (  <_> )  | |  ||  |  |  \  \___ / __ \|  | |  (  <_> )   |  \
+//   / /     / /     /_  ~~  _\____|__  /\____/|__| |__||__|  |__|\___  >____  /__| |__|\____/|___|  /
+//   \/      \/        |_||_|         \/                              \/     \/                    \/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  .____                      .___          ___.                          .___
+//      / /     / /  |    |    ____ _____     __| _/__________\_ |__   _________ _______  __| _/
+//     / /     / /   |    |  _/ __ \\__  \   / __ |/ __ \_  __ \ __ \ /  _ \__  \\_  __ \/ __ | 
+//    / /     / /    |    |__\  ___/ / __ \_/ /_/ \  ___/|  | \/ \_\ (  <_> ) __ \|  | \/ /_/ | 
+//   / /     / /     |_______ \___  >____  /\____ |\___  >__|  |___  /\____(____  /__|  \____ | 
+//   \/      \/              \/   \/     \/      \/    \/          \/           \/           \/
+window.addEventListener('message', function (event) {
+    var item = event.data;
+    if (item.type === "updateLeaderboard") {
+        var leaderboardList = document.querySelector('.leaderboard-panel ul');
+        leaderboardList.innerHTML = ''; // Clear existing list
+        item.players.slice(0, 10).forEach(function (player, index) {
+            var playerElement = document.createElement('li');
+            playerElement.className = 'flex items-center justify-between bg-zinc-900 bg-opacity-90 p-2 rounded-lg';
+
+            var trophyIcon = '';
+            if (index === 0) { // First place
+                trophyIcon = '<i class="fa-solid fa-trophy text-gold ml-2"></i>';
+            } else if (index === 1) { // Second place
+                trophyIcon = '<i class="fa-solid fa-trophy text-silver ml-2"></i>';
+            } else if (index === 2) { // Third place
+                trophyIcon = '<i class="fa-solid fa-trophy text-bronze ml-2"></i>';
+            }
+
+            // Convert playtime from minutes to hours and minutes
+            var totalMinutes = player.playtime;
+            var hours = Math.floor(totalMinutes / 60);
+            var minutes = totalMinutes % 60;
+
+            playerElement.innerHTML = `
+                <div class="flex items-center">
+                    <img src="${player.avatar}" alt="${player.firstname}" class="w-8 h-8 rounded-full mr-2">
+                    <span class="text-white text-sm">${player.firstname} ${player.lastname}</span>
+                    ${trophyIcon}
+                </div>
+                <span class="text-gray-400 text-xs px-2 py-1 rounded-full font-semibold">Playtime: ${totalMinutes} min / ${hours} hrs</span>`;
+            leaderboardList.appendChild(playerElement);
+        });
+    }
+});
+//       /\      /\     _  _  .____                      .___          ___.                          .___
+//      / /     / /  __| || |_|    |    ____ _____     __| _/__________\_ |__   _________ _______  __| _/
+//     / /     / /   \   __   /    |  _/ __ \\__  \   / __ |/ __ \_  __ \ __ \ /  _ \__  \\_  __ \/ __ | 
+//    / /     / /     |  ||  ||    |__\  ___/ / __ \_/ /_/ \  ___/|  | \/ \_\ (  <_> ) __ \|  | \/ /_/ | 
+//   / /     / /     /_  ~~  _\_______ \___  >____  /\____ |\___  >__|  |___  /\____(____  /__|  \____ | 
+//   \/      \/        |_||_|         \/   \/     \/      \/    \/          \/           \/           \/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  __________                             __    __________                      .__   
+//      / /     / /  \______   \ ____ ______   ____________/  |_  \______   \_____    ____   ____ |  |  
+//     / /     / /    |       _// __ \\____ \ /  _ \_  __ \   __\  |     ___/\__  \  /    \_/ __ \|  |  
+//    / /     / /     |    |   \  ___/|  |_> >  <_> )  | \/|  |    |    |     / __ \|   |  \  ___/|  |__
+//   / /     / /      |____|_  /\___  >   __/ \____/|__|   |__|    |____|    (____  /___|  /\___  >____/
+//   \/      \/              \/     \/|__|                                        \/     \/     \/     
+function openModal() {
+    document.getElementById('modal-container').classList.remove('hidden');
+    document.querySelector('body').classList.add('modal-open');
+}
+
+function closeModal() {
+    document.getElementById('modal-container').classList.add('hidden');
+    document.querySelector('body').classList.remove('modal-open');
+}
+
+// Event listener for the close button
+document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+//       /\      /\     _  _  __________                             __    __________                      .__   
+//      / /     / /  __| || |_\______   \ ____ ______   ____________/  |_  \______   \_____    ____   ____ |  |  
+//     / /     / /   \   __   /|       _// __ \\____ \ /  _ \_  __ \   __\  |     ___/\__  \  /    \_/ __ \|  |  
+//    / /     / /     |  ||  | |    |   \  ___/|  |_> >  <_> )  | \/|  |    |    |     / __ \|   |  \  ___/|  |__
+//   / /     / /     /_  ~~  _\|____|_  /\___  >   __/ \____/|__|   |__|    |____|    (____  /___|  /\___  >____/
+//   \/      \/        |_||_|         \/     \/|__|                                        \/     \/     \/     
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  ________         .__.__          __________                                .___      
+//      / /     / /  \______ \ _____  |__|  | ___.__. \______   \ ______  _  _______ _______  __| _/______
+//     / /     / /    |    |  \\__  \ |  |  |<   |  |  |       _// __ \ \/ \/ /\__  \\_  __ \/ __ |/  ___/
+//    / /     / /     |    `   \/ __ \|  |  |_\___  |  |    |   \  ___/\     /  / __ \|  | \/ /_/ |\___ \ 
+//   / /     / /     /_______  (____  /__|____/ ____|  |____|_  /\___  >\/\_/  (____  /__|  \____ /____  >
+//   \/      \/              \/     \/        \/              \/     \/             \/           \/    \/
+// Listen if the DOM is loaded, then generate the calendar
+document.addEventListener('DOMContentLoaded', function() {
+    generateCalendar();
+});
+
+// Generate the Calander with fitting days (function)
+function generateCalendar() {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+    const calendarRow = document.getElementById('calendar-row');
+
+    for (let dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
+        const dayPanel = document.createElement('div');
+        dayPanel.className = 'day-panel bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-lg shadow-lg mr-4 ml-2 flex-none hover:scale-105';
+        if (dayNumber === currentDay) {
+            dayPanel.classList.add('today');
+            dayPanel.addEventListener('click', () => {
+                obtainedDailyReward();
+            }, { once: true });
+        } else if (dayNumber < currentDay) {
+            dayPanel.classList.add('locked');
+        } else {
+            dayPanel.classList.add('locked');
+        }
+
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'day-header bg-zinc-950 text-white text-center py-1.5 rounded-t-lg font-bold text-xs';
+        dayHeader.textContent = `DAY ${dayNumber}`;
+
+        const dayContent = document.createElement('div');
+        dayContent.className = 'day-content flex items-center justify-center p-4 h-14';
+
+        const dayImage = document.createElement('img');
+        dayImage.src = './assets/door_badge.webp';
+        dayImage.alt = 'Daily Reward';
+
+        dayContent.appendChild(dayImage);
+        dayPanel.appendChild(dayHeader);
+        dayPanel.appendChild(dayContent);
+        calendarRow.appendChild(dayPanel);
+
+    }
+}
+//       /\      /\     _  _   ________         .__.__          __________                                .___      
+//      / /     / /  __| || |__\______ \ _____  |__|  | ___.__. \______   \ ______  _  _______ _______  __| _/______
+//     / /     / /   \   __   / |    |  \\__  \ |  |  |<   |  |  |       _// __ \ \/ \/ /\__  \\_  __ \/ __ |/  ___/
+//    / /     / /     |  ||  |  |    `   \/ __ \|  |  |_\___  |  |    |   \  ___/\     /  / __ \|  | \/ /_/ |\___ \ 
+//   / /     / /     /_  ~~  _\/_______  (____  /__|____/ ____|  |____|_  /\___  >\/\_/  (____  /__|  \____ /____  >
+//   \/      \/        |_||_|          \/     \/        \/              \/     \/             \/           \/    \/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//       /\      /\  _________ .__            __      _________              __  .__               
+//      / /     / /  \_   ___ \|  |__ _____ _/  |_   /   _____/ ____   _____/  |_|__| ____   ____  
+//     / /     / /   /    \  \/|  |  \\__  \\   __\  \_____  \_/ __ \_/ ___\   __\  |/  _ \ /    \ 
+//    / /     / /    \     \___|   Y  \/ __ \|  |    /        \  ___/\  \___|  | |  (  <_> )   |  \
+//   / /     / /      \______  /___|  (____  /__|   /_______  /\___  >\___  >__| |__|\____/|___|  /
+//   \/      \/              \/     \/     \/               \/     \/     \/                    \/ 
+// Blacklisted Words that should be blocked from getting send to the server
 const blacklist = [
-    'bitch', 'faggot', 'nigger', 'cunt', 'fuck', 'shit', 'dick', 'asshole',
-    'bastard', 'slut', 'whore', 'pussy', 'cock', 'motherfucker', 'damn', 'hell',
-    'idiot', 'moron', 'dumbass', 'retard', 'ass', 'bitchass', 'douche', 'dyke',
-    'fag', 'hoe', 'jerk', 'jizz', 'kike', 'twat', 'wank', 'prick', 'piss', 'slag',
-    'spastic', 'spaz', 'tits', 'tosser', 'tranny', 'wanker', 'arsehole', 'bullshit',
-    'crap', 'cuntbag', 'fuckboy', 'fuckgirl', 'goddamn', 'goddammit', 'nigga', 'nazi',
-    'queer', 'skank', 'slutbag', 'sonofabitch', 'suck', 'vagina', 'whorebag',
-    'arse', 'bellend', 'blowjob', 'bollocks', 'bollox', 'boner', 'boob', 'bugger',
-    'chink', 'clit', 'coon', 'cum', 'cumbubble', 'cumslut', 'dildo', 'fanny',
-    'felching', 'flange', 'gash', 'goatse', 'gypo', 'homo', 'jap', 'minge',
-    'muff', 'negro', 'paedo', 'pecker', 'pedo', 'penis', 'paki', 'poon', 'poonani',
-    'poonany', 'porchmonkey', 'porchmonkey', 'punani', 'punta', 'pussies', 'rimjob',
-    'scrote', 'shag', 'shemale', 'skank', 'smegma', 'spic', 'spunk', 'teabagging',
-    'thundercunt', 'tit', 'titfuck', 'vulva', 'wetback', 'whore', 'wog'
+    'bitch', 'faggot', 'nigger', 'cunt', 'fuck', 'shit', 'dick', 'asshole', 'bastard', 'slut', 'whore', 'pussy', 'cock', 
+    'motherfucker', 'damn', 'moron', 'dumbass', 'retard', 'ass', 'bitchass', 'douche', 'dyke', 'fag', 'hoe', 'jerk', 'jizz',
+    'twat', 'wank', 'prick', 'slag', 'spastic', 'tits', 'tosser', 'tranny', 'wanker', 'crap', 'cuntbag', 'fuckboy', 'fuckgirl', 'nigga',
+    'nigger', 'nazi', 'queer', 'skank', 'slutbag', 'sonofabitch',
+    'suck', 'vagina', 'whorebag', 'arse', 'bellend', 'blowjob', 'bollocks', 'bollox', 'boner', 'boob', 'bugger', 'chink', 'clit',
+    'coon', 'cum', 'cumbubble', 'cumslut', 'dildo', 'homo', 'negro', 'paedo', 'pedo', 'penis', 'pussies', 'rimjob', 'scrote',
+    'shag', 'shemale', 'skank', 'smegma', 'spic', 'spunk', 'teabagging', 'thundercunt', 'tit',
+    'titfuck', 'vulva', 'wetback', 'whore', 'wog', 'niger', 'n1ger', 'n1gger', 'n1gga',
 ];
 
+// Blacklisted Wordpatterns for that you wanna check
+const blacklistPatterns = [
+    /n[i1][gq]{2}[ae@34]/i,  // Pattern for 'nigga' with common substitutions and case insensitive
+    // ... add more patterns for other words
+];
 
-// Sending a message to the Lua script
-// Sending a chat entry to the Lua script
+// Sending a chat entry to the Lua script inside the normal Chat inside the PauseMenu
 document.getElementById('chat-form').addEventListener('submit', function(event) {
     event.preventDefault();
     var chatEntry = this.querySelector('input[type="text"]').value; // Changed 'message' to 'chatEntry'
@@ -1035,18 +1162,51 @@ document.getElementById('chat-form').addEventListener('submit', function(event) 
     }
 });
 
+// Chat input field for the extended Chat modal
+document.getElementById('bigchat-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var chatEntry = this.querySelector('input[type="text"]').value; // Changed 'message' to 'chatEntry'
+    if (chatEntry) {
+        // Check if the chat entry contains blacklisted words
+        if (containsBlacklistedWords(chatEntry)) {
+            // Display a notification or alert
+            containsBadWord();
+        } else {
+            console.log("Sending chat entry to Lua script:", chatEntry);  // Debug log
+            // Send the chat entry to the Lua client script
+            fetch(`https://${GetParentResourceName()}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({ chatEntry: chatEntry }) // Changed 'message' to 'chatEntry'
+            }).then(() => this.reset());
+        }
+    }
+});
 
 // Function to check if the message contains blacklisted words
 function containsBlacklistedWords(chatEntry) {
+    // Convert the chat entry to lowercase
+    const lowerCaseChatEntry = chatEntry.toLowerCase();
+
     for (let i = 0; i < blacklist.length; i++) {
-        if (chatEntry.includes(blacklist[i])) {
+        
+        const lowerCaseBlackListWord = blacklist[i].toLowerCase();
+        if (lowerCaseChatEntry.includes(lowerCaseBlackListWord)) {
             return true;
         }
     }
+
+    // Check against the regex patterns
+    for (let i = 0; i < blacklistPatterns.length; i++) {
+        if (blacklistPatterns[i].test(chatEntry)) {
+            return true;
+        }
+    }
+
     return false;
 }
-
-
 
 // Function to append a message to both chat containers
 function appendMessageToChats(username, id, timestamp, message) {
@@ -1061,9 +1221,8 @@ function appendMessageToChats(username, id, timestamp, message) {
     appendMessage('.chat-messages-modal', newMessageHTML);
 }
 
-// Example usage
-appendMessageToChats("User", "123", "10:30", "Hello world!");
-
+// Welcome Chat message
+appendMessageToChats("@System", "420", "04:20", "Welcome to the Chat! Please remember to behave. Images/Gif links are getting embeded. Thank you");
 
 
 // Helper function to format message content
@@ -1075,9 +1234,6 @@ function formatMessageContent(chatEntry) {
     return chatEntry;
 }
 
-
-
-
 // Receiving messages from the Lua script
 window.addEventListener('message', function(event) {
     var item = event.data;
@@ -1086,8 +1242,8 @@ window.addEventListener('message', function(event) {
     }
 });
 
-
-
+// Check if a string is a valid URL, if not it's probably a normal message
+// used for Embedding Images/Gifs, Webps, etc.
 function isValidHttpUrl(string) {
     let url;
     try {
@@ -1100,14 +1256,14 @@ function isValidHttpUrl(string) {
            /\.(jpeg|jpg|gif|webp|png)$/.test(url.pathname);
 }
 
-
-
+// Event listener for the emoji button
 document.getElementById('emoji-button').addEventListener('click', function() {
     var emojiPicker = document.getElementById('emoji-picker');
     emojiPicker.classList.toggle('hidden');
 });
 
-
+// Event listener for the emoji buttons inside the emoji picker
+// Append the emoji to the chat input value and optionally focus back to the input field
 document.querySelectorAll('.emoji-btn').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent form submission
@@ -1120,9 +1276,6 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
     });
 });
 
-
-
-
 // Helper function to append messages to a specific container
 function appendMessage(containerSelector, messageHTML) {
     const container = document.querySelector(containerSelector);
@@ -1132,9 +1285,6 @@ function appendMessage(containerSelector, messageHTML) {
     container.scrollTop = container.scrollHeight; // Scroll to bottom
 }
 
-
-
-
 // Event listeners for expand and close chat modal buttons
 document.getElementById('expand-chat').addEventListener('click', function() {
     document.getElementById('chat-modal').classList.remove('hidden');
@@ -1143,50 +1293,14 @@ document.getElementById('expand-chat').addEventListener('click', function() {
 document.getElementById('close-chat-modal').addEventListener('click', function() {
     document.getElementById('chat-modal').classList.add('hidden');
 });
-
-
+//       /\      /\     _  _  _________ .__            __      _________              __  .__               
+//      / /     / /  __| || |_\_   ___ \|  |__ _____ _/  |_   /   _____/ ____   _____/  |_|__| ____   ____  
+//     / /     / /   \   __   /    \  \/|  |  \\__  \\   __\  \_____  \_/ __ \_/ ___\   __\  |/  _ \ /    \ 
+//    / /     / /     |  ||  |\     \___|   Y  \/ __ \|  |    /        \  ___/\  \___|  | |  (  <_> )   |  \
+//   / /     / /     /_  ~~  _\\______  /___|  (____  /__|   /_______  /\___  >\___  >__| |__|\____/|___|  /
+//   \/      \/        |_||_|         \/     \/     \/               \/     \/     \/                    \/
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-<!-- Help Documentation Container -->
-<div id="help-container" class="hidden">
-    <div class="flex">
-        <!-- Sidebar Navigation -->
-        <div class="w-64 bg-zinc-800 p-4">
-            <input class="w-full mb-4 p-2 rounded" placeholder="Search...">
-            <!-- Navigation Links -->
-            <nav>
-                <!-- Dynamically generate navigation links here -->
-            </nav>
-        </div>
-
-        <!-- Main Content Area -->
-        <div class="flex-1 p-4">
-            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
-            <!-- Documentation content goes here -->
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
 
         </div>
     </div>
