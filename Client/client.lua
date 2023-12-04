@@ -172,6 +172,22 @@ AddEventHandler('receiveMessage', function(username, id, timestamp, chatEntry)
     })    
 end)
 
+-- Listen to the NUI callback from JavaScript
+RegisterNUICallback('logBadChatMessage', function(data, cb)
+    if data then
+        local chatEntry = data.chatEntry
+        local username = GetPlayerName(PlayerId()) -- Or any method to get the username
+
+        -- Trigger the server event with all necessary data
+        TriggerServerEvent('logBadChatMessage', { username = username, chatEntry = chatEntry })
+    else
+        print("No data received in logBadChatMessage callback")
+    end
+
+    if cb then cb('ok') end
+end)
+
+
 
 
 -- Update Leaderboard

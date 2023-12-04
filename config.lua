@@ -1,6 +1,11 @@
 Config = {}
 
 
+Config.Database = {
+    OxMysql = false, -- if you use oxmysql set to true / if not false
+    MySQLAsync = true, -- if you use mysql-async set to true / if not false
+}
+
 Config.TimerSettings = {
 
     PlayTime = {

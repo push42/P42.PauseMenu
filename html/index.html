@@ -50,42 +50,32 @@
 
     <!-- Navigation Menu at Bottom -->
     <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 bg-opacity-95 p-2 flex justify-around items-center shadow-lg z-40">
-        <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Resume">
+        <div id="resume" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Resume">
             <i class="fa-solid fa-play text-xl"></i>
             <span class="font-semibold">Resume</span>
         </div>
-        <div id="settings" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Settings">
+        <div id="settings" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Settings">
             <i class="fa-solid fa-gear text-xl"></i>
             <span class="font-semibold">Settings</span>
         </div>
-        <div id="map" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Map">
+        <div id="map" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Map">
             <i class="fa-solid fa-map-location-dot text-xl"></i>
             <span class="font-semibold">Map</span>
         </div>
-        <div id="keyboard" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Keyboard">
+        <div id="keyboard" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Keyboard">
             <i class="fa-regular fa-keyboard text-xl"></i>
             <span class="font-semibold">Keyboard</span>
         </div>
-        <div id="help" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Help">
+        <div id="help" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Help">
             <i class="fa-regular fa-circle-question text-xl"></i>
             <span class="font-semibold">Help</span>
         </div>
-        <div id="exit" class="nav-item flex items-center space-x-2 cursor-pointer hover:bg-zinc-800 p-2 rounded-md transition-all" aria-label="Exit">
+        <div id="exit" class="nav-item flex items-center space-x-2 cursor-pointer p-2 rounded-md transition-all" aria-label="Exit">
             <i class="fa-solid fa-door-open text-xl"></i>
             <span class="font-semibold">Exit</span>
         </div>
     </div>
-    <script>
-    // Script for the bottom navigation menu
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', function() {
-            document.querySelectorAll('.nav-item').forEach(nav => {
-                nav.classList.remove('bg-zinc-700'); // Remove active state from all items
-            });
-            this.classList.add('bg-zinc-700'); // Add active state to clicked item
-        });
-    });
-    </script>
+
 
 
     <!-- Help Documentation Container -->
@@ -884,11 +874,16 @@ function copyDiscordLink() {
 function clickOnPing() {
     showSlideNotification("Experiencing Lags?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
 }
-
+// Inside your HTML/JavaScript
 function containsBadWord() {
-    showSlideNotificationBadWord("Why so Naughty?  ", `Check out the performance Guides on our Discord Server!`, `DSC.GG/YOURSERVER`);
-}
+    showSlideNotificationBadWord("Why so Naughty? ", `Please behave inside the Chat and watch your language!`, `CHAT MESSAGE LOGGED`);
+    var chatEntry = document.getElementById('chat-input').value;
 
+    // Send data to the Lua script on the client side
+    $.post(`https://${GetParentResourceName()}/logBadChatMessage`, JSON.stringify({
+        chatEntry: chatEntry
+    }));
+}
 
 function obtainedDailyReward() {
     showSlideNotificationReward("Daily Reward", `You successfully received your daily reward!`, `REWARD OBTAINED`);

@@ -172,12 +172,44 @@ AddEventHandler('clientChatMessage', function(chatEntry)
     -- Get all players
     local players = GetPlayers()
 
-    -- Send the message to all players except the one who sent it
+    -- Send the message to all players, including the one who sent it
     for _, player in ipairs(players) do
-        if tonumber(player) ~= playerId then
-            TriggerClientEvent('receiveMessage', player, username, playerId, timestamp, chatEntry)
-        end
+        TriggerClientEvent('receiveMessage', player, username, playerId, timestamp, chatEntry)
     end
+end)
+
+
+-- Function to log the messages from the Chat if they contain bad words
+function logBadChatMessages(playerId, username, chatEntry, timestamp)
+    print("Attempting to log chat message for player: " .. username)
+
+    if Config.Database.OxMysql then
+        local query = 'INSERT INTO p42_chatlog (playerId, username, message, timestamp) VALUES (?, ?, ?, ?)'
+        oxmysql.execute(query, {playerId, username, chatEntry, timestamp}, function(result)
+            print("Chat message logged for player: " .. username)
+        end)
+
+    elseif Config.Database.MySQLAsync then
+        -- Assuming you have mysql-async installed and configured
+        MySQL.Async.execute('INSERT INTO p42_chatlog (playerId, username, message, timestamp) VALUES (@playerId, @username, @message, @timestamp)', {
+            ['@playerId'] = playerId, ['@username'] = username, ['@message'] = chatEntry, ['@timestamp'] = timestamp},
+            function(affectedRows)
+                -- Handle result or error
+            end
+        )
+    end
+end
+
+
+-- Event to log the messages from the Chat if they contain bad words
+RegisterServerEvent('logBadChatMessage')
+AddEventHandler('logBadChatMessage', function(payload)
+    local playerId = source
+    local username = payload.username
+    local chatEntry = payload.chatEntry
+    local timestamp = os.date('%Y-%m-%d %H:%M:%S')
+
+    logBadChatMessages(playerId, username, chatEntry, timestamp)
 end)
 
 
@@ -573,5 +605,7 @@ ESX.RegisterServerCallback("fetchUserInformation", function(source, cb)
     end
 
 end)
+
+
 
 
