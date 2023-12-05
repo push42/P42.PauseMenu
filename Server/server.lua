@@ -18,8 +18,8 @@ local function getLastDayOfMonth()
 end
 
 -- If a new month is reached, it gets reset, reset all dailyrewards table data.
-AddEventHandler('onResourceStart', function(resourceName)
-    if (GetCurrentResourceName() ~= resourceName) then
+AddEventHandler('onResourceStart', function(P42_PauseMenu)
+    if (GetCurrentResourceName() ~= P42_PauseMenu) then
       return
     end
 
@@ -34,7 +34,6 @@ AddEventHandler('onResourceStart', function(resourceName)
     end
 
     MySQL.Sync.execute('DELETE FROM p42_dailyrewards WHERE day = ' .. lastDayOfMonth)
-
 end)
 
 
@@ -90,7 +89,7 @@ AddEventHandler('pausemenu:quit', function()
     DropPlayer(source,"You have left the Server! We hope to see you back soon <3")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Server callback implementation
+-- Server callback implementation to get information about the user
 ESX.RegisterServerCallback('getServerData', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
 
@@ -462,7 +461,7 @@ end)
 Citizen.CreateThread(function()
     while true do
 
-        Citizen.Wait(60000 * Config.ThreadRepeat)
+        Citizen.Wait(6000 * Config.ThreadRepeat)
   
         local date = os.date("*t")
         local lastDayOfMonth = getLastDayOfMonth()
@@ -612,6 +611,8 @@ ESX.RegisterServerCallback("fetchUserInformation", function(source, cb)
     end
 
 end)
+
+
 
 
 

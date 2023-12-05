@@ -8,8 +8,26 @@ module.exports = {
   "./html/components/**.{html,js,php}",
   "./html/components/**/*.{html,js,php}",
 ],
-  theme: {
-    extend: {},
+theme: {
+  extend: {
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(10px)',
+    },
+    container: {
+      center: true,
+      padding: '1rem', // or whatever padding you prefer
+      screens: {
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+        '3xl': '1696px', // your custom breakpoint
+        '4xl': '2196px',
+      },
   },
-  plugins: [],
-}
+},
+},
+plugins: [
+  require('tailwindcss-filters'),
+],
+};

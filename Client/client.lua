@@ -298,3 +298,11 @@ RegisterNUICallback('openURL', function(data)
         url = url
     })
 end)
+
+
+
+
+
+
+
+

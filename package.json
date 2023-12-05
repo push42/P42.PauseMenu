@@ -23,7 +23,8 @@
   "homepage": "https://github.com/push42/P42.PauseMenu#readme",
   "dependencies": {
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31"
+    "postcss": "^8.4.31",
+    "tailwindcss-filters": "^3.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.5"

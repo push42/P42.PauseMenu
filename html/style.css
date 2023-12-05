@@ -67,9 +67,12 @@
 html {
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 33, 182, 1) #131313;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
 }
 .bg-custom-container {
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
     background-color: #121213dc;
 }
 
@@ -100,6 +103,26 @@ html {
     font-size: 1.5rem;
   }
 
+  /* Emoji Picker for the big expanded modal */
+.bigchat-emoji-picker {
+    width: auto;
+    max-height: 155px;
+    overflow-y: auto;
+  }
+  
+  .bigchat-emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 4px;
+  }
+  
+  .bigchat-emoji-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
 /* Chatbox */
 .chatbox-panel {
     max-height: 197px;
@@ -117,7 +140,7 @@ html {
   }
 
 .daily-rewardpanel, .news-panel, .server-panel, .chatbox-panel, .leaderboard-panel, .get-support-panel, .tebex-shop-panel {
-    border: 2px solid rgb(49, 49, 49);
+    border: 3px solid rgb(17, 17, 17);
 }
 
 
@@ -137,6 +160,8 @@ html {
     border-radius: 25px;
     overflow: hidden;
     height: auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
 /* Additional Styles for the New Content */
@@ -302,7 +327,9 @@ html {
 .player-stats .badge {
     display: flex;
     align-items: center;
-    background-color: rgba(15, 15, 15, 0.85); /* Dark background */
+    background: linear-gradient(145deg, rgba(56, 54, 54, 0.5), hsl(0, 1%, 16%));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 5px 10px;
     border-radius: 20px; /* Rounded badge shape */
     gap: 5px;
@@ -382,8 +409,69 @@ html {
 
 
 
+.info-card {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.info-card:hover {
+    transform: scale(1.05);
+    background-color: #1a1a1a; /* Darker shade for hover effect */
+}
+
+/* Optional: Change icon and text color on hover */
+.info-card:hover .info-value {
+    color: rgb(222, 137, 255); /* Example color change on hover */
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.playerinfo-footertext span {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.playerinfo-footertext span:hover {
+    transform: translateY(-2px);
+}
+
+.playerinfo-footertext i {
+    transition: color 0.3s ease;
+}
+
+.playerinfo-footertext i:hover {
+    color: #9871ec; /* Changes icon color on hover */
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1921px) {
+    .container {
+        /* Adjust the bottom margin or position as needed */
+        margin-top: 50px; /* Example: pushes the container down by 50px */
+        /* Or you can use positioning like below */
+        position: relative;
+        top: 95px; /* This will also move the container down */
+    }
+}
 
 
 
@@ -431,13 +519,6 @@ html {
         grid-template-columns: 1fr; /* Single column layout for smaller screens */
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -546,6 +627,14 @@ html {
     margin-right: 0.5rem;
 }
 
+
+.leaderboard-bg {
+    background-image: url('./assets/santeria2.png'); /* Replace with the actual image path */
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image in the div */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
 /* Add any additional styles as needed */
 
 
@@ -579,7 +668,6 @@ html {
 .tebex-shop-panel,
 .leaderboard-panel {
     display: block; /* or 'flex' depending on your layout */
-    background-color: #1b1b1b;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px; /* Space between panels */
@@ -604,7 +692,6 @@ html {
 .tebex-shop-panel h2,
 .tebex-shop-panel p,
 .tebex-button {
-    color: white; /* Or any color that contrasts well with your image */
     z-index: 1; /* Make sure it's above the background image */
 }
 
@@ -646,7 +733,7 @@ html {
     object-fit: cover;
     border-radius: 12px;
     z-index: -1;
-    opacity: 0.15;
+    opacity: 0.05;
 }
 
 /* Tebex Custom Button */
@@ -672,7 +759,6 @@ html {
     font-size: 12px; /* Adjusted font size for better readability */
     color: #cbd5e0;
 }
-
 
 
 
@@ -903,6 +989,20 @@ textarea:focus {
     color: #020202;
 }
 
+.support-ticket-active {
+    background-color: hsla(0, 0%, 100%, 0.85); /* Darker hover effect */
+    border-radius: 50px;
+    margin-left: 5px;
+    color: #020202;
+}
+
+.support-ticket:active {
+    background-color: #b9b9b9; /* Darker hover effect */
+    border-radius: 50px;
+    margin-left: 5px;
+    color: #020202;
+}
+
 
 /* Chat Section Styles */
 .support-chat {
@@ -1109,20 +1209,24 @@ textarea:focus {
 
 
 
-
+.liveSupport {
+    top: 118%;
+}
 
 
 
 
     /* Custom CSS for adjusting image background position */
     .newsImage1 {
-        background-image: url('./assets/santeria2.png');
+        background-image: url('./assets/0.gif');
         background-size: cover;
         background-position: center; /* You can adjust this to change the visible part of the image */
         width: 100%;
         height: 200px; /* Keep the height fixed */
         background-position-y: 40%;
-        filter: saturate(1.5);
+        filter: saturate(1.25);
+        backdrop-filter: blur(10px);
+        opacity: 0.85;;
     }
 
 
@@ -1148,7 +1252,9 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1156,7 +1262,8 @@ textarea:focus {
 }
 
 .chat-modal-content {
-    background-color: #121213; /* Adjust color as needed */
+    background: linear-gradient(145deg, rgba(34, 35, 36, 0.5), hsl(0, 0%, 8%));
+    -webkit--backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
     width: 60%; /* Adjust width as needed */
@@ -1176,9 +1283,9 @@ textarea:focus {
     border-radius: 4px;
     padding: 5px 10px;
     cursor: pointer;
-    position: absolute;
-    top: 29%;
-    left: 75%;
+    position: relative;
+    top: 1.5%;
+    left: 95%;
 }
 
 #bigchat-form {
@@ -1204,4 +1311,84 @@ textarea:focus {
 .nav-item:hover, .nav-item.bg-zinc-700 {
     background-color: rgba(130, 77, 160, 0.95); /* Slightly highlight on hover and active */
     border-radius: 8px; /* Rounded corners */
+}
+
+
+
+
+
+.custom-gradient-bg {
+    background: linear-gradient(145deg, rgb(34, 35, 36), hsl(0, 0%, 8%));
+    -webkit--backdrop-filter: blur(10px);
+}
+
+.md:col-span-2 {
+    -webkit--backdrop-filter: blur(10px);
+}
+
+/* Animated Dots for fetching leaderboard */
+@keyframes dots {
+    0%, 20% {
+      content: ".";
+    }
+    40% {
+      content: "..";
+    }
+    60% {
+      content: "...";
+    }
+    80%, 100% {
+      content: "";
+    }
+  }
+  
+  .fetching-data::after {
+    content: "";
+    animation: dots 2.5s steps(5, end) infinite;
+  }
+  
+.bg-job {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-jobinfo {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-grade {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-userheight {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-usersex {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-dateofbirth {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-bank {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-money {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-blackmoney {
+    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }

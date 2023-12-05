@@ -13,3 +13,20 @@ CREATE TABLE p42_chatlog (
 
 
 
+CREATE TABLE p42_supporttickets (
+    ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    creator_id VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE p42_ticketmessages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_id INT NOT NULL,
+    sender_id VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ticket_id) REFERENCES p42_supporttickets(ticket_id)
+);
