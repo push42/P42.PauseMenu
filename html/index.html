@@ -9,15 +9,19 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <title>Pause-Menu by Push.42</title>
 </head>
 
 
-<body class="container mx-auto bg-black bg-opacity-50 text-gray-200 font-sans m-0 relative">
+<body class="container mx-auto bg-black bg-opacity-90 text-gray-200 font-sans m-0 relative">
     <div class="fixed top-4 left-6">
-        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer" src="./assets/pxrp.gif" alt="User dropdown">
-        <div id="usServerName" class="usServerName text-center text-sm font-sans font-bold text-purple-300 mt-1 mb-4"><span class="usServerNameText">Lora.pw</span></div>
-        <div class="text-center text-sm font-sans text-purple-300 mb-2">Usersettings</div>
+        <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-28 h-28 rounded-full cursor-pointer up-avatar" src="./assets/lora-pw.gif" alt="User dropdown">
+        <div id="usServerName" class="usServerName text-center text-sm font-sans font-bold text-purple-400 mt-1 mb-4"><span class="usServerNameText">Lora.pw</span></div>
+        <div class="text-center text-sm font-sans text-purple-400 mb-2">Usersettings</div>
         <button id="updateAvatar" class="clock-container absolute text-white text-xs p-0.5 rounded-lg font-medium ml-1">
             <i class="fa-regular fa-image text-purple-400 mr-2 text-xs"></i>Choose Avatar
         </button>
@@ -104,35 +108,90 @@
 
 
 
-    <!-- Start of Content Panels -->
-    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Main Panel -->
-        <div class="md:col-span-2">
-            <div class="panel news-panel bg-gradient-to-r bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-lg shadow-lg hover:scale-105">
-                <h2 class="panel-heading uppercase font-black font-mono text-xl">
-                    <i class="fa-solid fa-thumbtack text-xs mr-2 text-purple-300"></i>News / Announcements
-                </h2>
-                <div class="content">
-                    <!-- News Item -->
-                    <div class="news-item mb-4">
-                        <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
-                        <h3 class="text-lg text-white font-semibold mb-1 uppercase"><i class="fa-solid fa-square-plus mr-2"></i>NEWS HEADER</h3>
-                        <p class="text-sm text-gray-300 mb-8 font-thin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</p>
-                        <div class="tags flex space-x-2">
-                            <span class="tag text-xs bg-red-500 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-bullhorn mr-1 text-xs"></i>Announcement</span>
-                            <span class="tag text-xs bg-gray-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-wrench mr-1 text-xs"></i>Update</span>
-                            <span class="tag text-xs bg-purple-800 text-white rounded-full px-2 py-1 font-bold"><i class="fa-solid fa-calendar-check mr-1 text-xs"></i>Event</span>
+<!-- Start of Content Panels -->
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Main Panel -->
+    <div class="md:col-span-2">
+        <div class="panel news-panel bg-gradient-to-r bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-lg shadow-lg hover:scale-105 z-50">
+            <h2 class="panel-heading uppercase font-black font-mono text-xl">
+                <i class="fa-solid fa-thumbtack text-xs mr-2 text-purple-400"></i>News / Announcements
+            </h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Swiper Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="content">
+                            <!-- News Item -->
+                            <div class="news-item mb-4">
+                                <div class="newsImage1 rounded-lg shadow-lg mb-2"></div>
+                                <h3 class="text-lg font-semibold mb-1 uppercase">
+                                    <i class="fa-solid fas fa-pen-square mr-2 text-purple-400"></i>Your update header
+                                </h3>
+                                <p class="text-sm text-gray-300 mb-8 font-thin">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas ullam alias obcaecati commodi amet porro. Aspernatur asperiores, fugit sint quasi ratione quo, perferendis architecto eum recusandae natus accusantium dolore laborum.</p>
+                                <div class="tags flex space-x-2">
+                                    <!-- Tags for Slide 1 -->                                    
+                                    <div class="tag bg-blue-500 text-white px-3 py-1.5 rounded-full text-sm font-bold ml-2"><i class="fa-solid fa-pen-to-square mr-2 font-bold text-sm text-white"></i>Update</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- Swiper Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="content">
+                            <!-- News Item -->
+                            <div class="news-item mb-4">
+                                <div class="newsImage2 rounded-lg shadow-lg mb-2"></div>
+                                <h3 class="text-lg font-semibold mb-1 uppercase">
+                                    <i class="fa-regular fas fa-envelope-open-text  mr-2 text-purple-400"></i>Your announcement header
+                                </h3>
+                                <p class="text-sm text-gray-300 mb-8 font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias fugit reprehenderit suscipit sit voluptatem maxime ipsa! Quos sunt, perspiciatis odio consequatur labore error minus in asperiores quae omnis veritatis delectus!</p>
+                                <div class="tags flex space-x-2">
+                                    <!-- Tags for Slide 2 -->
+                                    <div class="tag bg-red-500 text-white px-3 py-1.5 rounded-full text-sm font-bold ml-2"><i class="fa-solid fa-bullhorn mr-2 font-bold text-sm text-white"></i>Announcement</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional slides... -->
                 </div>
+                <!-- Add Swiper Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Swiper Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
+    </div>
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            // Optional parameters
+            loop: true,
+            autoplay: {
+                delay: 15000,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+    // Directly apply styles to navigation buttons
+    document.querySelector('.swiper-button-next').style.color = '#fff';
+    document.querySelector('.swiper-button-prev').style.color = '#fff';
+    </script>
+    
+
 
 
         
         
 
-        <div class="panel bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-lg shadow-lg hover:scale-105 transition-transform server-panel">
+        <div class="panel bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-lg shadow-lg hover:scale-105 transition-transform server-panel z-20">
             <div>
                 <h2 class="panel-heading uppercase font-black font-mono text-xl relative">
                     <i class="fa-solid fa-server text-sm text-purple-400 mr-2"></i>Server Panel
@@ -293,7 +352,7 @@
 
                 <!-- Improved User List Panel -->
                     <h3 class="text-md text-white font-semibold mb-2 relative overflow-hidden uppercase">
-                        <i class="fa-solid fa-users mr-2 text-white text-sm"></i>Users <span class="text-purple-400">Online</span>
+                        <i class="fa-solid fa-users mr-2 text-purple-400 text-sm"></i>Users <span class="text-purple-400">Online</span>
                         <!-- Animated Line -->
                         <span class="block h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 absolute bottom-0 left-0 right-0 animate-pulse"></span>
                     </h3>
@@ -322,7 +381,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="font-semibold text-lg mt-2 text-white">
-                        <i class="fa-solid fa-shopping-cart text-sm mr-2"></i>Visit <span class="text-green-400">our</span> Store.
+                        <i class="fa-solid fa-shopping-cart text-sm mr-2 text-green-500"></i>Visit <span class="text-green-400">our</span> Store.
                     </h2>
                     <h2>
                         <span class="donate-text font-sans font-medium">Looking for a way to support the Project?</span>
@@ -336,7 +395,8 @@
             <ul class="grid w-full gap-2 md:grid-cols-1 absolute bottom-0 right-0">
                 <li>
                     <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required="">
-                    <label for="hosting-small" class="scur inline-flex items-center justify-between w-full p-2 text-gray-500 bg-white rounded-lg cursor-pointer dark:hover:text-gray-300 dark:peer-checked:text-green-400 peer-checked:text-green-400 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:bg-zinc-800 dark:hover:bg-gray-600 custom-gradient-bg">                        <div class="block">
+                    <label for="hosting-small" class="scur inline-flex items-center justify-between w-full p-2 text-gray-500 bg-white rounded-lg cursor-pointer dark:hover:text-gray-300 dark:peer-checked:text-green-400 peer-checked:text-green-400 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:bg-zinc-800 dark:hover:bg-gray-600 custom-gradient-bg">                        
+                        <div class="block">
                             <img class="w-10 h-10 rounded-full mx-auto absolute" src="./assets/animated-lp.webp">
                             <div class="w-full text-sm font-semibold ml-12">Lorazepam</div>
                             <div class="w-full text-xs ml-12"><i class="fa-solid fa-tags mr-1"></i>Your Product<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2 py-0 rounded-full dark:bg-green-900 dark:text-green-300 ml-2">$24.99</span></div>
@@ -393,7 +453,7 @@
                                 <span class="message-text text-gray-500 ml-2">Hi, I need help with an issue. My car is stuck at the airport and i can't get into it. Is someone available and can help me?</span>
                             </div>
                             <div class="support-message mb-3 flex items-center">
-                                <img id="up-avatar" src="./assets/newemblem_2.gif" alt="Player Image" class="w-8 h-8 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
+                                <img id="up-avatar" src="./assets/lora-pw.gif" alt="Player Image" class="w-8 h-8 rounded-full mr-4 shadow-lg"> <!-- Replace with actual image source -->
                                 <span class="text-purple-400 text-sm font-sans font-bold mr-2">6<span class="message-staff font-semibold text-gray-300 text-xs ml-2">(Support)</span><span class="text-white font-bold text-lg ml-2">Max Musterman:</span>
                                 <span class="message-text text-gray-500 ml-2">Sure, please give me 5 minutes im currently already doing a support case. I will be there asap!</span>
                             </div>
@@ -414,8 +474,8 @@
         <div class="get-support-panel bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-xl shadow-xl transform hover:scale-105 transition duration-300">
             <img src="./assets/get_support.png" alt="Tebex Shop Background" class="tebex-shop-bg">
             <div class="flex items-center justify-between">
-                <h2 class="font-semibold text-lg text-blue-400">
-                    <i class="fa-solid fa-headset text-sm mr-2 text-white"></i>Need <span class="text-white">Assistance?</span>
+                <h2 class="font-semibold text-lg text-white">
+                    <i class="fa-solid fa-headset text-sm mr-2 text-blue-400"></i>Need <span class="text-blue-400">Assistance?</span>
                 </h2>
                 
                 <img src="./assets/discord_logo.webp" alt="Discord Logo" class="rounded-full w-16 h-16">
@@ -553,7 +613,7 @@
 
 <!-- Panel 4 - Detailed Info Panel -->
 <div class="panel bg-zinc-900 bg-opacity-50 bg-blend-multiply p-2 rounded-lg shadow-lg col-span-2 daily-rewardpanel">
-    <!-- Advent Calendar Panel -->
+    <!-- Daily Rewards -->
     <div class="p-4 rounded-lg">
         <h2 class="font-semibold text-lg text-white mb-4 panel-heading">
             <i class="fa-solid fa-calendar-day mr-2 text-purple-400"></i>
@@ -569,7 +629,7 @@
 <!-- Chatbox Panel -->
 <div class="chatbox-panel bg-zinc-900 bg-opacity-50 bg-blend-multiply p-5 rounded-xl shadow-xl" id="chatbox-panel">
     <button id="expand-chat" class="expand-chat-btn right-16 absolute font-medium text-gray-200 mt-1">Expand</button>
-    <h2 class="text-lg font-semibold text-white mb-4 panel-heading"><i class="fa-regular fa-comments mr-2 text-purple-300"></i>Community Chat</h2>
+    <h2 class="text-lg font-semibold text-white mb-4 panel-heading"><i class="fa-regular fa-comments mr-2 text-purple-400"></i>Community Chat</h2>
     <div class="chat-messages overflow-y-auto max-h-150 pb-6 text-gray-300">
         <!-- Chat messages will be dynamically inserted here -->
     </div>
@@ -657,68 +717,1561 @@
             <button type="button" id="bigchat-emoji-button" class="emoji2-btn badge mr-2">😀</button>
             <input type="text" id="bigchat-input" class="bg-zinc-900 text-white p-1.5 rounded-lg w-full" placeholder="Type a message...">
             <button type="submit" class="bg-purple-400 text-white p-1.5 rounded-lg font-bold">Send</button>
-            <div id="bigchat-emoji-picker" class="bigchat-emoji-picker hidden absolute bg-zinc-900 bg-opacity-90 p-2 border border-gray-300 rounded-lg bottom-10 right-80">
+            <div id="bigchat-emoji-picker" class="bigchat-emoji-picker hidden absolute bg-zinc-900 bg-opacity-90 p-2 border border-gray-300 rounded-lg right-80">
+                <div class="bigchat-emoji-navbar">
+                    <button class="emoji-nav-btn" data-target="smiley">😀</button>
+                    <button class="emoji-nav-btn" data-target="animals">🐱</button>
+                    <button class="emoji-nav-btn" data-target="foods">🍏</button>
+                    <button class="emoji-nav-btn" data-target="nature">🪻</button>
+                    <button class="emoji-nav-btn" data-target="persons">🙋‍♀️</button>
+                    <button class="emoji-nav-btn" data-target="hearths">❤️</button>
+                    <!-- Add more categories as needed -->
+                </div>
                 <div class="p-2">
                     <h3 class="text-white text-lg font-semibold mb-2">Choose an Emoji</h3>
-                    <div class="bigchat-emoji-grid">    
-                    <button class="bigchat-emoji-btn">🤯</button>
-                    <button class="bigchat-emoji-btn">🥳</button>
-                    <button class="bigchat-emoji-btn">😎</button>
-                    <button class="bigchat-emoji-btn">🤓</button>
-                    <button class="bigchat-emoji-btn">🧐</button>
-                    <button class="bigchat-emoji-btn">😕</button>
-                    <button class="bigchat-emoji-btn">😟</button>
-                    <button class="bigchat-emoji-btn">🙁</button>
-                    <button class="bigchat-emoji-btn">☹️</button>
-                    <button class="bigchat-emoji-btn">😮</button>
-                    <button class="bigchat-emoji-btn">😯</button>
-                    <button class="bigchat-emoji-btn">😲</button>
-                    <button class="bigchat-emoji-btn">😳</button>
-                    <button class="bigchat-emoji-btn">🥺</button>
-                    <button class="bigchat-emoji-btn">😦</button>
-                    <button class="bigchat-emoji-btn">😧</button>
-                    <button class="bigchat-emoji-btn">😨</button>
-                    <button class="bigchat-emoji-btn">😰</button>
-                    <button class="bigchat-emoji-btn">😥</button>
-                    <button class="bigchat-emoji-btn">😢</button>
-                    <button class="bigchat-emoji-btn">😭</button>
-                    <button class="bigchat-emoji-btn">😱</button>
-                    <button class="bigchat-emoji-btn">😖</button>
-                    <button class="bigchat-emoji-btn">😣</button>
-                    <button class="bigchat-emoji-btn">😞</button>
-                    <button class="bigchat-emoji-btn">😓</button>
-                    <button class="bigchat-emoji-btn">😩</button>
-                    <button class="bigchat-emoji-btn">😫</button>
-                    <button class="bigchat-emoji-btn">🥱</button>
-                    <button class="bigchat-emoji-btn">😤</button>
-                    <button class="bigchat-emoji-btn">😡</button>
-                    <button class="bigchat-emoji-btn">😠</button>
-                    <button class="bigchat-emoji-btn">🤬</button>
-                    <button class="bigchat-emoji-btn">😈</button>
-                    <button class="bigchat-emoji-btn">👿</button>
-                    <button class="bigchat-emoji-btn">💀</button>
-                    <button class="bigchat-emoji-btn">☠️</button>
-                    <button class="bigchat-emoji-btn">💩</button>
-                    <button class="bigchat-emoji-btn">🤡</button>
-                    <button class="bigchat-emoji-btn">👹</button>
-                    <button class="bigchat-emoji-btn">👺</button>
-                    <button class="bigchat-emoji-btn">👻</button>
-                    <button class="bigchat-emoji-btn">👽</button>
-                    <button class="bigchat-emoji-btn">👾</button>
-                    <button class="bigchat-emoji-btn">🤖</button>
-                    <button class="bigchat-emoji-btn">😺</button>
-                    <button class="bigchat-emoji-btn">😸</button>
-                    <button class="bigchat-emoji-btn">😹</button>
-                    <button class="bigchat-emoji-btn">😻</button>
-                    <button class="bigchat-emoji-btn">😼</button>
-                    <button class="bigchat-emoji-btn">😽</button>
-                    <button class="bigchat-emoji-btn">🙀</button>
-                    <button class="bigchat-emoji-btn">😿</button>
-                    <button class="bigchat-emoji-btn">😾</button>
-                    <button class="bigchat-emoji-btn">🙈</button>
+                    <div id="all" class="bigchat-emoji-category active">
+                        <button class="bigchat-emoji-btn">😀</button>
+                        <button class="bigchat-emoji-btn">😃</button>
+                        <button class="bigchat-emoji-btn">😄</button>
+                        <button class="bigchat-emoji-btn">😁</button>
+                        <button class="bigchat-emoji-btn">😆</button>
+                        <button class="bigchat-emoji-btn">😅</button>
+                        <button class="bigchat-emoji-btn">😂</button>
+                        <button class="bigchat-emoji-btn">🤣</button>
+                        <button class="bigchat-emoji-btn">🥲</button>
+                        <button class="bigchat-emoji-btn">🥹</button>
+                        <button class="bigchat-emoji-btn">😊</button>
+                        <button class="bigchat-emoji-btn">😇</button>
+                        <button class="bigchat-emoji-btn">🙂</button>
+                        <button class="bigchat-emoji-btn">🙃</button>
+                        <button class="bigchat-emoji-btn">😉</button>
+                        <button class="bigchat-emoji-btn">😌</button>
+                        <button class="bigchat-emoji-btn">😍</button>
+                        <button class="bigchat-emoji-btn">🥰</button>
+                        <button class="bigchat-emoji-btn">😘</button>
+                        <button class="bigchat-emoji-btn">😗</button>
+                        <button class="bigchat-emoji-btn">😙</button>
+                        <button class="bigchat-emoji-btn">😚</button>
+                        <button class="bigchat-emoji-btn">😋</button>
+                        <button class="bigchat-emoji-btn">😛</button>
+                        <button class="bigchat-emoji-btn">😝</button>
+                        <button class="bigchat-emoji-btn">😜</button>
+                        <button class="bigchat-emoji-btn">🤪</button>
+                        <button class="bigchat-emoji-btn">🤨</button>
+                        <button class="bigchat-emoji-btn">🧐</button>
+                        <button class="bigchat-emoji-btn">🤓</button>
+                        <button class="bigchat-emoji-btn">😎</button>
+                        <button class="bigchat-emoji-btn">🥸</button>
+                        <button class="bigchat-emoji-btn">🤩</button>
+                        <button class="bigchat-emoji-btn">🥳</button>
+                        <button class="bigchat-emoji-btn">😏</button>
+                        <button class="bigchat-emoji-btn">😒</button>
+                        <button class="bigchat-emoji-btn">😞</button>
+                        <button class="bigchat-emoji-btn">😔</button>
+                        <button class="bigchat-emoji-btn">😟</button>
+                        <button class="bigchat-emoji-btn">😕</button>
+                        <button class="bigchat-emoji-btn">🙁</button>
+                        <button class="bigchat-emoji-btn">☹️</button>
+                        <button class="bigchat-emoji-btn">😣</button>
+                        <button class="bigchat-emoji-btn">😖</button>
+                        <button class="bigchat-emoji-btn">😫</button>
+                        <button class="bigchat-emoji-btn">😩</button>
+                        <button class="bigchat-emoji-btn">🥺</button>
+                        <button class="bigchat-emoji-btn">😢</button>
+                        <button class="bigchat-emoji-btn">😭</button>
+                        <button class="bigchat-emoji-btn">😮‍💨</button>
+                        <button class="bigchat-emoji-btn">😤</button>
+                        <button class="bigchat-emoji-btn">😠</button>
+                        <button class="bigchat-emoji-btn">😡</button>
+                        <button class="bigchat-emoji-btn">🤬</button>
+                        <button class="bigchat-emoji-btn">🤯</button>
+                        <button class="bigchat-emoji-btn">😳</button>
+                        <button class="bigchat-emoji-btn">🥵</button>
+                        <button class="bigchat-emoji-btn">🥶</button>
+                        <button class="bigchat-emoji-btn">😱</button>
+                        <button class="bigchat-emoji-btn">😨</button>
+                        <button class="bigchat-emoji-btn">😰</button>
+                        <button class="bigchat-emoji-btn">😥</button>
+                        <button class="bigchat-emoji-btn">😓</button>
+                        <button class="bigchat-emoji-btn">🫣</button>
+                        <button class="bigchat-emoji-btn">🤗</button>
+                        <button class="bigchat-emoji-btn">🫡</button>
+                        <button class="bigchat-emoji-btn">🤔</button>
+                        <button class="bigchat-emoji-btn">🫢</button>
+                        <button class="bigchat-emoji-btn">🤭</button>
+                        <button class="bigchat-emoji-btn">🤫</button>
+                        <button class="bigchat-emoji-btn">🤥</button>
+                        <button class="bigchat-emoji-btn">😶</button>
+                        <button class="bigchat-emoji-btn">😶‍🌫️</button>
+                        <button class="bigchat-emoji-btn">😐</button>
+                        <button class="bigchat-emoji-btn">😑</button>
+                        <button class="bigchat-emoji-btn">😬</button>
+                        <button class="bigchat-emoji-btn">🫨</button>
+                        <button class="bigchat-emoji-btn">🫠</button>
+                        <button class="bigchat-emoji-btn">🙄</button>
+                        <button class="bigchat-emoji-btn">😯</button>
+                        <button class="bigchat-emoji-btn">😦</button>
+                        <button class="bigchat-emoji-btn">😧</button>
+                        <button class="bigchat-emoji-btn">😮</button>
+                        <button class="bigchat-emoji-btn">😲</button>
+                        <button class="bigchat-emoji-btn">🥱</button>
+                        <button class="bigchat-emoji-btn">😴</button>
+                        <button class="bigchat-emoji-btn">🤤</button>
+                        <button class="bigchat-emoji-btn">😪</button>
+                        <button class="bigchat-emoji-btn">😵</button>
+                        <button class="bigchat-emoji-btn">😵‍💫</button>
+                        <button class="bigchat-emoji-btn">🫥</button>
+                        <button class="bigchat-emoji-btn">🤐</button>
+                        <button class="bigchat-emoji-btn">🥴</button>
+                        <button class="bigchat-emoji-btn">🤢</button>
+                        <button class="bigchat-emoji-btn">🤮</button>
+                        <button class="bigchat-emoji-btn">🤧</button>
+                        <button class="bigchat-emoji-btn">😷</button>
+                        <button class="bigchat-emoji-btn">🤒</button>
+                        <button class="bigchat-emoji-btn">🤕</button>
+                        <button class="bigchat-emoji-btn">🤑</button>
+                        <button class="bigchat-emoji-btn">🤠</button>
+                        <button class="bigchat-emoji-btn">😈</button>
+                        <button class="bigchat-emoji-btn">👿</button>
+                        <button class="bigchat-emoji-btn">👹</button>
+                        <button class="bigchat-emoji-btn">👺</button>
+                        <button class="bigchat-emoji-btn">🤡</button>
+                        <button class="bigchat-emoji-btn">💩</button>
+                        <button class="bigchat-emoji-btn">👻</button>
+                        <button class="bigchat-emoji-btn">💀</button>
+                        <button class="bigchat-emoji-btn">☠️</button>
+                        <button class="bigchat-emoji-btn">👽</button>
+                        <button class="bigchat-emoji-btn">👾</button>
+                        <button class="bigchat-emoji-btn">🤖</button>
+                        <button class="bigchat-emoji-btn">🎃</button>
+                        <button class="bigchat-emoji-btn">😺</button>
+                        <button class="bigchat-emoji-btn">😸</button>
+                        <button class="bigchat-emoji-btn">😹</button>
+                        <button class="bigchat-emoji-btn">😻</button>
+                        <button class="bigchat-emoji-btn">😼</button>
+                        <button class="bigchat-emoji-btn">😽</button>
+                        <button class="bigchat-emoji-btn">🙀</button>
+                        <button class="bigchat-emoji-btn">😿</button>
+                        <button class="bigchat-emoji-btn">😾</button>
+                        <button class="bigchat-emoji-btn">🐶</button>
+                        <button class="bigchat-emoji-btn">🐱</button>
+                        <button class="bigchat-emoji-btn">🐭</button>
+                        <button class="bigchat-emoji-btn">🐹</button>
+                        <button class="bigchat-emoji-btn">🐰</button>
+                        <button class="bigchat-emoji-btn">🦊</button>
+                        <button class="bigchat-emoji-btn">🐻</button>
+                        <button class="bigchat-emoji-btn">🐼</button>
+                        <button class="bigchat-emoji-btn">🐻‍❄️</button>
+                        <button class="bigchat-emoji-btn">🐨</button>
+                        <button class="bigchat-emoji-btn">🐯</button>
+                        <button class="bigchat-emoji-btn">🦁</button>
+                        <button class="bigchat-emoji-btn">🐮</button>
+                        <button class="bigchat-emoji-btn">🐷</button>
+                        <button class="bigchat-emoji-btn">🐽</button>
+                        <button class="bigchat-emoji-btn">🐸</button>
+                        <button class="bigchat-emoji-btn">🐵</button>
+                        <button class="bigchat-emoji-btn">🙈</button>
+                        <button class="bigchat-emoji-btn">🙉</button>
+                        <button class="bigchat-emoji-btn">🙊</button>
+                        <button class="bigchat-emoji-btn">🐒</button>
+                        <button class="bigchat-emoji-btn">🐔</button>
+                        <button class="bigchat-emoji-btn">🐧</button>
+                        <button class="bigchat-emoji-btn">🐦</button>
+                        <button class="bigchat-emoji-btn">🐦‍⬛</button>
+                        <button class="bigchat-emoji-btn">🐤</button>
+                        <button class="bigchat-emoji-btn">🐣</button>
+                        <button class="bigchat-emoji-btn">🐥</button>
+                        <button class="bigchat-emoji-btn">🦆</button>
+                        <button class="bigchat-emoji-btn">🦅</button>
+                        <button class="bigchat-emoji-btn">🦉</button>
+                        <button class="bigchat-emoji-btn">🦇</button>
+                        <button class="bigchat-emoji-btn">🐺</button>
+                        <button class="bigchat-emoji-btn">🐗</button>
+                        <button class="bigchat-emoji-btn">🐴</button>
+                        <button class="bigchat-emoji-btn">🦄</button>
+                        <button class="bigchat-emoji-btn">🐝</button>
+                        <button class="bigchat-emoji-btn">🪱</button>
+                        <button class="bigchat-emoji-btn">🐛</button>
+                        <button class="bigchat-emoji-btn">🦋</button>
+                        <button class="bigchat-emoji-btn">🐌</button>
+                        <button class="bigchat-emoji-btn">🐞</button>
+                        <button class="bigchat-emoji-btn">🐜</button>
+                        <button class="bigchat-emoji-btn">🪰</button>
+                        <button class="bigchat-emoji-btn">🪲</button>
+                        <button class="bigchat-emoji-btn">🪳</button>
+                        <button class="bigchat-emoji-btn">🦟</button>
+                        <button class="bigchat-emoji-btn">🦗</button>
+                        <button class="bigchat-emoji-btn">🕷</button>
+                        <button class="bigchat-emoji-btn">🕸</button>
+                        <button class="bigchat-emoji-btn">🦂</button>
+                        <button class="bigchat-emoji-btn">🐢</button>
+                        <button class="bigchat-emoji-btn">🐍</button>
+                        <button class="bigchat-emoji-btn">🦎</button>
+                        <button class="bigchat-emoji-btn">🦖</button>
+                        <button class="bigchat-emoji-btn">🦕</button>
+                        <button class="bigchat-emoji-btn">🐙</button>
+                        <button class="bigchat-emoji-btn">🦑</button>
+                        <button class="bigchat-emoji-btn">🦐</button>
+                        <button class="bigchat-emoji-btn">🦞</button>
+                        <button class="bigchat-emoji-btn">🦀</button>
+                        <button class="bigchat-emoji-btn">🪼</button>
+                        <button class="bigchat-emoji-btn">🪸</button>
+                        <button class="bigchat-emoji-btn">🐡</button>
+                        <button class="bigchat-emoji-btn">🐠</button>
+                        <button class="bigchat-emoji-btn">🐟</button>
+                        <button class="bigchat-emoji-btn">🐬</button>
+                        <button class="bigchat-emoji-btn">🐳</button>
+                        <button class="bigchat-emoji-btn">🐋</button>
+                        <button class="bigchat-emoji-btn">🦈</button>
+                        <button class="bigchat-emoji-btn">🐊</button>
+                        <button class="bigchat-emoji-btn">🐅</button>
+                        <button class="bigchat-emoji-btn">🐆</button>
+                        <button class="bigchat-emoji-btn">🦓</button>
+                        <button class="bigchat-emoji-btn">🫏</button>
+                        <button class="bigchat-emoji-btn">🦍</button>
+                        <button class="bigchat-emoji-btn">🦧</button>
+                        <button class="bigchat-emoji-btn">🦣</button>
+                        <button class="bigchat-emoji-btn">🐘</button>
+                        <button class="bigchat-emoji-btn">🦛</button>
+                        <button class="bigchat-emoji-btn">🦏</button>
+                        <button class="bigchat-emoji-btn">🐪</button>
+                        <button class="bigchat-emoji-btn">🐫</button>
+                        <button class="bigchat-emoji-btn">🦒</button>
+                        <button class="bigchat-emoji-btn">🦘</button>
+                        <button class="bigchat-emoji-btn">🦬</button>
+                        <button class="bigchat-emoji-btn">🐃</button>
+                        <button class="bigchat-emoji-btn">🐂</button>
+                        <button class="bigchat-emoji-btn">🐄</button>
+                        <button class="bigchat-emoji-btn">🐎</button>
+                        <button class="bigchat-emoji-btn">🐖</button>
+                        <button class="bigchat-emoji-btn">🐏</button>
+                        <button class="bigchat-emoji-btn">🐑</button>
+                        <button class="bigchat-emoji-btn">🦙</button>
+                        <button class="bigchat-emoji-btn">🐐</button>
+                        <button class="bigchat-emoji-btn">🦌</button>
+                        <button class="bigchat-emoji-btn">🫎</button>
+                        <button class="bigchat-emoji-btn">🐕</button>
+                        <button class="bigchat-emoji-btn">🐩</button>
+                        <button class="bigchat-emoji-btn">🦮</button>
+                        <button class="bigchat-emoji-btn">🐕‍🦺</button>
+                        <button class="bigchat-emoji-btn">🐈</button>
+                        <button class="bigchat-emoji-btn">🐈‍⬛</button>
+                        <button class="bigchat-emoji-btn">🪽</button>
+                        <button class="bigchat-emoji-btn">🪶</button>
+                        <button class="bigchat-emoji-btn">🐓</button>
+                        <button class="bigchat-emoji-btn">🦃</button>
+                        <button class="bigchat-emoji-btn">🦤</button>
+                        <button class="bigchat-emoji-btn">🦚</button>
+                        <button class="bigchat-emoji-btn">🦜</button>
+                        <button class="bigchat-emoji-btn">🦢</button>
+                        <button class="bigchat-emoji-btn">🪿</button>
+                        <button class="bigchat-emoji-btn">🦩</button>
+                        <button class="bigchat-emoji-btn">🕊</button>
+                        <button class="bigchat-emoji-btn">🐇</button>
+                        <button class="bigchat-emoji-btn">🦝</button>
+                        <button class="bigchat-emoji-btn">🦨</button>
+                        <button class="bigchat-emoji-btn">🦡</button>
+                        <button class="bigchat-emoji-btn">🦫</button>
+                        <button class="bigchat-emoji-btn">🦦</button>
+                        <button class="bigchat-emoji-btn">🦥</button>
+                        <button class="bigchat-emoji-btn">🐁</button>
+                        <button class="bigchat-emoji-btn">🐀</button>
+                        <button class="bigchat-emoji-btn">🐿</button>
+                        <button class="bigchat-emoji-btn">🦔</button>
+                        <button class="bigchat-emoji-btn">🍏</button>
+                        <button class="bigchat-emoji-btn">🍎</button>
+                        <button class="bigchat-emoji-btn">🍐</button>
+                        <button class="bigchat-emoji-btn">🍊</button>
+                        <button class="bigchat-emoji-btn">🍋</button>
+                        <button class="bigchat-emoji-btn">🍌</button>
+                        <button class="bigchat-emoji-btn">🍉</button>
+                        <button class="bigchat-emoji-btn">🍇</button>
+                        <button class="bigchat-emoji-btn">🍓</button>
+                        <button class="bigchat-emoji-btn">🫐</button>
+                        <button class="bigchat-emoji-btn">🍈</button>
+                        <button class="bigchat-emoji-btn">🍒</button>
+                        <button class="bigchat-emoji-btn">🍑</button>
+                        <button class="bigchat-emoji-btn">🥭</button>
+                        <button class="bigchat-emoji-btn">🍍</button>
+                        <button class="bigchat-emoji-btn">🥥</button>
+                        <button class="bigchat-emoji-btn">🥝</button>
+                        <button class="bigchat-emoji-btn">🍅</button>
+                        <button class="bigchat-emoji-btn">🍆</button>
+                        <button class="bigchat-emoji-btn">🥑</button>
+                        <button class="bigchat-emoji-btn">🥦</button>
+                        <button class="bigchat-emoji-btn">🫛</button>
+                        <button class="bigchat-emoji-btn">🥬</button>
+                        <button class="bigchat-emoji-btn">🥒</button>
+                        <button class="bigchat-emoji-btn">🌶</button>
+                        <button class="bigchat-emoji-btn">🫑</button>
+                        <button class="bigchat-emoji-btn">🌽</button>
+                        <button class="bigchat-emoji-btn">🥕</button>
+                        <button class="bigchat-emoji-btn">🫒</button>
+                        <button class="bigchat-emoji-btn">🧄</button>
+                        <button class="bigchat-emoji-btn">🧅</button>
+                        <button class="bigchat-emoji-btn">🫚</button>
+                        <button class="bigchat-emoji-btn">🥔</button>
+                        <button class="bigchat-emoji-btn">🍠</button>
+                        <button class="bigchat-emoji-btn">🫘</button>
+                        <button class="bigchat-emoji-btn">🥐</button>
+                        <button class="bigchat-emoji-btn">🥯</button>
+                        <button class="bigchat-emoji-btn">🍞</button>
+                        <button class="bigchat-emoji-btn">🥖</button>
+                        <button class="bigchat-emoji-btn">🥨</button>
+                        <button class="bigchat-emoji-btn">🧀</button>
+                        <button class="bigchat-emoji-btn">🥚</button>
+                        <button class="bigchat-emoji-btn">🍳</button>
+                        <button class="bigchat-emoji-btn">🧈</button>
+                        <button class="bigchat-emoji-btn">🥞</button>
+                        <button class="bigchat-emoji-btn">🧇</button>
+                        <button class="bigchat-emoji-btn">🥓</button>
+                        <button class="bigchat-emoji-btn">🥩</button>
+                        <button class="bigchat-emoji-btn">🍗</button>
+                        <button class="bigchat-emoji-btn">🍖</button>
+                        <button class="bigchat-emoji-btn">🦴</button>
+                        <button class="bigchat-emoji-btn">🌭</button>
+                        <button class="bigchat-emoji-btn">🍔</button>
+                        <button class="bigchat-emoji-btn">🍟</button>
+                        <button class="bigchat-emoji-btn">🍕</button>
+                        <button class="bigchat-emoji-btn">🫓</button>
+                        <button class="bigchat-emoji-btn">🥪</button>
+                        <button class="bigchat-emoji-btn">🥙</button>
+                        <button class="bigchat-emoji-btn">🧆</button>
+                        <button class="bigchat-emoji-btn">🌮</button>
+                        <button class="bigchat-emoji-btn">🌯</button>
+                        <button class="bigchat-emoji-btn">🫔</button>
+                        <button class="bigchat-emoji-btn">🥗</button>
+                        <button class="bigchat-emoji-btn">🥘</button>
+                        <button class="bigchat-emoji-btn">🫕</button>
+                        <button class="bigchat-emoji-btn">🥫</button>
+                        <button class="bigchat-emoji-btn">🍝</button>
+                        <button class="bigchat-emoji-btn">🍜</button>
+                        <button class="bigchat-emoji-btn">🍲</button>
+                        <button class="bigchat-emoji-btn">🍛</button>
+                        <button class="bigchat-emoji-btn">🍣</button>
+                        <button class="bigchat-emoji-btn">🍱</button>
+                        <button class="bigchat-emoji-btn">🥟</button>
+                        <button class="bigchat-emoji-btn">🦪</button>
+                        <button class="bigchat-emoji-btn">🍤</button>
+                        <button class="bigchat-emoji-btn">🍙</button>
+                        <button class="bigchat-emoji-btn">🍚</button>
+                        <button class="bigchat-emoji-btn">🍘</button>
+                        <button class="bigchat-emoji-btn">🍥</button>
+                        <button class="bigchat-emoji-btn">🥠</button>
+                        <button class="bigchat-emoji-btn">🥮</button>
+                        <button class="bigchat-emoji-btn">🍢</button>
+                        <button class="bigchat-emoji-btn">🍡</button>
+                        <button class="bigchat-emoji-btn">🍧</button>
+                        <button class="bigchat-emoji-btn">🍨</button>
+                        <button class="bigchat-emoji-btn">🍦</button>
+                        <button class="bigchat-emoji-btn">🥧</button>
+                        <button class="bigchat-emoji-btn">🧁</button>
+                        <button class="bigchat-emoji-btn">🍰</button>
+                        <button class="bigchat-emoji-btn">🎂</button>
+                        <button class="bigchat-emoji-btn">🍮</button>
+                        <button class="bigchat-emoji-btn">🍭</button>
+                        <button class="bigchat-emoji-btn">🍬</button>
+                        <button class="bigchat-emoji-btn">🍫</button>
+                        <button class="bigchat-emoji-btn">🍿</button>
+                        <button class="bigchat-emoji-btn">🍩</button>
+                        <button class="bigchat-emoji-btn">🍪</button>
+                        <button class="bigchat-emoji-btn">🌰</button>
+                        <button class="bigchat-emoji-btn">🥜</button>
+                        <button class="bigchat-emoji-btn">🍯</button>
+                        <button class="bigchat-emoji-btn">🥛</button>
+                        <button class="bigchat-emoji-btn">🍼</button>
+                        <button class="bigchat-emoji-btn">🫖</button>
+                        <button class="bigchat-emoji-btn">☕️</button>
+                        <button class="bigchat-emoji-btn">🍵</button>
+                        <button class="bigchat-emoji-btn">🧃</button>
+                        <button class="bigchat-emoji-btn">🥤</button>
+                        <button class="bigchat-emoji-btn">🧋</button>
+                        <button class="bigchat-emoji-btn">🫙</button>
+                        <button class="bigchat-emoji-btn">🍶</button>
+                        <button class="bigchat-emoji-btn">🍺</button>
+                        <button class="bigchat-emoji-btn">🍻</button>
+                        <button class="bigchat-emoji-btn">🥂</button>
+                        <button class="bigchat-emoji-btn">🍷</button>
+                        <button class="bigchat-emoji-btn">🫗</button>
+                        <button class="bigchat-emoji-btn">🥃</button>
+                        <button class="bigchat-emoji-btn">🍸</button>
+                        <button class="bigchat-emoji-btn">🍹</button>
+                        <button class="bigchat-emoji-btn">🧉</button>
+                        <button class="bigchat-emoji-btn">🍾</button>
+                        <button class="bigchat-emoji-btn">🧊</button>
+                        <button class="bigchat-emoji-btn">🥄</button>
+                        <button class="bigchat-emoji-btn">🍴</button>
+                        <button class="bigchat-emoji-btn">🍽</button>
+                        <button class="bigchat-emoji-btn">🥣</button>
+                        <button class="bigchat-emoji-btn">🥡</button>
+                        <button class="bigchat-emoji-btn">🥢</button>
+                        <button class="bigchat-emoji-btn">🧂</button>
+                        <button class="bigchat-emoji-btn">🐾</button>
+                        <button class="bigchat-emoji-btn">🐉</button>
+                        <button class="bigchat-emoji-btn">🐲</button>
+                        <button class="bigchat-emoji-btn">🌵</button>
+                        <button class="bigchat-emoji-btn">🎄</button>
+                        <button class="bigchat-emoji-btn">🌲</button>
+                        <button class="bigchat-emoji-btn">🌳</button>
+                        <button class="bigchat-emoji-btn">🌴</button>
+                        <button class="bigchat-emoji-btn">🪹</button>
+                        <button class="bigchat-emoji-btn">🪺</button>
+                        <button class="bigchat-emoji-btn">🪵</button>
+                        <button class="bigchat-emoji-btn">🌱</button>
+                        <button class="bigchat-emoji-btn">🌿</button>
+                        <button class="bigchat-emoji-btn">☘️</button>
+                        <button class="bigchat-emoji-btn">🍀</button>
+                        <button class="bigchat-emoji-btn">🎍</button>
+                        <button class="bigchat-emoji-btn">🪴</button>
+                        <button class="bigchat-emoji-btn">🎋</button>
+                        <button class="bigchat-emoji-btn">🍃</button>
+                        <button class="bigchat-emoji-btn">🍂</button>
+                        <button class="bigchat-emoji-btn">🍁</button>
+                        <button class="bigchat-emoji-btn">🍄</button>
+                        <button class="bigchat-emoji-btn">🐚</button>
+                        <button class="bigchat-emoji-btn">🪨</button>
+                        <button class="bigchat-emoji-btn">🌾</button>
+                        <button class="bigchat-emoji-btn">💐</button>
+                        <button class="bigchat-emoji-btn">🌷</button>
+                        <button class="bigchat-emoji-btn">🪷</button>
+                        <button class="bigchat-emoji-btn">🌹</button>
+                        <button class="bigchat-emoji-btn">🥀</button>
+                        <button class="bigchat-emoji-btn">🌺</button>
+                        <button class="bigchat-emoji-btn">🌸</button>
+                        <button class="bigchat-emoji-btn">🪻</button>
+                        <button class="bigchat-emoji-btn">🌼</button>
+                        <button class="bigchat-emoji-btn">🌻</button>
+                        <button class="bigchat-emoji-btn">🌞</button>
+                        <button class="bigchat-emoji-btn">🌝</button>
+                        <button class="bigchat-emoji-btn">🌛</button>
+                        <button class="bigchat-emoji-btn">🌜</button>
+                        <button class="bigchat-emoji-btn">🌚</button>
+                        <button class="bigchat-emoji-btn">🌕</button>
+                        <button class="bigchat-emoji-btn">🌖</button>
+                        <button class="bigchat-emoji-btn">🌗</button>
+                        <button class="bigchat-emoji-btn">🌘</button>
+                        <button class="bigchat-emoji-btn">🌑</button>
+                        <button class="bigchat-emoji-btn">🌒</button>
+                        <button class="bigchat-emoji-btn">🌓</button>
+                        <button class="bigchat-emoji-btn">🌔</button>
+                        <button class="bigchat-emoji-btn">🌙</button>
+                        <button class="bigchat-emoji-btn">🌎</button>
+                        <button class="bigchat-emoji-btn">🌍</button>
+                        <button class="bigchat-emoji-btn">🌏</button>
+                        <button class="bigchat-emoji-btn">🪐</button>
+                        <button class="bigchat-emoji-btn">💫</button>
+                        <button class="bigchat-emoji-btn">⭐️</button>
+                        <button class="bigchat-emoji-btn">🌟</button>
+                        <button class="bigchat-emoji-btn">✨</button>
+                        <button class="bigchat-emoji-btn">⚡️</button>
+                        <button class="bigchat-emoji-btn">☄️</button>
+                        <button class="bigchat-emoji-btn">💥</button>
+                        <button class="bigchat-emoji-btn">🔥</button>
+                        <button class="bigchat-emoji-btn">🌪</button>
+                        <button class="bigchat-emoji-btn">🌈</button>
+                        <button class="bigchat-emoji-btn">☀️</button>
+                        <button class="bigchat-emoji-btn">🌤</button>
+                        <button class="bigchat-emoji-btn">⛅️</button>
+                        <button class="bigchat-emoji-btn">🌥</button>
+                        <button class="bigchat-emoji-btn">☁️</button>
+                        <button class="bigchat-emoji-btn">🌦</button>
+                        <button class="bigchat-emoji-btn">🌧</button>
+                        <button class="bigchat-emoji-btn">⛈</button>
+                        <button class="bigchat-emoji-btn">🌩</button>
+                        <button class="bigchat-emoji-btn">🌨</button>
+                        <button class="bigchat-emoji-btn">❄️</button>
+                        <button class="bigchat-emoji-btn">☃️</button>
+                        <button class="bigchat-emoji-btn">⛄️</button>
+                        <button class="bigchat-emoji-btn">🌬</button>
+                        <button class="bigchat-emoji-btn">💨</button>
+                        <button class="bigchat-emoji-btn">💧</button>
+                        <button class="bigchat-emoji-btn">💦</button>
+                        <button class="bigchat-emoji-btn">🫧</button>
+                        <button class="bigchat-emoji-btn">☔️</button>
+                        <button class="bigchat-emoji-btn">☂️</button>
+                        <button class="bigchat-emoji-btn">🌊</button>
+                        <button class="bigchat-emoji-btn">🌫</button>   
+                        <button class="bigchat-emoji-btn">👶</button>
+                        <button class="bigchat-emoji-btn">👧</button>
+                        <button class="bigchat-emoji-btn">🧒</button>
+                        <button class="bigchat-emoji-btn">👦</button>
+                        <button class="bigchat-emoji-btn">👩</button>
+                        <button class="bigchat-emoji-btn">🧑</button>
+                        <button class="bigchat-emoji-btn">👨</button>
+                        <button class="bigchat-emoji-btn">👩‍🦱</button>
+                        <button class="bigchat-emoji-btn">🧑‍🦱</button>
+                        <button class="bigchat-emoji-btn">👨‍🦱</button>
+                        <button class="bigchat-emoji-btn">👩‍🦰</button>
+                        <button class="bigchat-emoji-btn">🧑‍🦰</button>
+                        <button class="bigchat-emoji-btn">👨‍🦰</button>
+                        <button class="bigchat-emoji-btn">👱‍♀️</button>
+                        <button class="bigchat-emoji-btn">👱</button>
+                        <button class="bigchat-emoji-btn">👱‍♂️</button>
+                        <button class="bigchat-emoji-btn">👩‍🦳</button>
+                        <button class="bigchat-emoji-btn">🧑‍🦳</button>
+                        <button class="bigchat-emoji-btn">👨‍🦳</button>
+                        <button class="bigchat-emoji-btn">👩‍🦲</button>
+                        <button class="bigchat-emoji-btn">🧑‍🦲</button>
+                        <button class="bigchat-emoji-btn">👨‍🦲</button>
+                        <button class="bigchat-emoji-btn">🧔‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧔</button>
+                        <button class="bigchat-emoji-btn">🧔‍♂️</button>
+                        <button class="bigchat-emoji-btn">👵</button>
+                        <button class="bigchat-emoji-btn">🧓</button>
+                        <button class="bigchat-emoji-btn">👴</button>
+                        <button class="bigchat-emoji-btn">👲</button>
+                        <button class="bigchat-emoji-btn">👳‍♀️</button>
+                        <button class="bigchat-emoji-btn">👳</button>
+                        <button class="bigchat-emoji-btn">👳‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧕</button>
+                        <button class="bigchat-emoji-btn">👮‍♀️</button>
+                        <button class="bigchat-emoji-btn">👮</button>
+                        <button class="bigchat-emoji-btn">👮‍♂️</button>
+                        <button class="bigchat-emoji-btn">👷‍♀️</button>
+                        <button class="bigchat-emoji-btn">👷</button>
+                        <button class="bigchat-emoji-btn">👷‍♂️</button>
+                        <button class="bigchat-emoji-btn">💂‍♀️</button>
+                        <button class="bigchat-emoji-btn">💂</button>
+                        <button class="bigchat-emoji-btn">💂‍♂️</button>
+                        <button class="bigchat-emoji-btn">🕵️‍♀️</button>
+                        <button class="bigchat-emoji-btn">🕵️</button>
+                        <button class="bigchat-emoji-btn">🕵️‍♂️</button>
+                        <button class="bigchat-emoji-btn">👩‍⚕️</button>
+                        <button class="bigchat-emoji-btn">🧑‍⚕️</button>
+                        <button class="bigchat-emoji-btn">👨‍⚕️</button>
+                        <button class="bigchat-emoji-btn">👩‍🌾</button>
+                        <button class="bigchat-emoji-btn">🧑‍🌾</button>
+                        <button class="bigchat-emoji-btn">👨‍🌾</button>
+                        <button class="bigchat-emoji-btn">👩‍🍳</button>
+                        <button class="bigchat-emoji-btn">🧑‍🍳</button>
+                        <button class="bigchat-emoji-btn">👨‍🍳</button>
+                        <button class="bigchat-emoji-btn">👩‍🎓</button>
+                        <button class="bigchat-emoji-btn">🧑‍🎓</button>
+                        <button class="bigchat-emoji-btn">👨‍🎓</button>
+                        <button class="bigchat-emoji-btn">👩‍🎤</button>
+                        <button class="bigchat-emoji-btn">🧑‍🎤</button>
+                        <button class="bigchat-emoji-btn">👨‍🎤</button>
+                        <button class="bigchat-emoji-btn">👩‍🏫</button>
+                        <button class="bigchat-emoji-btn">🧑‍🏫</button>
+                        <button class="bigchat-emoji-btn">👨‍🏫</button>
+                        <button class="bigchat-emoji-btn">👩‍🏭</button>
+                        <button class="bigchat-emoji-btn">🧑‍🏭</button>
+                        <button class="bigchat-emoji-btn">👨‍🏭</button>
+                        <button class="bigchat-emoji-btn">👩‍💻</button>
+                        <button class="bigchat-emoji-btn">🧑‍💻</button>
+                        <button class="bigchat-emoji-btn">👨‍💻</button>
+                        <button class="bigchat-emoji-btn">👩‍💼</button>
+                        <button class="bigchat-emoji-btn">🧑‍💼</button>
+                        <button class="bigchat-emoji-btn">👨‍💼</button>
+                        <button class="bigchat-emoji-btn">👩‍🔧</button>
+                        <button class="bigchat-emoji-btn">🧑‍🔧</button>
+                        <button class="bigchat-emoji-btn">👨‍🔧</button>
+                        <button class="bigchat-emoji-btn">👩‍🔬</button>
+                        <button class="bigchat-emoji-btn">🧑‍🔬</button>
+                        <button class="bigchat-emoji-btn">👨‍🔬</button>
+                        <button class="bigchat-emoji-btn">👩‍🎨</button>
+                        <button class="bigchat-emoji-btn">🧑‍🎨</button>
+                        <button class="bigchat-emoji-btn">👨‍🎨</button>
+                        <button class="bigchat-emoji-btn">👩‍🚒</button>
+                        <button class="bigchat-emoji-btn">🧑‍🚒</button>
+                        <button class="bigchat-emoji-btn">👨‍🚒</button>
+                        <button class="bigchat-emoji-btn">👩‍✈️</button>
+                        <button class="bigchat-emoji-btn">🧑‍✈️</button>
+                        <button class="bigchat-emoji-btn">👨‍✈️</button>
+                        <button class="bigchat-emoji-btn">👩‍🚀</button>
+                        <button class="bigchat-emoji-btn">🧑‍🚀</button>
+                        <button class="bigchat-emoji-btn">👨‍🚀</button>
+                        <button class="bigchat-emoji-btn">👩‍⚖️</button>
+                        <button class="bigchat-emoji-btn">🧑‍⚖️</button>
+                        <button class="bigchat-emoji-btn">👨‍⚖️</button>
+                        <button class="bigchat-emoji-btn">👰‍♀️</button>
+                        <button class="bigchat-emoji-btn">👰</button>
+                        <button class="bigchat-emoji-btn">👰‍♂️</button>
+                        <button class="bigchat-emoji-btn">🤵‍♀️</button>
+                        <button class="bigchat-emoji-btn">🤵</button>
+                        <button class="bigchat-emoji-btn">🤵‍♂️</button>
+                        <button class="bigchat-emoji-btn">👸</button>
+                        <button class="bigchat-emoji-btn">🫅</button>
+                        <button class="bigchat-emoji-btn">🤴</button>
+                        <button class="bigchat-emoji-btn">🥷</button>
+                        <button class="bigchat-emoji-btn">🦸‍♀️</button>
+                        <button class="bigchat-emoji-btn">🦸</button>
+                        <button class="bigchat-emoji-btn">🦸‍♂️</button>
+                        <button class="bigchat-emoji-btn">🦹‍♀️</button>
+                        <button class="bigchat-emoji-btn">🦹</button>
+                        <button class="bigchat-emoji-btn">🦹‍♂️</button>
+                        <button class="bigchat-emoji-btn">🤶</button>
+                        <button class="bigchat-emoji-btn">🧑‍🎄</button>
+                        <button class="bigchat-emoji-btn">🎅</button>
+                        <button class="bigchat-emoji-btn">🧙‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧙</button>
+                        <button class="bigchat-emoji-btn">🧙‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧝‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧝</button>
+                        <button class="bigchat-emoji-btn">🧝‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧛‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧛</button>
+                        <button class="bigchat-emoji-btn">🧛‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧟‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧟</button>
+                        <button class="bigchat-emoji-btn">🧟‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧞‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧞</button>
+                        <button class="bigchat-emoji-btn">🧞‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧜‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧜</button>
+                        <button class="bigchat-emoji-btn">🧜‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧚‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧚</button>
+                        <button class="bigchat-emoji-btn">🧚‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧌</button>
+                        <button class="bigchat-emoji-btn">👼</button>
+                        <button class="bigchat-emoji-btn">🤰</button>
+                        <button class="bigchat-emoji-btn">🫄</button>
+                        <button class="bigchat-emoji-btn">🫃</button>
+                        <button class="bigchat-emoji-btn">🤱</button>
+                        <button class="bigchat-emoji-btn">👩‍🍼</button>
+                        <button class="bigchat-emoji-btn">🧑‍🍼</button>
+                        <button class="bigchat-emoji-btn">👨‍🍼</button>
+                        <button class="bigchat-emoji-btn">🙇‍♀️</button>
+                        <button class="bigchat-emoji-btn">🙇</button>
+                        <button class="bigchat-emoji-btn">🙇‍♂️</button>
+                        <button class="bigchat-emoji-btn">💁‍♀️</button>
+                        <button class="bigchat-emoji-btn">💁</button>
+                        <button class="bigchat-emoji-btn">💁‍♂️</button>
+                        <button class="bigchat-emoji-btn">🙅‍♀️</button>
+                        <button class="bigchat-emoji-btn">🙅</button>
+                        <button class="bigchat-emoji-btn">🙅‍♂️</button>
+                        <button class="bigchat-emoji-btn">🙆‍♀️</button>
+                        <button class="bigchat-emoji-btn">🙆</button>
+                        <button class="bigchat-emoji-btn">🙆‍♂️</button>
+                        <button class="bigchat-emoji-btn">🙋‍♀️</button>
+                        <button class="bigchat-emoji-btn">🙋</button>
+                        <button class="bigchat-emoji-btn">🙋‍♂️</button>
+                        <button class="bigchat-emoji-btn">🧏‍♀️</button>
+                        <button class="bigchat-emoji-btn">🧏</button>
+                        <button class="bigchat-emoji-btn">🧏‍♂️</button>
+                        <button class="bigchat-emoji-btn">🤦‍♀️</button>
+                        <button class="bigchat-emoji-btn">🤦</button>
+                        <button class="bigchat-emoji-btn">🤦‍♂️</button>
+                        <button class="bigchat-emoji-btn">❤️</button>
+                        <button class="bigchat-emoji-btn">🩷</button>
+                        <button class="bigchat-emoji-btn">🧡</button>
+                        <button class="bigchat-emoji-btn">💛</button>
+                        <button class="bigchat-emoji-btn">💚</button>
+                        <button class="bigchat-emoji-btn">💙</button>
+                        <button class="bigchat-emoji-btn">🩵</button>
+                        <button class="bigchat-emoji-btn">💜</button>
+                        <button class="bigchat-emoji-btn">🖤</button>
+                        <button class="bigchat-emoji-btn">🩶</button>
+                        <button class="bigchat-emoji-btn">🤍</button>
+                        <button class="bigchat-emoji-btn">🤎</button>
+                        <button class="bigchat-emoji-btn">❤️‍🔥</button>
+                        <button class="bigchat-emoji-btn">❤️‍🩹</button>
+                        <button class="bigchat-emoji-btn">💔</button>
+                        <button class="bigchat-emoji-btn">❣️</button>
+                        <button class="bigchat-emoji-btn">💕</button>
+                        <button class="bigchat-emoji-btn">💞</button>
+                        <button class="bigchat-emoji-btn">💓</button>
+                        <button class="bigchat-emoji-btn">💗</button>
+                        <button class="bigchat-emoji-btn">💖</button>
+                        <button class="bigchat-emoji-btn">💘</button>
+                        <button class="bigchat-emoji-btn">💝</button>
+                        <button class="bigchat-emoji-btn">❌</button>
+                        <button class="bigchat-emoji-btn">⭕️</button>
+                        <button class="bigchat-emoji-btn">🛑</button>
+                        <button class="bigchat-emoji-btn">⛔️</button>
+                        <button class="bigchat-emoji-btn">📛</button>
+                        <button class="bigchat-emoji-btn">🚫</button>
+                        <button class="bigchat-emoji-btn">💯</button>
+                        <button class="bigchat-emoji-btn">💢</button>
+                        <button class="bigchat-emoji-btn">♨️</button>
+                        <button class="bigchat-emoji-btn">🚷</button>
+                        <button class="bigchat-emoji-btn">🚯</button>
+                        <button class="bigchat-emoji-btn">🚳</button>
+                        <button class="bigchat-emoji-btn">🚱</button>
+                        <button class="bigchat-emoji-btn">🔞</button>
+                        <button class="bigchat-emoji-btn">📵</button>
+                        <button class="bigchat-emoji-btn">🚭</button>
+                        <button class="bigchat-emoji-btn">❗️</button>
+                        <button class="bigchat-emoji-btn">❕</button>
+                        <button class="bigchat-emoji-btn">❓</button>
+                        <button class="bigchat-emoji-btn">❔</button>
+                        <button class="bigchat-emoji-btn">‼️</button>
+                        <button class="bigchat-emoji-btn">⁉️</button>
+                        <button class="bigchat-emoji-btn">🔅</button>
+                        <button class="bigchat-emoji-btn">🔆</button>
+                        <button class="bigchat-emoji-btn">〽️</button>
+                        <button class="bigchat-emoji-btn">⚠️</button>
+                        <button class="bigchat-emoji-btn">🚸</button>
+                        <button class="bigchat-emoji-btn">🔱</button>
+                        <button class="bigchat-emoji-btn">⚜️</button>
+                        <button class="bigchat-emoji-btn">🔰</button>
+                        <button class="bigchat-emoji-btn">♻️</button>
+                        <button class="bigchat-emoji-btn">✅</button>
+                        <button class="bigchat-emoji-btn">🈯️</button>
+                        <button class="bigchat-emoji-btn">💹</button>
+                        <button class="bigchat-emoji-btn">❇️</button>
+                        <button class="bigchat-emoji-btn">✳️</button>
+                        <button class="bigchat-emoji-btn">❎</button>
+                        <button class="bigchat-emoji-btn">🌐</button>
+                        <button class="bigchat-emoji-btn">💠</button>
+                        <button class="bigchat-emoji-btn">Ⓜ️</button>
+                        <button class="bigchat-emoji-btn">🌀</button>
+                        <button class="bigchat-emoji-btn">💤</button>
+                        <button class="bigchat-emoji-btn">🎶</button>
+                        <button class="bigchat-emoji-btn">➕</button>
+                        <button class="bigchat-emoji-btn">➖</button>
+                        <button class="bigchat-emoji-btn">➗</button>
+                        <button class="bigchat-emoji-btn">✖️</button>
+                        <button class="bigchat-emoji-btn">🟰</button>
+                        <button class="bigchat-emoji-btn">♾</button>
+                        <button class="bigchat-emoji-btn">💲</button>
+                        <button class="bigchat-emoji-btn">💱</button>
+                        <button class="bigchat-emoji-btn">™️</button>
+                        <button class="bigchat-emoji-btn">©️</button>
+                        <button class="bigchat-emoji-btn">®️</button>
+                        <button class="bigchat-emoji-btn">〰️</button>
+                        <button class="bigchat-emoji-btn">➰</button>
+                        <button class="bigchat-emoji-btn">➿</button>
+                        <button class="bigchat-emoji-btn">🔚</button>
+                        <button class="bigchat-emoji-btn">🔙</button>
+                        <button class="bigchat-emoji-btn">🔛</button>
+                        <button class="bigchat-emoji-btn">🔝</button>
+                        <button class="bigchat-emoji-btn">🔜</button>
+                        <button class="bigchat-emoji-btn">✔️</button>
+                        <button class="bigchat-emoji-btn">☑️</button>
+                        <button class="bigchat-emoji-btn">🔘</button>
+                        <button class="bigchat-emoji-btn">🔴</button>
+                        <button class="bigchat-emoji-btn">🟠</button>
+                        <button class="bigchat-emoji-btn">🟡</button>
+                        <button class="bigchat-emoji-btn">🟢</button>
+                        <button class="bigchat-emoji-btn">🔵</button>
+                        <button class="bigchat-emoji-btn">🟣</button>
+                        <button class="bigchat-emoji-btn">⚫️</button>
+                        <button class="bigchat-emoji-btn">⚪️</button>
+                        <button class="bigchat-emoji-btn">🟤</button>
+                        <button class="bigchat-emoji-btn">🔺</button>
+                        <button class="bigchat-emoji-btn">🔻</button>
+                        <button class="bigchat-emoji-btn">🔸</button>
+                        <button class="bigchat-emoji-btn">🔹</button>
+                        <button class="bigchat-emoji-btn">🔶</button>
+                        <button class="bigchat-emoji-btn">🔷</button>
+                        <button class="bigchat-emoji-btn">🔳</button>
+                        <button class="bigchat-emoji-btn">🔲</button>
+                        <button class="bigchat-emoji-btn">▪️</button>
+                        <button class="bigchat-emoji-btn">▫️</button>
+                        <button class="bigchat-emoji-btn">◾️</button>
+                        <button class="bigchat-emoji-btn">◽️</button>
+                        <button class="bigchat-emoji-btn">◼️</button>
+                        <button class="bigchat-emoji-btn">◻️</button>
+                        <button class="bigchat-emoji-btn">🟥</button>
+                        <button class="bigchat-emoji-btn">🟧</button>
+                        <button class="bigchat-emoji-btn">🟨</button>
+                        <button class="bigchat-emoji-btn">🟩</button>
+                        <button class="bigchat-emoji-btn">🟦</button>
+                        <button class="bigchat-emoji-btn">🟪</button>
+                        <button class="bigchat-emoji-btn">⬛️</button>
+                        <button class="bigchat-emoji-btn">⬜️</button>
+                        <button class="bigchat-emoji-btn">🟫</button>
+                        <button class="bigchat-emoji-btn">🔈</button>
+                        <button class="bigchat-emoji-btn">🔇</button>
+                        <button class="bigchat-emoji-btn">🔉</button>
+                        <button class="bigchat-emoji-btn">🔊</button>
+                        <button class="bigchat-emoji-btn">🔔</button>
+                        <button class="bigchat-emoji-btn">🔕</button>
+                        <button class="bigchat-emoji-btn">📣</button>
+                        <button class="bigchat-emoji-btn">📢</button>
+                        <button class="bigchat-emoji-btn">👁‍🗨</button>
+                        <button class="bigchat-emoji-btn">💬</button>
+                        <button class="bigchat-emoji-btn">💭</button>
+                        <button class="bigchat-emoji-btn">🗯</button>
+                        <button class="bigchat-emoji-btn">♠️</button>
+                        <button class="bigchat-emoji-btn">♣️</button>
+                        <button class="bigchat-emoji-btn">♥️</button>
+                        <button class="bigchat-emoji-btn">♦️</button>
+                    </div>
+                    <div id="smiley" class="bigchat-emoji-category">
+                        <!-- Smiley & People Emojis -->
+                        <button class="bigchat-emoji-btn">😀</button>
+                        <button class="bigchat-emoji-btn">😃</button>
+                        <button class="bigchat-emoji-btn">😄</button>
+                        <button class="bigchat-emoji-btn">😁</button>
+                        <button class="bigchat-emoji-btn">😆</button>
+                        <button class="bigchat-emoji-btn">😅</button>
+                        <button class="bigchat-emoji-btn">😂</button>
+                        <button class="bigchat-emoji-btn">🤣</button>
+                        <button class="bigchat-emoji-btn">🥲</button>
+                        <button class="bigchat-emoji-btn">🥹</button>
+                        <button class="bigchat-emoji-btn">😊</button>
+                        <button class="bigchat-emoji-btn">😇</button>
+                        <button class="bigchat-emoji-btn">🙂</button>
+                        <button class="bigchat-emoji-btn">🙃</button>
+                        <button class="bigchat-emoji-btn">😉</button>
+                        <button class="bigchat-emoji-btn">😌</button>
+                        <button class="bigchat-emoji-btn">😍</button>
+                        <button class="bigchat-emoji-btn">🥰</button>
+                        <button class="bigchat-emoji-btn">😘</button>
+                        <button class="bigchat-emoji-btn">😗</button>
+                        <button class="bigchat-emoji-btn">😙</button>
+                        <button class="bigchat-emoji-btn">😚</button>
+                        <button class="bigchat-emoji-btn">😋</button>
+                        <button class="bigchat-emoji-btn">😛</button>
+                        <button class="bigchat-emoji-btn">😝</button>
+                        <button class="bigchat-emoji-btn">😜</button>
+                        <button class="bigchat-emoji-btn">🤪</button>
+                        <button class="bigchat-emoji-btn">🤨</button>
+                        <button class="bigchat-emoji-btn">🧐</button>
+                        <button class="bigchat-emoji-btn">🤓</button>
+                        <button class="bigchat-emoji-btn">😎</button>
+                        <button class="bigchat-emoji-btn">🥸</button>
+                        <button class="bigchat-emoji-btn">🤩</button>
+                        <button class="bigchat-emoji-btn">🥳</button>
+                        <button class="bigchat-emoji-btn">😏</button>
+                        <button class="bigchat-emoji-btn">😒</button>
+                        <button class="bigchat-emoji-btn">😞</button>
+                        <button class="bigchat-emoji-btn">😔</button>
+                        <button class="bigchat-emoji-btn">😟</button>
+                        <button class="bigchat-emoji-btn">😕</button>
+                        <button class="bigchat-emoji-btn">🙁</button>
+                        <button class="bigchat-emoji-btn">☹️</button>
+                        <button class="bigchat-emoji-btn">😣</button>
+                        <button class="bigchat-emoji-btn">😖</button>
+                        <button class="bigchat-emoji-btn">😫</button>
+                        <button class="bigchat-emoji-btn">😩</button>
+                        <button class="bigchat-emoji-btn">🥺</button>
+                        <button class="bigchat-emoji-btn">😢</button>
+                        <button class="bigchat-emoji-btn">😭</button>
+                        <button class="bigchat-emoji-btn">😮‍💨</button>
+                        <button class="bigchat-emoji-btn">😤</button>
+                        <button class="bigchat-emoji-btn">😠</button>
+                        <button class="bigchat-emoji-btn">😡</button>
+                        <button class="bigchat-emoji-btn">🤬</button>
+                        <button class="bigchat-emoji-btn">🤯</button>
+                        <button class="bigchat-emoji-btn">😳</button>
+                        <button class="bigchat-emoji-btn">🥵</button>
+                        <button class="bigchat-emoji-btn">🥶</button>
+                        <button class="bigchat-emoji-btn">😱</button>
+                        <button class="bigchat-emoji-btn">😨</button>
+                        <button class="bigchat-emoji-btn">😰</button>
+                        <button class="bigchat-emoji-btn">😥</button>
+                        <button class="bigchat-emoji-btn">😓</button>
+                        <button class="bigchat-emoji-btn">🫣</button>
+                        <button class="bigchat-emoji-btn">🤗</button>
+                        <button class="bigchat-emoji-btn">🫡</button>
+                        <button class="bigchat-emoji-btn">🤔</button>
+                        <button class="bigchat-emoji-btn">🫢</button>
+                        <button class="bigchat-emoji-btn">🤭</button>
+                        <button class="bigchat-emoji-btn">🤫</button>
+                        <button class="bigchat-emoji-btn">🤥</button>
+                        <button class="bigchat-emoji-btn">😶</button>
+                        <button class="bigchat-emoji-btn">😶‍🌫️</button>
+                        <button class="bigchat-emoji-btn">😐</button>
+                        <button class="bigchat-emoji-btn">😑</button>
+                        <button class="bigchat-emoji-btn">😬</button>
+                        <button class="bigchat-emoji-btn">🫨</button>
+                        <button class="bigchat-emoji-btn">🫠</button>
+                        <button class="bigchat-emoji-btn">🙄</button>
+                        <button class="bigchat-emoji-btn">😯</button>
+                        <button class="bigchat-emoji-btn">😦</button>
+                        <button class="bigchat-emoji-btn">😧</button>
+                        <button class="bigchat-emoji-btn">😮</button>
+                        <button class="bigchat-emoji-btn">😲</button>
+                        <button class="bigchat-emoji-btn">🥱</button>
+                        <button class="bigchat-emoji-btn">😴</button>
+                        <button class="bigchat-emoji-btn">🤤</button>
+                        <button class="bigchat-emoji-btn">😪</button>
+                        <button class="bigchat-emoji-btn">😵</button>
+                        <button class="bigchat-emoji-btn">😵‍💫</button>
+                        <button class="bigchat-emoji-btn">🫥</button>
+                        <button class="bigchat-emoji-btn">🤐</button>
+                        <button class="bigchat-emoji-btn">🥴</button>
+                        <button class="bigchat-emoji-btn">🤢</button>
+                        <button class="bigchat-emoji-btn">🤮</button>
+                        <button class="bigchat-emoji-btn">🤧</button>
+                        <button class="bigchat-emoji-btn">😷</button>
+                        <button class="bigchat-emoji-btn">🤒</button>
+                        <button class="bigchat-emoji-btn">🤕</button>
+                        <button class="bigchat-emoji-btn">🤑</button>
+                        <button class="bigchat-emoji-btn">🤠</button>
+                        <button class="bigchat-emoji-btn">😈</button>
+                        <button class="bigchat-emoji-btn">👿</button>
+                        <button class="bigchat-emoji-btn">👹</button>
+                        <button class="bigchat-emoji-btn">👺</button>
+                        <button class="bigchat-emoji-btn">🤡</button>
+                        <button class="bigchat-emoji-btn">💩</button>
+                        <button class="bigchat-emoji-btn">👻</button>
+                        <button class="bigchat-emoji-btn">💀</button>
+                        <button class="bigchat-emoji-btn">☠️</button>
+                        <button class="bigchat-emoji-btn">👽</button>
+                        <button class="bigchat-emoji-btn">👾</button>
+                        <button class="bigchat-emoji-btn">🤖</button>
+                        <button class="bigchat-emoji-btn">🎃</button>
+                        <!-- More smiley emojis -->
+                    </div>
+                    <div id="animals" class="bigchat-emoji-category hidden">
+                        <!-- Animal Emojis -->
+                        <button class="bigchat-emoji-btn">😺</button>
+                        <button class="bigchat-emoji-btn">😸</button>
+                        <button class="bigchat-emoji-btn">😹</button>
+                        <button class="bigchat-emoji-btn">😻</button>
+                        <button class="bigchat-emoji-btn">😼</button>
+                        <button class="bigchat-emoji-btn">😽</button>
+                        <button class="bigchat-emoji-btn">🙀</button>
+                        <button class="bigchat-emoji-btn">😿</button>
+                        <button class="bigchat-emoji-btn">😾</button>
+                        <button class="bigchat-emoji-btn">🐶</button>
+                        <button class="bigchat-emoji-btn">🐱</button>
+                        <button class="bigchat-emoji-btn">🐭</button>
+                        <button class="bigchat-emoji-btn">🐹</button>
+                        <button class="bigchat-emoji-btn">🐰</button>
+                        <button class="bigchat-emoji-btn">🦊</button>
+                        <button class="bigchat-emoji-btn">🐻</button>
+                        <button class="bigchat-emoji-btn">🐼</button>
+                        <button class="bigchat-emoji-btn">🐻‍❄️</button>
+                        <button class="bigchat-emoji-btn">🐨</button>
+                        <button class="bigchat-emoji-btn">🐯</button>
+                        <button class="bigchat-emoji-btn">🦁</button>
+                        <button class="bigchat-emoji-btn">🐮</button>
+                        <button class="bigchat-emoji-btn">🐷</button>
+                        <button class="bigchat-emoji-btn">🐽</button>
+                        <button class="bigchat-emoji-btn">🐸</button>
+                        <button class="bigchat-emoji-btn">🐵</button>
+                        <button class="bigchat-emoji-btn">🙈</button>
+                        <button class="bigchat-emoji-btn">🙉</button>
+                        <button class="bigchat-emoji-btn">🙊</button>
+                        <button class="bigchat-emoji-btn">🐒</button>
+                        <button class="bigchat-emoji-btn">🐔</button>
+                        <button class="bigchat-emoji-btn">🐧</button>
+                        <button class="bigchat-emoji-btn">🐦</button>
+                        <button class="bigchat-emoji-btn">🐦‍⬛</button>
+                        <button class="bigchat-emoji-btn">🐤</button>
+                        <button class="bigchat-emoji-btn">🐣</button>
+                        <button class="bigchat-emoji-btn">🐥</button>
+                        <button class="bigchat-emoji-btn">🦆</button>
+                        <button class="bigchat-emoji-btn">🦅</button>
+                        <button class="bigchat-emoji-btn">🦉</button>
+                        <button class="bigchat-emoji-btn">🦇</button>
+                        <button class="bigchat-emoji-btn">🐺</button>
+                        <button class="bigchat-emoji-btn">🐗</button>
+                        <button class="bigchat-emoji-btn">🐴</button>
+                        <button class="bigchat-emoji-btn">🦄</button>
+                        <button class="bigchat-emoji-btn">🐝</button>
+                        <button class="bigchat-emoji-btn">🪱</button>
+                        <button class="bigchat-emoji-btn">🐛</button>
+                        <button class="bigchat-emoji-btn">🦋</button>
+                        <button class="bigchat-emoji-btn">🐌</button>
+                        <button class="bigchat-emoji-btn">🐞</button>
+                        <button class="bigchat-emoji-btn">🐜</button>
+                        <button class="bigchat-emoji-btn">🪰</button>
+                        <button class="bigchat-emoji-btn">🪲</button>
+                        <button class="bigchat-emoji-btn">🪳</button>
+                        <button class="bigchat-emoji-btn">🦟</button>
+                        <button class="bigchat-emoji-btn">🦗</button>
+                        <button class="bigchat-emoji-btn">🕷</button>
+                        <button class="bigchat-emoji-btn">🕸</button>
+                        <button class="bigchat-emoji-btn">🦂</button>
+                        <button class="bigchat-emoji-btn">🐢</button>
+                        <button class="bigchat-emoji-btn">🐍</button>
+                        <button class="bigchat-emoji-btn">🦎</button>
+                        <button class="bigchat-emoji-btn">🦖</button>
+                        <button class="bigchat-emoji-btn">🦕</button>
+                        <button class="bigchat-emoji-btn">🐙</button>
+                        <button class="bigchat-emoji-btn">🦑</button>
+                        <button class="bigchat-emoji-btn">🦐</button>
+                        <button class="bigchat-emoji-btn">🦞</button>
+                        <button class="bigchat-emoji-btn">🦀</button>
+                        <button class="bigchat-emoji-btn">🪼</button>
+                        <button class="bigchat-emoji-btn">🪸</button>
+                        <button class="bigchat-emoji-btn">🐡</button>
+                        <button class="bigchat-emoji-btn">🐠</button>
+                        <button class="bigchat-emoji-btn">🐟</button>
+                        <button class="bigchat-emoji-btn">🐬</button>
+                        <button class="bigchat-emoji-btn">🐳</button>
+                        <button class="bigchat-emoji-btn">🐋</button>
+                        <button class="bigchat-emoji-btn">🦈</button>
+                        <button class="bigchat-emoji-btn">🐊</button>
+                        <button class="bigchat-emoji-btn">🐅</button>
+                        <button class="bigchat-emoji-btn">🐆</button>
+                        <button class="bigchat-emoji-btn">🦓</button>
+                        <button class="bigchat-emoji-btn">🫏</button>
+                        <button class="bigchat-emoji-btn">🦍</button>
+                        <button class="bigchat-emoji-btn">🦧</button>
+                        <button class="bigchat-emoji-btn">🦣</button>
+                        <button class="bigchat-emoji-btn">🐘</button>
+                        <button class="bigchat-emoji-btn">🦛</button>
+                        <button class="bigchat-emoji-btn">🦏</button>
+                        <button class="bigchat-emoji-btn">🐪</button>
+                        <button class="bigchat-emoji-btn">🐫</button>
+                        <button class="bigchat-emoji-btn">🦒</button>
+                        <button class="bigchat-emoji-btn">🦘</button>
+                        <button class="bigchat-emoji-btn">🦬</button>
+                        <button class="bigchat-emoji-btn">🐃</button>
+                        <button class="bigchat-emoji-btn">🐂</button>
+                        <button class="bigchat-emoji-btn">🐄</button>
+                        <button class="bigchat-emoji-btn">🐎</button>
+                        <button class="bigchat-emoji-btn">🐖</button>
+                        <button class="bigchat-emoji-btn">🐏</button>
+                        <button class="bigchat-emoji-btn">🐑</button>
+                        <button class="bigchat-emoji-btn">🦙</button>
+                        <button class="bigchat-emoji-btn">🐐</button>
+                        <button class="bigchat-emoji-btn">🦌</button>
+                        <button class="bigchat-emoji-btn">🫎</button>
+                        <button class="bigchat-emoji-btn">🐕</button>
+                        <button class="bigchat-emoji-btn">🐩</button>
+                        <button class="bigchat-emoji-btn">🦮</button>
+                        <button class="bigchat-emoji-btn">🐕‍🦺</button>
+                        <button class="bigchat-emoji-btn">🐈</button>
+                        <button class="bigchat-emoji-btn">🐈‍⬛</button>
+                        <button class="bigchat-emoji-btn">🪽</button>
+                        <button class="bigchat-emoji-btn">🪶</button>
+                        <button class="bigchat-emoji-btn">🐓</button>
+                        <button class="bigchat-emoji-btn">🦃</button>
+                        <button class="bigchat-emoji-btn">🦤</button>
+                        <button class="bigchat-emoji-btn">🦚</button>
+                        <button class="bigchat-emoji-btn">🦜</button>
+                        <button class="bigchat-emoji-btn">🦢</button>
+                        <button class="bigchat-emoji-btn">🪿</button>
+                        <button class="bigchat-emoji-btn">🦩</button>
+                        <button class="bigchat-emoji-btn">🕊</button>
+                        <button class="bigchat-emoji-btn">🐇</button>
+                        <button class="bigchat-emoji-btn">🦝</button>
+                        <button class="bigchat-emoji-btn">🦨</button>
+                        <button class="bigchat-emoji-btn">🦡</button>
+                        <button class="bigchat-emoji-btn">🦫</button>
+                        <button class="bigchat-emoji-btn">🦦</button>
+                        <button class="bigchat-emoji-btn">🦥</button>
+                        <button class="bigchat-emoji-btn">🐁</button>
+                        <button class="bigchat-emoji-btn">🐀</button>
+                        <button class="bigchat-emoji-btn">🐿</button>
+                        <button class="bigchat-emoji-btn">🦔</button>                        
+                        <!-- More animal emojis -->
+                    </div>
+                    <div id="foods" class="bigchat-emoji-category hidden">
+                        <!-- Food & Drink Emojis -->
+                        <button class="bigchat-emoji-btn">🍏</button>
+                        <button class="bigchat-emoji-btn">🍎</button>
+                        <button class="bigchat-emoji-btn">🍐</button>
+                        <button class="bigchat-emoji-btn">🍊</button>
+                        <button class="bigchat-emoji-btn">🍋</button>
+                        <button class="bigchat-emoji-btn">🍌</button>
+                        <button class="bigchat-emoji-btn">🍉</button>
+                        <button class="bigchat-emoji-btn">🍇</button>
+                        <button class="bigchat-emoji-btn">🍓</button>
+                        <button class="bigchat-emoji-btn">🫐</button>
+                        <button class="bigchat-emoji-btn">🍈</button>
+                        <button class="bigchat-emoji-btn">🍒</button>
+                        <button class="bigchat-emoji-btn">🍑</button>
+                        <button class="bigchat-emoji-btn">🥭</button>
+                        <button class="bigchat-emoji-btn">🍍</button>
+                        <button class="bigchat-emoji-btn">🥥</button>
+                        <button class="bigchat-emoji-btn">🥝</button>
+                        <button class="bigchat-emoji-btn">🍅</button>
+                        <button class="bigchat-emoji-btn">🍆</button>
+                        <button class="bigchat-emoji-btn">🥑</button>
+                        <button class="bigchat-emoji-btn">🥦</button>
+                        <button class="bigchat-emoji-btn">🫛</button>
+                        <button class="bigchat-emoji-btn">🥬</button>
+                        <button class="bigchat-emoji-btn">🥒</button>
+                        <button class="bigchat-emoji-btn">🌶</button>
+                        <button class="bigchat-emoji-btn">🫑</button>
+                        <button class="bigchat-emoji-btn">🌽</button>
+                        <button class="bigchat-emoji-btn">🥕</button>
+                        <button class="bigchat-emoji-btn">🫒</button>
+                        <button class="bigchat-emoji-btn">🧄</button>
+                        <button class="bigchat-emoji-btn">🧅</button>
+                        <button class="bigchat-emoji-btn">🫚</button>
+                        <button class="bigchat-emoji-btn">🥔</button>
+                        <button class="bigchat-emoji-btn">🍠</button>
+                        <button class="bigchat-emoji-btn">🫘</button>
+                        <button class="bigchat-emoji-btn">🥐</button>
+                        <button class="bigchat-emoji-btn">🥯</button>
+                        <button class="bigchat-emoji-btn">🍞</button>
+                        <button class="bigchat-emoji-btn">🥖</button>
+                        <button class="bigchat-emoji-btn">🥨</button>
+                        <button class="bigchat-emoji-btn">🧀</button>
+                        <button class="bigchat-emoji-btn">🥚</button>
+                        <button class="bigchat-emoji-btn">🍳</button>
+                        <button class="bigchat-emoji-btn">🧈</button>
+                        <button class="bigchat-emoji-btn">🥞</button>
+                        <button class="bigchat-emoji-btn">🧇</button>
+                        <button class="bigchat-emoji-btn">🥓</button>
+                        <button class="bigchat-emoji-btn">🥩</button>
+                        <button class="bigchat-emoji-btn">🍗</button>
+                        <button class="bigchat-emoji-btn">🍖</button>
+                        <button class="bigchat-emoji-btn">🦴</button>
+                        <button class="bigchat-emoji-btn">🌭</button>
+                        <button class="bigchat-emoji-btn">🍔</button>
+                        <button class="bigchat-emoji-btn">🍟</button>
+                        <button class="bigchat-emoji-btn">🍕</button>
+                        <button class="bigchat-emoji-btn">🫓</button>
+                        <button class="bigchat-emoji-btn">🥪</button>
+                        <button class="bigchat-emoji-btn">🥙</button>
+                        <button class="bigchat-emoji-btn">🧆</button>
+                        <button class="bigchat-emoji-btn">🌮</button>
+                        <button class="bigchat-emoji-btn">🌯</button>
+                        <button class="bigchat-emoji-btn">🫔</button>
+                        <button class="bigchat-emoji-btn">🥗</button>
+                        <button class="bigchat-emoji-btn">🥘</button>
+                        <button class="bigchat-emoji-btn">🫕</button>
+                        <button class="bigchat-emoji-btn">🥫</button>
+                        <button class="bigchat-emoji-btn">🍝</button>
+                        <button class="bigchat-emoji-btn">🍜</button>
+                        <button class="bigchat-emoji-btn">🍲</button>
+                        <button class="bigchat-emoji-btn">🍛</button>
+                        <button class="bigchat-emoji-btn">🍣</button>
+                        <button class="bigchat-emoji-btn">🍱</button>
+                        <button class="bigchat-emoji-btn">🥟</button>
+                        <button class="bigchat-emoji-btn">🦪</button>
+                        <button class="bigchat-emoji-btn">🍤</button>
+                        <button class="bigchat-emoji-btn">🍙</button>
+                        <button class="bigchat-emoji-btn">🍚</button>
+                        <button class="bigchat-emoji-btn">🍘</button>
+                        <button class="bigchat-emoji-btn">🍥</button>
+                        <button class="bigchat-emoji-btn">🥠</button>
+                        <button class="bigchat-emoji-btn">🥮</button>
+                        <button class="bigchat-emoji-btn">🍢</button>
+                        <button class="bigchat-emoji-btn">🍡</button>
+                        <button class="bigchat-emoji-btn">🍧</button>
+                        <button class="bigchat-emoji-btn">🍨</button>
+                        <button class="bigchat-emoji-btn">🍦</button>
+                        <button class="bigchat-emoji-btn">🥧</button>
+                        <button class="bigchat-emoji-btn">🧁</button>
+                        <button class="bigchat-emoji-btn">🍰</button>
+                        <button class="bigchat-emoji-btn">🎂</button>
+                        <button class="bigchat-emoji-btn">🍮</button>
+                        <button class="bigchat-emoji-btn">🍭</button>
+                        <button class="bigchat-emoji-btn">🍬</button>
+                        <button class="bigchat-emoji-btn">🍫</button>
+                        <button class="bigchat-emoji-btn">🍿</button>
+                        <button class="bigchat-emoji-btn">🍩</button>
+                        <button class="bigchat-emoji-btn">🍪</button>
+                        <button class="bigchat-emoji-btn">🌰</button>
+                        <button class="bigchat-emoji-btn">🥜</button>
+                        <button class="bigchat-emoji-btn">🍯</button>
+                        <button class="bigchat-emoji-btn">🥛</button>
+                        <button class="bigchat-emoji-btn">🍼</button>
+                        <button class="bigchat-emoji-btn">🫖</button>
+                        <button class="bigchat-emoji-btn">☕️</button>
+                        <button class="bigchat-emoji-btn">🍵</button>
+                        <button class="bigchat-emoji-btn">🧃</button>
+                        <button class="bigchat-emoji-btn">🥤</button>
+                        <button class="bigchat-emoji-btn">🧋</button>
+                        <button class="bigchat-emoji-btn">🫙</button>
+                        <button class="bigchat-emoji-btn">🍶</button>
+                        <button class="bigchat-emoji-btn">🍺</button>
+                        <button class="bigchat-emoji-btn">🍻</button>
+                        <button class="bigchat-emoji-btn">🥂</button>
+                        <button class="bigchat-emoji-btn">🍷</button>
+                        <button class="bigchat-emoji-btn">🫗</button>
+                        <button class="bigchat-emoji-btn">🥃</button>
+                        <button class="bigchat-emoji-btn">🍸</button>
+                        <button class="bigchat-emoji-btn">🍹</button>
+                        <button class="bigchat-emoji-btn">🧉</button>
+                        <button class="bigchat-emoji-btn">🍾</button>
+                        <button class="bigchat-emoji-btn">🧊</button>
+                        <button class="bigchat-emoji-btn">🥄</button>
+                        <button class="bigchat-emoji-btn">🍴</button>
+                        <button class="bigchat-emoji-btn">🍽</button>
+                        <button class="bigchat-emoji-btn">🥣</button>
+                        <button class="bigchat-emoji-btn">🥡</button>
+                        <button class="bigchat-emoji-btn">🥢</button>
+                        <button class="bigchat-emoji-btn">🧂</button>
+                        <!-- More food emojis -->
+                    </div>
+                    <!-- Add more categories as needed -->
+                    <div id="nature" class="bigchat-emoji-category hidden">
+                        <button class="bigchat-emoji-btn">🐾</button>
+                        <button class="bigchat-emoji-btn">🐉</button>
+                        <button class="bigchat-emoji-btn">🐲</button>
+                        <button class="bigchat-emoji-btn">🌵</button>
+                        <button class="bigchat-emoji-btn">🎄</button>
+                        <button class="bigchat-emoji-btn">🌲</button>
+                        <button class="bigchat-emoji-btn">🌳</button>
+                        <button class="bigchat-emoji-btn">🌴</button>
+                        <button class="bigchat-emoji-btn">🪹</button>
+                        <button class="bigchat-emoji-btn">🪺</button>
+                        <button class="bigchat-emoji-btn">🪵</button>
+                        <button class="bigchat-emoji-btn">🌱</button>
+                        <button class="bigchat-emoji-btn">🌿</button>
+                        <button class="bigchat-emoji-btn">☘️</button>
+                        <button class="bigchat-emoji-btn">🍀</button>
+                        <button class="bigchat-emoji-btn">🎍</button>
+                        <button class="bigchat-emoji-btn">🪴</button>
+                        <button class="bigchat-emoji-btn">🎋</button>
+                        <button class="bigchat-emoji-btn">🍃</button>
+                        <button class="bigchat-emoji-btn">🍂</button>
+                        <button class="bigchat-emoji-btn">🍁</button>
+                        <button class="bigchat-emoji-btn">🍄</button>
+                        <button class="bigchat-emoji-btn">🐚</button>
+                        <button class="bigchat-emoji-btn">🪨</button>
+                        <button class="bigchat-emoji-btn">🌾</button>
+                        <button class="bigchat-emoji-btn">💐</button>
+                        <button class="bigchat-emoji-btn">🌷</button>
+                        <button class="bigchat-emoji-btn">🪷</button>
+                        <button class="bigchat-emoji-btn">🌹</button>
+                        <button class="bigchat-emoji-btn">🥀</button>
+                        <button class="bigchat-emoji-btn">🌺</button>
+                        <button class="bigchat-emoji-btn">🌸</button>
+                        <button class="bigchat-emoji-btn">🪻</button>
+                        <button class="bigchat-emoji-btn">🌼</button>
+                        <button class="bigchat-emoji-btn">🌻</button>
+                        <button class="bigchat-emoji-btn">🌞</button>
+                        <button class="bigchat-emoji-btn">🌝</button>
+                        <button class="bigchat-emoji-btn">🌛</button>
+                        <button class="bigchat-emoji-btn">🌜</button>
+                        <button class="bigchat-emoji-btn">🌚</button>
+                        <button class="bigchat-emoji-btn">🌕</button>
+                        <button class="bigchat-emoji-btn">🌖</button>
+                        <button class="bigchat-emoji-btn">🌗</button>
+                        <button class="bigchat-emoji-btn">🌘</button>
+                        <button class="bigchat-emoji-btn">🌑</button>
+                        <button class="bigchat-emoji-btn">🌒</button>
+                        <button class="bigchat-emoji-btn">🌓</button>
+                        <button class="bigchat-emoji-btn">🌔</button>
+                        <button class="bigchat-emoji-btn">🌙</button>
+                        <button class="bigchat-emoji-btn">🌎</button>
+                        <button class="bigchat-emoji-btn">🌍</button>
+                        <button class="bigchat-emoji-btn">🌏</button>
+                        <button class="bigchat-emoji-btn">🪐</button>
+                        <button class="bigchat-emoji-btn">💫</button>
+                        <button class="bigchat-emoji-btn">⭐️</button>
+                        <button class="bigchat-emoji-btn">🌟</button>
+                        <button class="bigchat-emoji-btn">✨</button>
+                        <button class="bigchat-emoji-btn">⚡️</button>
+                        <button class="bigchat-emoji-btn">☄️</button>
+                        <button class="bigchat-emoji-btn">💥</button>
+                        <button class="bigchat-emoji-btn">🔥</button>
+                        <button class="bigchat-emoji-btn">🌪</button>
+                        <button class="bigchat-emoji-btn">🌈</button>
+                        <button class="bigchat-emoji-btn">☀️</button>
+                        <button class="bigchat-emoji-btn">🌤</button>
+                        <button class="bigchat-emoji-btn">⛅️</button>
+                        <button class="bigchat-emoji-btn">🌥</button>
+                        <button class="bigchat-emoji-btn">☁️</button>
+                        <button class="bigchat-emoji-btn">🌦</button>
+                        <button class="bigchat-emoji-btn">🌧</button>
+                        <button class="bigchat-emoji-btn">⛈</button>
+                        <button class="bigchat-emoji-btn">🌩</button>
+                        <button class="bigchat-emoji-btn">🌨</button>
+                        <button class="bigchat-emoji-btn">❄️</button>
+                        <button class="bigchat-emoji-btn">☃️</button>
+                        <button class="bigchat-emoji-btn">⛄️</button>
+                        <button class="bigchat-emoji-btn">🌬</button>
+                        <button class="bigchat-emoji-btn">💨</button>
+                        <button class="bigchat-emoji-btn">💧</button>
+                        <button class="bigchat-emoji-btn">💦</button>
+                        <button class="bigchat-emoji-btn">🫧</button>
+                        <button class="bigchat-emoji-btn">☔️</button>
+                        <button class="bigchat-emoji-btn">☂️</button>
+                        <button class="bigchat-emoji-btn">🌊</button>
+                        <button class="bigchat-emoji-btn">🌫</button>                   
+                    </div>
+                <div id="persons" class="bigchat-emoji-category hidden">
+                    <button class="bigchat-emoji-btn">👶</button>
+                    <button class="bigchat-emoji-btn">👧</button>
+                    <button class="bigchat-emoji-btn">🧒</button>
+                    <button class="bigchat-emoji-btn">👦</button>
+                    <button class="bigchat-emoji-btn">👩</button>
+                    <button class="bigchat-emoji-btn">🧑</button>
+                    <button class="bigchat-emoji-btn">👨</button>
+                    <button class="bigchat-emoji-btn">👩‍🦱</button>
+                    <button class="bigchat-emoji-btn">🧑‍🦱</button>
+                    <button class="bigchat-emoji-btn">👨‍🦱</button>
+                    <button class="bigchat-emoji-btn">👩‍🦰</button>
+                    <button class="bigchat-emoji-btn">🧑‍🦰</button>
+                    <button class="bigchat-emoji-btn">👨‍🦰</button>
+                    <button class="bigchat-emoji-btn">👱‍♀️</button>
+                    <button class="bigchat-emoji-btn">👱</button>
+                    <button class="bigchat-emoji-btn">👱‍♂️</button>
+                    <button class="bigchat-emoji-btn">👩‍🦳</button>
+                    <button class="bigchat-emoji-btn">🧑‍🦳</button>
+                    <button class="bigchat-emoji-btn">👨‍🦳</button>
+                    <button class="bigchat-emoji-btn">👩‍🦲</button>
+                    <button class="bigchat-emoji-btn">🧑‍🦲</button>
+                    <button class="bigchat-emoji-btn">👨‍🦲</button>
+                    <button class="bigchat-emoji-btn">🧔‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧔</button>
+                    <button class="bigchat-emoji-btn">🧔‍♂️</button>
+                    <button class="bigchat-emoji-btn">👵</button>
+                    <button class="bigchat-emoji-btn">🧓</button>
+                    <button class="bigchat-emoji-btn">👴</button>
+                    <button class="bigchat-emoji-btn">👲</button>
+                    <button class="bigchat-emoji-btn">👳‍♀️</button>
+                    <button class="bigchat-emoji-btn">👳</button>
+                    <button class="bigchat-emoji-btn">👳‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧕</button>
+                    <button class="bigchat-emoji-btn">👮‍♀️</button>
+                    <button class="bigchat-emoji-btn">👮</button>
+                    <button class="bigchat-emoji-btn">👮‍♂️</button>
+                    <button class="bigchat-emoji-btn">👷‍♀️</button>
+                    <button class="bigchat-emoji-btn">👷</button>
+                    <button class="bigchat-emoji-btn">👷‍♂️</button>
+                    <button class="bigchat-emoji-btn">💂‍♀️</button>
+                    <button class="bigchat-emoji-btn">💂</button>
+                    <button class="bigchat-emoji-btn">💂‍♂️</button>
+                    <button class="bigchat-emoji-btn">🕵️‍♀️</button>
+                    <button class="bigchat-emoji-btn">🕵️</button>
+                    <button class="bigchat-emoji-btn">🕵️‍♂️</button>
+                    <button class="bigchat-emoji-btn">👩‍⚕️</button>
+                    <button class="bigchat-emoji-btn">🧑‍⚕️</button>
+                    <button class="bigchat-emoji-btn">👨‍⚕️</button>
+                    <button class="bigchat-emoji-btn">👩‍🌾</button>
+                    <button class="bigchat-emoji-btn">🧑‍🌾</button>
+                    <button class="bigchat-emoji-btn">👨‍🌾</button>
+                    <button class="bigchat-emoji-btn">👩‍🍳</button>
+                    <button class="bigchat-emoji-btn">🧑‍🍳</button>
+                    <button class="bigchat-emoji-btn">👨‍🍳</button>
+                    <button class="bigchat-emoji-btn">👩‍🎓</button>
+                    <button class="bigchat-emoji-btn">🧑‍🎓</button>
+                    <button class="bigchat-emoji-btn">👨‍🎓</button>
+                    <button class="bigchat-emoji-btn">👩‍🎤</button>
+                    <button class="bigchat-emoji-btn">🧑‍🎤</button>
+                    <button class="bigchat-emoji-btn">👨‍🎤</button>
+                    <button class="bigchat-emoji-btn">👩‍🏫</button>
+                    <button class="bigchat-emoji-btn">🧑‍🏫</button>
+                    <button class="bigchat-emoji-btn">👨‍🏫</button>
+                    <button class="bigchat-emoji-btn">👩‍🏭</button>
+                    <button class="bigchat-emoji-btn">🧑‍🏭</button>
+                    <button class="bigchat-emoji-btn">👨‍🏭</button>
+                    <button class="bigchat-emoji-btn">👩‍💻</button>
+                    <button class="bigchat-emoji-btn">🧑‍💻</button>
+                    <button class="bigchat-emoji-btn">👨‍💻</button>
+                    <button class="bigchat-emoji-btn">👩‍💼</button>
+                    <button class="bigchat-emoji-btn">🧑‍💼</button>
+                    <button class="bigchat-emoji-btn">👨‍💼</button>
+                    <button class="bigchat-emoji-btn">👩‍🔧</button>
+                    <button class="bigchat-emoji-btn">🧑‍🔧</button>
+                    <button class="bigchat-emoji-btn">👨‍🔧</button>
+                    <button class="bigchat-emoji-btn">👩‍🔬</button>
+                    <button class="bigchat-emoji-btn">🧑‍🔬</button>
+                    <button class="bigchat-emoji-btn">👨‍🔬</button>
+                    <button class="bigchat-emoji-btn">👩‍🎨</button>
+                    <button class="bigchat-emoji-btn">🧑‍🎨</button>
+                    <button class="bigchat-emoji-btn">👨‍🎨</button>
+                    <button class="bigchat-emoji-btn">👩‍🚒</button>
+                    <button class="bigchat-emoji-btn">🧑‍🚒</button>
+                    <button class="bigchat-emoji-btn">👨‍🚒</button>
+                    <button class="bigchat-emoji-btn">👩‍✈️</button>
+                    <button class="bigchat-emoji-btn">🧑‍✈️</button>
+                    <button class="bigchat-emoji-btn">👨‍✈️</button>
+                    <button class="bigchat-emoji-btn">👩‍🚀</button>
+                    <button class="bigchat-emoji-btn">🧑‍🚀</button>
+                    <button class="bigchat-emoji-btn">👨‍🚀</button>
+                    <button class="bigchat-emoji-btn">👩‍⚖️</button>
+                    <button class="bigchat-emoji-btn">🧑‍⚖️</button>
+                    <button class="bigchat-emoji-btn">👨‍⚖️</button>
+                    <button class="bigchat-emoji-btn">👰‍♀️</button>
+                    <button class="bigchat-emoji-btn">👰</button>
+                    <button class="bigchat-emoji-btn">👰‍♂️</button>
+                    <button class="bigchat-emoji-btn">🤵‍♀️</button>
+                    <button class="bigchat-emoji-btn">🤵</button>
+                    <button class="bigchat-emoji-btn">🤵‍♂️</button>
+                    <button class="bigchat-emoji-btn">👸</button>
+                    <button class="bigchat-emoji-btn">🫅</button>
+                    <button class="bigchat-emoji-btn">🤴</button>
+                    <button class="bigchat-emoji-btn">🥷</button>
+                    <button class="bigchat-emoji-btn">🦸‍♀️</button>
+                    <button class="bigchat-emoji-btn">🦸</button>
+                    <button class="bigchat-emoji-btn">🦸‍♂️</button>
+                    <button class="bigchat-emoji-btn">🦹‍♀️</button>
+                    <button class="bigchat-emoji-btn">🦹</button>
+                    <button class="bigchat-emoji-btn">🦹‍♂️</button>
+                    <button class="bigchat-emoji-btn">🤶</button>
+                    <button class="bigchat-emoji-btn">🧑‍🎄</button>
+                    <button class="bigchat-emoji-btn">🎅</button>
+                    <button class="bigchat-emoji-btn">🧙‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧙</button>
+                    <button class="bigchat-emoji-btn">🧙‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧝‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧝</button>
+                    <button class="bigchat-emoji-btn">🧝‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧛‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧛</button>
+                    <button class="bigchat-emoji-btn">🧛‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧟‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧟</button>
+                    <button class="bigchat-emoji-btn">🧟‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧞‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧞</button>
+                    <button class="bigchat-emoji-btn">🧞‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧜‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧜</button>
+                    <button class="bigchat-emoji-btn">🧜‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧚‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧚</button>
+                    <button class="bigchat-emoji-btn">🧚‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧌</button>
+                    <button class="bigchat-emoji-btn">👼</button>
+                    <button class="bigchat-emoji-btn">🤰</button>
+                    <button class="bigchat-emoji-btn">🫄</button>
+                    <button class="bigchat-emoji-btn">🫃</button>
+                    <button class="bigchat-emoji-btn">🤱</button>
+                    <button class="bigchat-emoji-btn">👩‍🍼</button>
+                    <button class="bigchat-emoji-btn">🧑‍🍼</button>
+                    <button class="bigchat-emoji-btn">👨‍🍼</button>
+                    <button class="bigchat-emoji-btn">🙇‍♀️</button>
+                    <button class="bigchat-emoji-btn">🙇</button>
+                    <button class="bigchat-emoji-btn">🙇‍♂️</button>
+                    <button class="bigchat-emoji-btn">💁‍♀️</button>
+                    <button class="bigchat-emoji-btn">💁</button>
+                    <button class="bigchat-emoji-btn">💁‍♂️</button>
+                    <button class="bigchat-emoji-btn">🙅‍♀️</button>
+                    <button class="bigchat-emoji-btn">🙅</button>
+                    <button class="bigchat-emoji-btn">🙅‍♂️</button>
+                    <button class="bigchat-emoji-btn">🙆‍♀️</button>
+                    <button class="bigchat-emoji-btn">🙆</button>
+                    <button class="bigchat-emoji-btn">🙆‍♂️</button>
+                    <button class="bigchat-emoji-btn">🙋‍♀️</button>
+                    <button class="bigchat-emoji-btn">🙋</button>
+                    <button class="bigchat-emoji-btn">🙋‍♂️</button>
+                    <button class="bigchat-emoji-btn">🧏‍♀️</button>
+                    <button class="bigchat-emoji-btn">🧏</button>
+                    <button class="bigchat-emoji-btn">🧏‍♂️</button>
+                    <button class="bigchat-emoji-btn">🤦‍♀️</button>
+                    <button class="bigchat-emoji-btn">🤦</button>
+                    <button class="bigchat-emoji-btn">🤦‍♂️</button>
+                </div>
+                <div id="hearths" class="bigchat-emoji-category hidden">
+                    <button class="bigchat-emoji-btn">❤️</button>
+                    <button class="bigchat-emoji-btn">🩷</button>
+                    <button class="bigchat-emoji-btn">🧡</button>
+                    <button class="bigchat-emoji-btn">💛</button>
+                    <button class="bigchat-emoji-btn">💚</button>
+                    <button class="bigchat-emoji-btn">💙</button>
+                    <button class="bigchat-emoji-btn">🩵</button>
+                    <button class="bigchat-emoji-btn">💜</button>
+                    <button class="bigchat-emoji-btn">🖤</button>
+                    <button class="bigchat-emoji-btn">🩶</button>
+                    <button class="bigchat-emoji-btn">🤍</button>
+                    <button class="bigchat-emoji-btn">🤎</button>
+                    <button class="bigchat-emoji-btn">❤️‍🔥</button>
+                    <button class="bigchat-emoji-btn">❤️‍🩹</button>
+                    <button class="bigchat-emoji-btn">💔</button>
+                    <button class="bigchat-emoji-btn">❣️</button>
+                    <button class="bigchat-emoji-btn">💕</button>
+                    <button class="bigchat-emoji-btn">💞</button>
+                    <button class="bigchat-emoji-btn">💓</button>
+                    <button class="bigchat-emoji-btn">💗</button>
+                    <button class="bigchat-emoji-btn">💖</button>
+                    <button class="bigchat-emoji-btn">💘</button>
+                    <button class="bigchat-emoji-btn">💝</button>
+                    <button class="bigchat-emoji-btn">❌</button>
+                    <button class="bigchat-emoji-btn">⭕️</button>
+                    <button class="bigchat-emoji-btn">🛑</button>
+                    <button class="bigchat-emoji-btn">⛔️</button>
+                    <button class="bigchat-emoji-btn">📛</button>
+                    <button class="bigchat-emoji-btn">🚫</button>
+                    <button class="bigchat-emoji-btn">💯</button>
+                    <button class="bigchat-emoji-btn">💢</button>
+                    <button class="bigchat-emoji-btn">♨️</button>
+                    <button class="bigchat-emoji-btn">🚷</button>
+                    <button class="bigchat-emoji-btn">🚯</button>
+                    <button class="bigchat-emoji-btn">🚳</button>
+                    <button class="bigchat-emoji-btn">🚱</button>
+                    <button class="bigchat-emoji-btn">🔞</button>
+                    <button class="bigchat-emoji-btn">📵</button>
+                    <button class="bigchat-emoji-btn">🚭</button>
+                    <button class="bigchat-emoji-btn">❗️</button>
+                    <button class="bigchat-emoji-btn">❕</button>
+                    <button class="bigchat-emoji-btn">❓</button>
+                    <button class="bigchat-emoji-btn">❔</button>
+                    <button class="bigchat-emoji-btn">‼️</button>
+                    <button class="bigchat-emoji-btn">⁉️</button>
+                    <button class="bigchat-emoji-btn">🔅</button>
+                    <button class="bigchat-emoji-btn">🔆</button>
+                    <button class="bigchat-emoji-btn">〽️</button>
+                    <button class="bigchat-emoji-btn">⚠️</button>
+                    <button class="bigchat-emoji-btn">🚸</button>
+                    <button class="bigchat-emoji-btn">🔱</button>
+                    <button class="bigchat-emoji-btn">⚜️</button>
+                    <button class="bigchat-emoji-btn">🔰</button>
+                    <button class="bigchat-emoji-btn">♻️</button>
+                    <button class="bigchat-emoji-btn">✅</button>
+                    <button class="bigchat-emoji-btn">🈯️</button>
+                    <button class="bigchat-emoji-btn">💹</button>
+                    <button class="bigchat-emoji-btn">❇️</button>
+                    <button class="bigchat-emoji-btn">✳️</button>
+                    <button class="bigchat-emoji-btn">❎</button>
+                    <button class="bigchat-emoji-btn">🌐</button>
+                    <button class="bigchat-emoji-btn">💠</button>
+                    <button class="bigchat-emoji-btn">Ⓜ️</button>
+                    <button class="bigchat-emoji-btn">🌀</button>
+                    <button class="bigchat-emoji-btn">💤</button>
+                    <button class="bigchat-emoji-btn">🎶</button>
+                    <button class="bigchat-emoji-btn">➕</button>
+                    <button class="bigchat-emoji-btn">➖</button>
+                    <button class="bigchat-emoji-btn">➗</button>
+                    <button class="bigchat-emoji-btn">✖️</button>
+                    <button class="bigchat-emoji-btn">🟰</button>
+                    <button class="bigchat-emoji-btn">♾</button>
+                    <button class="bigchat-emoji-btn">💲</button>
+                    <button class="bigchat-emoji-btn">💱</button>
+                    <button class="bigchat-emoji-btn">™️</button>
+                    <button class="bigchat-emoji-btn">©️</button>
+                    <button class="bigchat-emoji-btn">®️</button>
+                    <button class="bigchat-emoji-btn">〰️</button>
+                    <button class="bigchat-emoji-btn">➰</button>
+                    <button class="bigchat-emoji-btn">➿</button>
+                    <button class="bigchat-emoji-btn">🔚</button>
+                    <button class="bigchat-emoji-btn">🔙</button>
+                    <button class="bigchat-emoji-btn">🔛</button>
+                    <button class="bigchat-emoji-btn">🔝</button>
+                    <button class="bigchat-emoji-btn">🔜</button>
+                    <button class="bigchat-emoji-btn">✔️</button>
+                    <button class="bigchat-emoji-btn">☑️</button>
+                    <button class="bigchat-emoji-btn">🔘</button>
+                    <button class="bigchat-emoji-btn">🔴</button>
+                    <button class="bigchat-emoji-btn">🟠</button>
+                    <button class="bigchat-emoji-btn">🟡</button>
+                    <button class="bigchat-emoji-btn">🟢</button>
+                    <button class="bigchat-emoji-btn">🔵</button>
+                    <button class="bigchat-emoji-btn">🟣</button>
+                    <button class="bigchat-emoji-btn">⚫️</button>
+                    <button class="bigchat-emoji-btn">⚪️</button>
+                    <button class="bigchat-emoji-btn">🟤</button>
+                    <button class="bigchat-emoji-btn">🔺</button>
+                    <button class="bigchat-emoji-btn">🔻</button>
+                    <button class="bigchat-emoji-btn">🔸</button>
+                    <button class="bigchat-emoji-btn">🔹</button>
+                    <button class="bigchat-emoji-btn">🔶</button>
+                    <button class="bigchat-emoji-btn">🔷</button>
+                    <button class="bigchat-emoji-btn">🔳</button>
+                    <button class="bigchat-emoji-btn">🔲</button>
+                    <button class="bigchat-emoji-btn">▪️</button>
+                    <button class="bigchat-emoji-btn">▫️</button>
+                    <button class="bigchat-emoji-btn">◾️</button>
+                    <button class="bigchat-emoji-btn">◽️</button>
+                    <button class="bigchat-emoji-btn">◼️</button>
+                    <button class="bigchat-emoji-btn">◻️</button>
+                    <button class="bigchat-emoji-btn">🟥</button>
+                    <button class="bigchat-emoji-btn">🟧</button>
+                    <button class="bigchat-emoji-btn">🟨</button>
+                    <button class="bigchat-emoji-btn">🟩</button>
+                    <button class="bigchat-emoji-btn">🟦</button>
+                    <button class="bigchat-emoji-btn">🟪</button>
+                    <button class="bigchat-emoji-btn">⬛️</button>
+                    <button class="bigchat-emoji-btn">⬜️</button>
+                    <button class="bigchat-emoji-btn">🟫</button>
+                    <button class="bigchat-emoji-btn">🔈</button>
+                    <button class="bigchat-emoji-btn">🔇</button>
+                    <button class="bigchat-emoji-btn">🔉</button>
+                    <button class="bigchat-emoji-btn">🔊</button>
+                    <button class="bigchat-emoji-btn">🔔</button>
+                    <button class="bigchat-emoji-btn">🔕</button>
+                    <button class="bigchat-emoji-btn">📣</button>
+                    <button class="bigchat-emoji-btn">📢</button>
+                    <button class="bigchat-emoji-btn">👁‍🗨</button>
+                    <button class="bigchat-emoji-btn">💬</button>
+                    <button class="bigchat-emoji-btn">💭</button>
+                    <button class="bigchat-emoji-btn">🗯</button>
+                    <button class="bigchat-emoji-btn">♠️</button>
+                    <button class="bigchat-emoji-btn">♣️</button>
+                    <button class="bigchat-emoji-btn">♥️</button>
+                    <button class="bigchat-emoji-btn">♦️</button>                    
                 </div>
                 </div>
-            </div>
+            </div>            
         </form>
     </div>
 </div>
@@ -1317,7 +2870,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Generate the Calander with fitting days (function)
-function generateCalendar() {
+function generateCalendar(rewards) {
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
@@ -1549,6 +3102,18 @@ document.querySelectorAll('.emoji-btn').forEach(function(button) {
         chatInput.value += emoji; // Append emoji to input value
 
         chatInput.focus(); // Optionally, focus back to the input field
+    });
+});
+
+document.querySelectorAll('.emoji-nav-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-target');
+
+        document.querySelectorAll('.bigchat-emoji-category').forEach(category => {
+            category.classList.remove('active');
+        });
+
+        document.getElementById(target).classList.add('active');
     });
 });
 

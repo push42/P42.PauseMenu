@@ -9,82 +9,82 @@
     --color-text-default: #fff;
 } */
 
-
-
 @font-face {
-    font-family: 'gg sans Bold';
+    font-family: "gg sans Bold";
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Bold'), url('./fonts/ggsansBold.woff') format('woff');
-}
-    
-@font-face {
-    font-family: 'gg sans Normal Regular';
+    src: local("gg sans Bold"), url("./fonts/ggsansBold.woff") format("woff");
+  }
+  
+  @font-face {
+    font-family: "gg sans Normal Regular";
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Normal Regular'), url('./fonts/ggsansRegular.woff') format('woff');
-}
-    
-@font-face {
-    font-family: 'gg sans Medium Regular';
+    src: local("gg sans Normal Regular"),
+      url("./fonts/ggsansRegular.woff") format("woff");
+  }
+  
+  @font-face {
+    font-family: "gg sans Medium Regular";
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans Medium Regular'), url('./fonts/ggsansMedium.woff') format('woff');
-}
-    
-@font-face {
-    font-family: 'gg sans SemiBold Regular';
+    src: local("gg sans Medium Regular"),
+      url("./fonts/ggsansMedium.woff") format("woff");
+  }
+  
+  @font-face {
+    font-family: "gg sans SemiBold Regular";
     font-style: normal;
     font-weight: normal;
-    src: local('gg sans SemiBold Regular'), url('./fonts/ggsansSemibold.woff') format('woff');
-}
-
-
-/* Custom scrollbar styles */
-/* Webkit browsers like Chrome/Safari */
-::-webkit-scrollbar {
+    src: local("gg sans SemiBold Regular"),
+      url("./fonts/ggsansSemibold.woff") format("woff");
+  }
+  
+  /* Custom scrollbar styles */
+  /* Webkit browsers like Chrome/Safari */
+  ::-webkit-scrollbar {
     width: 2px;
-    border: 2px solid #1a1a1a; /* Add border */
-}
-
-::-webkit-scrollbar-track {
+    border: 2px solid #1a1a1a;
+    /* Add border */
+  }
+  
+  ::-webkit-scrollbar-track {
     background: #131313;
-}
-
-::-webkit-scrollbar-thumb {
+  }
+  
+  ::-webkit-scrollbar-thumb {
     background-color: rgba(91, 33, 182, 1);
     border-radius: 6px;
-}
-
-/* Hover state */
-::-webkit-scrollbar-thumb:hover {
+  }
+  
+  /* Hover state */
+  ::-webkit-scrollbar-thumb:hover {
     background: #5a67d8;
-}
-
-
-/* Firefox */
-/* Scrollbar styles */
-html {
+  }
+  
+  /* Firefox */
+  /* Scrollbar styles */
+  html {
     scrollbar-width: thin;
     scrollbar-color: rgba(91, 33, 182, 1) #131313;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); 
-}
-.bg-custom-container {
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .bg-custom-container {
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
     background-color: #121213dc;
-}
-
-/* Typography */
-.text-xss {
+  }
+  
+  /* Typography */
+  .text-xss {
     font-size: 9px;
     font-family: sans-serif;
   }
-
-
-/* Emoji Picker */
-.emoji-picker {
+  
+  /* Emoji Picker */
+  .emoji-picker {
     width: auto;
     max-height: 105px;
     overflow-y: auto;
@@ -103,52 +103,68 @@ html {
     font-size: 1.5rem;
   }
 
-  /* Emoji Picker for the big expanded modal */
+.bigchat-emoji-navbar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.bigchat-emoji-category {
+    display: none;
+}
+
+.bigchat-emoji-category.active {
+    display: block;
+}
+
 .bigchat-emoji-picker {
-    width: auto;
-    max-height: 155px;
+    width: 350px;
+    max-height: 205px;
     overflow-y: auto;
-  }
-  
-  .bigchat-emoji-grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 4px;
-  }
-  
-  .bigchat-emoji-btn {
+}
+
+.emoji-nav-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
-  }
+    font-size: 20px;
+}
 
-/* Chatbox */
-.chatbox-panel {
+.bigchat-emoji-btn {
+    font-size: 25px;
+}
+
+
+  
+  /* Chatbox */
+  .chatbox-panel {
     max-height: 197px;
     max-width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
-
-
-/* Leaderboard Trophies */
-.fa-trophy {
+  
+  /* Leaderboard Trophies */
+  .fa-trophy {
     margin-right: 8px;
     font-size: 0.65em;
   }
-
-.daily-rewardpanel, .news-panel, .server-panel, .chatbox-panel, .leaderboard-panel, .get-support-panel, .tebex-shop-panel {
+  
+  .daily-rewardpanel,
+  .news-panel,
+  .server-panel,
+  .chatbox-panel,
+  .leaderboard-panel,
+  .get-support-panel,
+  .tebex-shop-panel {
     border: 3px solid rgb(17, 17, 17);
-}
+  }
 
 
-
-
-/* Panel Styles */
-.panel-heading {
-    background: linear-gradient(90deg, #1b1b1b -49%, #222222 99.9%);
+  /* Panel Styles */
+  .panel-heading {
+    background: linear-gradient(90deg, #1f1e1e -49%, #222222 99.9%);
     padding: 2px 5px;
     border-radius: 5px;
     color: white;
@@ -163,540 +179,468 @@ html {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-
-/* Additional Styles for the New Content */
-/* Headings */
-.content h3 {
+  
+  /* Additional Styles for the New Content */
+  /* Headings */
+  .content h3 {
     margin-bottom: 0.5rem;
-}
-
-/* Tags */
-.tag {
+  }
+  
+  /* Tags */
+  .tag {
     display: inline-block;
     margin-bottom: 0.125rem;
+  }
+
+  .tag:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Slightly larger shadow on hover */
+  }
+
+/* Navigation buttons */
+.swiper-container .swiper-button-next, .swiper-container .swiper-button-prev {
+    color: #ffffff !important;
+    background-color: rgba(32, 31, 31, 0.705) !important;
+    border: 3px solid #ffffff !important;
+    /* ... rest of your styles ... */
 }
 
-/* Images */
-.content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+
+/* Hover effect for navigation buttons */
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    transition: color 0.3s ease;
+    color: blueviolet !important;
+    
 }
 
 
+/* Pagination styling */
+.swiper-pagination-bullet {
+    background-color: #999999; 
+    color: white !important;
+    opacity: 1;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* News Item Styles */
-.content .news-item {
+.swiper-pagination-bullet-active {
+    background-color: #ffffff;
+    color: white !important;
+}
+  
+  /* News Item Styles */
+  .content .news-item {
     width: 100%;
-}
+  }
+  
 
-/* News Item Image */
-.news-item img {
-    width: 100%; /* Full width */
-    border-radius: 0.5rem; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
-    height: 10rem; /* Fixed height */
-    object-fit: cover; /* Ensure images cover the area */
-}
-
-/* News Item Title */
-.news-item h3 {
+  /* News Item Title */
+  .news-item h3 {
     color: white;
-    font-size: 1rem; /* Adjust as needed */
-    margin-bottom: 0.25rem; /* Space between title and description */
-}
-
-/* News Item Description */
-.news-item p {
-    color: rgba(255, 255, 255, 0.75); /* Lighter text color for description */
-    font-size: 0.875rem; /* Adjust as needed */
-}
-
-/* Read More Button */
-.read-more {
-    background-color: rgba(129, 52, 175, 0.85); /* Button background color */
-    color: white; /* Text color */
-    padding: 5px 10px; /* Padding */
-    border-radius: 15px; /* Rounded corners */
-    text-align: center; /* Center the text */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Transition for hover effect */
-}
-
-/* Hover effect for Read More Button */
-.read-more:hover {
-    background-color: rgba(129, 52, 175, 1); /* Slightly darker on hover */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Navigation Menu Styling */
-.nav-menu {
-    background-color: #2f2f2f; /* Dark background */
+    font-size: 1rem;
+    /* Adjust as needed */
+    margin-bottom: 0.25rem;
+    /* Space between title and description */
+  }
+  
+  /* News Item Description */
+  .news-item p {
+    color: rgba(255, 255, 255, 0.75);
+    /* Lighter text color for description */
+    font-size: 0.875rem;
+    /* Adjust as needed */
+  }
+  
+  /* Read More Button */
+  .read-more {
+    background-color: rgba(129, 52, 175, 0.85);
+    /* Button background color */
+    color: white;
+    /* Text color */
+    padding: 5px 10px;
+    /* Padding */
+    border-radius: 15px;
+    /* Rounded corners */
+    text-align: center;
+    /* Center the text */
+    font-weight: bold;
+    /* Bold text */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Transition for hover effect */
+  }
+  
+  /* Hover effect for Read More Button */
+  .read-more:hover {
+    background-color: rgba(129, 52, 175, 1);
+    /* Slightly darker on hover */
+  }
+  
+  /* Navigation Menu Styling */
+  .nav-menu {
+    background-color: #2f2f2f;
+    /* Dark background */
     padding: 10px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    border-top: 2px solid #8127af; /* Purple border at the top */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow for depth */
+    border-top: 2px solid #8127af;
+    /* Purple border at the top */
     display: flex;
-    justify-content: center; /* Center align items horizontally */
-    position: fixed; /* Fixed position for the menu */
-    bottom: 0; /* Stick it to the bottom */
-    width: 100%; /* Full width */
-}
-
-/* Navigation Menu Items */
-.nav-item {
-    padding: 10px 20px; /* Increased padding for better spacing */
-    margin: 0 10px; /* Increased margin for better spacing */
+    justify-content: center;
+    /* Center align items horizontally */
+    position: fixed;
+    /* Fixed position for the menu */
+    bottom: 0;
+    /* Stick it to the bottom */
+    width: 100%;
+    /* Full width */
+  }
+  
+  /* Navigation Menu Items */
+  .nav-item {
+    padding: 10px 20px;
+    /* Increased padding for better spacing */
+    margin: 0 10px;
+    /* Increased margin for better spacing */
     text-align: center;
     border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
     cursor: pointer;
     color: #ffffff;
-    font-weight: 600; /* Bolder text */
-    text-transform: uppercase; /* Uppercase text */
-    letter-spacing: 1px; /* Slightly increased letter spacing */
-    font-size: 14px; /* Slightly larger font size */
-    text-decoration: none; /* Remove underlines from links */
-    display: inline-block; /* Display as inline block */
-    line-height: 1.5; /* Improved line height */
+    font-weight: 600;
+    /* Bolder text */
+    text-transform: uppercase;
+    /* Uppercase text */
+    letter-spacing: 1px;
+    /* Slightly increased letter spacing */
+    font-size: 14px;
+    /* Slightly larger font size */
+    text-decoration: none;
+    /* Remove underlines from links */
+    display: inline-block;
+    /* Display as inline block */
+    line-height: 1.5;
+    /* Improved line height */
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-/* Default State for Navigation Menu Items */
-.nav-item {
-    background-color: transparent; /* Transparent background by default */
-    transform: translateY(0); /* No initial transform */
-}
-
-/* Hover Effect for Navigation Menu Items */
-.nav-item:hover {
-    background-color: #8127af; /* Purple background on hover */
-    transform: translateY(-5px); /* Lift up on hover */
-    color: #ffffff; /* White text color on hover */
-}
-
-
-
-
-
-
-
-
-
-
-/* Player Stats Badges */
-.player-stats .badge {
+  }
+  
+  /* Default State for Navigation Menu Items */
+  .nav-item {
+    background-color: transparent;
+    /* Transparent background by default */
+    transform: translateY(0);
+    /* No initial transform */
+  }
+  
+  /* Hover Effect for Navigation Menu Items */
+  .nav-item:hover {
+    background-color: #8127af;
+    /* Purple background on hover */
+    transform: translateY(-5px);
+    /* Lift up on hover */
+    color: #ffffff;
+    /* White text color on hover */
+  }
+  
+  /* Player Stats Badges */
+  .player-stats .badge {
     display: flex;
     align-items: center;
     background: linear-gradient(145deg, rgba(56, 54, 54, 0.5), hsl(0, 1%, 16%));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 5px 10px;
-    border-radius: 20px; /* Rounded badge shape */
+    border-radius: 20px;
+    /* Rounded badge shape */
     gap: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Soft shadow for depth */
     transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
-}
-
-/* Hover Effect for Player Stats Badges */
-.player-stats .badge:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    background-color: rgba(129, 52, 175, 0.85); /* Lighter background on hover */
-}
-
-/* Player Stat Styling */
-.player-stat .stat-value {
-    color: white;
-    font-size: 0.75rem; /* Adjusted font size */
-    font-weight: bold;
-}
-
-/* Icon Styling */
-.player-stat i {
-    transition: color 0.3s ease;
-}
-
-/* Hover Effect for Icons */
-.player-stat:hover i {
-    color: #fff; /* White color on hover */
-}
-
-/* Blinking Animation */
-@keyframes blinking {
-    0% { color: rgba(129, 52, 175, 0.85); } /* Original color */
-    50% { color: limegreen; } /* Blinking color */
-    100% { color: rgba(129, 52, 175, 0.85); } /* Return to original color */
-}
-
-/* Apply Blinking Animation to Ping Icon */
-#playerPing .fa-signal {
-    animation: blinking 3s linear infinite;
-}
-
-/* Smaller screens (less than 768px width) */
-@media (max-width: 767px) {
-    .player-stats {
-        flex-direction: column; /* Stack badges vertically */
-        align-items: center;
-    }
-
-    .player-stat.badge {
-        margin-bottom: 10px; /* Add space between badges */
-        font-size: 0.9rem; /* Adjust font size if needed */
-    }
-}
-
-/* Medium screens (between 768px and 1023px width) */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .player-stat.badge {
-        padding: 3px 8px; /* Adjust padding */
-        font-size: 0.95rem; /* Adjust font size if needed */
-    }
-}
-
-/* Large screens (1024px and above) - your default styles probably fit here */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.info-card {
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.info-card:hover {
+  }
+  
+  /* Hover Effect for Player Stats Badges */
+  .player-stats .badge:hover {
     transform: scale(1.05);
-    background-color: #1a1a1a; /* Darker shade for hover effect */
-}
-
-/* Optional: Change icon and text color on hover */
-.info-card:hover .info-value {
-    color: rgb(222, 137, 255); /* Example color change on hover */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.playerinfo-footertext span {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.playerinfo-footertext span:hover {
-    transform: translateY(-2px);
-}
-
-.playerinfo-footertext i {
+    /* Slight zoom on hover */
+    background-color: rgba(129, 52, 175, 0.85);
+    /* Lighter background on hover */
+  }
+  
+  /* Player Stat Styling */
+  .player-stat .stat-value {
+    color: white;
+    font-size: 0.75rem;
+    /* Adjusted font size */
+    font-weight: bold;
+  }
+  
+  /* Icon Styling */
+  .player-stat i {
     transition: color 0.3s ease;
-}
-
-.playerinfo-footertext i:hover {
-    color: #9871ec; /* Changes icon color on hover */
-}
-
-
-
-
-
-
-
-
-
-@media screen and (min-width: 1921px) {
-    .container {
-        /* Adjust the bottom margin or position as needed */
-        margin-top: 50px; /* Example: pushes the container down by 50px */
-        /* Or you can use positioning like below */
-        position: relative;
-        top: 95px; /* This will also move the container down */
+  }
+  
+  /* Hover Effect for Icons */
+  .player-stat:hover i {
+    color: #fff;
+    /* White color on hover */
+  }
+  
+  /* Blinking Animation */
+  @keyframes blinking {
+    0% {
+      color: rgba(129, 52, 175, 0.85);
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Animated Line Under Online Players Heading */
-.online-players h3:after {
-    content: '';
+  
+    /* Original color */
+    50% {
+      color: limegreen;
+    }
+  
+    /* Blinking color */
+    100% {
+      color: rgba(129, 52, 175, 0.85);
+    }
+  
+    /* Return to original color */
+  }
+  
+  /* Apply Blinking Animation to Ping Icon */
+  #playerPing .fa-signal {
+    animation: blinking 3s linear infinite;
+  }
+  
+  /* Smaller screens (less than 768px width) */
+  @media (max-width: 767px) {
+    .player-stats {
+      flex-direction: column;
+      /* Stack badges vertically */
+      align-items: center;
+    }
+  
+    .player-stat.badge {
+      margin-bottom: 10px;
+      /* Add space between badges */
+      font-size: 0.9rem;
+      /* Adjust font size if needed */
+    }
+  }
+  
+  /* Medium screens (between 768px and 1023px width) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .player-stat.badge {
+      padding: 3px 8px;
+      /* Adjust padding */
+      font-size: 0.95rem;
+      /* Adjust font size if needed */
+    }
+  }
+  
+  /* Large screens (1024px and above) - your default styles probably fit here */
+  
+  .info-card {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .info-card:hover {
+    transform: scale(1.05);
+    background-color: #1a1a1a;
+    /* Darker shade for hover effect */
+  }
+  
+  /* Optional: Change icon and text color on hover */
+  .info-card:hover .info-value {
+    color: rgb(222, 137, 255);
+    /* Example color change on hover */
+  }
+  
+  .playerinfo-footertext span {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .playerinfo-footertext span:hover {
+    transform: translateY(-2px);
+  }
+  
+  .playerinfo-footertext i {
+    transition: color 0.3s ease;
+  }
+  
+  .playerinfo-footertext i:hover {
+    color: #9871ec;
+    /* Changes icon color on hover */
+  }
+  
+  @media screen and (min-width: 1921px) {
+    .container {
+      /* Adjust the bottom margin or position as needed */
+      margin-top: 50px;
+      /* Example: pushes the container down by 50px */
+      /* Or you can use positioning like below */
+      position: relative;
+      top: 95px;
+      /* This will also move the container down */
+    }
+  }
+  
+  /* Animated Line Under Online Players Heading */
+  .online-players h3:after {
+    content: "";
     display: block;
     width: 100%;
     height: 2px;
     background: linear-gradient(to right, hsl(278, 88%, 19%), #8127af);
     animation: animateLine 1.5s linear infinite;
-}
-
-/* Keyframes Animation for Line */
-@keyframes animateLine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Player Item Container */
-.player-item {
+  }
+  
+  /* Keyframes Animation for Line */
+  @keyframes animateLine {
+    0% {
+      transform: translateX(-100%);
+    }
+  
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Player Item Container */
+  .player-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-/* Badge within Player Item */
-.player-item .badge {
+  }
+  
+  /* Badge within Player Item */
+  .player-item .badge {
     width: 10px;
     height: 10px;
-}
-
-/* Media Query for Smaller Screens (max-width: 768px) */
-@media (max-width: 768px) {
+  }
+  
+  /* Media Query for Smaller Screens (max-width: 768px) */
+  @media (max-width: 768px) {
     /* Adjust Grid Layout for Player List */
     #playerList {
-        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+      grid-template-columns: 1fr;
+      /* Single column layout for smaller screens */
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Panel Hover Effect for Custom Panels */
-.panel.custom:hover {
+  }
+  
+  /* Panel Hover Effect for Custom Panels */
+  .panel.custom:hover {
     background: #141414;
     transform: scale(1.05);
     border-radius: 12px;
-}
-
-/* Panel Content within .bg-zinc-900 with 2 Columns */
-.panel.bg-zinc-900 .grid-cols-2 > div {
+  }
+  
+  /* Panel Content within .bg-zinc-900 with 2 Columns */
+  .panel.bg-zinc-900 .grid-cols-2 > div {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #cbd5e0; /* Lighter text color for better readability */
-}
-
-/* Compact Style for .bg-zinc-900 Panels */
-.panel.bg-zinc-900.compact {
+    color: #cbd5e0;
+    /* Lighter text color for better readability */
+  }
+  
+  /* Compact Style for .bg-zinc-900 Panels */
+  .panel.bg-zinc-900.compact {
     padding: 10px;
     margin: 5px;
-    color: #cbd5e0; /* Lighter text color for better readability */
-}
-
-/* Large Feature Style for .bg-zinc-900 Panels */
-.panel.bg-zinc-900.large-feature {
+    color: #cbd5e0;
+    /* Lighter text color for better readability */
+  }
+  
+  /* Large Feature Style for .bg-zinc-900 Panels */
+  .panel.bg-zinc-900.large-feature {
     background: #2a4365;
     font-size: 16px;
     transition: transform 0.5s;
-}
-
-/* Hover Effect for Large Feature Panels */
-.panel.bg-zinc-900.large-feature:hover {
+  }
+  
+  /* Hover Effect for Large Feature Panels */
+  .panel.bg-zinc-900.large-feature:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Added box-shadow on hover */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Leaderboard Panel */
-.leaderboard-panel {
-    border-radius: 12px; /* Increased border-radius for a softer look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
-}
-
-/* Common styles for leaderboard items */
-.leaderboard-panel ul li {
-    background: linear-gradient(to right, #222, #111);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    align-items: center;
-}
-
-.leaderboard-panel ul li img {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-right: 0.5rem;
-}
-
-
-.leaderboard-bg {
-    background-image: url('./assets/santeria2.png'); /* Replace with the actual image path */
-    background-size: cover; /* Cover the entire div */
-    background-position: center; /* Center the image in the div */
-    background-repeat: no-repeat; /* Do not repeat the image */
-}
-
-/* Add any additional styles as needed */
-
-
-/* Get Support Panel */
-.get-support-panel {
-    background-color: #2d3748; /* A darker shade for distinction */
-    color: #e2e8f0; /* Lighter text for readability */
-    border-radius: 12px; /* Increased border-radius for a softer look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Refined shadow for depth */
-}
-
-/* Support Button */
-.support-button {
-    background-color: #3182ce; /* A bright blue for the button */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Added box-shadow on hover */
+  }
+  
+  /* Add any additional styles as needed */
+  
+  /* Get Support Panel */
+  .get-support-panel {
+    background-color: #2d3748;
+    /* A darker shade for distinction */
+    color: #e2e8f0;
+    /* Lighter text for readability */
+    border-radius: 12px;
+    /* Increased border-radius for a softer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Refined shadow for depth */
+  }
+  
+  /* Support Button */
+  .support-button {
+    background-color: #3182ce;
+    /* A bright blue for the button */
     border: none;
     cursor: pointer;
-    padding: 10px 20px; /* Add padding for better button size */
-    border-radius: 8px; /* Slightly rounded button corners */
-    color: white; /* Text color */
-    font-weight: bold; /* Bold text */
-}
-
-.support-button:hover {
-    background-color: #4299e1; /* Slightly lighter blue on hover */
+    padding: 10px 20px;
+    /* Add padding for better button size */
+    border-radius: 8px;
+    /* Slightly rounded button corners */
+    color: white;
+    /* Text color */
+    font-weight: bold;
+    /* Bold text */
+  }
+  
+  .support-button:hover {
+    background-color: #4299e1;
+    /* Slightly lighter blue on hover */
     transform: scale(1.05);
-}
-
-/* General Panel Styling */
-.panel,
-.get-support-panel,
-.tebex-shop-panel,
-.leaderboard-panel {
-    display: block; /* or 'flex' depending on your layout */
+  }
+  
+  /* General Panel Styling */
+  .panel,
+  .get-support-panel,
+  .tebex-shop-panel,
+  .leaderboard-panel {
+    display: block;
+    /* or 'flex' depending on your layout */
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px; /* Space between panels */
+    margin-bottom: 15px;
+    /* Space between panels */
     transition: transform 0.3s ease-in-out;
-    padding: 20px; /* Add padding for better content spacing */
-}
-
-/* Ensure Each Panel Can Grow or Shrink Based on Its Content */
-.panel.custom,
-.get-support-panel {
-    flex: 1 1 auto; /* Adjusts flex settings for flexible grow and shrink */
-}
-
-/* Hover Effect to Scale Panels */
-.panel:hover,
-.get-support-panel:hover {
+    padding: 20px;
+    /* Add padding for better content spacing */
+  }
+  
+  /* Ensure Each Panel Can Grow or Shrink Based on Its Content */
+  .panel.custom,
+  .get-support-panel {
+    flex: 1 1 auto;
+    /* Adjusts flex settings for flexible grow and shrink */
+  }
+  
+  /* Hover Effect to Scale Panels */
+  .panel:hover,
+  .get-support-panel:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
-}
-
-/* Tebex Shop Panel Styling */
-.tebex-shop-panel h2,
-.tebex-shop-panel p,
-.tebex-button {
-    z-index: 1; /* Make sure it's above the background image */
-}
-
-/* Tebex Button Styling */
-.tebex-button {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Slightly larger shadow on hover */
+  }
+  
+  /* Tebex Shop Panel Styling */
+  .tebex-shop-panel h2,
+  .tebex-shop-panel p,
+  .tebex-button {
+    z-index: 1;
+    /* Make sure it's above the background image */
+  }
+  
+  /* Tebex Button Styling */
+  .tebex-button {
     background-color: #48bb78;
     border: none;
     cursor: pointer;
@@ -705,15 +649,15 @@ html {
     color: white;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.tebex-button:hover {
+  }
+  
+  .tebex-button:hover {
     background-color: #68d391;
     transform: scale(1.15);
-}
-
-/* Tebex Shop Panel Styling */
-.tebex-shop-panel {
+  }
+  
+  /* Tebex Shop Panel Styling */
+  .tebex-shop-panel {
     position: relative;
     overflow: hidden;
     background-color: #1b1b1b;
@@ -721,10 +665,10 @@ html {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-bottom: 15px;
-}
-
-/* Tebex Shop Background Image */
-.tebex-shop-bg {
+  }
+  
+  /* Tebex Shop Background Image */
+  .tebex-shop-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -734,549 +678,449 @@ html {
     border-radius: 12px;
     z-index: -1;
     opacity: 0.05;
-}
-
-/* Tebex Custom Button */
-.tebex-custom-button {
-    background-image: url('https://i.ibb.co/HzTJSN7/casssh.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    color: transparent;
-    width: 150px;
-    height: 75px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.tebex-custom-button:hover {
+  }
+  
+  .tebex-custom-button:hover {
     transform: scale(1.05);
-}
-
-/* Donate Text Styling */
-.donate-text {
-    font-size: 12px; /* Adjusted font size for better readability */
+  }
+  
+  /* Donate Text Styling */
+  .donate-text {
+    font-size: 12px;
+    /* Adjusted font size for better readability */
     color: #cbd5e0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* Clock Container Styling */
-.clock-container {
+  }
+  
+  /* Clock Container Styling */
+  .clock-container {
     background-color: #1d1d1d;
     padding: 10px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     color: #e2e8f0;
     font-size: 16px;
-}
-
-/* Modal Container Animation */
-#modal-container {
+  }
+  
+  /* Modal Container Animation */
+  #modal-container {
     animation: fadeIn 0.3s;
-}
-
-/* Keyframes Animation for Modal Fade In */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Hover Effect for Close Modal Button and Form Submit Button */
-#close-modal-btn:hover,
-#form-submit-btn:hover {
+  }
+  
+  /* Keyframes Animation for Modal Fade In */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Hover Effect for Close Modal Button and Form Submit Button */
+  #close-modal-btn:hover,
+  #form-submit-btn:hover {
     transform: scale(1.05);
-}
-
-/* Focus Styles for Input, Select, and Textarea */
-input:focus,
-select:focus,
-textarea:focus {
+  }
+  
+  /* Focus Styles for Input, Select, and Textarea */
+  input:focus,
+  select:focus,
+  textarea:focus {
     outline: none;
-    border: 2px solid #805AD5; /* Purple border */
+    border: 2px solid #805ad5;
+    /* Purple border */
     transition: border-color 0.3s ease;
-}
-
-/* Reports Element Styling */
-.reports {
-    width: 80px;
-    height: 30px;
-    background-color: #111;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* Hover Effect for Reports Element */
-.reports:hover {
-    width: 90px;
-    transform: scale(1.05);
-    background-color: #111;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Calendar Row Styling */
-.calendar-row {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-/* Custom Scrollbar Styles for Calendar Row */
-.calendar-row::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-.calendar-row::-webkit-scrollbar-track {
-    background: #131313;
-}
-
-.calendar-row::-webkit-scrollbar-thumb {
-    background-color: rgba(91, 33, 182, 1);
-    border-radius: 6px;
-}
-
-.calendar-row::-webkit-scrollbar-thumb:hover {
-    background: #5a67d8;
-}
-
-/* Calendar Door Base Styles */
-.calender-door {
-    transition: transform 0.3s ease;
-}
-
-/* Style for Opened Doors */
-.calender-door.opened {
-    background-color: #020202;
-    box-shadow: 0 0 10px rgba(22, 22, 22, 0.7);
-    opacity: 0.4;
-}
-
-/* Style for Obtainable Doors */
-.calender-door.obtainable {
-    box-shadow: 0 0 10px rgba(91, 33, 182, 0.7);
-}
-
-/* Style for Locked Doors */
-.calender-door.locked {
-    filter: grayscale(100%);
-    opacity: 0.7;
-}
-
-/* Style for Locked Doors */
-.calender-door.today {
-    filter: grayscale(100%);
-    opacity: 0.7;
-}
-
-
-/* Lock Icon Styling */
-.lock-icon {
+  }
+  
+  
+  
+  /* Open Icon Styling */
+  .open-icon {
     z-index: 1;
-}
-
-/* Open Icon Styling */
-.open-icon {
-    z-index: 1;
-}
-
-.locked {
+  }
+  
+  .locked {
     filter: grayscale(100%);
-}
-
-.text-gold {
+  }
+  
+  .text-gold {
     color: gold;
-}
-
-.text-silver {
+  }
+  
+  .text-silver {
     color: silver;
-}
-
-.text-bronze {
+  }
+  
+  .text-bronze {
     color: #cd7f32;
-}
-
-/* Add any additional styles as needed */
-
-
-
-
-
-
-
-
-
-
-
-
-/* Overlay Styles */
-.support-overlay {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-}
-
-/* Modal Styles */
-.support-modal {
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for modal */
-}
-
-/* Modal Content Styles */
-.support-content {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Deeper shadow for more depth */
+  }
+  
+  /* Add any additional styles as needed */
+  
+  /* Overlay Styles */
+  .support-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent black background */
+  }
+  
+  /* Modal Styles */
+  .support-modal {
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay for modal */
+  }
+  
+  /* Modal Content Styles */
+  .support-content {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    /* Deeper shadow for more depth */
     max-width: 1265px;
     height: 5000%;
     width: 100%;
     max-height: 440px;
-}
-
-/* Close Button Styles */
-.support-close-btn {
-    font-size: 1.5rem; /* Larger close icon */
-}
-
-/* Sidebar Styles */
-.support-sidebar {
-    border-right: 1px solid #444; /* Darker separator for better visibility */
-}
-
-.support-title {
-    color: #E0E0E0; /* Lighter color for better readability */
-}
-
-.support-ticket-list {
-    max-height: 500px; /* Increased height */
-}
-
-.support-ticket {
+  }
+  
+  /* Close Button Styles */
+  .support-close-btn {
+    font-size: 1.5rem;
+    /* Larger close icon */
+  }
+  
+  /* Sidebar Styles */
+  .support-sidebar {
+    border-right: 1px solid #444;
+    /* Darker separator for better visibility */
+  }
+  
+  .support-title {
+    color: #e0e0e0;
+    /* Lighter color for better readability */
+  }
+  
+  .support-ticket-list {
+    max-height: 500px;
+    /* Increased height */
+  }
+  
+  .support-ticket {
     transition: background-color 0.3s, color 0.3s;
-}
-
-.support-ticket:hover {
-    background-color: #b9b9b9; /* Darker hover effect */
+  }
+  
+  .support-ticket:hover {
+    background-color: #b9b9b9;
+    /* Darker hover effect */
     border-radius: 50px;
     margin-left: 5px;
     color: #020202;
-}
-
-.support-ticket-active {
-    background-color: hsla(0, 0%, 100%, 0.85); /* Darker hover effect */
+  }
+  
+  .support-ticket-active {
+    background-color: hsla(0, 0%, 100%, 0.85);
+    /* Darker hover effect */
     border-radius: 50px;
     margin-left: 5px;
     color: #020202;
-}
-
-.support-ticket:active {
-    background-color: #b9b9b9; /* Darker hover effect */
+  }
+  
+  .support-ticket:active {
+    background-color: #b9b9b9;
+    /* Darker hover effect */
     border-radius: 50px;
     margin-left: 5px;
     color: #020202;
-}
-
-
-/* Chat Section Styles */
-.support-chat {
+  }
+  
+  /* Chat Section Styles */
+  .support-chat {
     padding: 20px;
-}
-
-.support-messages {
+  }
+  
+  .support-messages {
     padding: 15px;
-    border: 1px solid #555; /* Dark border for definition */
-    border-radius: 8px; /* Rounded corners */
-}
-
-.create-support-ticket {
+    border: 1px solid #555;
+    /* Dark border for definition */
+    border-radius: 8px;
+    /* Rounded corners */
+  }
+  
+  .create-support-ticket {
     border: #5a67d8;
     border-radius: 55%;
     border-width: 2px;
-}
-
-/* Input Area Styles */
-.support-input-field {
-    border: 1px solid #666; /* Dark border */
-}
-
-.support-send-btn {
-    background-color: #2563eb; /* Brighter blue for visibility */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
+  }
+  
+  /* Input Area Styles */
+  .support-input-field {
+    border: 1px solid #666;
+    /* Dark border */
+  }
+  
+  .support-send-btn {
+    background-color: #2563eb;
+    /* Brighter blue for visibility */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
     .support-content {
-        flex-direction: column;
+      flex-direction: column;
     }
-
-    .support-sidebar, .support-chat {
-        width: 100%;
+  
+    .support-sidebar,
+    .support-chat {
+      width: 100%;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#notification {
-    display: none; /* Hidden by default */
-    position: fixed; /* Positioned relative to the viewport */
-    bottom: 20px; /* Place it at the bottom of the screen */
-    left: 20px; /* Place it from the left side */
-    background-color: #444; /* Dark background */
-    color: white; /* Light text */
-    padding: 10px; /* Some padding */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-}
-
-/* Fade-out animation */
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-#notification.fadeOut {
+  }
+  
+  #notification {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Positioned relative to the viewport */
+    bottom: 20px;
+    /* Place it at the bottom of the screen */
+    left: 20px;
+    /* Place it from the left side */
+    background-color: #444;
+    /* Dark background */
+    color: white;
+    /* Light text */
+    padding: 10px;
+    /* Some padding */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+  }
+  
+  /* Fade-out animation */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  #notification.fadeOut {
     animation: fadeOut 1s ease-out forwards;
-}
-
-
-#notification-modal {
+  }
+  
+  #notification-modal {
     /* Existing styles for the modal */
-    transition: opacity 1s ease-out; /* Smooth transition for the fade-out */
-}
-
-#notification-modal.hidden {
-    display: none; /* Hide when it has 'hidden' class */
-}
-
-#notification-modal .fa-times {
-    font-size: 1.25rem; /* Larger close icon */
-}
-
-/* Smooth transition for the modal appearance */
-#notification-modal.fadeOut {
+    transition: opacity 1s ease-out;
+    /* Smooth transition for the fade-out */
+  }
+  
+  #notification-modal.hidden {
+    display: none;
+    /* Hide when it has 'hidden' class */
+  }
+  
+  #notification-modal .fa-times {
+    font-size: 1.25rem;
+    /* Larger close icon */
+  }
+  
+  /* Smooth transition for the modal appearance */
+  #notification-modal.fadeOut {
     opacity: 0;
     transition: opacity 1s ease-out;
-}
-
-
-/* Custom CSS for slide-in and slide-out animations */
-#slide-notification.show {
-    transform: translateX(0); /* Brings the notification into view */
-}
-
-#slide-notification.hide {
-    transform: translateX(100%); /* Hides the notification off the screen */
-}
-
-/* Custom CSS for slide-in and slide-out animations */
-#slide-notification-reward.show {
-    transform: translateX(0); /* Brings the notification into view */
-}
-
-#slide-notification-reward.hide {
-    transform: translateX(100%); /* Hides the notification off the screen */
-}
-/* Custom CSS for slide-in and slide-out animations */
-#slide-notification-reward-locked.show {
-    transform: translateX(0); /* Brings the notification into view */
-}
-
-#slide-notification-reward-locked.hide {
-    transform: translateX(100%); /* Hides the notification off the screen */
-}
-
-/* Custom CSS for slide-in and slide-out animations */
-#slide-notification-bw.show {
-    transform: translateX(0); /* Brings the notification into view */
-}
-
-#slide-notification-bw.hide {
-    transform: translateX(100%); /* Hides the notification off the screen */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes scaleUp {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.animate-fadeIn {
+  }
+  
+  /* Custom CSS for slide-in and slide-out animations */
+  #slide-notification.show {
+    transform: translateX(0);
+    /* Brings the notification into view */
+  }
+  
+  #slide-notification.hide {
+    transform: translateX(100%);
+    /* Hides the notification off the screen */
+  }
+  
+  /* Custom CSS for slide-in and slide-out animations */
+  #slide-notification-reward.show {
+    transform: translateX(0);
+    /* Brings the notification into view */
+  }
+  
+  #slide-notification-reward.hide {
+    transform: translateX(100%);
+    /* Hides the notification off the screen */
+  }
+  
+  /* Custom CSS for slide-in and slide-out animations */
+  #slide-notification-reward-locked.show {
+    transform: translateX(0);
+    /* Brings the notification into view */
+  }
+  
+  #slide-notification-reward-locked.hide {
+    transform: translateX(100%);
+    /* Hides the notification off the screen */
+  }
+  
+  /* Custom CSS for slide-in and slide-out animations */
+  #slide-notification-bw.show {
+    transform: translateX(0);
+    /* Brings the notification into view */
+  }
+  
+  #slide-notification-bw.hide {
+    transform: translateX(100%);
+    /* Hides the notification off the screen */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleUp {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+  
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .animate-fadeIn {
     animation: fadeIn 0.5s ease-out;
-}
-
-.animate-scaleUp {
+  }
+  
+  .animate-scaleUp {
     animation: scaleUp 0.3s ease-out;
-}
-
-
-
-.discordserverlogo {
+  }
+  
+  .discordserverlogo {
     display: relative;
     right: 42%;
     top: 10%;
     margin: 0%;
-}
-
-
-
-
-.discord-widget {
+  }
+  
+  .discord-widget {
     width: 350px;
     height: 500px;
-    background-color: #2C2F33;
-    border: 2px solid #23272A;
+    background-color: #2c2f33;
+    border: 2px solid #23272a;
     border-radius: 10px;
     padding: 10px;
     color: white;
     font-family: Arial, sans-serif;
-}
-
-.server-name {
+  }
+  
+  .server-name {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.member {
+  }
+  
+  .member {
     margin: 5px 0;
     font-size: 14px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.liveSupport {
+  }
+  
+  .liveSupport {
     top: 118%;
+  }
+  
+/* Custom CSS for adjusting image background position and adding inner shadow */
+/* Custom CSS for a professional and enhanced image appearance */
+.newsImage1 {
+    background-image: url("./assets/news-bg.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+    background-position-y: 45%;
+    opacity: 0.85;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8); /* Refined inner shadow */
+    border-radius: 5px; /* Soft rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.newsImage1:hover {
+    transform: scale(1.03); /* Slight zoom effect on hover */
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.75); /* Enhanced shadow on hover */
+}
+
+.newsImage2 {
+    background-image: url("./assets/news-bg2.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+    background-position-y: 45%;
+    opacity: 0.85;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8); /* Refined inner shadow */
+    border-radius: 5px; /* Soft rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.newsImage2:hover {
+    transform: scale(1.03); /* Slight zoom effect on hover */
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.75); /* Enhanced shadow on hover */
 }
 
 
-
-
-    /* Custom CSS for adjusting image background position */
-    .newsImage1 {
-        background-image: url('./assets/0.gif');
-        background-size: cover;
-        background-position: center; /* You can adjust this to change the visible part of the image */
-        width: 100%;
-        height: 200px; /* Keep the height fixed */
-        background-position-y: 40%;
-        filter: saturate(1.25);
-        backdrop-filter: blur(10px);
-        opacity: 0.85;;
-    }
-
-
-
-
-
-.panel, .leaderboard-panel, .tebex-shop-panel, .get-support-panel {
-    content: '';
+  
+  .panel,
+  .leaderboard-panel,
+  .tebex-shop-panel,
+  .get-support-panel {
+    content: "";
     background: inherit;
     -filter: blur(20px);
-}
-
-
-
-
-
-
-
-
-.chat-modal {
+  }
+  
+  .chat-modal {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's above other content */
-}
-
-.chat-modal-content {
+    z-index: 1000;
+    /* Ensure it's above other content */
+  }
+  
+  .chat-modal-content {
     background: linear-gradient(145deg, rgba(34, 35, 36, 0.5), hsl(0, 0%, 8%));
     -webkit--backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    width: 60%; /* Adjust width as needed */
+    width: 60%;
+    /* Adjust width as needed */
     height: 500px;
-    max-height: 80%; /* Adjust height as needed */
+    max-height: 80%;
+    /* Adjust height as needed */
     overflow-y: auto;
-}
-
-.hidden {
+  }
+  
+  .hidden {
     display: none;
-}
-
-.close-chat-modal-btn {
+  }
+  
+  .close-chat-modal-btn {
     background: #626364;
     color: white;
     border: none;
@@ -1286,58 +1130,64 @@ textarea:focus {
     position: relative;
     top: 1.5%;
     left: 95%;
-}
-
-#bigchat-form {
+  }
+  
+  #bigchat-form {
     position: fixed;
     height: 42px;
     width: auto;
     bottom: 5%;
     right: 43.5%;
-}
-
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 600px) {
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 600px) {
     .nav-item span {
-        display: none; /* Hide text labels on smaller screens */
+      display: none;
+      /* Hide text labels on smaller screens */
     }
+  
     .nav-item {
-        padding: 0.5rem; /* Adjust padding for icon-only view */
+      padding: 0.5rem;
+      /* Adjust padding for icon-only view */
     }
-}
-
-/* Hover and active state styling */
-.nav-item:hover, .nav-item.bg-zinc-700 {
-    background-color: rgba(130, 77, 160, 0.95); /* Slightly highlight on hover and active */
-    border-radius: 8px; /* Rounded corners */
-}
-
-
-
-
-
-.custom-gradient-bg {
+  }
+  
+  /* Hover and active state styling */
+  .nav-item:hover,
+  .nav-item.bg-zinc-700 {
+    background-color: rgba(130, 77, 160, 0.95);
+    /* Slightly highlight on hover and active */
+    border-radius: 8px;
+    /* Rounded corners */
+  }
+  
+  .custom-gradient-bg {
     background: linear-gradient(145deg, rgb(34, 35, 36), hsl(0, 0%, 8%));
     -webkit--backdrop-filter: blur(10px);
-}
-
-.md:col-span-2 {
+  }
+  
+  .md:col-span-2 {
     -webkit--backdrop-filter: blur(10px);
-}
-
-/* Animated Dots for fetching leaderboard */
-@keyframes dots {
-    0%, 20% {
+  }
+  
+  /* Animated Dots for fetching leaderboard */
+  @keyframes dots {
+    0%,
+    20% {
       content: ".";
     }
+  
     40% {
       content: "..";
     }
+  
     60% {
       content: "...";
     }
-    80%, 100% {
+  
+    80%,
+    100% {
       content: "";
     }
   }
@@ -1347,48 +1197,93 @@ textarea:focus {
     animation: dots 2.5s steps(5, end) infinite;
   }
   
-.bg-job {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  .bg-job {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-jobinfo {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-jobinfo {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-grade {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-grade {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-userheight {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-userheight {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-usersex {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-usersex {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-dateofbirth {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-dateofbirth {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-bank {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-bank {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-money {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-money {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
-.bg-blackmoney {
-    background: linear-gradient(145deg, hsla(0, 0%, 6%, 0.5), hsla(0, 0%, 5%, 0.5));
+  }
+  
+  .bg-blackmoney {
+    background: linear-gradient(
+      145deg,
+      hsla(0, 0%, 6%, 0.5),
+      hsla(0, 0%, 5%, 0.5)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-}
+  }
+  
