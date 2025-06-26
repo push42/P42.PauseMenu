@@ -14,6 +14,7 @@
 **License:** Free to use, modify, and redistribute  
 **Last Active:** ~2 Years Ago  
 **Intended Use:** Custom Pause Menu Replacement for FiveM servers
+⭐ If this helped you, consider starring the repo to support future open-source projects.
 
 ---
 
