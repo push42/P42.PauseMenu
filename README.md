@@ -6,6 +6,8 @@
 ![Pause Menu Screenshot](preview_discord.png)
 ![Pause Menu Screenshot](preview_discord2.png)
 ![Pause Menu Screenshot](preview_discord3.png)
+![Pause Menu Screenshot](preview_8.png)
+![Pause Menu Screenshot](preview_9.png)
 ![Pause Menu Screenshot](preview5.png)
 ![Pause Menu Screenshot](preview.png)
 ![Pause Menu Screenshot](preview2.png)
